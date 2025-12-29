@@ -77,7 +77,9 @@ Het geeft het einde van de string aan zodat functies weten waar de tekst stopt.
 <details>
 <summary>Antwoord tonen</summary>
 
-Polling, interrupts en Direct Memory Access (DMA).
+* Polling
+* interrupts  
+* Direct Memory Access (DMA).
 
 </details>
 
@@ -173,8 +175,9 @@ PATCH/WRITE requests vereisen authenticatie.
 <details>
 <summary>Antwoord tonen</summary>
 
-RTOS = Realtime Operating System, beheert meerdere taken met timing.  
-Preemptive multitasking = een hogere-prioriteit taak kan een lagere taak onderbreken.
+* RTOS = Realtime Operating System, beheert meerdere taken met timing. 
+
+* Preemptive multitasking = een hogere-prioriteit taak kan een lagere taak onderbreken.
 
 </details>
 
