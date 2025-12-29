@@ -1,298 +1,237 @@
-# 📡 Studiegids – IoT Devices
+# 📘 IoT Devices – Samenvattingen & Oefenvragen  
+**VIVES – ICT & Elektronica**
 
-Deze studiegids is bedoeld als **voorbereiding op het examen IoT Devices**.  
-Lees **eerst de vraag**, denk zelf na en **klik daarna** om het antwoord te bekijken.
+Deze repository bevat gestructureerde studievragen met uitklapbare antwoorden en een begrippenlijst.  
+Ideaal om actief te studeren: eerst nadenken, dan pas controleren.
 
 ---
 
-## 📘 Hoofdstuk 1 – Introductie en C-taal
+## 📂 Inhoud
+- [📘 IoT Devices – Samenvattingen \& Oefenvragen](#-iot-devices--samenvattingen--oefenvragen)
+  - [📂 Inhoud](#-inhoud)
+  - [📖 Hoofdstuk 1 – Introductie \& C-taal](#-hoofdstuk-1--introductie--c-taal)
+  - [📖 Hoofdstuk 3 – Soorten IO-transfers](#-hoofdstuk-3--soorten-io-transfers)
+  - [📖 Hoofdstuk 6 – WiFi \& Netwerkcommunicatie](#-hoofdstuk-6--wifi--netwerkcommunicatie)
+  - [📖 Hoofdstuk 7 – RTOS deel 1](#-hoofdstuk-7--rtos-deel-1)
+  - [📖 Hoofdstuk 8 – RTOS deel 2](#-hoofdstuk-8--rtos-deel-2)
+  - [📚 Begrippenlijst](#-begrippenlijst)
+  - [📌 Gebruik](#-gebruik)
+  - [📄 Licentie](#-licentie)
 
-**1. Wat zijn de vijf hoofddoelstellingen van de module "IoT Devices"?**
+---
+
+## 📖 Hoofdstuk 1 – Introductie & C-taal
+
+**1. Wat zijn de vijf hoofddoelstellingen van de module “IoT Devices”?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-- IO-transfers inoefenen (polling, interrupts, DMA)
-- Beveiligde WiFi-communicatie via ESP32-C3
-- Bluetooth-communicatie naar een webbrowser
-- Werken met een Realtime Operating System (RTOS)
-- Correct en efficiënt gebruik van de C-taal
+- IO-transfers inoefenen (polling, interrupts, DMA)  
+- Beveiligde WiFi-communicatie via ESP32-C3  
+- Bluetooth-communicatie naar een webbrowser  
+- Werken met een RTOS  
+- Correct gebruik van de C-programmeertaal  
 
 </details>
 
----
+<br>
 
 **2. Welke bibliotheek wordt gebruikt in plaats van CMSIS-code op registerniveau?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-De **Hardware Abstraction Layer (HAL)** bibliotheek.
+De Hardware Abstraction Layer (HAL) bibliotheek.
 
 </details>
 
----
+<br>
 
-**3. Hoe wordt een string of tekst opgeslagen in de C-taal?**
+**3. Hoe wordt een string opgeslagen in de C-taal?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Als een **array van karakters** (`char[]`).
+Als een array van karakters die eindigt met het nulkarakter (`\0`).
 
 </details>
 
----
+<br>
 
 **4. Wat is het doel van het nulkarakter (`\0`)?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Het nulkarakter geeft het **einde van de string** aan.
+Het geeft het einde van de string aan zodat functies weten waar de tekst stopt.
 
 </details>
 
 ---
 
-## 📘 Hoofdstuk 3 – Soorten IO-transfers
+## 📖 Hoofdstuk 3 – Soorten IO-transfers
 
 **1. Welke drie methoden bestaan er voor IO-transfers?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
 Polling, interrupts en Direct Memory Access (DMA).
 
 </details>
 
----
+<br>
 
-**2. Wat is polling en wat is het grootste nadeel?**
+**2. Leg het concept 'polling' uit. Wat is het grootste nadeel?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Polling betekent dat de CPU constant de status van een peripheral controleert.  
-Het nadeel is **tijdverlies** en mogelijk **dataverlies**.
+De CPU controleert continu de status van een peripheral.  
+Grootste nadeel: CPU-tijd wordt verspild en data kan verloren gaan.
+
+</details>
+
+<br>
+
+**3. Hoe werkt communicatie via 'interrupts'? Wat is een nadeel?**
+
+<details>
+<summary>Antwoord tonen</summary>
+
+De CPU wordt onderbroken om een gebeurtenis af te handelen.  
+Nadeel: de normale programmastructuur wordt onderbroken.
+
+</details>
+
+<br>
+
+**4. Wat is de functie van Direct Memory Access (DMA)?**
+
+<details>
+<summary>Antwoord tonen</summary>
+
+DMA laat randapparatuur rechtstreeks data naar geheugen sturen zonder CPU-interventie.
 
 </details>
 
 ---
 
-**3. Hoe werken interrupts en wat is een nadeel?**
+## 📖 Hoofdstuk 6 – WiFi & Netwerkcommunicatie
+
+**1. Welke WiFi-module wordt gebruikt en welke chip bevat deze?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-De CPU wordt onderbroken om een interrupt af te handelen.  
-Dit onderbreekt de normale program flow.
+De LILYGO T-01C3 module met een **ESP32-C3 chip**.
 
 </details>
 
----
-
-**4. Wat is DMA en hoe ontlast het de CPU?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-DMA verplaatst data tussen peripherals en geheugen zonder CPU-interventie.
-
-</details>
-
----
-
-**5. Welk planningsmechanisme gebruikt de Bus Matrix?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-Een **round-robin** schema.
-
-</details>
-
----
-
-**6. Wat was het prestatieverschil tussen UART via polling en via DMA?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-- Polling: ~57 ms CPU-tijdverlies  
-- DMA: ~5,61 µs  
-
-DMA is **meer dan 10.000× efficiënter**.
-
-</details>
-
----
-
-**7. Wat is SBUS en wat zijn de seriële eigenschappen?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-SBUS is een RC-protocol met:
-- 100k baud  
-- 2 stopbits  
-- even parity  
-- inverted RX
-
-</details>
-
----
-
-**8. Welke technieken werden gebruikt in de automatisch kofferdeksel demo?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-- Timer Input Capture (ultrasone sensor)
-- Timer PWM (servo)
-
-</details>
-
----
-
-## 📘 Hoofdstuk 6 – WiFi en Netwerkcommunicatie
-
-**1. Welke WiFi-module en chip worden gebruikt?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-De **LILYGO T-01C3** met **ESP32-C3**.
-
-</details>
-
----
+<br>
 
 **2. Wat is Postman en waarvoor wordt het gebruikt?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Een tool om **HTTP GET en POST requests** te testen.
+Een tool om HTTP-requests te testen en analyseren (GET, POST).
 
 </details>
 
----
+<br>
 
 **3. Wat is het verschil tussen HTTP GET en POST?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-GET vraagt data op.  
-POST stuurt data naar de server.
+- GET: data opvragen van een server  
+- POST: data verzenden naar een server
+
+</details>
+
+<br>
+
+**4. Wat is Firebase RTDB en welke requests vereisen authenticatie?**
+
+<details>
+<summary>Antwoord tonen</summary>
+
+Realtime NoSQL database.  
+PATCH/WRITE requests vereisen authenticatie.
 
 </details>
 
 ---
 
-**4. Wat is Firebase RTDB en welk request vereist authenticatie?**
+## 📖 Hoofdstuk 7 – RTOS deel 1
+
+**1. Wat is een RTOS en wat betekent "preemptive multitasking"?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Een realtime NoSQL database.  
-**PATCH** vereist authenticatie.
+RTOS = Realtime Operating System, beheert meerdere taken met timing.  
+Preemptive multitasking = een hogere-prioriteit taak kan een lagere taak onderbreken.
+
+</details>
+
+<br>
+
+**2. Wat is een context switch en welk onderdeel wordt opgeslagen?**
+
+<details>
+<summary>Antwoord tonen</summary>
+
+Een context switch bewaart de toestand van een thread in een **Thread Control Block (TCB)** om later terug te keren.
+
+</details>
+
+<br>
+
+**3. Welke functie gebruik je voor vertraging in een RTOS in plaats van HAL_Delay()?**
+
+<details>
+<summary>Antwoord tonen</summary>
+
+`osDelay()`, omdat dit de CPU vrijlaat terwijl de thread wacht.
 
 </details>
 
 ---
 
-**5. Wat zijn AT-commando’s en hun structuur?**
+## 📖 Hoofdstuk 8 – RTOS deel 2
+
+**1. Wat is een binaire semafoor en waarvoor kan deze gebruikt worden?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Tekstcommando’s via UART:  
-`AT+COMMAND\r\n`
+Synchronisatiemechanisme: slechts één thread kan het tegelijk "bezitten". Andere threads worden geblokkeerd.
 
 </details>
 
----
+<br>
 
-**6. Waarom is een circulaire buffer nuttig?**
+**2. Wat is het verschil tussen een counting semaphore en een binaire semafoor?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Om snelle inkomende data op te vangen zonder verlies.
+Counting semaphore houdt een teller bij; binaire semafoor slechts 0 of 1.
 
 </details>
 
----
+<br>
 
-**7. Wat doet de watchdog timer in de ESP32-C3 demo?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-Reset de microcontroller bij vastlopen (>6 s).
-
-</details>
-
----
-
-**8. Leg het MQTT publisher/subscriber model uit.**
+**3. Wat is een Mutex en wat is een belangrijk verschil met een semafoor?**
 
 <details>
-<summary>Toon antwoord</summary>
+<summary>Antwoord tonen</summary>
 
-Publishers sturen data naar een broker.  
-Subscribers ontvangen data via topics.
-
-</details>
-
----
-
-## 📘 Hoofdstuk 7 – RTOS deel 1
-
-**1. Wat is een RTOS en wat is preemptive multitasking?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-Een RTOS beheert taken met prioriteiten.  
-Taken kunnen worden onderbroken.
-
-</details>
-
----
-
-**2. Wat is een context switch en wat wordt opgeslagen?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-De toestand van een thread wordt opgeslagen in een **TCB**.
-
-</details>
-
----
-
-**3. Waarom osDelay() gebruiken i.p.v. HAL_Delay()?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-osDelay() blokkeert de thread zonder CPU-tijd te verspillen.
-
-</details>
-
----
-
-## 📘 Hoofdstuk 8 – RTOS deel 2
-
-**1. Wat is priority inversion?**
-
-<details>
-<summary>Toon antwoord</summary>
-
-Een lage-prioriteit thread blokkeert een hoge-prioriteit thread.
+Mutex = exclusieve toegang voor één thread; implementeert priority inheritance.
 
 </details>
 
@@ -300,30 +239,31 @@ Een lage-prioriteit thread blokkeert een hoge-prioriteit thread.
 
 ## 📚 Begrippenlijst
 
-| Begrip | Definitie |
-|------|----------|
-| AT-Commando | Tekstcommando via UART (`AT+COMMAND\r\n`) |
-| Binary Semaphore | Synchronisatie met 0/1 toestand |
-| Bus Matrix | Regelt bus-toegang via round-robin |
-| C-String | Char-array eindigend op `\0` |
-| Circulair Buffer | Buffer met ronddraaiende pointers |
-| CMSIS | ARM hardware-abstractiestandaard |
-| Context Switch | Wissel van thread via TCB |
-| Counting Semaphore | Semaphore met teller |
-| DMA | Data-overdracht zonder CPU |
-| Event Flags | Bit-gebaseerde thread-signalen |
-| Firebase RTDB | Google realtime NoSQL database |
-| HAL | Hardware Abstraction Layer |
-| Interrupt | Onmiddellijke CPU-onderbreking |
-| Message Queue | FIFO voor thread-communicatie |
-| MQTT | Publish/subscribe IoT-protocol |
-| Mutex | Exclusieve toegang met priority inheritance |
-| NVIC | ARM interrupt controller |
-| Polling | Actief status controleren |
-| RTOS | Realtime Operating System |
-| SBUS | Serieel RC-protocol |
-| Software Timer | RTOS-timer met callback |
-| TCB | Thread Control Block |
-| Watchdog Timer | Reset bij vastlopen |
-| WiFi | IEEE 802.11 draadloos netwerk |
+| Begrip | Uitleg |
+|------|-------|
+| RTOS | Besturingssysteem voor taken met strikte timing |
+| HAL | Bibliotheek die hardware-details verbergt |
+| Polling | CPU controleert continu een status |
+| Interrupt | Signaal dat de CPU onderbreekt |
+| DMA | Data-overdracht zonder CPU-belasting |
+| Scheduler | Bepaalt taakvolgorde in een RTOS |
+| Mutex | Beschermt gedeelde resources |
+| Semaphore | Synchronisatie tussen taken |
+| Task | Onafhankelijke uitvoerbare eenheid |
+| Thread | Lichte uitvoering binnen een taak |
+| Context Switch | Overgang tussen threads, toestand opgeslagen in TCB |
+| Watchdog Timer | Reset microcontroller bij vastgelopen software |
+| MQTT | Publish/subscribe protocol voor IoT |
+| SBUS | Serieel communicatieprotocol voor RC |
 
+---
+
+## 📌 Gebruik
+- Klik enkel op “Antwoord tonen” na zelf nadenken  
+- Geschikt voor examenvoorbereiding  
+- Uitbreidbaar per hoofdstuk  
+
+---
+
+## 📄 Licentie
+Vrij te gebruiken voor educatieve doeleinden binnen VIVES.
