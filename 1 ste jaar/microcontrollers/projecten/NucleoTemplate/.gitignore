@@ -1,0 +1,11 @@
+Objects/
+Listings/
+*.o
+*.d
+*.map
+
+DebugConfig/
+*.dbgconf
+
+*.log
+*.tmp

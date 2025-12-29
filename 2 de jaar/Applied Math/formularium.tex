@@ -1,0 +1,194 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\title{Formularium Goniometrie}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{4.1 Goniometrische cirkel en radialen}
+
+\[
+2\pi \text{ rad} = 360^\circ,\qquad
+\pi \text{ rad} = 180^\circ,\qquad
+\frac{\pi}{2} = 90^\circ
+\]
+
+Booglengte:
+\[
+s = \alpha r
+\]
+
+\section*{4.2 Sinus, cosinus, tangens en cotangens}
+
+Punt op de eenheidscirkel:
+\[
+P=(\cos \alpha,\ \sin \alpha)
+\]
+
+Fundamentele formule:
+\[
+\sin^2 \alpha + \cos^2 \alpha = 1
+\]
+
+Tangens en cotangens:
+\[
+\tan\alpha = \frac{\sin\alpha}{\cos\alpha},\qquad
+\cot\alpha = \frac{\cos\alpha}{\sin\alpha}
+\]
+
+Symmetrie:
+\[
+\sin(-\alpha)=-\sin\alpha,\qquad
+\cos(-\alpha)=\cos\alpha
+\]
+\[
+\tan(-\alpha)=-\tan\alpha,\qquad
+\cot(-\alpha)=-\cot\alpha
+\]
+
+Perioden:
+\[
+\tan(\alpha+\pi)=\tan\alpha,\qquad
+\cot(\alpha+\pi)=\cot\alpha
+\]
+
+\subsection*{Bijzondere waarden}
+
+\[
+\begin{array}{c|ccc}
+\alpha & 0 & \frac{\pi}{2} & \pi \\ \hline
+\sin\alpha & 0 & 1 & 0 \\
+\cos\alpha & 1 & 0 & -1 \\
+\tan\alpha & 0 & \text{g.d.} & 0
+\end{array}
+\]
+
+\subsection*{Goniometrische vergelijkingen}
+
+\[
+\sin x=A \quad\Rightarrow\quad
+x = B + 2k\pi \ \text{of}\ x=\pi - B + 2k\pi
+\]
+
+\[
+\cos x=A \quad\Rightarrow\quad
+x = B + 2k\pi \ \text{of}\ x=-B + 2k\pi
+\]
+
+\[
+\tan x=A \quad\Rightarrow\quad
+x = B + k\pi
+\]
+
+\[
+\cot x=A \quad\Rightarrow\quad
+x = B + k\pi
+\]
+
+\section*{4.3 Verwante hoeken}
+
+Complementair: $\alpha+\beta=\frac{\pi}{2}$
+\[
+\sin\beta = \cos\alpha,\qquad
+\cos\beta = \sin\alpha
+\]
+
+Anti-complementair: $|\alpha-\beta|=\frac{\pi}{2}$
+\[
+\sin\beta = \cos\alpha,\qquad
+\cos\beta = -\sin\alpha
+\]
+
+Supplementair: $\alpha+\beta=\pi$
+\[
+\sin(\pi-\alpha)=\sin\alpha,\qquad
+\cos(\pi-\alpha)=-\cos\alpha
+\]
+\[
+\tan(\pi-\alpha)=-\tan\alpha,\qquad
+\cot(\pi-\alpha)=-\cot\alpha
+\]
+
+Anti-supplementair: $|\alpha-\beta|=\pi$
+\[
+\sin(\pi+\alpha)=-\sin\alpha,\qquad
+\cos(\pi+\alpha)=-\cos\alpha
+\]
+\[
+\tan(\pi+\alpha)=\tan\alpha,\qquad
+\cot(\pi+\alpha)=\cot\alpha
+\]
+
+\section*{4.4 Som-, verschil- en dubbele hoekformules}
+
+Som:
+\[
+\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta
+\]
+\[
+\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta
+\]
+\[
+\tan(\alpha+\beta)=\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}
+\]
+
+Verschil:
+\[
+\sin(\alpha-\beta)=\sin\alpha\cos\beta-\cos\alpha\sin\beta
+\]
+\[
+\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta
+\]
+\[
+\tan(\alpha-\beta)=\frac{\tan\alpha-\tan\beta}{1+\tan\alpha\tan\beta}
+\]
+
+Dubbele hoek:
+\[
+\sin(2\alpha)=2\sin\alpha\cos\alpha
+\]
+\[
+\cos(2\alpha)=\cos^2\alpha-\sin^2\alpha
+\]
+\[
+\tan(2\alpha)=\frac{2\tan\alpha}{1-\tan^2\alpha}
+\]
+
+\section*{4.5 Rechthoekige driehoek}
+
+\[
+\sin\alpha=\frac{a}{c},\quad
+\cos\alpha=\frac{b}{c},\quad
+\tan\alpha=\frac{a}{b}
+\]
+
+Pythagoras:
+\[
+a^2+b^2=c^2
+\]
+
+\section*{4.6 Willekeurige driehoek}
+
+Sinusregel:
+\[
+\frac{a}{\sin\alpha}=\frac{b}{\sin\beta}=\frac{c}{\sin\gamma}
+\]
+
+Cosinusregel:
+\[
+a^2=b^2+c^2-2bc\cos\alpha
+\]
+
+Oppervlakte:
+\[
+A=\frac{1}{2}bc\sin\alpha
+\]
+
+\end{document}

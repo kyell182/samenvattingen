@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<truthTable>
+  <variables>
+    <variable name="SET"/>
+    <variable name="RESET"/>
+    <variable name="CLK"/>
+    <variable name="J"/>
+    <variable name="K"/>
+  </variables>
+  <results>
+    <result>
+      <name>Q</name>
+      <values class="BoolTable">00000011000000001111111100100011</values>
+    </result>
+    <result>
+      <name>Q̅</name>
+      <values class="BoolTable">11111100111111110000000011010100</values>
+    </result>
+  </results>
+</truthTable>

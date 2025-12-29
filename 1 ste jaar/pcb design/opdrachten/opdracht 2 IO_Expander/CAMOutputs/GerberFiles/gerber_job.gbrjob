@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2025-05-12T09:11:20Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.6.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "Schema_IOExp_De_Windt_Kyell"
+        },
+        "Owner": "Kyell De Windt <kyell.dewindt@student.vives.be>",
+        "Size": {
+            "X": 80.2126,
+            "Y": 50.5906
+        }
+    }
+}

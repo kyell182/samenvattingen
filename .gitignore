@@ -1,0 +1,65 @@
+# video files
+*.mp4
+
+# log files
+*.log
+# temporary files
+*.tmp
+# OS generated files
+.DS_Store
+Thumbs.db
+# node modules
+node_modules/
+# build output
+dist/
+build/
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+# coverage directory
+coverage/
+# dependency directories
+vendor/
+# compiled files
+*.class
+*.obj
+*.exe
+
+# archive files
+*.zip  
+*.rar
+*.tar.gz
+*.7z
+# backup files
+*.bak
+*.old
+# database files
+*.sqlite
+*.db
+*.sqlite3
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+# JavaScript build files
+*.min.js
+*.map
+# Sass cache
+.sass-cache/
+# Ruby specific files
+*.gem
+.bundle/
+# Java specific files
+*.jar
+*.war
+*.ear

@@ -1,0 +1,150 @@
+Netlist
+
+Exported from Schema_IOExp_De_Windt_Kyell.sch at 12/05/2025 11:06
+
+EAGLE Version 9.6.2 Copyright (c) 1988-2020 Autodesk, Inc.
+
+Net       Part      Pad      Pin        Sheet
+
+CH1       CONNECTOR 4        4          1
+          IC1       3        ~CS        1
+
+CH2       CONNECTOR 5        5          1
+          IC2       3        ~CS        1
+
+DRUKKNOP1 IC1       9        GP0        1
+          S1        1        S          1
+          S1        2        S1         1
+
+DRUKKNOP2 IC1       10       GP1        1
+          S2        1        S          1
+          S2        2        S1         1
+
+DRUKKNOP3 IC1       11       GP2        1
+          S3        1        S          1
+          S3        2        S1         1
+
+DRUKKNOP4 IC1       12       GP3        1
+          S4        1        S          1
+          S4        2        S1         1
+
+DRUKKNOP5 IC1       13       GP4        1
+          S5        1        S          1
+          S5        2        S1         1
+
+DRUKKNOP6 IC1       14       GP5        1
+          S6        1        S          1
+          S6        2        S1         1
+
+DRUKKNOP7 IC1       15       GP6        1
+          S7        1        S          1
+          S7        2        S1         1
+
+DRUKKNOP8 IC1       16       GP7        1
+          S8        1        S          1
+          S8        2        S1         1
+
+GND       C1        2        2          1
+          C2        2        2          1
+          CONNECTOR 1        1          1
+          IC1       18       VSS        1
+          IC2       18       VSS        1
+          S1        3        P          1
+          S1        4        P1         1
+          S2        3        P          1
+          S2        4        P1         1
+          S3        3        P          1
+          S3        4        P1         1
+          S4        3        P          1
+          S4        4        P1         1
+          S5        3        P          1
+          S5        4        P1         1
+          S6        3        P          1
+          S6        4        P1         1
+          S7        3        P          1
+          S7        4        P1         1
+          S8        3        P          1
+          S8        4        P1         1
+
+LED1      IC2       9        GP0        1
+          LED1      C        C          1
+
+LED2      IC2       10       GP1        1
+          LED2      C        C          1
+
+LED3      IC2       11       GP2        1
+          LED3      C        C          1
+
+LED4      IC2       12       GP3        1
+          LED4      C        C          1
+
+LED5      IC2       13       GP4        1
+          LED5      C        C          1
+
+LED6      IC2       14       GP5        1
+          LED6      C        C          1
+
+LED7      IC2       15       GP6        1
+          LED7      C        C          1
+
+LED8      IC2       16       GP7        1
+          LED8      C        C          1
+
+MISO      CONNECTOR 6        6          1
+          IC1       6        SO         1
+          IC2       6        SO         1
+
+MOSI      CONNECTOR 7        7          1
+          IC1       5        SI         1
+          IC2       5        SI         1
+
+N$3       LED8      A        A          1
+          R8        1        1          1
+
+N$4       LED7      A        A          1
+          R7        1        1          1
+
+N$5       LED6      A        A          1
+          R6        1        1          1
+
+N$6       LED5      A        A          1
+          R5        1        1          1
+
+N$7       LED4      A        A          1
+          R4        1        1          1
+
+N$8       LED3      A        A          1
+          R3        1        1          1
+
+N$9       LED2      A        A          1
+          R2        1        1          1
+
+N$10      LED1      A        A          1
+          R1        1        1          1
+
+N$12      IC2       7        ~RESET     1
+          R9        1        1          1
+
+N$13      IC1       7        ~RESET     1
+          R10       1        1          1
+
+SCK       CONNECTOR 10       10         1
+          IC1       4        SCK        1
+          IC2       4        SCK        1
+
+VDD       C1        1        1          1
+          C2        1        1          1
+          CONNECTOR 2        2          1
+          IC1       1        VDD        1
+          IC2       1        VDD        1
+          R1        2        2          1
+          R10       2        2          1
+          R2        2        2          1
+          R3        2        2          1
+          R4        2        2          1
+          R5        2        2          1
+          R6        2        2          1
+          R7        2        2          1
+          R8        2        2          1
+          R9        2        2          1
+
