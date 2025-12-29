@@ -1,6 +1,10 @@
 # video files
 *.mp4
 
+# nested git projects that should stay local
+1 ste jaar/microcontrollers/projecten/
+1 ste jaar/programeren/
+
 # log files
 *.log
 # temporary files
