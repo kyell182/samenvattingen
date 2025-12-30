@@ -114,11 +114,11 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
 
     Voordelen:
     
-        - eenvoudig te implementeren.
+    - eenvoudig te implementeren.
 
     Nadelen:
     
-        - inefficiënt, CPU blijft “wachten” en kan dataverlies veroorzaken bij hoge datasnelheden.
+    - inefficiënt, CPU blijft “wachten” en kan dataverlies veroorzaken bij hoge datasnelheden.
 
     Voorbeeld:
 
@@ -131,13 +131,13 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
 
     Voordelen:
 
-        - efficiënter, CPU kan andere taken uitvoeren.
+    - efficiënter, CPU kan andere taken uitvoeren.
 
     Nadelen:
-    
-        - context switch overhead,
 
-        - complexere code.
+    - context switch overhead,
+
+    - complexere code.
 
     Voorbeeld:
 
@@ -152,15 +152,15 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
 
     Voordelen:
 
-        - CPU bijna volledig vrij,
+    - CPU bijna volledig vrij,
 
-        - zeer efficiënt, ideaal voor grote datastromen.
+    - zeer efficiënt, ideaal voor grote datastromen.
 
     Nadelen:
 
-        - configuratie complexer,
+    - configuratie complexer,
 
-        - kan prioriteitsproblemen hebben als meerdere DMA-kanalen actief zijn.
+    - kan prioriteitsproblemen hebben als meerdere DMA-kanalen actief zijn.
 
     Voorbeeld:
 
