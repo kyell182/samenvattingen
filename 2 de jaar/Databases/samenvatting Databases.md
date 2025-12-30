@@ -409,6 +409,13 @@ CREATE TABLE leden
     isMeisje BOOLEAN,
     insschrijvingsdatum TIMESTAMP
 );
+
+INSERT INTO leden (Lidnr, Naam, isMeisje, insschrijvingsdatum) VALUES
+(1, 'Jan Jansen', 0, '2023-01-15 10:00:00'),
+(2, 'Piet Pietersen', 0, '2023-02-20 11:30:00'),
+(3, 'Klaas Klaassen', 0, '2023-03-25 09:15:00'),
+(4, 'Marie Maartens', 1, '2023-04-10 14:45:00'),
+(5, 'Sofie Smeets', 1, '2023-05-05 16:20:00');
 ```
 
 ![create database voorbeeld](./assets/Create%20database.png)
