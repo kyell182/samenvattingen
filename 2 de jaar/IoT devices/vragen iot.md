@@ -106,7 +106,7 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
 
 ## 3. Soorten IO-tranfers
 
-**3.1. Op welke 3 manieren kan er via de verschillende protocollen "gepraat" worden met de buitenwereld?
+**3.1. Op welke 3 manieren kan er via de verschillende protocollen "gepraat" worden met de buitenwereld?**
 <details><summary>Antwoord</summary>
 
 - Polling : 
