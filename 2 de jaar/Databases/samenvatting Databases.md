@@ -57,7 +57,7 @@
 <details><summary>Antwoord</summary>
 
 - **Vluchtige data**:
-  - dat woordt geladen in het geheugen (RAM).
+  - dat wordt geladen in het geheugen (RAM).
   - in code: gebruik makn van variabelen.
 
   - **Voordelen**:
@@ -69,7 +69,7 @@
 
 - **Niet-vluchtige data**:
   - Data wordt opgeslagen naar een bestand of schijf.
-  - in code: gebruik makn van bestanden of databases.
+  - in code: gebruik maken van bestanden of databases.
 
   - **Voordelen**:
     - Permanente opslag van gegevens (bijv. harde schijven, SSD's).
@@ -84,11 +84,18 @@
 <details><summary>Antwoord</summary>
 
 1. Ecxel-bestanden (.xls, .xlsx)
+    ![excel](./assets/Excel%20bestand.png)
 2. CSV-bestanden (.csv)
+    ![csv](./assets/csv%20bestand.png)
 3. XML-bestanden (.xml)
+    ![xml](./assets/xml%20bestand.png)
 4. JSON-bestanden (.json)
+    ![json](./assets/json%20bestand.png)
 5. Binaire bestanden (.bin, .dat)
+    ![binair](./assets/bin%20bestand.png)
 6. Access-bestanden (.mdb, .accdb)
+    ![access](./assets/access%20bestand.png)
+
 
 </details>
 
