@@ -316,8 +316,16 @@ Het bevat de structuur van de tabellen, alle kenmerken van de gegevens en richt 
 - Bevat entiteiten (objecten), attributen (eigenschappen) en relaties (verbindingen tussen entiteiten).
 - Wordt visueel weergegeven in een Entity Relationship Diagram (ERD).
 
+erd diagram
+
 ![ERD voorbeeld](./assets/2.2%20erd%20diagram.png)
+
+erd symbolen ( kraaiepoten notatie )
+
 ![ERD symbolen](./assets/erd%20symbolen.png)
+
+erm schema
+
 ![ERM Schema](./assets/ERM%20schema.png)
 
 </details>
