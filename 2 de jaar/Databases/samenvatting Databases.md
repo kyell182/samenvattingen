@@ -244,7 +244,7 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 </details>
 
-** 1.12. wat is de inhoud van een RDBMS?**
+**1.12. wat is de inhoud van een RDBMS?**
 <details><summary>Antwoord</summary>
 
 - tabellen met data
