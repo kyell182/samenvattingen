@@ -292,13 +292,20 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 1. **Analyse**: Gesprekken voeren met de klant. Klant zoekt zijn/haar wensen. De consultant vertaalt de wensen naar degene die het uiteindelijk zal moeten gaan maken.
 
-2. **Logisch ontwerp**: Ontwerp relationele databank, relationele databank wordt ontworpen, gebaseerd op huide behoeften en rekening houdend met toekomstige behoeften.
+2. **Logisch ontwerp**:
+
+    Ontwerp relationele databank, relationele databank wordt ontworpen, gebaseerd op huide behoeften en rekening houdend met toekomstige behoeften.
 
    - We doen dit via een Entity Relationship Model (ERM) en dit wordt getoond met een Entity Relationship Diagram (ERD) en is een uitstekende basis voor een fysiek databankontwerp.
 
-3. **Fysiek ontwerp**: Mapping. Omzetten van het logische model naar een fysiek model dat zich niet op 1 van de belangerijkste DBMS-typen: relationeel, hiërarchisch, network of object-georienteerd. Het bevat de structuur van de tabellen, alle kenmerken van de gegevens en richt zich op de details van de implementatie.
+3. **Fysiek ontwerp**:
 
-4. **Bouw**: Bouwen van de databank.
+Mapping. Omzetten van het logische model naar een fysiek model dat zich niet op 1 van de belangerijkste DBMS-typen: relationeel, hiërarchisch, network of object-georienteerd.
+Het bevat de structuur van de tabellen, alle kenmerken van de gegevens en richt zich op de details van de implementatie.
+
+1. **Bouw**: Bouwen van de databank.
+
+![4 fasen](./assets/2.1.png)
 
 </details>
 
@@ -309,7 +316,9 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 - Bevat entiteiten (objecten), attributen (eigenschappen) en relaties (verbindingen tussen entiteiten).
 - Wordt visueel weergegeven in een Entity Relationship Diagram (ERD).
 
-**Voeg hier afbeelding toe:** Een voorbeeld ERD-diagram (bijv. uit Image ID 3, dat de 4 fasen toont; sla op als ./assets/erm_diagram.png).
+![ERD voorbeeld](./assets/2.2%20erd%20diagram.png)
+![ERD symbolen](./assets/erd%20symbolen.png)
+![ERM Schema](./assets/ERM%20schema.png)
 
 </details>
 
