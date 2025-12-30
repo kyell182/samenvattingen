@@ -84,16 +84,27 @@
 <details><summary>Antwoord</summary>
 
 1. Ecxel-bestanden (.xls, .xlsx)
+
     ![excel](./assets/Excel%20bestand.png)
+
 2. CSV-bestanden (.csv)
+
     ![csv](./assets/csv%20bestand.png)
+
 3. XML-bestanden (.xml)
+
     ![xml](./assets/XML%20bestand.png)
+
 4. JSON-bestanden (.json)
+
     ![json](./assets/Json%20bestand.png)
+
 5. Binaire bestanden (.bin, .dat)
+
     ![binair](./assets/bin%20bestand.png)
+
 6. Access-bestanden (.mdb, .accdb)
+
     ![access](./assets/access%20bestand.png)
 
 
