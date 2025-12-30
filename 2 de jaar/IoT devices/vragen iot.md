@@ -1,252 +1,161 @@
-# Studiegids IoT Devices
+# Examenvoorbereiding: IoT Devices – VIVES Brugge (Bachelor 2)
 
-Welkom bij de studiegids voor het examen **IoT Devices**. Deze gids behandelt de kernconcepten van microcontrollers, IO-transfers, WiFi-communicatie en RTOS, inclusief quizvragen met **inklapbare antwoorden** en voldoende **ruimte voor notities**.
-
----
-
-## Deel 1: Basisprincipes en IO-Transfers
-
-### 1.1 Inleiding en Doelstellingen
-
-**Quizvraag:**  
-Wat is het hoofddoel van de overstap van CMSIS-code naar HAL-bibliotheken, en welke drie methoden voor IO-transfers staan centraal?
-
-<details>
-<summary>Antwoord</summary>
-
-Doel: Werken op een hoger abstractieniveau, snellere ontwikkeling en betere portabiliteit.  
-
-**Drie methoden voor IO-transfers:**  
-1. **Polling** – Continu controleren of een peripheral data heeft.  
-2. **Interrupts** – Hardware laat CPU weten wanneer data beschikbaar is.  
-3. **DMA** – CPU ontlasten door een aparte controller de dataoverdracht te laten uitvoeren.  
-
-**Extra doelstellingen:**  
-- Beveiligde WiFi-communicatie op ESP32-C3.  
-- Werken met een Real-Time Operating System (RTOS).  
-- Verdieping in C (pointers, strings).  
-
-</details>
+Deze README is een overzicht voor het examen **IoT Devices**. De structuur is in **vraag-en-antwoordstijl**, met hints waar tekeningen kunnen worden toegevoegd. Antwoorden zijn verborgen, zodat je eerst zelf kan nadenken.
 
 ---
 
-### 1.2 C-Taal Concepten: Strings
+## 1. HAL, CMSIS en software-lagen
 
-**Quizvraag:**  
-Hoe wordt een string in C voorgesteld in het geheugen en welk speciaal karakter is essentieel?
+**1.1. Waarvan is HAL de afkorting?**  
+<details><summary>Antwoord</summary>Hardware Abstraction Layer</details>
 
-<details>
-<summary>Antwoord</summary>
+**1.2. Teken de software-lagenstructuur waarop onze code gebaseerd was**    
+<details><summary>Antwoord</summary>
 
-Strings zijn **char-arrays**.  
-Het **nulkarakter** (`\0`) geeft het einde van de string aan. Zonder dit karakter weten functies zoals `printf` niet waar de string stopt.
-
-Praktisch: Bij UART wordt een lus gebruikt om karakters te verzenden tot het nulkarakter.
-
+![software lagen](./assets/software_lagen.png)
+- Microcontroller hardware  
+- CMSIS-bibliotheken (register abstracts)  
+- LL-bibliotheken (Low-Level functies)  
+- HAL-bibliotheken (hardware abstraheren)  
+- Eigen code (applicatielaag)
 </details>
+
+**1.3. Wat is typisch bij het afsluiten van een C-string?**  
+<details><summary>Antwoord</summary>`\0` op het einde van de array</details>
 
 ---
 
-### 1.3 Methoden voor IO-Transfers
+## 2. Basis I/O met HAL
 
-#### Polling
+**2.1. Welke techniek gebruiken we om een dubbele 7-segment display aan te sturen bij hardwarematig verbonden anodes?**  
+<details><summary>Antwoord</summary>
 
-**Quizvraag:**  
-Wat is het principe en nadeel van polling?  
+![7 segmenten display](./assets/pinout%207%20segmenten%20display.png)
+![markeringen cathode](./assets/7%20segementen%20display%20cathodes%20numering.png)
 
-<details>
-<summary>Antwoord</summary>
+Multiplexing :
 
-**Principe:** CPU vraagt continu of data aanwezig is.  
-
-**Nadeel:** Bij vertragingen kan data gemist worden, omdat de CPU andere taken uitvoert.
+wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2" beurtelings aan en uit zetten doordat dit zo rap gaat lijkt het alsof ze tegelijk branden maar eigenlijk brand er maar 1 tegelijk.
 
 </details>
 
-#### Interrupts
 
-**Quizvraag:**  
-Hoe lost een interrupt het nadeel van polling op en waar wordt de data verwerkt?
+**2.2. Hoe word een keypad uitgelezen en teken het schema?**  
+<details><summary>Antwoord</summary>
 
-<details>
-<summary>Antwoord</summary>
+![keypad](./assets/keypad.png)
 
-**Principe:** CPU wordt alleen gealarmeerd bij beschikbare data.  
+- deze worden via "scanning" gelezen
 
-**Mechanisme:** Data wordt verwerkt in de ISR (`HAL_UART_RxCpltCallback`) buiten de hoofdlus.  
-
-**Nadeel:** Context switching kost processortijd.
-
-</details>
-
-#### DMA
-
-**Quizvraag:**  
-Wat is het voordeel van DMA t.o.v. polling en interrupts?
-
-<details>
-<summary>Antwoord</summary>
-
-**Principe:** CPU wordt volledig vrijgesteld; DMA-controller voert de transfer uit.  
-
-**Voordeel:** CPU kan ondertussen andere taken uitvoeren; zeer efficiënte data-overdracht.
+- Kolommen: worden ingesteld als inputs met pull-up. Dit betekent dat als er niets ingedrukt is, de pin hoog (3,3 V) leest.
+- Rijen: worden één voor één tijdelijk output laag (0 V) gezet tijdens de scan. De andere rijen blijven hoog of in input.
+- **Detectie van een knop:**
+  - Stel dat rij 1 laag is en een knop tussen rij 1 en kolom 2 is ingedrukt.
+  - De kolompin leest laag, want de verbinding met rij 1 (0 V) trekt hem naar laag.
+  - Door systematisch alle rijen één voor één laag te zetten en de kolommen te lezen, kan de MCU precies bepalen welke knop ingedrukt is.
+  - **Belangrijk:** de spanning wordt niet door de MCU omhoog getrokken. De kolom blijft via de pull-up hoog, tenzij een laag-signaal van een actieve rij de kolom naar laag trekt. Dus eigenlijk "trekt de rij de kolom naar 0 V" en niet andersom.
 
 </details>
 
----
+**2.3. Welke I/O-transfer technieken bestaan er?**
+<details><summary>Antwoord</summary>
 
-### 1.4 Vergelijking Polling vs DMA
+- **Polling**
 
-**Quizvraag:**  
-Hoeveel efficiënter is DMA dan polling?
+    De CPU vraagt constant de status van een apparaat.
+    
+    **Voordelen:** 
+        - eenvoudig te implementeren.
+    
+    **Nadelen:** 
+        - inefficiënt, CPU blijft "wachten".
 
-<details>
-<summary>Antwoord</summary>
 
-- Polling: CPU geblokkeerd 57.25 ms  
-- DMA: CPU geblokkeerd 5.61 µs  
+- **Interrupts**
 
-DMA is >10.000x efficiënter voor data-overdracht.
+    De CPU wordt gewaarschuwd door hardware wanneer een gebeurtenis gebeurt.
+    
+    **Voordelen:**
+        - efficiënter.
 
-</details>
+    **Nadelen:** 
+        - context switch overhead, 
+        - complexere code.
 
----
+    **Voorbeeld:** 
+        - EXTI-knop interrupt,
+        - UART receive interrupt.
 
-## Deel 2: WiFi en Netwerkcommunicatie
 
-### 2.1 ESP32-C3 Basis
+- **DMA (Direct Memory Access)**
 
-**Quizvraag:**  
-Welk protocol wordt gebruikt om te communiceren met de ESP32-C3 vanaf de Nucleo-controller?
+    Een gespecialiseerde controller verplaatst data autonoom tussen geheugen en peripherals, zonder CPU-interventie.
 
-<details>
-<summary>Antwoord</summary>
+    **Voordelen:** 
+        - CPU bijna volledig vrij,
+        - zeer efficiënt, ideaal voor grote datastromen.
 
-**Protocol:** AT-commando’s over UART.  
-ESP32-C3 heeft 2.4GHz WiFi en Bluetooth 5 (LE).  
-AT-firmware laat netwerkoperaties uitvoeren via tekstcommando’s.
+    **Nadelen:** 
+        - configuratie complexer, 
+        - kan prioriteitsproblemen hebben als meerdere DMA-kanalen actief zijn.
 
-</details>
-
----
-
-### 2.2 Buffering en Web Requests
-
-**Quizvraag:**  
-Waarom is een circular buffer essentieel voor WiFi-modules?
-
-<details>
-<summary>Antwoord</summary>
-
-Circular buffer voorkomt overflow van de UART-buffer; data kan rustig verwerkt worden uit de buffer.  
-
-**Testsoftware:** Postman voor GET/POST/HTTPS requests.
-
-| Request Type | Gebruik | Voorbeeld | Beveiliging |
-|-------------|---------|-----------|------------|
-| HTTP GET | Data ophalen | rubu.be | Onbeveiligd |
-| HTTP POST | Data versturen | rubu.be | Onbeveiligd |
-| HTTPS GET | Data ophalen | Firebase RTDB | Beveiligd |
-| HTTPS PATCH | Data schrijven | Firebase RTDB | Beveiligd |
+    **Voorbeeld:** 
+        - UART transmissie van een grote buffer via DMA.
 
 </details>
 
----
+## 3. Soorten IO-tranfers
 
-### 2.3 MQTT Protocol
+**3.1. Op welke 3 manieren kan er via de verschillende protocollen "gepraat" worden met de buitenwereld?
+<details><summary>Antwoord</summary>
 
-**Quizvraag:**  
-Wat zijn de drie hoofdcomponenten van MQTT?
+- Polling : 
+    - De CPU vraagt constant de status van een apparaat of flag.
 
-<details>
-<summary>Antwoord</summary>
+    Voordelen: 
+        - eenvoudig te implementeren.
 
-1. **Publisher:** Stuurt berichten naar een topic.  
-2. **Subscriber:** Ontvangt berichten van een topic.  
-3. **Broker:** Centrale server die berichten distribueert.
+    Nadelen: 
+        - inefficiënt, CPU blijft “wachten” en kan dataverlies veroorzaken bij hoge datasnelheden.
 
-</details>
+    Voorbeeld:
+    - UART RXNE-flag checken in een while-lus.
 
----
+![polling](./assets/polling.png)
 
-## Deel 3: Real-Time Operating System (RTOS)
+- Interrupts :
+    - De CPU wordt gewaarschuwd door hardware wanneer een gebeurtenis gebeurt.
 
-### 3.1 Wat is een RTOS?
+    Voordelen:
+        - efficiënter, CPU kan andere taken uitvoeren.
 
-**Quizvraag:**  
-Wat is een preemptive multitasking OS en wat is de rol van scheduler en time slice?
+    Nadelen: 
+        - context switch overhead,
+        - complexere code.
 
-<details>
-<summary>Antwoord</summary>
+    Voorbeeld:
+    - EXTI-knop interrupt,
+    - UART receive interrupt.
 
-- **Preemptive:** OS kan een taak onderbreken voor een hogere prioriteit.  
-- **Multitasking:** Meerdere taken schijnbaar tegelijk uitvoeren.  
-- **Scheduler:** Beslist welke taak draait en geeft tijdsloten (time slices).  
-- **Context switch:** Opslaan/laden van taakstatus in Thread Control Block (TCB).
+![interrupt](./assets/interrupt.png)
 
-</details>
+- DMA (direct memory acces) :
+    - Een gespecialiseerde controller verplaatst data autonoom tussen geheugen en peripherals, zonder CPU-interventie.
 
----
+    Voordelen: 
+        - CPU bijna volledig vrij,
+        - zeer efficiënt, ideaal voor grote datastromen.
 
-### 3.2 Delays en thread states
+    Nadelen: 
+        - configuratie complexer,
+        - kan prioriteitsproblemen hebben als meerdere DMA-kanalen actief zijn.
 
-**Quizvraag:**  
-Waarom is HAL_Delay() slecht in RTOS? Wat is het alternatief?
+    Voorbeeld:
+    - UART transmissie van een grote buffer via DMA.
 
-<details>
-<summary>Antwoord</summary>
-
-- **HAL_Delay():** Blocking, CPU 100% bezet.  
-- **Alternatief:** `osDelay()`, thread gaat naar **Blocked** state, CPU vrij voor andere taken.  
-
-**Thread states:** Running, Ready, Blocked, Suspended.
-
-</details>
-
----
-
-### 3.3 Synchronisatie Primitives
-
-**Quizvraag:**  
-Koppel RTOS-primitives aan hun functie:
-
-<details>
-<summary>Antwoord</summary>
-
-| Primitive | Functie |
-|-----------|---------|
-| Message Queue | FIFO-buffer om data veilig door te geven tussen threads |
-| Binary Semaphore | Wachten op simpele gebeurtenis (open/dicht) |
-| Mutex | Exclusieve toegang tot gedeelde resources (UART) |
-| Event Flags | Signalen van complexe gebeurtenissen tussen threads |
-
-**Counting Semaphore:** Houdt een teller bij, handig voor beschikbare bufferplekken.
+![dma flow](./assets/DMA-flow.png)
+![dma schema](./assets/DMA-schema.png)
 
 </details>
 
----
 
-## Begrippenlijst
-
-| Begrip | Definitie |
-|--------|-----------|
-| HAL | Hardware Abstraction Layer, maakt code portabel en makkelijker te schrijven |
-| Polling | CPU controleert continu status van peripheral |
-| Interrupt | CPU wordt gealarmeerd bij gebeurtenis door hardware |
-| DMA | Data transfer door speciale controller zonder CPU |
-| Bus Matrix | Coördineert toegang van verschillende bus masters |
-| Round-robin | Elke deelnemer krijgt om beurt gelijke toegang |
-| ESP32-C3 | Microcontroller met WiFi en Bluetooth 5 |
-| AT-commando's | Tekstcommando's over UART voor module aansturing |
-| Circular Buffer | Datastructuur om data op te slaan in cirkelvorm, voorkomt overflow |
-| Firebase RTDB | Realtime NoSQL database in de cloud |
-| MQTT | Publish-subscribe netwerkprotocol voor IoT devices |
-| RTOS | Real-Time Operating System met preemptive scheduler |
-| Scheduler | Bepaalt welke taak wanneer draait |
-| Context Switch | Opslaan/laden van thread status |
-| TCB | Thread Control Block, opslaan van threadcontext |
-| Message Queue | FIFO-buffer tussen threads |
-| Semaphore | Synchronisatie primitive (binary of counting) |
-| Mutex | Exclusieve toegang tot shared resource |
-| Priority Inversion | Lage prioriteit taak blokkeert hoge prioriteit taak |
-| Software Timer | Timer beheerd door RTOS kernel, roept callback op |
