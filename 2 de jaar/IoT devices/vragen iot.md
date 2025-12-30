@@ -112,13 +112,16 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
 - Polling : 
     - De CPU vraagt constant de status van een apparaat of flag.
 
-    Voordelen: 
+    Voordelen:
+    
         - eenvoudig te implementeren.
 
-    Nadelen: 
+    Nadelen:
+    
         - inefficiënt, CPU blijft “wachten” en kan dataverlies veroorzaken bij hoge datasnelheden.
 
     Voorbeeld:
+
     - UART RXNE-flag checken in een while-lus.
 
 ![polling](./assets/polling.png)
@@ -127,14 +130,19 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
     - De CPU wordt gewaarschuwd door hardware wanneer een gebeurtenis gebeurt.
 
     Voordelen:
+
         - efficiënter, CPU kan andere taken uitvoeren.
 
-    Nadelen: 
+    Nadelen:
+    
         - context switch overhead,
+
         - complexere code.
 
     Voorbeeld:
+
     - EXTI-knop interrupt,
+
     - UART receive interrupt.
 
 ![interrupt](./assets/interrupt.png)
@@ -142,20 +150,23 @@ wat men eigenlijk doet is zeer snel via de multiplexers de Cathode's "C1" en "C2
 - DMA (direct memory acces) :
     - Een gespecialiseerde controller verplaatst data autonoom tussen geheugen en peripherals, zonder CPU-interventie.
 
-    Voordelen: 
+    Voordelen:
+
         - CPU bijna volledig vrij,
+
         - zeer efficiënt, ideaal voor grote datastromen.
 
-    Nadelen: 
+    Nadelen:
+
         - configuratie complexer,
+
         - kan prioriteitsproblemen hebben als meerdere DMA-kanalen actief zijn.
 
     Voorbeeld:
+
     - UART transmissie van een grote buffer via DMA.
 
 ![dma flow](./assets/DMA-flow.png)
 ![dma schema](./assets/DMA-schema.png)
 
 </details>
-
-
