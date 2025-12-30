@@ -185,18 +185,21 @@ Een DBMS bestaat uit vier hoofdcomponenten:
    - Gewone gebruikers :
         - kant en klaarapplicaties die interactie hebben met de database.
         - bijv:
+
           - Boekhoudsoftware
           - CRM-systemen.
 
     - Administrators :
         - gebruiken programma's om de database te beheren.
         - bijv:
+
           - MySQL Workbench
           - SQL Server Management Studio.
 
 3. DBMS-software :
    - draait op de achtergrond en dient om de databanken te creëren, beheren en onderhouden.
    - belangerijkste taak is het handhaven van de integriteit van de gegevens :
+
      - voldoen aan regels
      - consistentie van de gegevens
 
