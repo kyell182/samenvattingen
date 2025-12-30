@@ -6,7 +6,7 @@
 # Hoofdstuk 1: Inleiding tot Databases
 
 **1.1. Wat is data en in welke vormen komt het voor?**
-<detail><summary>Antwoord</summary>
+<details><summary>Antwoord</summary>
 
 - **Ruwe data**: Onbewerkte feiten en cijfers zonder context.
 - **Dataverwerking**: Het proces van het organiseren, structureren en analyseren van data om nuttige informatie te verkrijgen.
@@ -20,10 +20,10 @@
 
 ![data flow](./assets/flow%20van%20ruwe%20data%20naar%20info.png)
 
-</detail>
+</details>
 
 **1.2. Wat is een database en welke voordelen biedt het gebruik ervan?**
-<detail><summary>Antwoord</summary>
+<details><summary>Antwoord</summary>
 
 - **Database**: Een georganiseerde verzameling van gegevens die elektronisch wordt opgeslagen en beheerd.
 - **Voordelen van databases**:
@@ -35,10 +35,10 @@
   - Back-up en herstelmogelijkheden om gegevensverlies te voorkomen.
   - Schaalbaarheid om te groeien met de behoeften van een organisatie.
 
-</detail>
+</details>
 
 **1.3. geef een paar toepassingen van databases?**
-<detail><summary>Antwoord</summary>
+<details><summary>Antwoord</summary>
 
 - **Toepassingen van databases**:
   - Klantrelatiebeheer (CRM) systemen.
@@ -51,10 +51,10 @@
   - Contentmanagementsystemen (CMS) voor websites.
   - Educatieve platforms voor studenten- en cursusbeheer.
 
-</detail>
+</details>
 
 **1.4. welke 2 soorten data worden er onderscheiden en wat zijn de voor en nadelen?**
-<detail><summary>Antwoord</summary>
+<details><summary>Antwoord</summary>
 
 - **Vluchtige data**:
   - dat woordt geladen in het geheugen (RAM).
@@ -78,10 +78,10 @@
     - Langzamere toegang in vergelijking met vluchtige data.
     - Kan duurder zijn in termen van opslagmedia.
 
-</detail>
+</details>
 
 **1.5. Geef een overzicht van de verschillende bestandstypen**
-<detail><summary>Antwoord</summary>
+<details><summary>Antwoord</summary>
 
 1. Ecxel-bestanden (.xls, .xlsx)
 2. CSV-bestanden (.csv)
@@ -90,5 +90,5 @@
 5. Binaire bestanden (.bin, .dat)
 6. Access-bestanden (.mdb, .accdb)
 
-</detail>
+</details>
 
