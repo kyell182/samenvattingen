@@ -418,7 +418,6 @@ INSERT INTO leden (Lidnr, Naam, isMeisje, insschrijvingsdatum) VALUES
 (5, 'Sofie Smeets', 1, '2023-05-05 16:20:00');
 ```
 
-![create database voorbeeld](./assets/Create%20database.png)
 ![create table voorbeeld](./assets/create%20Table.png)
 </details>
 
