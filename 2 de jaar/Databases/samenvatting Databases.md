@@ -285,6 +285,8 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 </details>
 
+---
+
 # Hoofdstuk 2: Databankontwerp
 
 **2.1. Wat zijn de 4 fasen voor het ontwikkelen van een informatiesysteem?**
@@ -340,6 +342,8 @@ erm schema
 
 </details>
 
+---
+
 # Hoofdstuk 3: Databankontwerp in SQL
 
 **3.1. Wat is SQL en waarom wordt het gebruikt?**
@@ -351,18 +355,40 @@ erm schema
 - Gebruikt in applicaties zoals rapportagesystemen, webapplicaties, Python, C#.
 - Vereist vaardigheid om te programmeren.
 
-**Voeg hier afbeelding toe:** Een overzicht van SQL in toepassingen (bijv. uit Image ID 1, dat SQL toont; sla op als ./assets/sql_overview.png).
+![sql voorbeeld](./assets/cheatscheet%20SQL.png)
 
 </details>
 
 **3.2. Wat zijn de twee categorieën van SQL-queries?**
 <details><summary>Antwoord</summary>
 
-- **DDL (Data Definition Language)**: Aanmaken, verwijderen of aanpassen van databanken, tabellen en relaties.
-  - Voorbeelden: CREATE DATABASE, DROP DATABASE, CREATE TABLE, DROP TABLE, ALTER TABLE, TRUNCATE TABLE.
+**DDL (Data Definition Language)**:
 
-- **DML (Data Manipulation Language)**: Opvragen, toevoegen, wissen of aanpassen van data.
-  - Voorbeelden: SELECT, INSERT, DELETE, UPDATE.
+Aanmaken, verwijderen of aanpassen van databanken, tabellen en relaties.
+
+**Voorbeelden:**
+
+```sql
+- CREATE DATABASE
+- DROP DATABASE
+- CREATE TABLE
+- DROP TABLE
+- ALTER TABLE
+- TRUNCATE TABLE.
+```
+
+**DML (Data Manipulation Language)**:
+
+Opvragen, toevoegen, wissen of aanpassen van data.
+
+**Voorbeelden:**
+
+```sql
+- SELECT
+- INSERT
+- DELETE
+- UPDATE
+```
 
 </details>
 
@@ -373,6 +399,20 @@ erm schema
 - CREATE TABLE: Maakt een tabel met kolommen en datatypes.
 - Voorbeeld: Gebruik van INSERT om data toe te voegen.
 
+```sql
+CREATE DATABASE jeugdvereniging;
+
+CREATE TABLE leden
+(
+    Lidnr INT,
+    Naam VARCHAR(50),
+    isMeisje BOOLEAN,
+    insschrijvingsdatum TIMESTAMP
+);
+```
+
+![create database voorbeeld](./assets/Create%20database.png)
+![create table voorbeeld](./assets/create%20Table.png)
 </details>
 
 # Hoofdstuk 4: Gegevens selecteren uit een databank
@@ -391,10 +431,28 @@ erm schema
 **4.2. Hoe selecteer je velden en filter je records?**
 <details><summary>Antwoord</summary>
 
-- Velden selecteren (projectie): SELECT * FROM activiteiten; of SELECT naam, geboortedatum FROM leden;
-- Records filteren (selectie): SELECT ... WHERE ismeisje = 1; of WHERE omschrijving = "Vakantiekamp";
-- Operatoren: =, <>, >, <, >=, <=.
-- SQL is hoofdletterongevoelig voor strings; strings tussen " of '.
+- Velden selecteren (projectie):
+
+  - SELECT * FROM activiteiten;
+  - SELECT naam, geboortedatum FROM leden;
+
+- Records filteren (selectie):
+
+  - SELECT ... WHERE ismeisje = 1;
+  - WHERE omschrijving = "Vakantiekamp";
+
+- Operatoren:
+  - = (gelijk aan)
+  - <> (niet gelijk aan)
+  - > (groter dan)
+  - < (kleiner dan)
+  - >= (groter dan of gelijk aan)
+  - <= (kleiner dan of gelijk aan)
+
+- SQL is hoofdletterongevoelig voor strings; strings tussen:
+
+  - enkelvoudige (' ') aanhalingstekens.
+  - dubbele (" ") aanhalingstekens.
 
 </details>
 
