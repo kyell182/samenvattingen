@@ -58,7 +58,7 @@
 
 - **Vluchtige data**:
   - dat wordt geladen in het geheugen (RAM).
-  - in code: gebruik makn van variabelen.
+  - in code: gebruik maken van variabelen.
 
   - **Voordelen**:
     - Snelle toegang en verwerking.
@@ -110,7 +110,7 @@
 
 </details>
 
-**1.6. Welke van de bovenstaande bestandstypen behoren tot de vlakke datastructuren en wat zijn de mogelijke nadelen?
+**1.6. Welke van de bovenstaande bestandstypen behoren tot de vlakke datastructuren en wat zijn de mogelijke nadelen?**
 <details><summary>Antwoord</summary>
 
 - Excel-bestanden (.xls, .xlsx)
@@ -254,7 +254,7 @@ Een DBMS bestaat uit vier hoofdcomponenten:
   - beschrijft de relaties tussen tabellen
   - bevat informatie over toegangsrechten en gebruikers
 
-- Indixen :
+- Indexen :
 
   - versnellen het zoeken en ophalen van gegevens
   - verbeteren de prestaties van query's
