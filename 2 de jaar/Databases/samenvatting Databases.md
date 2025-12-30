@@ -110,3 +110,100 @@
 
 </details>
 
+**1.6. Welke van de bovenstaande bestandstypen behoren tot de vlakke datastructuren en wat zijn de mogelijke nadelen?
+<details><summary>Antwoord</summary>
+
+- Excel-bestanden (.xls, .xlsx)
+- CSV-bestanden (.csv)
+
+**Nadelen van vlakke datastructuren**:
+- men kan hier moeilijk relaties tussen data leggen.
+
+- is ok voor kleine datasets, maar niet voor grote datasets.
+
+</details>
+
+**1.7. welke van de bovenstaande bestandstypen zijn geneste datastructuren en wat zijn de mogelijke voordelen?**
+<details><summary>Antwoord</summary>
+
+- XML-bestanden (.xml)
+
+![xml](./assets/geneste%20XML.png)
+
+- JSON-bestanden (.json)
+
+![json](./assets/geneste%20Json.png)
+
+**Voordelen van geneste datastructuren**:
+- kunnen complexe gegevensmodellen weergeven.
+- maken hiërarchische relaties tussen gegevens mogelijk.
+- flexibel en uitbreidbaar voor verschillende soorten gegevens.
+- geschikt voor webtoepassingen en API's.
+- makkelijk te lezen en te begrijpen door zowel mensen als machines.
+- ondersteunen meerdere niveaus van gegevensorganisatie.
+
+</details>
+
+**1.8. Wat zijn mogelijke nadelen van bovenstaande datastructuren en wat is de oplossing?**
+<details><summary>Antwoord</summary>
+
+- **problemen :
+  - kunnen maar door 1 proces of applicatie tegelijk geschreven worden.
+  - zeer traag om data te zoeken.
+  - traag bij het toevegen, verwijderen of bijwerken van data.
+
+- **Oplossing**:
+  - gebruik maken van databasesystemen die gelijktijdige toegang, snelle zoekmogelijkheden en efficiënte gegevensmanipulatie bieden.
+
+![vergelijkende tabel](./assets/vergelijkende%20tabel%20datatypes.png)
+
+</details>
+
+**1.9. Wat is het doel van een databank (database management system - DBMS)?**
+<details><summary>Antwoord</summary>
+
+- digitale opslagplaats voor gegevens.
+- kan flexibel geraadpleegd, beheerd en bijgewerkt worden door meerdere gebruikers tegelijk.
+  - doorzoeen van gegevens
+  - toevoegen van gegevens
+  - verwijderen van gegevens
+- speelt dus een cruciale rol voor het `archiveren` en het `actueel houden` van data.
+
+</details>
+
+**1.10. uit hoeveel componenten bestaat een DBMS en welke zijn dat?**
+<details><summary>Antwoord</summary>
+
+Een DBMS bestaat uit vier hoofdcomponenten:
+
+1. gebruikers : 
+   - mensen die de database gebruiken en beheren.
+   - kunnen verschillende rollen hebben, zoals databasebeheerders, ontwikkelaars en eindgebruikers.
+
+2. Databankapplicaties :
+
+   - Gewone gebruikers :
+        - kant en klaarapplicaties die interactie hebben met de database.
+        - bijv:
+          - Boekhoudsoftware
+          - CRM-systemen.
+
+    - Administrators :
+        - gebruiken programma's om de database te beheren.
+        - bijv:
+          - MySQL Workbench
+          - SQL Server Management Studio.
+
+3. DBMS-software :
+   - draait op de achtergrond en dient om de databanken te creëren, beheren en onderhouden.
+   - belangerijkste taak is het handhaven van de integriteit van de gegevens :
+     - voldoen aan regels
+     - consistentie van de gegevens
+
+4. Databank zelf :
+   - bevat bij elkaar horende data/gegevens die opgeslagen zin in sets van onderlinge gerelateerde tabellen.
+
+![databases relaties](./assets/databases%20relations.png)
+
+</details>
+
