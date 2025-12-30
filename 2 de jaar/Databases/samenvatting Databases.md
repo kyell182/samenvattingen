@@ -454,9 +454,8 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 <details><summary>Antwoord</summary>
 
 - Eerst info opvragen om basis van nieuwe query.
-- Voorbeeld: SELECT buy_date FROM players WHERE last_name = "da Silva Santos Junior"; (subquery voor Neymar's datum).
 
-**Voeg hier afbeelding toe:** Voorbeeld subquery (bijv. uit Image ID 7; sla op als ./assets/subqueries_example.png).
+![subquery voorbeeld](./assets/7.1%20querry.png)
 
 </details>
 
@@ -464,7 +463,8 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 <details><summary>Antwoord</summary>
 
 - Subquery tussen haakjes (inner query), main query erboven (outer query).
-- Voorbeeld: SELECT first_name, last_name, buy_date FROM players WHERE buy_date > (subquery);
+
+![subquery structuur](./assets/7.2%20querry.png)
 
 - Subquery mag slechts één veld selecteren (behalve met EXISTS).
 
@@ -475,6 +475,8 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 - Geven één record terug, gebruiken operatoren: <>, >, >=, <=.
 - Voorbeeld: Bovenstaand Neymar-voorbeeld.
+
+![subquery single-record](./assets/7.3%20querry.png)
 
 </details>
 
