@@ -210,3 +210,78 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 </details>
 
+**1.10. wat zijn de 2 types van DBMS systemen?**
+<details><summary>Antwoord</summary>
+
+1. Relationele DBMS (RDBMS : Relational Database Management System) :
+
+   - Gebaseerd op het relationele model.
+   - Data wordt opgeslagen in tabellen met rijen en kolommen.
+   - Voorbeelden: MySQL, PostgreSQL, Oracle Database.
+
+2. Niet-relationele DBMS (NoSQL DBMS) :
+ 
+   - Gebaseerd op verschillende datamodellen zoals document-gebaseerd, key-value, grafen, kolom-gebaseerd.
+   - Geschikt voor ongestructureerde of semi-gestructureerde data.
+   - Voorbeelden: MongoDB, Cassandra, Redis.
+
+![dbms types](./assets/types%20of%20databases.png)
+
+</details>
+
+**1.11. Wat zijn de belangrijkste taken van een RDBMS?**
+<details><summary>Antwoord</summary>
+
+- aanmaken van databanken
+- aanmaken van tabellen
+- aanmaken van extra structuren (indexen, views, procedures)
+- Bevat mogelijkheden tot GRUD-operaties (Create, Read, Update, Delete)
+- onderhouden van de integriteit van de gegevens
+- regels instellen (constraints)
+- regelt de toegangsrechten van gebruikers
+- back-up en herstel van gegevens
+- laat beveiliging van gegevens toe (permissies, encryptie)
+
+</details>
+
+** 1.12. wat is de inhoud van een RDBMS?**
+<details><summary>Antwoord</summary>
+
+- tabellen met data
+- Meta-data (data over data) :
+
+  - beschrijft de structuur van de tabellen
+  - beschrijft de relaties tussen tabellen
+  - bevat informatie over toegangsrechten en gebruikers
+
+- Indixen :
+
+  - versnellen het zoeken en ophalen van gegevens
+  - verbeteren de prestaties van query's
+
+- stored procedures :
+
+  - vooraf gedefinieerde SQL-code die herhaaldelijk kan worden uitgevoerd
+  - verbeteren de efficiëntie en consistentie van databasebewerkingen
+
+- Triggers :
+
+  - automatische acties die worden uitgevoerd als reactie op bepaalde gebeurtenissen in de database
+  - zorgen voor gegevensintegriteit en automatisering van taken
+
+- Views :
+
+  - virtuele tabellen die zijn gebaseerd op de resultaten van een query
+  - bieden een vereenvoudigde weergave van complexe gegevens
+
+- beveiligen van data :
+
+  - gebruikersauthenticatie en autorisatie
+  - gegevensversleuteling
+
+- back-up en herstel data :
+
+  - zorgen voor gegevensbescherming en beschikbaarheid
+
+</details>
+
