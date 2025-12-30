@@ -285,3 +285,282 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 </details>
 
+# Hoofdstuk 2: Databankontwerp
+
+**2.1. Wat zijn de 4 fasen voor het ontwikkelen van een informatiesysteem?**
+<details><summary>Antwoord</summary>
+
+1. **Analyse**: Gesprekken voeren met de klant. Klant zoekt zijn/haar wensen. De consultant vertaalt de wensen naar degene die het uiteindelijk zal moeten gaan maken.
+
+2. **Logisch ontwerp**: Ontwerp relationele databank, relationele databank wordt ontworpen, gebaseerd op huide behoeften en rekening houdend met toekomstige behoeften.
+
+   - We doen dit via een Entity Relationship Model (ERM) en dit wordt getoond met een Entity Relationship Diagram (ERD) en is een uitstekende basis voor een fysiek databankontwerp.
+
+3. **Fysiek ontwerp**: Mapping. Omzetten van het logische model naar een fysiek model dat zich niet op 1 van de belangerijkste DBMS-typen: relationeel, hiërarchisch, network of object-georienteerd. Het bevat de structuur van de tabellen, alle kenmerken van de gegevens en richt zich op de details van de implementatie.
+
+4. **Bouw**: Bouwen van de databank.
+
+</details>
+
+**2.2. Wat is het Entity Relationship Model (ERM)?**
+<details><summary>Antwoord</summary>
+
+- Een model om databanken te ontwerpen.
+- Bevat entiteiten (objecten), attributen (eigenschappen) en relaties (verbindingen tussen entiteiten).
+- Wordt visueel weergegeven in een Entity Relationship Diagram (ERD).
+
+**Voeg hier afbeelding toe:** Een voorbeeld ERD-diagram (bijv. uit Image ID 3, dat de 4 fasen toont; sla op als ./assets/erm_diagram.png).
+
+</details>
+
+**2.3. Wat zijn mogelijke voordelen van een goed databankontwerp?**
+<details><summary>Antwoord</summary>
+
+- Efficiënte opslag en retrieval van data.
+- Vermindering van redundantie en inconsistenties.
+- Betere prestaties en schaalbaarheid.
+- Gemakkelijker onderhoud en updates.
+
+</details>
+
+# Hoofdstuk 3: Databankontwerp in SQL
+
+**3.1. Wat is SQL en waarom wordt het gebruikt?**
+<details><summary>Antwoord</summary>
+
+- SQL (Structured Query Language): Meestgebruikte taal voor relationele databanken.
+- ANSI-standaard sinds 1986, ISO-standaard sinds 1987.
+- Datasubtaal: Definieert en verwerkt databankgegevens en metagegevens.
+- Gebruikt in applicaties zoals rapportagesystemen, webapplicaties, Python, C#.
+- Vereist vaardigheid om te programmeren.
+
+**Voeg hier afbeelding toe:** Een overzicht van SQL in toepassingen (bijv. uit Image ID 1, dat SQL toont; sla op als ./assets/sql_overview.png).
+
+</details>
+
+**3.2. Wat zijn de twee categorieën van SQL-queries?**
+<details><summary>Antwoord</summary>
+
+- **DDL (Data Definition Language)**: Aanmaken, verwijderen of aanpassen van databanken, tabellen en relaties.
+  - Voorbeelden: CREATE DATABASE, DROP DATABASE, CREATE TABLE, DROP TABLE, ALTER TABLE, TRUNCATE TABLE.
+
+- **DML (Data Manipulation Language)**: Opvragen, toevoegen, wissen of aanpassen van data.
+  - Voorbeelden: SELECT, INSERT, DELETE, UPDATE.
+
+</details>
+
+**3.3. Hoe maak je een database en tabellen aan in SQL?**
+<details><summary>Antwoord</summary>
+
+- CREATE DATABASE: Maakt een nieuwe database.
+- CREATE TABLE: Maakt een tabel met kolommen en datatypes.
+- Voorbeeld: Gebruik van INSERT om data toe te voegen.
+
+</details>
+
+# Hoofdstuk 4: Gegevens selecteren uit een databank
+
+**4.1. Wat is de algemene vorm van een SELECT-query?**
+<details><summary>Antwoord</summary>
+
+- Algemene vorm: SELECT DISTINCT <veldna(a)m(en)> FROM <tabelnaam> JOIN <tabelnaam> ON <id> = <id> WHERE <conditie(s)> GROUP BY <veldna(a)m(en)> HAVING <conditie(s)> ORDER BY <veldna(a)m(en)> LIMIT <offset>,<aantal>;
+
+- Uitvoervolgorde: JOIN (1), WHERE (2), GROUP BY (3), HAVING (4), SELECT (5), DISTINCT (6), ORDER BY (7), LIMIT (8).
+
+**Voeg hier afbeelding toe:** Een diagram van de SELECT-query structuur (bijv. uit Image ID 4; sla op als ./assets/select_query.png).
+
+</details>
+
+**4.2. Hoe selecteer je velden en filter je records?**
+<details><summary>Antwoord</summary>
+
+- Velden selecteren (projectie): SELECT * FROM activiteiten; of SELECT naam, geboortedatum FROM leden;
+- Records filteren (selectie): SELECT ... WHERE ismeisje = 1; of WHERE omschrijving = "Vakantiekamp";
+- Operatoren: =, <>, >, <, >=, <=.
+- SQL is hoofdletterongevoelig voor strings; strings tussen " of '.
+
+</details>
+
+**4.3. Wat is het belang van de jeugdbeweging.sql import?**
+<details><summary>Antwoord</summary>
+
+- Importeer jeugdbeweging.sql in MySQL Workbench voor voorbeelden in dit hoofdstuk.
+
+</details>
+
+# Hoofdstuk 5: Berekende velden en functies
+
+**5.1. Wat zijn berekende velden?**
+<details><summary>Antwoord</summary>
+
+- Berekend op basis van nul, één of meerdere velden per record.
+- Hernoemen met AS-operator.
+- Voorbeelden: prijs * (1 + btw_percentage) AS prijs_incl_btw; YEAR(geboortedatum) - 1900 AS eenvoudig_jaar.
+
+**Voeg hier afbeelding toe:** Voorbeeld van berekende velden in query (bijv. uit Image ID 8; sla op als ./assets/berekende_velden.png).
+
+</details>
+
+**5.2. Wat zijn functies in SQL en welke types?**
+<details><summary>Antwoord</summary>
+
+- Functies zoals YEAR() gebruiken in queries (berekend veld, WHERE, etc.).
+- Argumenten: Hardcoded waarde of veldnaam.
+- Types: String-functies (LOWER, UPPER, CONCAT, RTRIM, LTRIM, LENGTH, CHAR_LENGTH), Datum/tijd-functies, Numerieke, Statistische.
+- Zie https://dev.mysql.com/doc/refman/8.0/en/functions.html.
+
+</details>
+
+**5.3. Voorbeelden van string-functies?**
+<details><summary>Antwoord</summary>
+
+- LOWER("Brugge") → brugge
+- UPPER("Brugge") → BRUGGE
+- CONCAT("Hello ", "world ", 123) → Hello world 123
+- Etc. (zie tabel in document).
+
+</details>
+
+# Hoofdstuk 6: Joins
+
+**6.1. Wat is een INNER JOIN?**
+<details><summary>Antwoord</summary>
+
+- Records uit ene tabel met tegenhanger in andere.
+- Voorbeeld: SELECT a.omschrijving, i.lidnr FROM activiteiten a JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id;
+
+**Voeg hier afbeelding toe:** Venn-diagram van joins (bijv. uit Image ID 2; sla op als ./assets/joins_diagram.png).
+
+</details>
+
+**6.2. Wat zijn andere types joins?**
+<details><summary>Antwoord</summary>
+
+- LEFT JOIN: Alle records uit linker tabel, matchende uit rechter.
+- RIGHT JOIN: Alle records uit rechter tabel, matchende uit linker.
+
+</details>
+
+**6.3. Hoe gebruik je aliassen in joins?**
+<details><summary>Antwoord</summary>
+
+- AS a voor activiteiten, AS i voor inschrijvingen.
+
+</details>
+
+# Hoofdstuk 7: Subqueries
+
+**7.1. Wat zijn subqueries?**
+<details><summary>Antwoord</summary>
+
+- Eerst info opvragen om basis van nieuwe query.
+- Voorbeeld: SELECT buy_date FROM players WHERE last_name = "da Silva Santos Junior"; (subquery voor Neymar's datum).
+
+**Voeg hier afbeelding toe:** Voorbeeld subquery (bijv. uit Image ID 7; sla op als ./assets/subqueries_example.png).
+
+</details>
+
+**7.2. Hoe bouw je een subquery op?**
+<details><summary>Antwoord</summary>
+
+- Subquery tussen haakjes (inner query), main query erboven (outer query).
+- Voorbeeld: SELECT first_name, last_name, buy_date FROM players WHERE buy_date > (subquery);
+
+- Subquery mag slechts één veld selecteren (behalve met EXISTS).
+
+</details>
+
+**7.3. Wat zijn single-record subqueries?**
+<details><summary>Antwoord</summary>
+
+- Geven één record terug, gebruiken operatoren: <>, >, >=, <=.
+- Voorbeeld: Bovenstaand Neymar-voorbeeld.
+
+</details>
+
+# Hoofdstuk 8: Schrijfqueries
+
+**8.1. Welke queries worden behandeld?**
+<details><summary>Antwoord</summary>
+
+- DDL/DML: ALTER TABLE, TRUNCATE TABLE, UPDATE, DELETE (naast eerdere CREATE/DROP/INSERT).
+
+**Voeg hier afbeelding toe:** Overzicht schrijfqueries (bijv. uit Image ID 5; sla op als ./assets/schrijfqueries.png).
+
+</details>
+
+**8.2. Hoe gebruik je ALTER TABLE?**
+<details><summary>Antwoord</summary>
+
+- Kolom toevoegen: ALTER TABLE inschrijvingen ADD COLUMN inschrijvingstijd TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+- Verwijderen: DROP COLUMN;
+- Naam wijzigen: CHANGE COLUMN;
+- Datatype wijzigen: CHANGE COLUMN of MODIFY.
+
+</details>
+
+**8.3. Wat is het verschil met DROP TABLE?**
+<details><summary>Antwoord</summary>
+
+- ALTER is veiliger voor bestaande data; DROP verwijdert alles.
+
+</details>
+
+# Hoofdstuk 9: Views, functies en stored procedures
+
+**9.1. Hoe hergebruik je queries?**
+<details><summary>Antwoord</summary>
+
+- Via databaseobjecten: Views, Functies, Stored procedures.
+- Vind ze in MySQL Workbench categorieën.
+
+**Voeg hier afbeelding toe:** Overzicht hergebruik (bijv. uit Image ID 6; sla op als ./assets/queries_hergebruiken.png).
+
+</details>
+
+**9.2. Wat is een view?**
+<details><summary>Antwoord</summary>
+
+- Opgeslagen SELECT-query als virtuele tabel.
+- Aanmaak: CREATE VIEW inschrijvingen_activiteiten AS SELECT ...;
+- Gebruik: SELECT * FROM view; of join met andere tabellen.
+
+</details>
+
+**9.3. Wat zijn de voordelen van views?**
+<details><summary>Antwoord</summary>
+
+- Maakt complexe queries herbruikbaar.
+- Geen fysieke opslag.
+
+</details>
+
+# Hoofdstuk 10: Inleiding security
+
+**10.1. Wat is een MySQL-connectiestring?**
+<details><summary>Antwoord</summary>
+
+- Parameters: host, gebruiker, wachtwoord, databank.
+- Voorbeeld in C#: using MySql.Data.MySqlClient; connectionString = @"server=localhost;userid=root;password=www;database=jeugdvereniging";
+
+- Vermijd root in applicatiecode (volledige rechten).
+
+**Voeg hier afbeelding toe:** Koppeling met MySQL (bijv. uit Image ID 0; sla op als ./assets/mysql_koppeling.png).
+
+</details>
+
+**10.2. Hoe beheer je MySQL-gebruikers?**
+<details><summary>Antwoord</summary>
+
+- Opvragen: SELECT * FROM mysql.user;
+- Bekijken/beheren in MySQL Workbench.
+
+</details>
+
+**10.3. Waarom security belangrijk?**
+<details><summary>Antwoord</summary>
+
+- Bescherming tegen ongeautoriseerde toegang.
+- Beperk rechten tot noodzakelijk.
+
+</details>
