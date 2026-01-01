@@ -647,6 +647,7 @@ CREATE TABLE inschrijvingen
 ![ERD legende](./assets/sql%20key%20legend.png)
 
 </details>
+
 ---
 
 # Hoofdstuk 4: Gegevens selecteren uit een databank
