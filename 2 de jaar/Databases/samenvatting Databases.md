@@ -690,22 +690,33 @@ LIMIT <offset>,<aantal>;      --8
 
 - Velden selecteren (projectie):
 
-  - SELECT * FROM activiteiten;
-  - SELECT naam, geboortedatum FROM leden;
+```sql
+SELECT * 
+FROM activiteiten;
+
+SELECT naam, geboortedatum
+FROM leden;
+```
 
 - Records filteren (selectie):
 
-  - SELECT ... WHERE ismeisje = 1;
-  - WHERE omschrijving = "Vakantiekamp";
+```sql
+SELECT *
+FROM leden
+WHERE ismeisje = 1;
+WHERE omschrijving = "Vakantiekamp";
+```
 
 - Operatoren:
 
-  - = (gelijk aan)
-  - <> (niet gelijk aan)
-  - > (groter dan)
-  - < (kleiner dan)
-  - >= (groter dan of gelijk aan)
-  - <= (kleiner dan of gelijk aan)
+```sql
+= (gelijk aan)
+<> (niet gelijk aan)(ook != en NOT=)
+> (groter dan)
+< (kleiner dan)
+>= (groter dan of gelijk aan)
+<= (kleiner dan of gelijk aan)
+```
 
 - 💡SQL is hoofdletterongevoelig voor strings
 
