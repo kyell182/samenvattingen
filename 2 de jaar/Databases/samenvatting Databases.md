@@ -421,6 +421,234 @@ INSERT INTO leden (Lidnr, Naam, isMeisje, insschrijvingsdatum) VALUES
 ![create table voorbeeld](./assets/create%20Table.png)
 </details>
 
+**3.4. Wat zijn de nummerieke datatypes in SQL?**
+<details><summary>Antwoord</summary>
+
+- INT: Gehele getallen.
+- FLOAT(p): Kommagetallen met p precisie. (0 - 24)
+- DOUBLE(M,D): Kommagetallen met M totale cijfers en D decimalen.
+- DECIMAL(M,D): Exacte kommagetallen met M totale cijfers en D decimalen.
+- BOOLEAN: Waarheidswaarden (0 of 1).
+- bit(M): Binaire waarden met M bits (1-64) (standaard 1).
+- TINYINT: Klein geheel getal (-128 tot 127).
+- SMALLINT: Klein geheel getal (-32,768 tot 32,767).
+- MEDIUMINT: Middelgroot geheel getal (-8,388,608 tot 8,388,607).
+- BIGINT: Groot geheel getal (-9,223,372,036,854,775,808 tot 9,223,372,036,854,775,807).
+
+</details>
+
+**3.5. Wat zijn de string datatypes in SQL?**
+<details><summary>Antwoord</summary>
+
+- CHAR(M): Vaste lengte string met M tekens (0-255).
+- VARCHAR(M): Variabele lengte string met M tekens (0-65,535).
+- TEXT: Lange tekst (max 65,535 tekens).
+- TINYTEXT: Korte tekst (max 255 tekens).
+- MEDIUMTEXT: Middellange tekst (max 16,777,215 tekens).
+- LONGTEXT: Zeer lange tekst (max 4,294,967,295 tekens).
+- BLOB: Binaire grote objecten (max 65,535 bytes).
+- LONG BLOB: Zeer grote binaire objecten (max 4,294,967,295 bytes).
+
+💡 probeer steeds het kleinste datatype te gebruiken dat aan de eisen voldoet.
+
+</details>
+
+**3.6. Wat zijn de datum/tijd datatypes in SQL?**
+<details><summary>Antwoord</summary>
+
+- DATE: Datum in 'YYYY-MM-DD' formaat (1000-01-01 tot 9999-12-31).
+- DATETIME: Datum en tijd in 'YYYY-MM-DD HH:MM:SS' formaat (1000-01-01 00:00:00 tot 9999-12-31 23:59:59).
+- TIMESTAMP: Datum en tijd in 'YYYY-MM-DD HH:MM:SS' formaat (1970-01-01 00:00:01 UTC tot 2038-01-19 03:14:07 UTC).
+- TIME: Tijd in 'HH:MM:SS' formaat (-838:59:59 tot 838:59:59).
+
+💡 de notaties zijn steeds in Amerikaans formaat.
+
+</details>
+
+**3.7. hoe maak je een tabel aan in SQL ?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE tabelnaam
+(
+    kolomnaam1 DATATYPE CONSTRAINTS,
+    kolomnaam2 DATATYPE CONSTRAINTS,
+    ...
+    kolomnaamN DATATYPE CONSTRAINTS
+);
+```
+💡 alle velden zijn hier optioneel en mogen leeg gelaten worden.
+
+</details>
+
+**3.8. Hoe maak je een table met de constraint NOT NULL?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE leden
+(
+    Lidnr INT NOT NULL,
+    Naam VARCHAR(50) NOT NULL,
+    isMeisje BOOLEAN,
+    insschrijvingsdatum TIMESTAMP
+);
+```
+- NOT NULL: voorkomt dat een kolom lege waarden accepteert.
+- Zorgt voor gegevensintegriteit door verplichte velden af te dwingen.
+- Als een poging wordt gedaan om een record in te voegen zonder waarde voor een NOT NULL kolom, zal de database een foutmelding geven en de invoeging weigeren.
+
+- 💡 gebruik NOT NULL voor velden die altijd een waarde moeten hebben (bijv. primaire sleutels, verplichte attributen)
+
+</details>
+
+**3.9. Hoe maak je een tabel met de constraint default?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE leden
+(
+    Lidnr INT NOT NULL,
+    Naam VARCHAR(50) NOT NULL,
+    isMeisje BOOLEAN DEFAULT 0,
+    insschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+- DEFAULT: stelt een standaardwaarde in voor een kolom als er geen waarde wordt opgegeven tijdens het invoegen van een record.
+- Verbetert gegevensconsistentie door ervoor te zorgen dat kolommen altijd een geldige waarde hebben.
+
+- 💡 gebruik DEFAULT voor velden die vaak dezelfde waarde hebben (bijv. isMeisje) of voor tijdstempels (bijv. inschrijvingsdatum).
+
+</details>
+
+**3.10. Hoe maak je een tabel met de constraint PRIMARY KEY?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE leden
+(
+    Lidnr INT NOT NULL,
+    Naam VARCHAR(50) NOT NULL,
+    isMeisje BOOLEAN DEFAULT 0,
+    insschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Lidnr)
+);
+```
+
+- PRIMARY KEY: Unieke identifier voor elke record in een tabel.
+- Zorgt ervoor dat de kolomwaarden uniek en niet NULL zijn.
+- Verbetert de prestaties van zoekopdrachten en relaties tussen tabellen.
+
+- 💡 gebruik PRIMARY KEY voor kolommen die elke record uniek identificeren (bijv. Lidnr).
+
+</details>
+
+**3.11. Hoe maak je een tabel met de constraint samengestelde PRIMARY KEY?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE inschrijvingen
+(
+    Lidnr INT NOT NULL,
+    ActiviteitID INT NOT NULL,
+    Inschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Lidnr, ActiviteitID)
+);
+```
+
+- Samengestelde PRIMARY KEY: Unieke identifier bestaande uit meerdere kolommen.
+- Zorgt ervoor dat de combinatie van kolomwaarden uniek is.
+- Verbetert de gegevensintegriteit bij relaties tussen tabellen.
+
+- 💡 gebruik samengestelde PRIMARY KEY voor tabellen die relaties tussen entiteiten vertegenwoordigen (bijv. inschrijvingen).
+
+</details>
+
+**3.12. Hoe maak je een tabel met de constraint FOREIGN KEY?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE inschrijvingen
+(
+    Lidnr INT NOT NULL,
+    ActiviteitID INT NOT NULL,
+    Inschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Lidnr, ActiviteitID),
+    FOREIGN KEY (Lidnr) REFERENCES leden(Lidnr),
+    FOREIGN KEY (ActiviteitID) REFERENCES activiteiten(ActiviteitID)
+);
+```
+
+- FOREIGN KEY: Verwijst naar een PRIMARY KEY in een andere tabel.
+- Zorgt voor referentiële integriteit tussen tabellen.
+- Voorkomt het invoegen van records met niet-bestaande verwijzingen.
+
+- 💡 gebruik FOREIGN KEY voor kolommen die relaties tussen tabellen vertegenwoordigen (bijv. Lidnr in inschrijvingen verwijst naar Lidnr in leden).
+
+</details>
+
+**3.13. Hoe maak je een tabel met de constraint AUTO_INCREMENT?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE leden
+(
+    Lidnr INT NOT NULL AUTO_INCREMENT,
+    Naam VARCHAR(50) NOT NULL,
+    isMeisje BOOLEAN DEFAULT 0,
+    insschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Lidnr)
+);
+```
+
+- AUTO_INCREMENT: Automatisch een unieke waarde genereren voor een kolom bij het invoegen van een nieuw record.
+- Handig voor PRIMARY KEY kolommen om unieke identifiers te creëren zonder handmatige invoer.
+- Verhoogt de waarde automatisch met 1 voor elke nieuwe invoeging.
+
+- 💡 gebruik AUTO_INCREMENT voor kolommen die unieke identifiers nodig hebben (bijv. Lidnr).
+
+</details>
+
+**3.14. Hoe maak je een tabel met de constraint FOREIGN KEY?**
+<details><summary>Antwoord</summary>
+
+```sql
+CREATE TABLE inschrijvingen
+(
+    Lidnr INT NOT NULL,
+    ActiviteitID INT NOT NULL,
+    Inschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (Lidnr, ActiviteitID),
+    FOREIGN KEY (Lidnr) REFERENCES leden(Lidnr),
+    FOREIGN KEY (ActiviteitID) REFERENCES activiteiten(ActiviteitID) 
+);
+```
+
+- FOREIGN KEY: Zelfde als FOREIGN KEY, verwijst naar een PRIMARY KEY in een andere tabel.
+- Zorgt voor referentiële integriteit tussen tabellen.
+- Voorkomt het invoegen van records met niet-bestaande verwijzingen.
+
+- 💡 gebruik FOREIGN KEY voor kolommen die relaties tussen tabellen vertegenwoordigen (bijv. Lidnr in inschrijvingen verwijst naar Lidnr in leden).
+
+</details>
+
+**3.15. Wat is de legende van de symbolen in een ERD-diagram?**
+<details><summary>Antwoord</summary>
+
+- Gele sleutel = PRIMARY KEY
+- Blauwe sleutel = FOREIGN KEY
+- Roze sleutel = primaire + externe sleutel
+
+- volle blauwe ruit = verplicht veld
+- holle blauwe ruit = optioneel veld
+
+- volle roze ruit = verplicht veld + externe sleutel
+- holle roze ruit = optioneel veld + externe sleutel
+
+![ERD legende](./assets/sql%20key%20legend.png)
+
+</details>
+---
+
 # Hoofdstuk 4: Gegevens selecteren uit een databank
 
 **4.1. Wat is de algemene vorm van een SELECT-query?**
