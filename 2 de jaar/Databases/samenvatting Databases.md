@@ -655,11 +655,33 @@ CREATE TABLE inschrijvingen
 **4.1. Wat is de algemene vorm van een SELECT-query?**
 <details><summary>Antwoord</summary>
 
-- Algemene vorm: SELECT DISTINCT <veldna(a)m(en)> FROM <tabelnaam> JOIN <tabelnaam> ON <id> = <id> WHERE <conditie(s)> GROUP BY <veldna(a)m(en)> HAVING <conditie(s)> ORDER BY <veldna(a)m(en)> LIMIT <offset>,<aantal>;
+- Algemene vorm:
 
-- Uitvoervolgorde: JOIN (1), WHERE (2), GROUP BY (3), HAVING (4), SELECT (5), DISTINCT (6), ORDER BY (7), LIMIT (8).
+```sql
+SELECT [DISTINCT] kolommen    --5, 6
+FROM tabellen                 --1
+JOIN tabelnaam on id = id     --1 (kan 1 of meerdere joins zijn)
+WHERE voorwaarden             --2 (kan naast filtering ook nog subqueries bevatten)
+GROUP BY veldnaam             --3
+HAVING voorwaarden            --4
+ORDER BY veldnaam [ASC|DESC]  --7
+LIMIT <offset>,<aantal>;      --8
+```
 
-**Voeg hier afbeelding toe:** Een diagram van de SELECT-query structuur (bijv. uit Image ID 4; sla op als ./assets/select_query.png).
+- Belangrijke onderdelen:
+
+  - SELECT: Velden kiezen.
+  - FROM: Tabellen specificeren.
+  - JOIN: Tabellen koppelen.
+  - WHERE: Records filteren.
+  - GROUP BY: Groeperen van records.
+  - HAVING: Filteren van gegroepeerde records.
+  - ORDER BY: Sorteren van resultaten.
+  - LIMIT: Aantal resultaten beperken.
+
+- de veldnamen worden gescheiden door komma's. om alle velden te selecteren gebruik je *.
+
+![select query onderdelen](./assets/volgorde%20select%20query.png)
 
 </details>
 
@@ -677,6 +699,7 @@ CREATE TABLE inschrijvingen
   - WHERE omschrijving = "Vakantiekamp";
 
 - Operatoren:
+
   - = (gelijk aan)
   - <> (niet gelijk aan)
   - > (groter dan)
@@ -684,19 +707,178 @@ CREATE TABLE inschrijvingen
   - >= (groter dan of gelijk aan)
   - <= (kleiner dan of gelijk aan)
 
-- SQL is hoofdletterongevoelig voor strings; strings tussen:
+- 💡SQL is hoofdletterongevoelig voor strings
 
-  - enkelvoudige (' ') aanhalingstekens.
-  - dubbele (" ") aanhalingstekens.
+  - strings tussen:
+
+    - enkelvoudige (' ') aanhalingstekens.
+    - dubbele (" ") aanhalingstekens.
 
 </details>
 
-**4.3. Wat is het belang van de jeugdbeweging.sql import?**
+**4.3. wat zijn de logische operatoren waarmee je conditie kunt combineren?**
 <details><summary>Antwoord</summary>
 
-- Importeer jeugdbeweging.sql in MySQL Workbench voor voorbeelden in dit hoofdstuk.
+- AND: Beide voorwaarden moeten waar zijn.
+- OR: Minstens één van de voorwaarden moet waar zijn.
+- NOT: Keert de voorwaarde om (waar wordt onwaar en vice versa).
+
+- Voorbeeld:
+
+```sql
+SELECT naam, geboortedatum
+FROM leden
+WHERE gemeente = 'Brugge' AND ismeisje = 1;
+
+SELECT *
+from leden
+WHERE gemeente = 'Brugge' OR gemeente = 'Gent';
+
+SELECT omschrijving, datumtijdstip
+FROM activiteiten
+WHERE NOT omschrijving = 'Vakantiekamp';
+```
+
+- BETWEEN : Tussen twee waarden (inclusief).
+- IN : Waarden in een lijst (vervangt de OR operator).
+- LIKE : Patronen met wildcards `%` (willekeurige tekenreeks) en `_` (willekeurig teken).
+
+**Voorbeeld:**
+
+```sql
+SELECT naam, adres, postnummer, gemeente
+FROM leden
+Where postnummer BETWEEN 8000 AND 9000;
+
+SELECT *
+FROM activiteiten 
+WHERE datumtijdstip BETWEEN "2015-01-01 00:00:00" AND "2015-12-31 23:59:59";
+```
+
+**voorbeeld**
+
+- getal = 1 OR getal = 2 OR getal = 3
+- getal IN (1, 2, 3)
+
+```sql
+SELECT naam, ismeisje
+FROM leden
+WHERE ismeisje = 1
+AND gemeente IN ("Tielt", "Veurne", "Waregem");
+```
+
+**voorbeelden**
+
+- naam LIKE "Marie%"
+
+- K%
+- %oe
+- %en%
+- _a%
+
+```sql
+SELECT *
+FROM leden
+WHERE gemeente LIKE "%Van%";
+
+SELECT naam, adres, postnummer, gemeente
+FROM leden
+WHERE gemeente LIKE "_i%";
+
+SELECT naam, ismeisje
+FROM leden
+WHERE naam LIKE "__n%";
+```
+
+- ALL : Alle waarden voldoen aan de voorwaarde.
+- ANY : Minstens één waarde voldoet aan de voorwaarde.
+- EXISTS : Controleert of een subquery resultaten oplevert.
+
+**Voorbeelden:**
+
+```sql
+SELECT *
+FROM studenten
+WHERE leeftijd > ALL
+(
+    SELECT leeftijd
+    FROM studenten
+    WHERE klas = '1ICT'
+);
+
+SELECT *
+FROM studenten
+WHERE EXISTS 
+(
+    SELECT 1
+    FROM studenten
+    WHERE klas = '1ICT'
+);
+
+SELECT *
+FROM studenten
+WHERE leeftijd > ANY 
+(
+    SELECT leeftijd
+    FROM studenten
+    WHERE klas = '1ICT'
+);
+```
+
+- 💡 gebruik haakjes om de volgorde van evaluatie te bepalen bij complexe voorwaarden.
 
 </details>
+
+**4.4. Wat is het probleem met bovenstaande `% en _` en wat is de oplossing?**
+<details><summary>Antwoord</summary>
+
+- deze kunnnen niet gebuikt worden om bv namen die beginnen met een klinker te zoeken.
+
+- oplossing is gebruik maken van REGEXP
+
+```sql
+SELECT naam
+FROM leden
+WHERE naam REGEXP '^[aeiouAEIOU]';
+```
+
+dit zal alle namen selecteren die beginnen met een klinker (hoofdletter of kleine letter)
+
+^ = begin van de string
+$ = einde van de string
+. = elk teken
+a* = nul of meer keer 'a'
+a+ = één of meer keer 'a'
+a? = nul of één keer 'a'
+[a-dX] = één teken in het bereik a tot d of X
+[^a-dX] = één teken dat niet in het bereik a tot d of X ligt
+
+reguliere expressie |        voldoet      |    voldoet niet   |
+--------------------| ------------------- | ------------------|
+[aeiou]             | ai, aap, mes, wei   | ly, ssst,krpk     |
+[^aeiou]            | ly, ssst, krpk      | ai, aap, mes, wei |
+[a-d]               | schop, as, weldra   | yogurt, zes       |
+[aeoui][aeoui]      | paus, aas, prooi    | wens, arcade, wolf|
+^[aeoui0-9]         | agenda, 8tzaam, 44  | z3s, w8, vrees    |
+[aeoui0-9]$         | agenda, 44, w8      | z3s, vrees, 8tzaam|
+ka.s                | kaas, herkansing    | kas               |
+ka.*s               | kas, kaas, kamikase | aks, sake         |
+ka*s                | ks, kas, kaas, kaaas| kees              |
+ka+s                | kas, kaas, kaaas    | ks, kees          |
+ka?s                | ks, kas             | kaas              |
+
+</details>
+
+🏫 sites om te oefenen
+
+- [https://regex101.com/](https://regex101.com/)
+- [https://www.regextester.com/](https://www.regextester.com/)
+- [https://regexr.com/](https://regexr.com/)
+- [https://www.freeformatter.com/regex-tester.html](https://www.freeformatter.com/regex-tester.html)
+- [https://www.regexpal.com/](https://www.regexpal.com/)
+- [https://regexlearn.com/learn/regex101](https://regexlearn.com/learn/regex101)
+
+---
 
 # Hoofdstuk 5: Berekende velden en functies
 
