@@ -855,6 +855,7 @@ WHERE naam REGEXP '^[aeiouAEIOU]';
 
 dit zal alle namen selecteren die beginnen met een klinker (hoofdletter of kleine letter)
 
+```sql
 ^ = begin van de string
 $ = einde van de string
 . = elk teken
@@ -863,6 +864,7 @@ a+ = één of meer keer 'a'
 a? = nul of één keer 'a'
 [a-dX] = één teken in het bereik a tot d of X
 [^a-dX] = één teken dat niet in het bereik a tot d of X ligt
+```
 
 reguliere expressie |        voldoet      |    voldoet niet   |
 --------------------| ------------------- | ------------------|
