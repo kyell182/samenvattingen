@@ -1,77 +1,249 @@
-# AI Fundamentals – Samenvatting en Antwoorden (VIVES Brugge)
-
-*Bachelor ICT & Elektronica – 2e jaar*
+# AI Fundamentals – Samenvatting en Antwoorden
 
 ---
 
-## Inleiding
-
-Dit document is een **samenvatting van de leerstof en een beantwoording van de referentievragen** uit de cursus **AI Fundamentals**. De tekst is geschreven vanuit het perspectief van een **student 2e bachelor ICT & Elektronica aan VIVES** en is gebaseerd op de cursusinhoud. De focus ligt op **begrip, overzicht en voorbereiding op het examen**, niet op academische formuleringen.
-
----
-
-# Hoofdstuk 1 – Introduction and Examples
+## Hoofdstuk 1 – Introduction and Examples
 
 <details>
-<summary><strong>Wat is Artificiële Intelligentie (AI)?</strong></summary>
+<summary><strong>Wat is Artificiële Intelligentie? Geef een mogelijke definitie en licht de sterke en zwakke
+aspecten toe in deze definitie.</strong></summary>
 
 **Definitie (Elaine Rich):**  
 AI is de studie van hoe we computers dingen kunnen laten doen waar mensen op dit moment beter in zijn.
 
 **Sterktes:**
+
 - Dynamische definitie
 - Niet vastgepind op mens-nabootsing
 
 **Zwaktes:**
+
 - Wat vandaag AI is, is morgen gewone software
 
-📷 *Hier kan je een schema toevoegen dat klassieke software vergelijkt met AI (regels vs. leren).* 
 </details>
 
 <details>
-<summary><strong>Braitenberg-experiment</strong></summary>
+<summary><strong>Omschrijf het experiment van psycholoog Valentin Braitenberg om intelligent gedrag bij
+systemen te demonsteren.</strong></summary>
 
 Eenvoudige systemen met sensoren en motoren kunnen **schijnbaar intelligent gedrag** vertonen.
 
-➡️ Belangrijk: complex gedrag betekent niet dat het systeem intern complex is.
+**opzet**
+
+- Voertuig met twee sensoren (licht) en twee motoren
+- Sensoren verbonden met motoren (direct of cross-wired)
+- Verschillende verbindingen leiden tot verschillend gedrag (aantrekken, vermijden, nieuwsgierigheid)
+
+**resultaten**
+
+- Eenvoudige verbindingen leiden tot complex gedrag.
+
+![Braitenberg-voertuig](./assets/Braitenberg%20robots.png)
+
+💡 Belangrijk: complex gedrag betekent niet dat het systeem intern complex is.
+
 </details>
 
 <details>
-<summary><strong>Vier fundamentele AI-strategieën</strong></summary>
+<summary><strong>Wat zijn de vier fundamentele strategieën binnen AI? Eén ervan is: ‘systemen’ gedragen zich als
+mensen. Geef telkens een concreet voorbeeld voor elk van deze strategieën.</strong></summary>
 
 1. Handelen als mensen – chatbots
+
+   - chatbots zoals ELIZA imiteren menselijk gesprek.
+
 2. Denken als mensen – IBM Watson
+
+    - IBM Watson gebruikt natuurlijke taalverwerking en kennisrepresentatie om vragen te beantwoorden.
+
 3. Rationeel denken – logische systemen
+
+    - Logische systemen gebruiken formele logica om geldige conclusies te trekken.
+
 4. Rationeel handelen – intelligente agents
 
-📷 *Overzichtsdiagram met de vier categorieën.*
+    - Intelligente agents nemen beslissingen om hun doelen te bereiken, zoals zelfrijdende auto's.
+
 </details>
 
 <details>
-<summary><strong>De Turing Test</strong></summary>
+<summary><strong> Bespreek de Turing test om intelligentie bij ‘systemen’ aan te tonen.</strong></summary>
 
-Een machine is intelligent als een mens via tekst geen verschil ziet tussen mens en machine.
+De Turingtest stelt dat een machine intelligent is als een mens haar, via tekstuele interactie, niet kan onderscheiden van een andere mens.
 
-📷 *Schema van de Turing Test.*
+![Turing Test Diagram](./assets/turing%20test.png)
+
 </details>
 
 <details>
 <summary><strong>Vijf belangrijke mijlpalen in AI</strong></summary>
 
-- 1936 – Alan Turing: Turing machine
-- 1956 – Dartmouth Conference
-- 1997 – Deep Blue
-- 2016 – AlphaGo
+- **1936 – Alan Turing: Turing machine**
 
-📷 *Tijdslijn-afbeelding.*
+  - Basis voor computationele theorie.
+  - Formele definitie van algoritmen.
+
+- **1956 – Dartmouth Conference**
+
+  - Eerste officiële AI-conferentie.
+  - Introductie van de term "Artificial Intelligence".
+  - Start van AI-onderzoek als academisch veld.
+
+- **1997 – Deep Blue**
+
+  - Eerste schaakcomputer die wereldkampioen Garry Kasparov versloeg.
+  - Toonde de kracht van brute-force zoekalgoritmen in games.
+  - Legde de basis voor verdere ontwikkeling van AI in strategische spellen.
+
+- **2012 - ImageNet & AlexNet**
+
+  - Doorbraak in beeldherkenning met diepe neurale netwerken.
+  - Significant verbeterde nauwkeurigheid bij het classificeren van afbeeldingen.
+  - Versnelde de adoptie van deep learning in diverse AI-toepassingen.
+
+- **2016 – AlphaGo**
+
+  - Eerste AI die een professionele Go-speler versloeg.
+  - Combineerde deep learning met Monte Carlo Tree Search.
+  - Toonde het potentieel van AI in complexe, strategische omgevingen.
+
 </details>
 
 <details>
-<summary><strong>Onbeslisbaarheid & NP-compleetheid</strong></summary>
+<summary><strong> Veel gekende inferentie- of leerprocessen zijn onbepaalbaar/onbeslisbaar. Wat betekent dit
+praktisch voor artificiële intelligentie?</strong></summary>
 
-Sommige AI-problemen hebben geen algoritmische oplossing of zijn niet efficiënt oplosbaar.
+het betekent dat er geen algemene algoritmen bestaan die voor alle mogelijke gevallen een oplossing kunnen bieden. In de praktijk betekent dit dat AI-systemen vaak heuristieken, benaderingen of beperkingen moeten gebruiken om problemen op te lossen, omdat ze niet altijd een perfecte of optimale oplossing kunnen garanderen.
 
-➡️ Daarom gebruikt AI heuristieken.
+heuristieken zijn vuistregels of benaderingen die helpen bij het vinden van goede oplossingen binnen redelijke tijd, ook al garanderen ze niet altijd de beste oplossing. AI-onderzoekers moeten dus vaak compromissen sluiten tussen nauwkeurigheid, efficiëntie en haalbaarheid bij het ontwerpen van AI-systemen.
+
+</details>
+
+<details>
+<summary><strong>Wat is de NP-compleetheid van een algoritme?</strong></summary>
+
+Een probleem is NP-compleet als een oplossing snel te controleren is, maar het probleem zelf even moeilijk is als alle andere NP-problemen.
+Als er ooit een efficiënt algoritme wordt gevonden voor één NP-compleet probleem, dan zijn alle NP-problemen efficiënt oplosbaar.
+Omdat dit niet het geval is, gebruikt artificiële intelligentie in de praktijk heuristieken en benaderingen in plaats van exacte oplossingen.
+
+</details>
+
+<details>
+<summary><strong>
+
+Verklaar volgende begrippen:
+
+- Reflex agent
+- Distributed agent
+- Learning agent
+- Hardware agent
+
+</strong></summary>
+
+- **Reflex agent** :
+
+  - Neemt beslissingen op basis van de huidige perceptie.
+  - Werkt met conditionele regels (if-then).
+  - Voorbeeld: thermostaat die de temperatuur regelt.
+
+- **Distributed agent** :
+
+  - Bestaat uit meerdere samenwerkende agents.
+  - Verdeelt taken en informatie.
+  - Voorbeeld: swarm robots die samenwerken om een taak uit te voeren.
+
+- **Learning agent** :
+
+  - Kan zijn prestaties verbeteren door ervaring.
+  - Bestaat uit een leercomponent, een prestatiecomponent, een criticus en een probleemomgevingsmodel.
+  - Voorbeeld: een zelfrijdende auto die leert van rijervaringen.
+
+- **Hardware agent** :
+
+  - Fysieke entiteit die taken uitvoert.
+  - Voorbeeld: robotarm in een fabriek.
+
+</details>
+
+<details>
+<summary><strong>
+
+Gegeven: een ‘agent met geheugen’ kan zich verplaatsen in een 2D-vlak. Via een real-time klok ontvangt de ‘agent’ periodiek (∆𝑡) zijn exacte positie (𝑥, 𝑦) in Cartesiaanse coördinaten.
+• Opgave:
+o Geef de formule, om de snelheid te bepalen op basis van de positie op tijdstippen 𝑡 en 𝑡 − ∆𝑡.
+o Geef de formule, om de versnelling te bepalen op basis van de positie op tijdstippen 𝑡, 𝑡 − ∆𝑡 en
+𝑡 − 2∆𝑡
+
+</strong></summary>
+
+### Snelheid en versnelling van een agent in 2D
+
+#### Snelheid
+De snelheid vector op tijdstip \(t\) wordt berekend met:
+$$
+\vec{v}(t) = \frac{(x_t - x_{t-\Delta t},\; y_t - y_{t-\Delta t})}{\Delta t}
+$$
+
+De absolute snelheid (norm) is:
+$$
+|\vec{v}(t)| = \frac{\sqrt{(x_t - x_{t-\Delta t})^2 + (y_t - y_{t-\Delta t})^2}}{\Delta t}
+$$
+
+#### Versnelling
+De versnelling vector op tijdstip \(t\) wordt berekend met:
+$$
+\vec{a}(t) = \frac{(x_t - 2x_{t-\Delta t} + x_{t-2\Delta t},\; y_t - 2y_{t-\Delta t} + y_{t-2\Delta t})}{(\Delta t)^2}
+$$
+
+---
+
+### Uitleg van componenten
+
+| Symbool | Betekenis |
+|---------|-----------|
+| \(x_t, y_t\) | Positie van de agent op tijdstip \(t\) |
+| \(x_{t-\Delta t}, y_{t-\Delta t}\) | Positie één tijdstap eerder |
+| \(x_{t-2\Delta t}, y_{t-2\Delta t}\) | Positie twee tijdstappen eerder |
+| \(\Delta t\) | Tijd tussen twee opeenvolgende metingen |
+| \(\vec{v}(t)\) | Snelheid vector op tijdstip \(t\) |
+| \(\lvert\vec{v}(t)\rvert\) | Absolute snelheid (snelheidsnorm) |
+| \(\vec{a}(t)\) | Versnelling vector op tijdstip \(t\) |
+
+</details>
+
+<details>
+<summary><strong>Teken de generieke architectuur van een knowledge-based system en licht toe.</strong></summary>
+
+**Een Knowledge-Based System (KBS) bestaat uit twee dingen:**
+
+Kennisbank (Knowledge Base) – hier staat alle info en regels over een onderwerp.
+
+Denkmachine (Inference Engine) – dit gebruikt de kennis om dingen te berekenen of beslissingen te nemen.
+
+**Waarom scheiden handig is:**
+
+- Je hoeft de denkmachine maar één keer te maken.
+
+- Wil je het systeem voor iets nieuws gebruiken? Vervang gewoon de kennisbank, niet alles opnieuw programmeren.
+
+- De kennis staat los van hoe het gebruikt wordt, dus makkelijk aan te passen en te onderhouden.
+
+**Kort voorbeeld:**
+
+- Stel je hebt een medisch systeem voor griep.
+
+- Wil je hetzelfde systeem voor verkoudheid?
+
+- Gewoon de kennisbank vervangen → de denkmachine blijft hetzelfde.
+
+![Knowledge-Based System Architecture](./assets/KBS.png)
+
+**Uitleg van componenten:**
+
+- **Knowledge Base** : Bevat feiten en regels over de wereld.
+
+- **Inference Engine** : Past logica toe om nieuwe kennis af te leiden.
+
 </details>
 
 # Hoofdstuk 2 – Machine Learning & Data Mining
