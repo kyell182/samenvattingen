@@ -130,7 +130,6 @@ Omdat dit niet het geval is, gebruikt artificiële intelligentie in de praktijk 
 
 <details>
 <summary><strong>
-
 Verklaar volgende begrippen:
 
 - Reflex agent
@@ -167,12 +166,15 @@ Verklaar volgende begrippen:
 
 <details>
 <summary><strong>
+Gegeven:
 
-Gegeven: een ‘agent met geheugen’ kan zich verplaatsen in een 2D-vlak. Via een real-time klok ontvangt de ‘agent’ periodiek (∆𝑡) zijn exacte positie (𝑥, 𝑦) in Cartesiaanse coördinaten.
-• Opgave:
-o Geef de formule, om de snelheid te bepalen op basis van de positie op tijdstippen 𝑡 en 𝑡 − ∆𝑡.
-o Geef de formule, om de versnelling te bepalen op basis van de positie op tijdstippen 𝑡, 𝑡 − ∆𝑡 en
-𝑡 − 2∆𝑡
+    een ‘agent met geheugen’ kan zich verplaatsen in een 2D-vlak.
+    Via een real-time klok ontvangt de ‘agent’ periodiek (∆𝑡) zijn exacte positie (𝑥, 𝑦) in Cartesiaanse coördinaten.
+
+  • Opgave :
+
+    Geef de formule, om de snelheid te bepalen op basis van de positie op tijdstippen 𝑡 en 𝑡 − ∆𝑡.
+    Geef de formule, om de versnelling te bepalen op basis van de positie op tijdstippen 𝑡, 𝑡 − ∆𝑡 en 𝑡 − 2∆𝑡
 
 </strong></summary>
 
@@ -240,11 +242,12 @@ Denkmachine (Inference Engine) – dit gebruikt de kennis om dingen te berekenen
 
 </details>
 
-# Hoofdstuk 2 – Machine Learning & Data Mining
+---
+
+## Hoofdstuk 2 – Machine Learning & Data Mining
 
 <details>
 <summary><strong>
-
 Bespreek bondig volgende types machine learning en geef van elk voorbeeld een aantal toepassingen:
 
 - Supervised learning
@@ -315,7 +318,7 @@ Voorbeelden:
 
 </details>
 
-## Statistische formules
+### Statistische formules
 
 Beschrijf de wiskundige vorm voor het bepalen van
 - het groepsgemiddelde,
@@ -341,56 +344,163 @@ Beschrijf de wiskundige vorm voor het bepalen van
 <summary><strong>Standaardafwijking</strong></summary>
 
 **Formule:**  
-σ = √[(1/n) Σ (xi − μ)²]
+![standaardafwijking](./assets/standard%20deviaton.png)
 
-**Uitleg per onderdeel:**
-- **xi − μ**: afwijking t.o.v. het gemiddelde
-- **(xi − μ)²**: kwadratische afwijking
-- **Σ**: som van alle afwijkingen
-- **1/n**: gemiddelde afwijking
-- **√**: terug naar originele schaal
+![uitleg_standaardafwijking](./assets/uitleg%20standard%20deviaton.png)
+
+- Trek van elke waarde het gemiddelde af.
+- Kwadrateer die verschillen.
+- Tel ze op en deel door (aantal - 1).
+- Neem de wortel.
+
+Resultaat: hoe groter $s_i$, hoe meer spreiding.
 
 ➡️ Geeft aan hoe sterk data verspreid is.
+
 </details>
 
 <details>
 <summary><strong>Covariantie</strong></summary>
 
-**Formule:**  
-cov(x,y) = (1/n) Σ (xi − μx)(yi − μy)
+**Formule:**
 
-**Uitleg per onderdeel:**
-- **(xi − μx)**: afwijking van x
-- **(yi − μy)**: afwijking van y
-- **Product**: gezamenlijke verandering
-- **cov(x,y)**: samenhang tussen x en y
+![covariantie](./assets/covariance.png)
+
+![uitleg_covariantie](./assets/uitleg%20covariance.png)
 
 ➡️ Positief = samen stijgen, negatief = tegengesteld.
+
 </details>
 
 <details>
 <summary><strong>Correlatiecoëfficiënt</strong></summary>
 
 **Formule:**  
-ρ = cov(x,y) / (σx σy)
+![correlatiecoefficient](./assets/correlation%20coefficient.png)
 
-**Uitleg per onderdeel:**
-- **cov(x,y)**: covariantie
-- **σx, σy**: standaardafwijkingen
-- **Deling**: normalisatie
+![uitleg_correlatiecoefficient](./assets/uitleg%20correlation%20coefficient.png)
 
-➡️ Waarde tussen −1 en +1.
+➡️ toont in AI hoe sterk twee kenmerken (features) lineair met elkaar samenhangen.
+Waarde tussen −1 en +1.
+
+</details>
+
+<details>
+<summary><strong>nut in supervised learning</strong></summary>
+
+Goede feature vectors hebben:
+
+- Sterk verschillend groepsgemiddelde per klasse
+
+- Lage standaardafwijking binnen elke klasse
+
+- Lage correlatie met andere features
+
+- Hoge relevantie t.o.v. de output (label)
+
+Doel:
+➡️ maximale informatie
+➡️ minimale redundantie
+➡️ minder ruis
+➡️ betere generalisatie
+
 </details>
 
 ---
 
-## Perceptron
+### Perceptron
 
-Lineaire classifier:
+![Perceptron](./assets/perceptron.png)
 
-f(x) = sign(w·x + b)
+<details>
+<summary><strong>Waarom wordt het Perceptron gecatalogeerd als een linear classifier?</strong></summary>
+
+Omdat het een lineaire combinatie van inputfeatures gebruikt om beslissingen te nemen.
+Het Perceptron berekent een gewogen som van de inputs en past een drempelwaarde toe om te bepalen tot welke klasse een input behoort.
+Hierdoor kan het alleen lineair scheidbare problemen oplossen, wat kenmerkend is voor lineaire classifiers.
+
+</details>
+
+<details>
+<summary><strong>
+Bespreek het Perceptron Learning Algorithm en pas dit iteratief toe op een aantal datapunten in twee lineair gescheiden datasets, tot alle datapunten correct zijn geclassificeerd.
+</strong></summary>
+
+**Perceptron Learning Algorithm:**
+
+deze werkt via 2 formules:
+
+**beslissingsfunctie:**
+
+![beslissingsfunctie](./assets/beslissing%20forule%20perceptron.png)
+
+dit beslist of een punt tot klasse +1 of -1 behoort.
+
+**updatefunctie:**
+
+![updatefunctie](./assets/update%20functie%20perceptron.png)
+
+Hiermee worden de gewichten aangepast als een punt verkeerd geclassificeerd is.
+
+![perceptron voorbeeld](./assets/berekening%20perceptron.jpeg)
 
 Leert via iteratieve gewichtsaanpassing.
+
+**stappenplan:**
+
+![perceptron stappenplan](./assets/stappen%20plan%20perceptron.png)
+
+berekening
+
+omdat n = 1 mag deze in de berekening weg gelaten worden
+
+---
+
+punt 1 ( 0, 1.8 )  t = +1   b = 0    
+
+a = ( 0 * 0 ) + ( 0 * 1.8 ) + 0 =  0 ==> is niet > 0 ==> updaten
+
+w = ( 0 , 0 ) + ( +1 ) ( 0 , 1.8 ) = ( 0 , 1.8 )
+
+b = 0 + 1 * 1 = 1
+
+---
+
+punt 2 ( 2 , 0.6 )  t = +1  b = 1 w = ( 0 , 1.8 )
+
+a = ( 0 * 2 ) + ( 1, 8 * 0,6 ) + 1 = 2.08 ==>  is  > 0 ==> niet updaten
+
+w = ( 0 , 1.8 )
+
+---
+
+punt 3 ( -1.2 , 1.4 )  t = -1  w = ( 0, 1.8 )   b = 1
+
+a = ( 0 * ( -1,2) ) + ( 1,8 * 1,4 ) + 1 = 3,52 ==> is > 0 ==> updaten
+
+w = ( 0 , 1.8 ) + ( -1 ) ( -1.2 , 1.4 ) = ( 1.2 , 0.4 )
+
+b = 1 +  1 * ( -1 ) = 0
+
+---
+
+punt 4 ( 0.4 , -1 )   w = ( 1.2 , 0.4 )   t = -1   b = 0
+
+a = ( 1,2 * 0,4 ) + ( 0,4 * ( -1 ) + 0 = 0,08 ==> is > 0 ==> updaten
+
+w = ( 1.2 , 0.4 ) + ( -1 ) ( 0.4 , -1 ) = ( 0.8 , 1.4 )
+
+b = 0 + 1 * ( -1 ) = -1
+
+resultaat w = ( 0.8 , 1.4 ) b = -1
+
+---
+
+indien gegeven kan verder gerekend worden met een ander punt
+
+![perceptron resultaat](./assets/oplossing.png)
+
+</details>
 
 ---
 
