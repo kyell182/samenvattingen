@@ -178,19 +178,21 @@ o Geef de formule, om de versnelling te bepalen op basis van de positie op tijds
 
 ### Snelheid en versnelling van een agent in 2D
 
-#### Snelheid
-De snelheid vector op tijdstip \(t\) wordt berekend met:
+**Snelheid**
+
+De snelheid vector op tijdstip \(t\) wordt berekend met:  
 $$
 \vec{v}(t) = \frac{(x_t - x_{t-\Delta t},\; y_t - y_{t-\Delta t})}{\Delta t}
 $$
 
-De absolute snelheid (norm) is:
+De absolute snelheid (norm) is:  
 $$
 |\vec{v}(t)| = \frac{\sqrt{(x_t - x_{t-\Delta t})^2 + (y_t - y_{t-\Delta t})^2}}{\Delta t}
 $$
 
-#### Versnelling
-De versnelling vector op tijdstip \(t\) wordt berekend met:
+**Versnelling**
+
+De versnelling vector op tijdstip \(t\) wordt berekend met:  
 $$
 \vec{a}(t) = \frac{(x_t - 2x_{t-\Delta t} + x_{t-2\Delta t},\; y_t - 2y_{t-\Delta t} + y_{t-2\Delta t})}{(\Delta t)^2}
 $$
