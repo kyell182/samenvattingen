@@ -188,7 +188,7 @@ De snelheid vector op tijdstip \(t\) wordt berekend met:
 
 De versnelling vector op tijdstip \(t\) wordt berekend met:  
 
-![versnelling](./assets/versnelling.png)
+![versnelling](./assets/versnelling.png) 
 ---
 
 ### Uitleg van componenten
