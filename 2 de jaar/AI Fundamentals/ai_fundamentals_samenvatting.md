@@ -428,7 +428,6 @@ Hierdoor kan het alleen lineair scheidbare problemen oplossen, wat kenmerkend is
 Bespreek het Perceptron Learning Algorithm en pas dit iteratief toe op een aantal datapunten in twee lineair gescheiden datasets, tot alle datapunten correct zijn geclassificeerd.
 </strong></summary>
 
-
 **Perceptron Learning Algorithm:**
 
 deze werkt via 2 formules:
@@ -444,8 +443,6 @@ dit beslist of een punt tot klasse +1 of -1 behoort.
 ![updatefunctie](./assets/update%20functie%20perceptron.png)
 
 Hiermee worden de gewichten aangepast als een punt verkeerd geclassificeerd is.
-
-![perceptron voorbeeld](./assets/berekening%20perceptron.jpeg)
 
 Leert via iteratieve gewichtsaanpassing.
 
@@ -509,15 +506,76 @@ resultaat w = ( 0.8 , 1.4 ) b = -1
 
 ---
 
+![perceptron voorbeeld](./assets/berekening%20perceptron.jpeg)
+
 indien gegeven kan verder gerekend worden met een ander punt
 
 ![perceptron resultaat](./assets/oplossing.png)
+
+---
+
+</details>
+
+
+
+<details>
+<summary><strong>
+Het convergeren van het Perceptron Learning Algorithm is sterk afhankelijk van de keuze van
+de gewichten-vector (w).
+Welke technieken kunnen worden toegepast om de snelheid van de
+convergentie op te drijven?
+</strong></summary>
+
+**Technieken om convergentiesnelheid te verbeteren:**
+
+- **Normailisatie van de w-factor:**
+  - dit zorgt ervoor dat de gewichten evenveel waarde hebben tijden training los van de zwaarte van zijn waarde.
+
+    ![normalisatie](./assets/normalisatie%20van%20w-factor.png)
+
+- **heuristische initiële waarden:**
+  - kies gewichten op basis van domeinkennis of voorafgaande analyses.
+  - dit zorgt ervoor dat de startwaarden dichter bij de optimale oplossing liggen.
+
+- **learning rate aanpassing:**
+  - pas de learning rate dynamisch aan tijdens training.
+  - een hogere learning rate in het begin kan snellere vooruitgang boeken, terwijl een lagere rate later fijnere aanpassingen mogelijk maakt.
+
+- **learning rate slim kiezen:**
+  - experimenteer met verschillende learning rates om de optimale waarde te vinden die snelle convergentie bevordert zonder overshooting.
+  - grote stappen eerst klenere stappen later.
+
+- **data shuffling:**
+  - randomiseer de volgorde van trainingsvoorbeelden in elke epoch.
+  - dit voorkomt dat het model vastloopt in patronen van de data.
+
+- margin based perceptron:
+  - focus op het maximaliseren van de marge tussen klassen.
+  - dit kan leiden tot snellere convergentie en betere generalisatie.
+
+De convergentie van het perceptron wordt versneld door een goede initiële keuze van 𝑤.
+
+het normaliseren van de inputfeatures en het gebruik van aangepaste update-strategieën zoals een afnemende learning rate of margin-based updates.
 
 </details>
 
 ---
 
-## Afstanden (Nearest Neighbor)
+### Afstanden (Nearest Neighbor)
+
+<details>
+<summary><strong>
+Hoe worden volgende afstanden wiskundig bepaald bij het Nearest Neighbor Algorithm?
+
+- Euclidean distance
+- Hamming distance
+- Manhattan distance
+
+</strong></summary>
+
+**Euclidische afstand**
+
+
 
 | Afstand | Formule | Betekenis | Gebruik |
 |--------|---------|-----------|---------|
