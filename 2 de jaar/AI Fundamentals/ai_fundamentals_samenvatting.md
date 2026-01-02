@@ -242,58 +242,99 @@ Denkmachine (Inference Engine) – dit gebruikt de kennis om dingen te berekenen
 
 # Hoofdstuk 2 – Machine Learning & Data Mining
 
+<details>
+<summary><strong>
 
-## Types Machine Learning
+Bespreek bondig volgende types machine learning en geef van elk voorbeeld een aantal toepassingen:
 
-📷 *Schema dat supervised, unsupervised en reinforcement learning vergelijkt.*
+- Supervised learning
+- Unsupervised learning
+- Reinforcement learning
 
-| Type | Data | Feedback | Typisch voorbeeld | Wanneer gebruiken |
-|-----|------|----------|------------------|------------------|
-| Supervised | Met labels | Correct/fout | Spamfilter | Als juiste output gekend is |
-| Unsupervised | Zonder labels | Geen | Clustering | Structuur zoeken in data |
-| Reinforcement | Acties + beloning | Reward/penalty | AlphaGo | Beslissingen over tijd |
+</strong></summary>
 
----
+- **Supervised learning** :
 
-## Generalization
+  - Model leert van gelabelde data.
+  - Toepassingen:
 
-Het vermogen van een model om **nieuwe data correct te behandelen**.
+    - spamdetectie
+    - beeldherkenning
+    - medische diagnose.
 
----
+- **Unsupervised learning** :
 
-## Learning agent
+  - Model leert van ongelabelde data.
+  - Toepassingen:
 
-Agent die:
-- Prestaties evalueert
-- Zichzelf verbetert
+    - klantsegmentatie
+    - anomaliedetectie
+    - marktanalyses.
 
----
+- **Reinforcement learning** :
 
-## Data Mining
+  - Model leert door beloningen en straffen.
+  - Toepassingen:
+
+    - robotica
+    - spelstrategieën
+    - zelfrijdende auto's.
+
+</details>
+
+<details>
+<summary><strong>Wat betekent generalization binnen machine learning?</strong></summary>
+
+Het vermogen van een model om zowel met nieuwe als ongeziene data goed om te gaan.
+
+Een goed gegeneraliseerd model kan patronen herkennen die niet alleen in de trainingsdata voorkomen, maar ook in nieuwe situaties.
+
+</details>
+
+<details>
+<summary><strong>Wat is een learning agent en wat is de primaire taak van een learning agent?</strong></summary>
+
+Een learning agent is een type artificiële intelligentie dat in staat is om te leren van ervaringen en zijn prestaties te verbeteren naarmate het meer data verzamelt.
+
+De primaire taak van een learning agent is om zijn gedrag aan te passen op basis van de feedback die het ontvangt uit zijn omgeving, zodat het effectiever kan handelen en betere beslissingen kan nemen in toekomstige situaties.
+
+</details>
+
+<details>
+<summary><strong>Wat is Data Mining en geef enkele praktische toepassingen van Data Mining?</strong></summary>
 
 Automatisch ontdekken van **patronen in grote datasets**.
 
 Voorbeelden:
+
 - Fraudedetectie
 - Marketing
+- Gezondheidszorg
+- Sociale netwerken
+- Productaanbevelingen
 
----
+</details>
 
 ## Statistische formules
+
+Beschrijf de wiskundige vorm voor het bepalen van
+- het groepsgemiddelde,
+- de standaardafwijking,
+- de covariantie  
+- de correlatiecoëfficiënt  
+
+- hoe kunnen deze parameters de keuze van de features vectors bij supervised machine learning ondersteunen?
 
 <details>
 <summary><strong>Gemiddelde</strong></summary>
 
 **Formule:**  
-μ = (1/n) Σ xi
+![gemiddelde](./assets/gemiddelde.png)
 
-**Uitleg per onderdeel:**
-- **xi**: individuele meetwaarde
-- **Σ xi**: som van alle meetwaarden
-- **n**: aantal meetwaarden
-- **μ**: gemiddelde
+![uitleg_gemiddelde](./assets/uitleg%20gemiddelde.png)
 
-➡️ Het gemiddelde is de centrale waarde van de dataset.
+▶️ Het gemiddelde is de centrale waarde van de dataset.
+
 </details>
 
 <details>
