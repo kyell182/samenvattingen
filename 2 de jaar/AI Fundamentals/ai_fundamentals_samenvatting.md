@@ -416,7 +416,9 @@ Doel:
 <summary><strong>Waarom wordt het Perceptron gecatalogeerd als een linear classifier?</strong></summary>
 
 Omdat het een lineaire combinatie van inputfeatures gebruikt om beslissingen te nemen.
+
 Het Perceptron berekent een gewogen som van de inputs en past een drempelwaarde toe om te bepalen tot welke klasse een input behoort.
+
 Hierdoor kan het alleen lineair scheidbare problemen oplossen, wat kenmerkend is voor lineaire classifiers.
 
 </details>
