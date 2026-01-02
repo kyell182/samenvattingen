@@ -428,6 +428,7 @@ Hierdoor kan het alleen lineair scheidbare problemen oplossen, wat kenmerkend is
 Bespreek het Perceptron Learning Algorithm en pas dit iteratief toe op een aantal datapunten in twee lineair gescheiden datasets, tot alle datapunten correct zijn geclassificeerd.
 </strong></summary>
 
+
 **Perceptron Learning Algorithm:**
 
 deze werkt via 2 formules:
