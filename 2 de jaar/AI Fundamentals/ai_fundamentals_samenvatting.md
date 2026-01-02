@@ -454,6 +454,8 @@ Leert via iteratieve gewichtsaanpassing.
 
 berekening
 
+![perceptron dataset](./assets/dataset%20perceptron.png)
+
 omdat n = 1 mag deze in de berekening weg gelaten worden
 
 ---
