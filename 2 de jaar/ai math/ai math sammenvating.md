@@ -81,32 +81,29 @@ deze worden gebruikt als referentie om andere vectoren in het vlak te beschrijve
 
 voor basisvectoren geldt :
 
-<div style="text-align: left;">
-
 ```math
-e_1 ​= (1,0)
+& e_1 ​= (1,0)
 ```
 
 ```math
-e_2 ​= (0,1)
+& e_2 ​= (0,1)
 ```
 
 ```math
-||\vec{e_1}|| = 1
+& ||\vec{e_1}|| = 1
 ```
 
 ```math
-||\vec{e_2}|| = 1
+& ||\vec{e_2}|| = 1
 ```
 
 ```math
-||\vec{0}|| = 0​
+& ||\vec{0}|| = 0​
 ```
 
 ```math
-\vec{e_1}​⊥\vec{e_2}​
+& \vec{e_1}​⊥\vec{e_2}​
 ```
-</div>
 
 - e1 en e2 staan loodrecht op elkaar (orthogonaal = 90°).
 
