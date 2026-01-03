@@ -228,7 +228,7 @@ in 3D geldt :
   \vec{a} + \vec{b} = \vec{b} + \vec{a}​
   ```
 
-#### 1.4.2. scalaire x vector
+#### 1.4.2. scalaire (reëel getal) x vector
 
 ```math
 k\vec{v} = (kv_1,kv_2) \text{ in 2D}
@@ -238,3 +238,43 @@ k\vec{v} = (kv_1,kv_2) \text{ in 2D}
 k\vec{v} = (k\vec{v_1},k\vec{v_2},k\vec{v_3}) \text{ in 3D}
 ```
 
+**eigenshappen :**
+
+- |k| > 1 : de vector word langer
+- |k| < 1 : de vector word korter
+- k < 0 : de vector wijst in de tegengestelde richting
+
+**lengte:**
+
+```math
+||k\vec{v}|| = |k| ||\vec{v}||
+```
+**eensheidsvector :**
+
+```math
+\vec{u} = \frac{\vec{v}}{||\vec{v}||}
+```
+
+**afstand tussen 2 punten A en B :**
+
+**gegeven :**
+
+```math
+A (a1, a2, a3)
+```
+
+```math
+B (b1, b2, b3)
+```
+
+**vector AB :**
+
+```math
+\vec{AB} = (a_1 - b_1, a_2 - b_2, a_3 - b_3)
+```
+
+**afstand d(A,B) :**
+
+```math
+d(A,B) = ||\vec{AB}|| = \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2 + (a_3 - b_3)^2}
+```
