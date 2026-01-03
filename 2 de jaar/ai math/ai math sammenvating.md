@@ -14,8 +14,12 @@ voorgesteld als een pijl tussen 2 punten.
 
 Grafisch :
 
-![vector grafisch](./assets/vectoren/grafische%20voorstelling.png)
-( pijl van punt P naar punt Q )
+```math
+\vec{v} = \vec{PQ}​ \\
+\text{} \\
+\text{ met } P( x_1, y_1 ) \\
+\text{ en } Q( x_2, y_2 )
+```
 
 Een vector word volledig bepaald door :
 
@@ -29,20 +33,26 @@ meestal worden vrije vectoren gebruikt.
 
 </details>
 
-<details>
+details>
 <summary><strong>1.2. speciale vectoren</strong></summary>
 
 - **Plaatsvector**
   - een vector die de positie van een punt in de ruimte aangeeft ten opzichte van de oorsprong.
 
-    ![plaatsvector](./assets/vectoren/vector%20in%20de%20oorsprong%20.png)
+    ```math
+    \vec{a} = \vec{OA}​
+    ```
+
     ![plaatsvector grafisch](./assets/vectoren/vecor%20in%20oorsprong%20grafisch.png)
 
 - **Nulvector**
   - een vector met een lengte van 0, die geen richting heeft.
   - met een absolute waarde van 0.
 
-    ![nulvector](./assets/vectoren/nul%20vector.png)
+    ```math
+    \vec{0} = (0, 0) \text{ in 2D}
+    ```
+
     ![nulvector grafisch](./assets/vectoren/nul%20vector%20grafisch.png)
 
 - **Eenheidsvector**
@@ -53,7 +63,10 @@ meestal worden vrije vectoren gebruikt.
     ![eenheidsvector](./assets/vectoren/eenheids%20vectoren.png)
 
 **norm (lengte) :**
-- deze wordt aangeduid met ||v||.
+
+```math
+\text{ deze word aangeduide met} ||\vec{v}||​
+```
 
 </details>
 
@@ -68,45 +81,145 @@ deze worden gebruikt als referentie om andere vectoren in het vlak te beschrijve
 
 voor basisvectoren geldt :
 
-- ||e1|| = 1
-- ||e2|| = 1
-- e1 en e2 staan loodrecht op elkaar (orthogonaal).
+```math
+e_1​=(1,0) \\
+e_2​=(0,1)
+```
 
-![vector in 2D](./assets/vectoren/vectoren%20in%20het%20vlak.png)
+```math
+||\vec{e_1}|| = 1 \\
+||\vec{e_2}|| = 1 \\
+||\vec{0}|| = 0​
+```
+
+```math
+\vec{e_1} ​⊥ \vec{e_2}​
+```
+
+- e1 en e2 staan loodrecht op elkaar (orthogonaal = 90°).
+
+    ![vector in 2D](./assets/vectoren/vectoren%20in%20het%20vlak.png)
 
 de coordinaten van de vectoren zijn (x, y) waarbij x de horizontale component is en y de verticale component.
 
-- e1 = (1, 0)
-- e2 = (0, 1)
-
 voor nulvector geldt :
 
-- 0 = (0, 0)
+```math
+\vec{0} = (0, 0)
+```
 
 **lengte van een vector in 2D :**
 
-- ||v|| = √(x² + y²)
+```math
+||\vec{v}|| = \sqrt{x^2 + y^2}
+```
 
 ### 1.3. vectoren in de ruimte (3D)
 
 **voorsteling van een vector in de ruimte (3D)** :
 
-de basisvectoren in 3D zijn e1, e2 en e3.
+![vector in 3D](./assets/vectoren/3d%20vectoren.png)
 
-- e1 = (1, 0, 0)
-- e2 = (0, 1, 0)
-- e3 = (0, 0, 1)
-- nulvector = (0, 0, 0)
-- staan loodrecht op elkaar (orthogonaal).
+```math
+\vec{v} = (x, y, z)
+```
 
-- ||e1|| = 1
-- ||e2|| = 1
-- ||e3|| = 1
-- ||0|| = 0
+**de basisvectoren in 3D zijn**
+
+```math
+e_1​=(1,0,0) \\
+e_2​=(0,1,0) \\
+e_3​=(0,0,1)
+```
+
+```math
+\vec{0} = (0, 0, 0)
+```
+
+```math
+\vec{e_1} ​⊥ \vec{e_2} ​⊥ \vec{e_3}​
+```
 
 **algebraische voorstelling van een vector in 3D :**
 
 ```math
 \vec{a}+\vec{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
 ```
+**lengte van een vector in 3D :**
+
+```math
+||\vec{v}|| = \sqrt{x^2 + y^2 + z^2}
+```
+
+### 1.4. bewerkingen met vectoren
+
+#### 1.4.1. optelling van vectoren :
+
+de som van 2 vectoren geeft een nieuwe vector die de gecombineerde verplaatsing van de 2 oorspronkelijke vectoren voorstelt.
+
+in 2D geldt :
+
+```math
+\vec{a} + \vec{b} = (a_1 + b_1, a_2 + b_2)
+```
+
+in 3D geldt :
+
+```math
+\vec{a} + \vec{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
+```
+
+**eigenshappen :**
+  
+- Chasles-Möbius:
+  
+  ```math
+  \vec{PQ} + \vec{QR} = \vec{PR}​
+  ```
+- de nulvector is het neutraal element voor de optelling van vectoren:
+  
+  ```math
+  \vec{v} + \vec{0} = \vec{v}​
+  ```
+
+- elke vector heeft een tegengestelde vector:
+  
+  ```math
+  \vec{v} = -\vec{v}​
+  ```
+
+  - bovendien geldt dat :
+    
+    ```math
+    \vec{PQ} = -\vec{QP}
+    ```
+
+- het verschil van 2 vectoren word gedefinieerd als :
+  
+  ```math
+  \vec{a} - \vec{b} = \vec{a} + (-\vec{b}) = \vec{c}​
+  ```
+
+- associatief :
+  
+  ```math
+  (\vec{a} + \vec{b}) + \vec{c} = \vec{a} + (\vec{b} + \vec{c})​
+  ```
+
+- commutatief :
+  
+  ```math
+  \vec{a} + \vec{b} = \vec{b} + \vec{a}​
+  ```
+
+#### 1.4.2. scalaire x vector
+
+```math
+k\vec{v} = (kv_1,kv_2) \text{ in 2D}
+```
+
+```math
+k\vec{v} = (k\vec{v_1},k\vec{v_2},k\vec{v_3}) \text{ in 3D}
+```
+
 
