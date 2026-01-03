@@ -53,4 +53,4 @@ meestal worden vrije vectoren gebruikt.
     ![eenheidsvector](./assets/vectoren/eenheids%20vectoren.png)
 
 **norm (lengte) :**
-- deze wordt aangeduid met $ ||\vec{v}|| $.
+- deze wordt aangeduid met $ ||\mathbf{v}|| $.
