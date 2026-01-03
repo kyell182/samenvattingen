@@ -107,6 +107,6 @@ de basisvectoren in 3D zijn e1, e2 en e3.
 **algebraische voorstelling van een vector in 3D :**
 
 ```math
-a+b = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
+\vec{a}+\vec{b} = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
 ```
 
