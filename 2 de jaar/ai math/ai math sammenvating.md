@@ -54,3 +54,59 @@ meestal worden vrije vectoren gebruikt.
 
 **norm (lengte) :**
 - deze wordt aangeduid met ||v||.
+
+</details>
+
+---
+
+### 1.2. vectoren in het vlak (2D)
+
+**voorsteling van een vector in het vlak (2D)** :
+
+de vectoren van e1 en e2 worden de basisvectoren genoemd.
+deze worden gebruikt als referentie om andere vectoren in het vlak te beschrijven.
+
+voor basisvectoren geldt :
+
+- ||e1|| = 1
+- ||e2|| = 1
+- e1 en e2 staan loodrecht op elkaar (orthogonaal).
+
+![vector in 2D](./assets/vectoren/vectoren%20in%20het%20vlak.png)
+
+de coordinaten van de vectoren zijn (x, y) waarbij x de horizontale component is en y de verticale component.
+
+- e1 = (1, 0)
+- e2 = (0, 1)
+
+voor nulvector geldt :
+
+- 0 = (0, 0)
+
+**lengte van een vector in 2D :**
+
+- ||v|| = √(x² + y²)
+
+### 1.3. vectoren in de ruimte (3D)
+
+**voorsteling van een vector in de ruimte (3D)** :
+
+de basisvectoren in 3D zijn e1, e2 en e3.
+
+- e1 = (1, 0, 0)
+- e2 = (0, 1, 0)
+- e3 = (0, 0, 1)
+- nulvector = (0, 0, 0)
+- staan loodrecht op elkaar (orthogonaal).
+
+- ||e1|| = 1
+- ||e2|| = 1
+- ||e3|| = 1
+- ||0|| = 0
+
+**algebraische voorstelling van een vector in 3D :**
+
+```math
+a+b = (a_1 + b_1, a_2 + b_2, a_3 + b_3)
+```
+
