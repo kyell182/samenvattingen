@@ -136,9 +136,15 @@ voor nulvector geldt :
 **de basisvectoren in 3D zijn**
 
 ```math
-e_1​=(1,0,0) \\
-e_2​=(0,1,0) \\
-e_3​=(0,0,1)
+e_1 ​= (1,0,0)
+```
+
+```math
+e_2 ​= (0,1,0)
+```
+
+```math
+e_3 ​= (0,0,1)
 ```
 
 ```math
@@ -162,7 +168,7 @@ e_3​=(0,0,1)
 
 ### 1.4. bewerkingen met vectoren
 
-#### 1.4.1. optelling van vectoren :
+#### 1.4.1. optelling van vectoren
 
 de som van 2 vectoren geeft een nieuwe vector die de gecombineerde verplaatsing van de 2 oorspronkelijke vectoren voorstelt.
 
@@ -185,6 +191,7 @@ in 3D geldt :
   ```math
   \vec{PQ} + \vec{QR} = \vec{PR}​
   ```
+
 - de nulvector is het neutraal element voor de optelling van vectoren:
   
   ```math
@@ -198,10 +205,10 @@ in 3D geldt :
   ```
 
   - bovendien geldt dat :
-    
-    ```math
-    \vec{PQ} = -\vec{QP}
-    ```
+
+  ```math
+  \vec{PQ} = -\vec{QP}
+  ```
 
 - het verschil van 2 vectoren word gedefinieerd als :
   
@@ -230,5 +237,4 @@ k\vec{v} = (kv_1,kv_2) \text{ in 2D}
 ```math
 k\vec{v} = (k\vec{v_1},k\vec{v_2},k\vec{v_3}) \text{ in 3D}
 ```
-
 
