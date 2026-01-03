@@ -106,6 +106,7 @@ e_2 ​= (0,1)
 ```math
 \vec{e_1}​⊥\vec{e_2}​
 ```
+</div>
 
 - e1 en e2 staan loodrecht op elkaar (orthogonaal = 90°).
 
