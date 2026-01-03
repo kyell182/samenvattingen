@@ -81,12 +81,14 @@ deze worden gebruikt als referentie om andere vectoren in het vlak te beschrijve
 
 voor basisvectoren geldt :
 
+<div style="text-align: left;">
+
 ```math
-e_1​=(1,0)
+e_1 ​= (1,0)
 ```
 
 ```math
-e_2​=(0,1)
+e_2 ​= (0,1)
 ```
 
 ```math
