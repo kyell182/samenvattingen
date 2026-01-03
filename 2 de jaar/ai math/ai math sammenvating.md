@@ -48,7 +48,7 @@ meestal worden vrije vectoren gebruikt.
 - **Eenheidsvector**
   - een vector met een lengte van 1, die vaak wordt gebruikt om een richting aan te geven.
   - met een absolute waarde van 1.
-  - meestal worden deze met een e of een hoedje (^) boven de letter aangeduid.
+  - meestal worden deze met een `e` of een hoedje (^) boven de letter aangeduid.
 
     ![eenheidsvector](./assets/vectoren/eenheids%20vectoren.png)
 
