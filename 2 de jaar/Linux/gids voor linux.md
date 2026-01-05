@@ -267,10 +267,14 @@ ls -la         # lijst bestanden (inclusief verborgen)
 cd mapnaam     # wissel van map
 mkdir naam     # maak directory
 touch bestand  # maak bestand
-cat bestand    # toon bestand
+cat bestand    # toon inhoud bestand in terminal
+more bestand   # bekijk lange bestanden pagina per pagina
+head bestand   # bekijk eerste 10 regels
 cp bron doel   # kopiëren
 mv bron doel   # verplaatsen/ hernoemen
 rm bestand     # verwijder bestand (voorzichtig)
+rmdir mapnaam  # verwijder lege map
+rm -r mapnaam  # verwijder map en inhoud (voorzichtig)
 sudo <cmd>     # voer commando uit als beheerder
 shutdown now   # direct uitschakelen (root)
 reboot         # herstarten
