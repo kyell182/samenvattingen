@@ -283,7 +283,7 @@ reboot         # herstarten
 ### Paden: absoluut vs relatief
 
 - Absoluut pad begint bij de root`/` (bijv. `/etc/hostname`)
-- Relatief pad is vanaf de huidige map (bijv. `../etc/hostname`)
+- Relatief pad is vanaf de huidige map (bijv. `../hostname`)
 
 Voorbeeld-oefening:
 
