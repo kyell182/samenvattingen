@@ -388,17 +388,17 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
           ADC sum         ; tel bij huidige som
           STA sum         ; sla op
           INY             ; volgende byte
-          DEX
-          BNE checksum_loop
+          DEX             ; verminder teller
+          BNE checksum_loop ; zolang X != 0, herhaal
 
           LDA sum         ; laad totale som
-          CMP #0
+          CMP #0          ; vergelijk met 0
           BEQ checksum_ok ; als som = 0 → checksum correct
-          LDA #0
-          JMP checksum_done
+          LDA #0          ; anders, A = 0
+          JMP checksum_done ; jump naar checksum_done
 
   checksum_ok:
-          LDA #1
+          LDA #1         ; A = 1 (checksum correct)
 
   checksum_done:
           RTS              ; A = 1 of 0
@@ -422,36 +422,276 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
 
 ---
 
-# Chapter 5 Hardware-Software Interface
+## Chapter 5 Hardware-Software Interface
 
-## Vragen
+### Vragen
 
-(alle originele vragen uit syllabus)
+<details>
+<summary><strong>
+Wat betekenen de afkortingen PCI en PCIe?
+</strong></summary>
 
-## Antwoorden
+![pci_express](./assets/pcie%20infographic.png)
 
-**PCI:** Peripheral Component Interconnect
-**PCIe:** PCI express
+- **PCI:** Peripheral Component Interconnect
+  - een standaard voor het aansluiten van randapparatuur op een computer via een busarchitectuur.
+  - ondersteunt meerdere apparaten en biedt een gedeelde communicatie-interface.
+  - uitsparing zit rechts op slot ➡️
 
-**BIOS:** Basic Input Output System
-**POST:** Power On Self Test
-**UEFI:** moderne vervanger van BIOS
+- **PCIe:** PCI Express
+  - een snellere en meer geavanceerde versie van PCI, die seriële communicatie gebruikt.
+  - biedt hogere bandbreedte en lagere latentie, waardoor het geschikt is voor moderne randapparatuur zoals grafische kaarten en SSD's.
+  - uitsparing zit links op slot ⬅️
 
-**MBR limiet:** max 2 TB en 4 partities. UEFI/GPT lost dit op.
+</details>
 
-**Process vs thread:** thread deelt geheugen, process niet.
+<details>
+<summary><strong>
+Licht bondig volgende kenmerken toe, die van toepassing zijn bij PCI/PCIe:
 
-**Process toestanden:** new, ready, running, waiting, terminated.
+- Hot plugging
+- Automated configuration
+- Bulk DMA transfer
+- Multi-lane serial connections
+- Root Complex
+- End Point
 
-**TCB/PCB:** Thread Control Block / Process Control Block
+</strong></summary>
 
-**Scheduling:** FCFS, Round Robin, Priority, Shortest Job First
+| Kenmerk                  | Toelichting                                                                 |
+|---------------------------|----------------------------------------------------------------------------|
+| Hot plugging              | Kaart in- of uitpluggen terwijl de computer aanstaat (alleen PCIe).       |
+| Automated configuration   | Systeem wijst automatisch resources toe (adresruimte, IRQ, etc.).         |
+| Bulk DMA transfer         | Data rechtstreeks naar/van geheugen sturen zonder CPU-interventie.        |
+| Multi-lane serial connections | Meerdere seriële datapaden parallel voor hogere bandbreedte (x1, x4, x16). |
+| Root Complex              | Verbindingspunt tussen CPU/geheugen en PCIe-bus, startpunt van communicatie. |
+| End Point                 | Eindapparaat op de PCIe-bus (bv. GPU, SSD) dat data verzendt/ontvangt.   |
 
-**SMP:** meerdere identieke CPUâ€™s. SIMD = vector, MIMD = meerdere instructiestromen.
+</details>
+
+<details>
+<summary><strong>
+Over welke functies moet een Linux device driver minimaal beschikken?
+
+Eén concreet voorbeeld is de mydevice_init() functie.
+
+Vul de functies verder aan en verklaar het doel van elk van deze functies
+</strong></summary>
+
+| Functie                                            | Doel / Verklaring                                                                                                                   |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **mydevice_init()**                                | Wordt uitgevoerd bij het laden van de driver (module). Registreert het apparaat bij het systeem en initialiseert hardware/software. |
+| **mydevice_exit()**                                | Wordt uitgevoerd bij het verwijderen van de driver (module unload). Ruimt resources op, deregistreert het apparaat.                 |
+| **open()**                                         | Wordt aangeroepen wanneer een programma het apparaat opent (bv. via `/dev/mydevice`). Controleert of het apparaat beschikbaar is.   |
+| **release() / close()**                            | Wordt aangeroepen bij het sluiten van het apparaat. Sluit het apparaat netjes af en maakt resources vrij.                           |
+| **read()**                                         | Wordt gebruikt om data van het apparaat te lezen. Plaatst gegevens van de hardware in het gebruikersgeheugen.                       |
+| **write()**                                        | Wordt gebruikt om data naar het apparaat te schrijven. Verstuurt gegevens van de gebruiker naar de hardware.                        |
+| **ioctl()**                                        | Gebruikt voor speciale commando’s of configuraties die niet met gewone read/write kunnen.                                           |
+| **probe()** (optioneel voor platform/PCI devices)  | Detecteert of de hardware aanwezig is en kan gebruikt worden door deze driver.                                                      |
+| **remove()** (optioneel voor platform/PCI devices) | Wordt uitgevoerd bij het loskoppelen van de hardware.                                                                               |
+
+</details>
+
+<details>
+<summary><strong>
+Verklaar volgende afkortingen en licht de begrippen toe:
+
+- BIOS
+- POST
+- UEFI
+
+</strong></summary>
+
+- **BIOS (Basic Input Output System):**
+  - firmware die wordt uitgevoerd bij het opstarten van een computer.
+  - initialiseert hardwarecomponenten en laadt het besturingssysteem vanaf de opslagmedia.
+- **POST (Power On Self Test):**
+  - diagnostische test die wordt uitgevoerd door de BIOS bij het opstarten.
+  - controleert of hardwarecomponenten correct functioneren voordat het besturingssysteem wordt geladen.
+- **UEFI (Unified Extensible Firmware Interface):**
+  - moderne vervanger van BIOS.
+  - biedt een uitgebreidere interface tussen besturingssysteem en firmware, ondersteunt grotere schijven, snellere opstarttijden en meer beveiligingsfuncties.
+
+</details>
+
+<details>
+<summary><strong>
+Wat zijn de beperkingen van MBR partities en verklaar hoe UEFI partities deze beperkingen oplossen?
+</strong></summary>
+
+- **Beperkingen van MBR (Master Boot Record) partities:**
+  - ondersteunt maximaal 4 primaire partities per schijf.
+  - ondersteunt schijven tot een maximale grootte van 2 TB.
+  - beperkte ondersteuning voor moderne hardware en besturingssystemen.
+
+- **Oplossingen met UEFI/GPT (GUID Partition Table):**
+  - ondersteunt tot 128 partities per schijf zonder de noodzaak voor uitgebreide partities
+  - ondersteunt schijven groter dan 2 TB, tot wel 9.4 ZB (zettabytes).
+  - biedt verbeterde gegevensintegriteit en fouttolerantie door het gebruik van redundante partitiegegevens.
+  - beter compatibel met moderne hardware en besturingssystemen.
+
+💡 wist je datje
+
+- 9,4 zetabyte is ongeveer 9,4 miljard terabyte of 9,4 miljoen petabyte – kortom, extreem veel data, genoeg om honderden miljoenen full HD-films op te slaan.
+
+| Grootte        |     naam     | Bytes                     |  Vergelijking                               |
+|----------------|--------------|-------------------------- |---------------------------------------------|
+|1 bit           |bit           | 0.125 B                   | stelt 1 of 0 voor                           |
+|4 bits          |nibble        | 0.5 B                     | halve byte                                  |
+| 1 byte         |byte          | 8 bits                    | 1 karakter in ASCII                         |
+| 1 KB           |kilobyte      | 1.024 B                   | Kleine tekstbestanden                       |
+| 1 MB           |megabyte      | 1.024 KB                  | Een paar minuten MP3-muziek                 |
+| 1 GB           |gigabyte      | 1.024 MB                  | Enkele uren video of honderden foto’s       |
+| 1 TB           |terabyte      | 1.024 GB                  | 250–300 films in HD                         |
+| 1 PB           |petabyte      | 1.024 TB                  | Gigantische datacenters, archieven          |
+| 1 EB           |exabyte       | 1.024 PB                  | Internet-scale opslag                       |
+| 1 ZB           |zettabyte     | 1.024 EB                  | Wereldwijd internet, zeer theoretisch       |
+
+</details>
+
+<details>
+<summary><strong>
+Welke taken moet de operating system kernel uitvoeren tijdens het boot-process?
+</strong></summary>
+
+| Stap / Taak                     | Uitleg                                                                                             |
+| ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Initialisatie van hardware**  | Detecteert en configureert CPU, geheugen (RAM), timers en basishardware.                           |
+| **Memory management opstarten** | Zet de geheugenbeheerstructuren op (pagina’s, virtueel geheugen, heap/stack).                      |
+| **Device drivers laden**        | Kernel laadt drivers voor opslag, netwerk, USB, enz., zodat hardware werkt.                        |
+| **Bestandssysteem mounten**     | Mount het root filesystem zodat het OS bestanden kan lezen en uitvoeren.                           |
+| **Kernel subsystems opstarten** | Initieert processen, scheduler, inter-process communication (IPC) en I/O subsystemen.              |
+| **Init / systemd starten**      | Start het eerste gebruikersproces (`init` of `systemd`) dat alle andere gebruikersprocessen laadt. |
+| **Beveiliging en privileges**   | Stelt kernel privileges en beveiligingsmechanismen in (bijv. user vs kernel mode).                 |
+
+</details>
+
+<details>
+<summary><strong>
+Wat zijn de verschillen tussen threads en processes?
+</strong></summary>
+
+| Kenmerk               | Process                          | Thread                           |
+|-----------------------|----------------------------------|----------------------------------| 
+| Definitie             | Zelfstandig uitvoerend programma | Lichtgewicht uitvoerende eenheid binnen een proces |
+| Geheugenruimte        | Eigen geheugenruimte (virtueel)  | Delen geheugenruimte van het proces |
+| Context switch        | Duurder (volledige context)      | Goedkoper (gedeelde context) |
+| Communicatie          | Moeilijker (inter-process communication) | Eenvoudiger (gedeeld geheugen) |
+| Overhead              | Hoger (meer resources nodig)     | Lager (minder resources nodig) |
+| Gebruik               | Voor zware, geïsoleerde taken    | Voor lichte, parallelle taken binnen hetzelfde programma |
+
+</details>
+
+<details>
+<summary><strong>
+Wat zijn de vier toestanden die een process kan aannemen en licht elke toestand bondig toe?
+</strong></summary>
+
+| Toestand              | Uitleg                                                                                  |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| **New**               | Het proces wordt aangemaakt, maar is nog niet klaar om te draaien.                      |
+| **Ready**             | Het proces is klaar om te draaien, wacht op CPU-toewijzing.                             |
+| **Running**           | Het proces wordt actief uitgevoerd door de CPU.                                         |
+| **Blocked / Waiting** | Het proces wacht op een gebeurtenis (bijv. I/O) en kan tijdelijk niet verder uitvoeren. |
+
+Kort gezegd:
+
+een proces gaat van New → Ready → Running → (eventueel Blocked) en daarna weer terug naar Ready totdat het klaar is.
+
+```mermaid
+---
+config:
+  layout: elk
+---
+flowchart TB
+    New["New<br>Proces wordt aangemaakt"] --> Ready["Ready<br>Wacht op CPU"]
+    Ready -- Scheduler kiest proces --> Running["Running<br>Wordt uitgevoerd"]
+    Running -- Timeslice op --> Ready
+    Running -- Wacht op I/O --> Blocked["Blocked<br>Wacht op I/O of event"]
+    Running -- Klaar --> End["End<br>Proces klaar"]
+    Blocked -- I/O klaar --> Ready
+
+     New:::Aqua
+     Ready:::Peach
+     Running:::Pine
+     Blocked:::Rose
+     End:::Sky
+    classDef Pine stroke-width:1px, stroke-dasharray:none, stroke:#254336, fill:#27654A, color:#FFFFFF
+    classDef Peach stroke-width:1px, stroke-dasharray:none, stroke:#FBB35A, fill:#FFEFDB, color:#8F632D
+    classDef Sky stroke-width:1px, stroke-dasharray:none, stroke:#374D7C, fill:#E2EBFF, color:#374D7C
+    classDef Aqua stroke-width:1px, stroke-dasharray:none, stroke:#46EDC8, fill:#DEFFF8, color:#378E7A
+    classDef Rose stroke-width:1px, stroke-dasharray:none, stroke:#FF5978, fill:#FFDFE5, color:#8E2236
+    linkStyle 0 stroke:#BBDEFB,fill:none
+    linkStyle 1 stroke:#FFD600,fill:none
+    linkStyle 2 stroke:#00C853,fill:none
+    linkStyle 3 stroke:#D50000,fill:none
+    linkStyle 4 stroke:#2962FF
+    linkStyle 5 stroke:#D50000,fill:none
+
+```
+
+</details>
+
+<details>
+<summary><strong>
+Wat betekenen de afkortingen TCB en PCB en licht bondig hun functie toe?
+</strong></summary>
+
+| Afkorting | Betekenis                | Functie / Toelichting                                                                                   |
+|-----------|--------------------------|---------------------------------------------------------------------------------------------------------|
+| **TCB**   | Thread Control Block     | Bevat informatie over een thread, zoals thread-ID, status, registers, stack pointer en prioriteit.     |
+| **PCB**   | Process Control Block    | Bevat informatie over een proces, zoals proces-ID, status, geheugenbeheer, open bestanden en CPU-registraties. |
+
+</details>
+
+<details>
+<summary><strong>
+Noem vier scheduling algorithms en bespreek de eigenschappen van elke van deze scheduling algorithms (nonpreemptive/preemptive?, process priority?, …)
+</strong></summary>
+
+| Algorithm                          | Preemptive?                                               | Priority? | Eigenschappen                                                                                                             |
+| ---------------------------------- | --------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **FCFS (First Come First Served)** | ❌ Non-preemptive                                          | ❌ Nee     | Processen worden uitgevoerd in volgorde van aankomst. Simpel, maar trage processen kunnen alles ophouden.                 |
+| **SJF (Shortest Job First)**       | ❌ Meestal non-preemptive (bestaat ook preemptive variant) | ❌ Nee     | Kortste taak eerst → minimale gemiddelde wachttijd. Nadeel: je moet weten hoe lang een proces duurt.                      |
+| **Round Robin (RR)**               | ✅ Preemptive                                              | ❌ Nee     | Elk proces krijgt een vaste tijdslice. Goed voor multitasking, eerlijk, maar te kleine timeslice = veel context switches. |
+| **Priority Scheduling**            | ✅ Of ❌ (kan beide)                                        | ✅ Ja      | Proces met hoogste prioriteit eerst. Risico: starvation (lage prioriteit komt nooit aan de beurt).                        |
+
+`FCFS` = “wie eerst komt, eerst maalt”
+
+`SJF` = “korte taken eerst”
+
+`Round Robin` = “iedereen om de beurt een beetje tijd”
+
+`Priority` = “de belangrijkste eerst”
+
+💡 preemptive = onderbreekbaar
+
+</details>
+
+<details>
+<summary><strong>
+Wat is een symmetrische multiprocessor architectuur en verklaar de begrippen SIMD en MIMD?
+</strong></summary>
+
+- **Symmetrische Multiprocessor (SMP) Architectuur:**
+  - een systeem waarbij meerdere identieke processors (CPU's) gelijkwaardig samenwerken binnen één computer.
+  - elke processor heeft toegang tot hetzelfde gedeelde geheugen en I/O-systemen.
+  - taken kunnen dynamisch worden toegewezen aan elke processor, wat zorgt voor betere prestaties en schaalbaarheid.
+
+- **SIMD (Single Instruction, Multiple Data):**
+  - een parallelle verwerkingsarchitectuur waarbij één enkele instructie wordt uitgevoerd op meerdere gegevenspunten tegelijkertijd.
+  - vaak gebruikt in vectorverwerking en grafische toepassingen, waar dezelfde bewerking op grote datasets moet worden toegepast.
+- **MIMD (Multiple Instruction, Multiple Data):**
+  - een parallelle verwerkingsarchitectuur waarbij meerdere instructies onafhankelijk worden uitgevoerd op verschillende gegevenspunten.
+  - geschikt voor algemene doeleinden en complexe taken waarbij verschillende processen tegelijkertijd kunnen draaien.
+
+![smp_simd_mimd](./assets/SIMD%20vs%20MIMD.png)
+
+</details>
 
 ---
 
-# Chapter 6 Specialized Computing Domains
+## Chapter 6 Specialized Computing Domains
 
 ## Antwoorden in het kort
 
