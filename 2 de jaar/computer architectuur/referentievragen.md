@@ -1011,11 +1011,14 @@ pagineringsmodel, dat gebruikt maakt van CR3, een page table directory, page tab
 
 - dit zorgt ervoor dat je programma's meer geheugen kunnen gebruiken dan fysiek beschikbaar is, en dat elk programma zijn eigen virtuele adresruimte heeft, wat de veiligheid en stabiliteit van het systeem verhoogt.
 
-er zijn 1024 page directory entries (10 bits) en 1024 page table entries (10 bits), dus elke page is 4KB (2^12 bytes).
+- er zijn 1024 page directory entries (10 bits) en 1024 page table entries (10 bits), dus elke page is 4KB (2^12 bytes).
+
 hierdoor kan je 4GB virtueel geheugen hebben (2^32 bytes).
+
 dit is ook de reden waarom 32-bit systemen vaak beperkt zijn tot 4GB RAM.
 
-64 bit systemen gebruiken een vergelijkbaar model, maar met meer niveaus van paginering en grotere adressen.
+- 64 bit systemen gebruiken een vergelijkbaar model, maar met meer niveaus van paginering en grotere adressen.
+
 dit resulteert in maximaal 16 exabyte virtueel geheugen (2^64 bytes).
 
 we zitten dus nog wel even safe :)
