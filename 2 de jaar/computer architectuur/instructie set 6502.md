@@ -112,3 +112,16 @@
 | BRK        | Force interrupt |
 | WAI        | Wait for interrupt |
 
+## flags
+
+|     flag   |    Betekenis       |
+| ---------- | ------------------ |
+| N          | Negative           |
+| V          | Overflow           |
+| B          | Break Command      |
+| D          | Decimal Mode       |
+| I          | Interrupt Disable  |
+| Z          | Zero               |
+| C          | Carry              |
+
+

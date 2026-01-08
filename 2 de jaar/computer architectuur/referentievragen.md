@@ -1,8 +1,8 @@
-# Computer Architecture: referentievragen en antwoorden
+﻿# Computer Architecture: referentievragen en antwoorden
 
 ---
 
-## Chapter 1 – Introducing Computer Architecture
+## Chapter 1 â€“ Introducing Computer Architecture
 
 ### Vragen
 
@@ -26,7 +26,7 @@ Licht enkele technologische problemen toe die Charles Babbage ervoer bij het ont
 
   - de speling tussen de tandwielen veroorzaakte onnauwkeurigheden in de berekeningen.
 
-❗dit probleem werd opgelost door locking mechanisms te ontwerpen. deze zorgden ervoor dat de tandwielen werden vergrendeld en in geldige posities werden geforceerd.
+â—dit probleem werd opgelost door locking mechanisms te ontwerpen. deze zorgden ervoor dat de tandwielen werden vergrendeld en in geldige posities werden geforceerd.
 
 - **slijtage**
   
@@ -59,7 +59,7 @@ Wat betekent ENIAC en bespreek bondig de Von Neumann architectuur?
   
   - **Instructiecyclus:** de CPU voert een cyclus uit van ophalen, decoderen en uitvoeren van instructies.
   
-  - **Seriële verwerking:** instructies worden sequentieel uitgevoerd, wat kan leiden tot bottlenecks (Von Neumann bottleneck).
+  - **SeriÃ«le verwerking:** instructies worden sequentieel uitgevoerd, wat kan leiden tot bottlenecks (Von Neumann bottleneck).
 
 ![von_neumann_architecture](./assets/neumann%20architectuur.png)
 
@@ -103,7 +103,7 @@ Ondanks de 16-bits architectuur van de registers, is de adresseerbare geheugenru
   
 - het offset is ook een 16-bit waarde die wordt toegevoegd aan het basisadres van het segment om het uiteindelijke fysieke adres te bepalen.
   
-- hierdoor kan het fysieke adres worden berekend als: fysieke adres = (segment × 16) + offset.
+- hierdoor kan het fysieke adres worden berekend als: fysieke adres = (segment Ã— 16) + offset.
   
 - aangezien zowel het segment als het offset 16 bits zijn, resulteert dit in een maximaal fysiek adres van 20 bits (16 + 4), wat overeenkomt met 2^20 = 1 MB aan adresseerbaar geheugen.
 
@@ -117,13 +117,13 @@ Omschrijf de Wet Van Moore.
 
  Bespreek enkele limieten die de linearisatie van deze wet in de toekomst niet meer ondersteunen.
 
-- Verklaar de afkortingen CPU en GPU en verklaar enkele essentiële verschillen tussen de werking van een CPU en een GPU.
+- Verklaar de afkortingen CPU en GPU en verklaar enkele essentiÃ«le verschillen tussen de werking van een CPU en een GPU.
 
 </strong></summary>
 
 - **Wet van Moore:**
 
-  - het aantal transistors op een geïntegreerde schakeling verdubbelt ongeveer elke twee jaar, wat leidt tot een exponentiële groei in rekenkracht en een afname van de kosten per transistor.
+  - het aantal transistors op een geÃ¯ntegreerde schakeling verdubbelt ongeveer elke twee jaar, wat leidt tot een exponentiÃ«le groei in rekenkracht en een afname van de kosten per transistor.
 
 - **Limieten van de Wet van Moore:**
   
@@ -132,7 +132,7 @@ Omschrijf de Wet Van Moore.
   - **Warmteontwikkeling:**
     - hogere transistor dichtheden leiden tot meer warmte, wat koelingsproblemen veroorzaakt.
   - **energieverbruik:**
-    - kleinere transistors kunnen leiden tot hogere lekstromen, wat het energieverbruik verhoogt. wat leidt tot inefficiëntie.
+    - kleinere transistors kunnen leiden tot hogere lekstromen, wat het energieverbruik verhoogt. wat leidt tot inefficiÃ«ntie.
   - **Kosten:**
     - de kosten voor het produceren van steeds kleinere transistors stijgen aanzienlijk.
   - **snelheid:**
@@ -142,7 +142,7 @@ Omschrijf de Wet Van Moore.
 
 <details>
 <summary><strong>
-Verklaar de afkortingen CPU en GPU en verklaar enkele essentiële verschillen tussen de werking van een CPU en een GPU.
+Verklaar de afkortingen CPU en GPU en verklaar enkele essentiÃ«le verschillen tussen de werking van een CPU en een GPU.
 </strong></summary>
 
 **CPU (Central Processing Unit):**
@@ -234,41 +234,195 @@ loop:
 
 </details>
 
+---
 
+## Chapter 3  Processor Elements
+
+### Vragen
+
+<details>
+<summary><strong>
+Verklaar de afkorting CISC en de afkorting RISC en benoem de verschillen tussen beide computerarchitecturen.
+</strong></summary>
+
+- CISC: Complex Instruction Set Computer
+  - complexe instructies die meerdere operaties kunnen uitvoeren in één enkele instructie.
+  - prograama's kunnen korter zijn omdat minder instructies nodig zijn.
+  - vaak langere uitvoeringstijd per instructie vanwege de complexiteit.
+  - complexe hardware nodig om de instructies te decoderen en uit te voeren.
+
+- voorbeelden: x86 (Intel, AMD)
+
+- RISC: Reduced Instruction Set Computer
+  - eenvoudige instructies die meestal Ã©Ã©n enkele operatie uitvoeren.
+  - programma's kunnen langer zijn omdat meer instructies nodig zijn.
+  - snellere uitvoeringstijd per instructie vanwege de eenvoud.
+  - eenvoudigere hardware, wat kan leiden tot hogere kloksnelheden en betere pipelining.
+
+- voorbeelden: ARM (smartphones, Raspberry Pi, Apple M1/M2)
+
+- belangerijkste verschillen:
+
+| Eigenschap                      | CISC                             | RISC                             |
+| ------------------------------- | -------------------------------- | -------------------------------- |
+| Betekenis                       | Complex Instruction Set Computer | Reduced Instruction Set Computer |
+| Instructies                     | Complex                          | Simpel                           |
+| Aantal instructies in programma | Weinig                           | Veel                             |
+| Klokcycli per instructie        | Meerdere                         | Meestal 1                        |
+| Hardware                        | Complex                          | Simpel                           |
+| Energieverbruik                 | Hoger                            | Lager                            |
+
+</details>
+
+<details>
+<summary><strong>
+Verklaar de werking van de 6502 stapel-instructies PHA en PLA. De werking van de 6502 stapel is volgens het LIFO-principe en wat is de relatie met het S-register en de processorvlaggen?
+</strong></summary>
+
+- **PHA (Push Accumulator):**
+  - de inhoud van de accumulator (A-register) wordt op de stapel geplaatst.
+  - de stack pointer (S-register) wordt verlaagd met 1 om ruimte te maken voor de nieuwe waarde.
+  - de waarde van A wordt opgeslagen op het adres dat wordt aangegeven door het S-register.
+- **PLA (Pull Accumulator):**
+  - de waarde bovenop de stapel wordt van de stapel gehaald en in de accumulator (A-register) geplaatst.
+  - de waarde wordt gelezen van het adres dat wordt aangegeven door het S-register.
+  - de stack pointer (S-register) wordt verhoogd met 1 om aan te geven dat de waarde is verwijderd van de stapel.
+
+- s-register:
+  - het S-register houdt de huidige positie van de stapel bij.
+  - het begint meestal bij $FF en groeit naar beneden (afnemend adres).
+    - â—dit betekent dat de stack adressen van `$FF` naar `$00` gaan naarmate er meer waarden worden gepusht.
+  - bij PHA wordt S verlaagd, bij PLA wordt S verhoogd.
+
+- processor vlaggen:
+- de PHA en PLA instructies beÃ¯nvloeden de status van de processorvlaggen niet direct.
+  - echter, de waarden die worden gepusht of gepulld kunnen de vlaggen beÃ¯nvloeden als ze later worden gebruikt in berekeningen.
+  - bijvoorbeeld:
+    - als de waarde in de accumulator na een PLA-instructie wordt gebruikt in een berekening, kunnen de vlaggen (zoals zero, negative) worden bijgewerkt op basis van het resultaat van die berekening.
+
+â€¢ Verklaar het verschil tussen een maskable en non-maskable interrupt. Wat zijn de adressen van de interrupt service routines van beide interrupts en welke interrupt is level- of edge sensitive?
+
+- **Maskable Interrupt (IRQ):**
+  - kan worden uitgeschakeld (gemaskeerd) door de CPU.
+  - wordt vaak gebruikt voor minder kritieke taken.
+  - adres van de interrupt service routine (ISR): $FFFE (laag byte) en $FFFF (hoog byte).
+  - meestal level-sensitive: de interrupt activeert als een signaal hoog of laag is.
+
+| Actieve laag | Trigger | Pin rust |
+| ------------ | ------- | -------- |
+| **High**     | Hoog    | Laag     |
+| **Low**      | Laag    | Hoog     |
+
+💡 Ezelsbrug: active = de waarde die het signaal moet hebben om te “activeren”
+
+- **Non-Maskable Interrupt (NMI):**
+  - kan niet worden uitgeschakeld door de CPU.
+  - wordt gebruikt voor kritieke taken die onmiddellijke aandacht vereisen, zoals hardwarefouten.
+  - adres van de interrupt service routine (ISR): $FFFA (laag byte) en $FFFB (hoog byte).
+  - meestal edge-sensitive: de interrupt wordt geactiveerd door een overgang van laag naar hoog.
+
+</details>
+
+<details>
+<summary><strong>
+Licht de 3 manieren van I/O-processing toe en wat zijn de verschillen tussen port-mapped I/O en memory-mapped I/O?
+</strong></summary>
+
+- **Polling:**
+
+  - de CPU controleert continu de status van een I/O-apparaat om te zien of het klaar is voor gegevensoverdracht.
+  - eenvoudig te implementeren, maar inefficiënt omdat de CPU tijd verspilt aan het controleren van apparaten die mogelijk niet klaar zijn.
+
+- **Interrupts:**
+  - het I/O-apparaat stuurt een signaal naar de CPU wanneer het klaar is voor gegevensoverdracht.
+  - efficiënter dan polling, omdat de CPU andere taken kan uitvoeren totdat het interrupt signaal wordt ontvangen.
+- **Direct Memory Access (DMA):**
+  - een speciale hardwarecontroller beheert de gegevensoverdracht tussen I/O-apparaten en het geheugen zonder tussenkomst van de CPU.
+  - zeer efficiënt voor grote gegevensoverdrachten, omdat de CPU vrij blijft voor andere taken.
+
+- **Port-mapped I/O:**
+  - I/O-apparaten hebben een aparte adresruimte, gescheiden van het hoofdgeheugen.
+  - speciale instructies worden gebruikt om te communiceren met I/O-apparaten.
+
+- **Memory-mapped I/O:**
+  - I/O-apparaten delen dezelfde adresruimte als het hoofdgeheugen.
+  - dezelfde instructies worden gebruikt voor zowel geheugen- als I/O-toegang.
+
+</details>
+
+#### Oefening 4 checksum
+
+- Bij het overdragen van gegevensblokken over een foutgevoelig transmissiemedium is het gebruikelijk om een checksum
+te gebruiken om vast te stellen of gegevensbits verloren zijn gegaan of beschadigd zijn tijdens de verzending.
+
+- De checksum wordt meestal aan het transferred data record toegevoegd.
+
+  - Een checksumalgoritme gebruikt deze stappen:
+
+    - Tel alle bytes in het transferred data record bij elkaar op, behoudens alleen de laagste 8 bits van de som.
+    - De checksum is het twee's complement van de 8-bits som.
+    - Voeg de checksumbyte toe aan het transferred data record.
+    - Na ontvangst van een gegevensblok met de bijgevoegde checksum kan de processor bepalen of de
+    checksum geldig is door eenvoudigweg alle bytes in het record, inclusief de checksum, bij elkaar op te tellen.
+    - De checksum is geldig als de laagste 8 bits van de som nul zijn.
+  - Implementeer dit checksumalgoritme met behulp van 6502-assemblagetaal.
+  - De gegevensbytes beginnen op de geheugenlocatie opgeslagen op adres $10-$11 en het aantal bytes (inclusief
+de checksumbyte) wordt gegeven als invoer in het X-register.
+  - Zet het A-register op 1 als de checksum geldig is, en op 0 als deze ongeldig is.
+
+  <details>
+  <summary><strong>Antwoord:</strong></summary>
+
+  ```asm
+  ; Input:
+  ; $10 = low byte van pointer
+  ; $11 = high byte van pointer
+  ; X = aantal bytes inclusief checksum
+
+          LDY #0          ; Y = offset 0
+          LDA #0          ; A = accumulator voor som
+
+  checksum_loop:
+          CLC             ; clear carry voor ADC
+          LDA ($10),Y     ; laad byte van data
+          ADC sum         ; tel bij huidige som
+          STA sum         ; sla op
+          INY             ; volgende byte
+          DEX
+          BNE checksum_loop
+
+          LDA sum         ; laad totale som
+          CMP #0
+          BEQ checksum_ok ; als som = 0 → checksum correct
+          LDA #0
+          JMP checksum_done
+
+  checksum_ok:
+          LDA #1
+
+  checksum_done:
+          RTS              ; A = 1 of 0
+
+
+  sum:
+          .byte 0       ; tijdelijke opslag voor som
+  ```
+
+  Uitleg
+
+  $10/$11 → startadres van de data
+
+  X → loopt door alle bytes inclusief checksum
+
+  Som = lage 8 bits → als totaal = 0 → checksum correct
+
+  Output in A = 1 (valid) of 0 (invalid)
+
+  </details>
 
 ---
 
-# Chapter 3 – Processor Elements
-
-## Vragen
-
-• Verklaar de afkorting CISC en de afkorting RISC en benoem de verschillen tussen beide computerarchitecturen.
-
-• Verklaar de werking van de 6502 stapel-instructies PHA en PLA. De werking van de 6502 stapel is volgens het LIFO-principe en wat is de relatie met het S-register en de processorvlaggen?
-
-• Verklaar het verschil tussen een maskable en non-maskable interrupt. Wat zijn de adressen van de interrupt service routines van beide interrupts en welke interrupt is level- of edge sensitive?
-
-• Licht de 3 manieren van I/O-processing toe en wat zijn de verschillen tussen port-mapped I/O en memory-mapped I/O?
-
-• Exercise 4 checksum
-
-## Antwoorden
-
-**CISC:** Complex Instruction Set Computer. Veel complexe instructies.
-**RISC:** Reduced Instruction Set Computer. Weinig simpele instructies, sneller te pipelinen.
-
-**PHA/PLA:** PHA pusht A op stack, PLA haalt van stack. Stack pointer = S-register.
-
-**Maskable:** kan uitgeschakeld worden. **Non-maskable:** kan niet genegeerd worden (kritisch).
-
-**I/O:** polling, interrupts, DMA.
-Port-mapped = aparte adresruimte. Memory-mapped = I/O in geheugenruimte.
-
-**Checksum:** bytes optellen, 2’s complement nemen, later alles samen optellen → moet 0 geven.
-
----
-
-# Chapter 5 – Hardware-Software Interface
+# Chapter 5 Hardware-Software Interface
 
 ## Vragen
 
@@ -293,11 +447,11 @@ Port-mapped = aparte adresruimte. Memory-mapped = I/O in geheugenruimte.
 
 **Scheduling:** FCFS, Round Robin, Priority, Shortest Job First
 
-**SMP:** meerdere identieke CPU’s. SIMD = vector, MIMD = meerdere instructiestromen.
+**SMP:** meerdere identieke CPUâ€™s. SIMD = vector, MIMD = meerdere instructiestromen.
 
 ---
 
-# Chapter 6 – Specialized Computing Domains
+# Chapter 6 â€“ Specialized Computing Domains
 
 ## Antwoorden in het kort
 
@@ -310,23 +464,23 @@ Port-mapped = aparte adresruimte. Memory-mapped = I/O in geheugenruimte.
 **Mutex:** lock op resource.
 **Semaphore:** teller voor meerdere toegangen.
 
-**Critical section:** stuk code dat maar door één thread tegelijk mag gebruikt worden.
+**Critical section:** stuk code dat maar door Ã©Ã©n thread tegelijk mag gebruikt worden.
 
-**GPU voordeel:** massaal parallel → grafiek, AI, video.
+**GPU voordeel:** massaal parallel â†’ grafiek, AI, video.
 
 ---
 
-# Chapter 7 – Processor and Memory Architectures
+# Chapter 7 â€“ Processor and Memory Architectures
 
 **Von Neumann:** data + code samen.
 **Harvard:** apart.
 **Modified:** mix.
 
-**MMU + TLB:** versnellen virtueel → fysiek adres.
+**MMU + TLB:** versnellen virtueel â†’ fysiek adres.
 
 ---
 
-# Chapter 8 – Performance-Enhancing Techniques
+# Chapter 8 â€“ Performance-Enhancing Techniques
 
 **Cache hit/miss:** zit data in cache of niet.
 
@@ -342,7 +496,7 @@ Port-mapped = aparte adresruimte. Memory-mapped = I/O in geheugenruimte.
 
 ---
 
-# Chapter 9 – Specialized Processor Extensions
+# Chapter 9 â€“ Specialized Processor Extensions
 
 **Interrupt vs exception:** interrupt = extern, exception = intern.
 
@@ -350,10 +504,12 @@ Port-mapped = aparte adresruimte. Memory-mapped = I/O in geheugenruimte.
 
 **IEEE754:** sign, exponent (biased), mantissa.
 
-**DVFS:** Dynamic Voltage and Frequency Scaling. P ≈ C · V² · f
+**DVFS:** Dynamic Voltage and Frequency Scaling. P â‰ˆ C Â· VÂ² Â· f
 
 **TPM:** beveiligde chip voor sleutels en integriteit.
 
 ---
 
 Einde samenvatting.
+
+
