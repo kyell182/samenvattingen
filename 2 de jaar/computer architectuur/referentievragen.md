@@ -693,30 +693,356 @@ Wat is een symmetrische multiprocessor architectuur en verklaar de begrippen SIM
 
 ## Chapter 6 Specialized Computing Domains
 
-## Antwoorden in het kort
+### Vragen
 
-**Hard real-time:** deadline missen = fout.
-**Soft:** mag soms missen.
-**Firm:** resultaat nutteloos na deadline.
+<details>
+<summary><strong>
+Hoe onderscheiden zich `soft` real time, `hard` real time en  `firm` real time systemen t.o.v. elkaar?
+</strong></summary>
 
-**RTOS vs GPOS:** RTOS = voorspelbaar in tijd.
+- **soft real-time systemen:**
+  - deadlines mogen soms worden gemist zonder ernstige gevolgen.
+  - de kwaliteit van de output kan afnemen, maar het systeem blijft functioneel.
+  - voorbeelden: video streaming, audio verwerking, games.
 
-**Mutex:** lock op resource.
-**Semaphore:** teller voor meerdere toegangen.
+- **hard real-time systemen:**
+  - deadlines moeten altijd worden gehaald; het missen van een deadline leidt tot systeemfalen of gevaarlijke situaties.
+  - voorbeelden: airbagsystemen, pacemakers, anti-blokkeersystemen (ABS).
 
-**Critical section:** stuk code dat maar door Ã©Ã©n thread tegelijk mag gebruikt worden.
+- **firm real-time systemen:**
+  - deadlines mogen soms worden gemist, maar het resultaat is dan waardeloos en wordt weggeorpen.
+  - het systeem blijft functioneel, maar de output na een gemiste deadline is niet bruikbaar.
+  - voorbeelden: camerabeelden, sensordata, radarsystemen.
 
-**GPU voordeel:** massaal parallel â†’ grafiek, AI, video.
+| Type real-time systeem | Deadline missen | Gevolg                                      | Voorbeelden                      |
+| ---------------------- | --------------- | ------------------------------------------- | -------------------------------- |
+| **Hard real-time**     | ❌ Mag nooit     | Systeem faalt / gevaarlijk                  | Airbag, pacemaker, ABS           |
+| **Firm real-time**     | ⚠️ Mag soms     | Resultaat is waardeloos en wordt weggegooid | Camera frames, sensordata, radar |
+| **Soft real-time**     | ✅ Mag           | Kwaliteit daalt, maar systeem blijft werken | Video, audio, games              |
+
+</details>
+
+<details>
+<summary><strong>
+Wat zijn de verschillen tussen een Real Time Operating System (RTOS) en een General Purpose Operating System (GPOS)?
+</strong></summary>
+
+- **Real Time Operating System (RTOS):**
+  - ontworpen voor voorspelbare en tijdkritische taken.
+  - biedt gegarandeerde responstijden en minimale latentie.
+  - gebruikt in embedded systemen, industriële automatisering, medische apparatuur.
+  - voorbeelden: FreeRTOS, VxWorks, RTLinux.
+
+- **General Purpose Operating System (GPOS):**
+  - ontworpen voor algemene taken en gebruikersinteracties.
+  - biedt flexibiliteit en ondersteuning voor een breed scala aan toepassingen.
+  - kan minder voorspelbare responstijden hebben vanwege multitasking en resource sharing.
+  - voorbeelden: Windows, Linux, macOS.
+
+| Eigenschap      | **RTOS**                                            | **GPOS**                                      |
+| --------------- | --------------------------------------------------- | --------------------------------------------- |
+| Doel            | **Deterministisch gedrag** (timing is voorspelbaar) | **Gebruiksgemak en throughput**               |
+| Reactietijd     | **Gegarandeerd en voorspelbaar**                    | **Niet gegarandeerd, kan variëren**           |
+| Scheduling      | Gericht op **deadlines en prioriteiten**            | Gericht op **fairness en performance**        |
+| Deadline missen | Kan **kritisch** zijn (zeker in hard real-time)     | Geen probleem, alleen trager                  |
+| Preemptie       | Vaak **volledig preemptive met prioriteiten**       | Preemptive, maar niet deadline-gericht        |
+| Overhead        | **Laag en lichtgewicht**                            | **Zwaarder** (veel services, GUI, drivers, …) |
+| Toepassingen    | Embedded, industrie, automotive, medisch            | PC, laptop, smartphone, server                |
+| Voorbeelden     | FreeRTOS, VxWorks, Zephyr                           | Windows, Linux, macOS                         |
+
+RTOS = doet dingen op tijd en voorspelbaar
+
+GPOS = doet dingen zo snel en zo handig mogelijk, maar niet strikt op tijd
+
+</details>
+
+<details>
+<summary><strong>
+Hoe functioneert een mutex bij shared resources in een RTOS?
+
+- Verklaar het principe van thread preemption.
+
+- Verklaar het principe van priority inversion
+</strong></summary>
+
+- **Mutex (Mutual Exclusion):**
+  - een synchronisatiemechanisme dat wordt gebruikt om toegang tot gedeelde resources te beheren.
+  - wanneer een thread een mutex vergrendelt, kunnen andere threads niet dezelfde resource gebruiken totdat de mutex wordt vrijgegeven
+  - zorgt ervoor dat slechts één thread tegelijk toegang heeft tot de gedeelde resource.
+  - voorkomt race conditions en zorgt voor thread-safe toegang.
+
+- **Thread Preemption:**
+  - het proces waarbij een hogere prioriteit thread de CPU kan overnemen van een lagere prioriteit thread.
+  - in een preemptive RTOS kan de scheduler op elk moment beslissen om een lopende thread te onderbreken als een thread met hogere prioriteit klaar is om te draaien.
+  - zorgt ervoor dat kritieke taken snel kunnen worden uitgevoerd, wat essentieel is voor real-time prestaties.
+
+- **Priority Inversion:**
+  - een situatie waarin een hogere prioriteit thread wordt geblokkeerd doordat een lagere prioriteit thread een benodigde resource vasthoudt.
+  - kan leiden tot vertragingen en het missen van deadlines in een RTOS.
+  - oplossingen omvatten priority inheritance, waarbij de lagere prioriteit thread tijdelijk de hogere prioriteit krijgt om de resource sneller vrij te geven.
+
+</details>
+
+<details>
+<summary><strong>
+Hoe functioneert een semaphore bij shared resources in een RTOS en wat is een counting semaphore?
+</strong></summary>
+
+- deze is vergelijkbaar met een mutex maar kan door meerdere threads worden gebruikt.
+- kan worden vrijgegeven door een andere thread dan diegene die hem heeft verkregen.
+
+- **counting semaphore:**
+  - een type semaphore dat een teller bijhoudt die aangeeft hoeveel threads tegelijkertijd toegang kunnen krijgen tot een gedeelde resource.
+  - wanneer een thread de semaphore "neemt" (wait), wordt de teller verlaagd.
+  - wanneer een thread de semaphore "geeft" (signal), wordt de teller verhoogd.
+  - als de teller op nul staat, moeten threads wachten totdat de semaphore wordt vrijgegeven door een andere thread.
+  - wordt vaak gebruikt voor het beheren van toegang tot een pool van bronnen, zoals verbindingen of buffers.
+  - voorbeeld:
+    - als een counting semaphore is ingesteld op 3, kunnen maximaal 3 threads tegelijkertijd toegang krijgen tot de gedeelde resource.
+
+</details>
+
+<details>
+<summary><strong>
+Wat is een critical section en hoe garandeert men de ongestoorde verwerking van deze sectie?
+</strong></summary>
+
+- een critical section is een deel van de code waarin gedeelde resources worden benaderd of gemodificeerd.
+- om ongestoorde verwerking te garanderen, worden synchronisatiemechanismen zoals mutexen of semaforen gebruikt om ervoor te zorgen dat slechts één thread tegelijk toegang heeft tot de critical section.
+- dit voorkomt race conditions en zorgt voor gegevensintegriteit.
+- meestal wordt de critical section beschermd door het vergrendelen van een mutex voordat de code wordt uitgevoerd en het vrijgeven van de mutex nadat de code is voltooid.
+
+</details>
+
+<details>
+<summary><strong>
+Benoem de 3 manieren om een computer uit te breiden met een GPU.
+
+Waarom wordt de performantie van een computerarchitectuur verhoogd indien de architectuur wordt uitgebreid met een GPU?
+</strong></summary>
+
+- **Manieren om een computer uit te breiden met een GPU:**
+  1. **Dedicated GPU (Discrete GPU):**
+     - Een aparte grafische kaart die in een PCIe-slot op het moederbord wordt geplaatst.
+     - Voorbeelden: NVIDIA GeForce, AMD Radeon.
+  2. **Integrated GPU (Ingebouwde GPU):**
+     - Een GPU die is geïntegreerd in de CPU of het moederbord.
+     - Voorbeelden: Intel HD Graphics, AMD APU's.
+  3. **External GPU (eGPU):**
+     - Een externe behuizing met een GPU die via een snelle verbinding (zoals Thunderbolt) op de computer wordt aangesloten.
+     - Geschikt voor laptops of systemen zonder ruimte voor een interne GPU.
+
+- **Verhoging van performantie door een GPU:**
+  - GPU's zijn ontworpen voor parallelle verwerking en kunnen duizenden threads tegelijk uitvoeren.
+  - Dit maakt ze bijzonder geschikt voor taken zoals grafische rendering, wetenschappelijke berekeningen en machine learning, waar veel gelijktijdige berekeningen nodig zijn.
+  - Door de zware rekenlast van deze taken naar de GPU te verplaatsen, wordt de CPU ontlast, waardoor de algehele systeemprestaties verbeteren.
+  - Bovendien hebben GPU's gespecialiseerde hardware voor grafische bewerkingen, wat resulteert in snellere verwerkingstijden voor visuele taken.
+  - Dit leidt tot een soepelere gebruikerservaring bij grafisch intensieve toepassingen zoals gaming, videobewerking en 3D-modellering.
+  - Kortom, de toevoeging van een GPU verbetert de verwerkingskracht en efficiëntie van een computer aanzienlijk, vooral voor taken die baat hebben bij parallelle verwerking.
+
+</details>
+
+<details>
+<summary><strong>
+Geef enkele concrete voorbeelden van applicaties die sterk baat hebben bij het gebruik van een GPU.
+</strong></summary>
+
+- **Gaming:**
+  - Moderne videogames maken gebruik van geavanceerde grafische effecten en hoge resoluties, wat aanzienlijke rekenkracht vereist die door GPU's wordt geleverd.
+    - Voorbeelden:
+      - AAA-titels zoals "Cyberpunk 2077", "Call of Duty", "Assassin's Creed".
+
+- **Videobewerking en rendering:**
+  - Software voor videobewerking en 3D-rendering gebruikt GPU's om complexe bewerkingen en effecten snel uit te voeren.
+  - Voorbeelden:
+    - Adobe Premiere Pro, DaVinci Resolve, Blender.
+
+- **Wetenschappelijke simulaties:**
+  - Veel wetenschappelijke toepassingen, zoals klimaatmodellen en moleculaire dynamica, gebruiken GPU's voor het versnellen van berekeningen.
+  - Voorbeelden:
+    - GROMACS, ANSYS Fluent., MATLAB.
+
+- **Machine learning en AI:**
+  - GPU's worden veel gebruikt voor het trainen en uitvoeren van neurale netwerken vanwege hun vermogen om grote hoeveelheden matrixberekeningen parallel uit te voeren.
+  - Voorbeelden:
+    - TensorFlow, PyTorch, Caffe.
+
+</details>
 
 ---
 
-# Chapter 7 Processor and Memory Architectures
+## Chapter 7 Processor and Memory Architectures
 
-**Von Neumann:** data + code samen.
-**Harvard:** apart.
-**Modified:** mix.
+### Vragen
 
-**MMU + TLB:** versnellen virtueel â†’ fysiek adres.
+<details>
+<summary><strong>
+Bespreek de verschillen tussen een von Neumann, Harvard en modified Harvard architectuur
+</strong></summary>
+
+- **Von Neumann Architectuur:**
+  - Gebruikt één enkele geheugenruimte voor zowel instructies als data.
+  - CPU haalt zowel instructies als data uit hetzelfde geheugen, wat kan leiden tot een bottleneck (von Neumann bottleneck).
+  - Eenvoudiger ontwerp en goedkoper om te implementeren.
+  - Voorbeeld:
+    - traditionele computersystemen.
+
+- **Harvard Architectuur:**
+  - Heeft gescheiden geheugenruimtes voor instructies en data.
+  - CPU kan gelijktijdig instructies en data ophalen, wat de prestaties verbetert.
+  - Complexer ontwerp en duurder om te implementeren.
+  - Voorbeeld:
+    - digitale signaalprocessors (DSP's).
+
+- **Modified Harvard Architectuur:**
+  - Combineert elementen van zowel von Neumann als Harvard architecturen.
+  - Heeft gescheiden caches voor instructies en data, maar deelt hetzelfde hoofdgeheugen.
+  - Biedt de voordelen van gelijktijdige toegang tot instructies en data, terwijl het ontwerp eenvoudiger blijft dan een volledige Harvard architectuur.
+  - Voorbeeld:
+    - moderne CPU's met gescheiden L1 caches voor instructies en data.
+
+![architectures](./assets/neuman%20vs%20harvard%20or%20combo.png)
+
+</details>
+
+<details>
+<summary><strong>
+Licht volgende “von Neumann” security issues bondig toe:
+
+- self-modifying code
+- buffer overflow
+
+</strong></summary>
+
+- **Self-modifying code:**
+
+  - code die zichzelf tijdens de uitvoering wijzigt.
+
+    - kan leiden tot onvoorspelbaar gedrag en beveiligingsrisico's, omdat het moeilijk is om te controleren wat de code doet.
+
+    - kan worden misbruikt door aanvallers om kwaadaardige code in te voeren of bestaande code te veranderen.
+
+    - voorbeelden:
+
+      - virussen en malware die zichzelf aanpassen om detectie te vermijden.
+
+      - legitieme toepassingen die dynamisch code genereren voor optimalisatie.
+
+- **buffer overflow:**
+
+  - een beveiligingsfout waarbij een programma meer data in een buffer schrijft dan deze kan bevatten.
+
+    - kan leiden tot het overschrijven van aangrenzende geheugenlocaties, wat kan resulteren in crashes, gegevenscorruptie of het uitvoeren van kwaadaardige code.
+
+    - vaak gebruikt door aanvallers om controle over een systeem te krijgen door schadelijke code in het overschreven geheugen te plaatsen.
+
+    - voorbeelden:
+
+      - stack-based buffer overflows waarbij de return-adres van een functie wordt overschreven.
+
+      - heap-based buffer overflows die leiden tot geheugenmanipulatie.
+
+</details>
+
+<details>
+<summary><strong>
+Hoe werkt het DOS terminate and stay resident program concept (TSR) voor multiprogramming?
+</strong></summary>
+
+- **Terminate and Stay Resident (TSR) Programs:**
+
+  - een techniek die werd gebruikt in oudere besturingssystemen zoals MS-DOS om programma's in het geheugen te houden nadat ze waren beëindigd.
+
+  - TSR-programma's laden zichzelf in het geheugen en blijven actief op de achtergrond, waardoor ze snel kunnen worden herstart zonder opnieuw te hoeven laden vanaf de schijf.
+
+  - dit maakte het mogelijk om meerdere programma's tegelijkertijd te laten draaien, wat een vorm van multiprogramming mogelijk maakte in een enkelvoudig taakbesturingssysteem.
+
+  - voorbeelden van TSR-programma's zijn muisdrivers, klemborden en kleine hulpprogramma's die altijd beschikbaar moeten zijn.
+
+</details>
+
+<details>
+<summary><strong>
+Bespreek hoe het 32-bit virtueel adres $00402003 wordt omgezet in een fysiek adres, d.m.v. het Windows NT
+pagineringsmodel, dat gebruikt maakt van CR3, een page table directory, page table en page offset
+</strong></summary>
+
+- **Inleiding:**
+  - In het Windows NT pagineringsmodel wordt virtueel geheugen vertaald naar fysiek geheugen via een hiërarchische structuur bestaande uit een Page Directory en Page Tables.
+  - Het proces begint met het CR3-register, dat het fysieke adres van de Page Directory Base (PDB) bevat.
+
+- **Virtueel Adres Opdeling:**
+  - Het 32-bit virtuele adres $00402003 wordt opgesplitst in drie delen:
+    - Page Directory Index (PDI): bits 22-31
+    - Page Table Index (PTI): bits 12-21
+    - Page Offset: bits 0-11
+
+- hex $00402003 = bin 0000 0000 0100 0000 0010 0000 0000 0011
+
+- **Stap 1: CR3 Register**
+  - Het CR3-register bevat het fysieke adres van de Page Directory Base (PDB), die de start is van de pagineringstructuur.
+  - In dit geval verwijst CR3 naar de Page Directory die nodig is voor de vertaling.
+  
+- **Stap 2: Page Directory Index (PDI)**
+  - Het virtuele adres $00402003 wordt opgesplitst in verschillende delen.
+  - De eerste 10 bits (bits 22-31) worden gebruikt als de Page Directory Index (PDI).
+  - Voor $00402003 is de PDI 0x0010 (16 in decimaal).
+  - Deze index wordt gebruikt om de juiste Page Directory Entry (PDE) te vinden in de Page Directory.
+
+- **Stap 3: Page Table Index (PTI)**
+  - De volgende 10 bits (bits 12-21) worden gebruikt als de Page Table Index (PTI).
+  - Voor $00402003 is de PTI 0x0002 (2 in decimaal).
+  - Deze index wordt gebruikt om de juiste Page Table Entry (PTE) te vinden in de Page Table die door de PDE wordt aangegeven.
+
+- **Stap 4: Page Offset**
+  - De laatste 12 bits (bits 0-11) van het virtuele adres worden gebruikt als de Page Offset.
+  - Voor $00402003 is de Page Offset 0x0003 (3 in decimaal).
+  - Dit offset wordt toegevoegd aan het fysieke adres dat door de PTE wordt aangegeven om het uiteindelijke fysieke adres te verkrijgen.
+
+  - **Stap 5: Fysiek Adres Berekenen**
+  - Nadat de juiste PDE en PTE zijn gevonden, wordt het fysieke adres berekend door het basisadres van de pagina (verkregen uit de PTE) te combineren met de Page Offset.
+  - Het uiteindelijke fysieke adres is dus het basisadres van de pagina plus de offset 0x0003.
+  - Dit resulteert in het fysieke adres dat overeenkomt met het virtuele adres $00402003.
+
+- **Samenvatting:**
+  - Het virtuele adres $00402003 wordt vertaald naar een fysiek adres door gebruik te maken van het CR3-register, de Page Directory, de Page Table en de Page Offset volgens het Windows NT pagineringsmodel.
+  - Elke stap in het proces zorgt ervoor dat het juiste fysieke geheugenadres wordt gevonden voor de gegeven virtuele adresruimte.
+  - Dit mechanisme maakt efficiënte geheugenbeheer en bescherming mogelijk in moderne besturingssystemen.
+
+- dit zorgt ervoor dat je programma's meer geheugen kunnen gebruiken dan fysiek beschikbaar is, en dat elk programma zijn eigen virtuele adresruimte heeft, wat de veiligheid en stabiliteit van het systeem verhoogt.
+
+![paged virtual memory](./assets/paged%20virtual%20mem.png)
+
+</details>
+
+<details>
+<summary><strong>
+Bespreek hoe de omzetting van virtuele adressen naar fysieke adressen wordt versneld door gebruik te maken van
+een Memory Management Unit (MMU) en een Translation Lookaside Buffer (TLB).
+</strong></summary>
+
+- **Memory Management Unit (MMU):**
+
+  - een hardwarecomponent die verantwoordelijk is voor het vertalen van virtuele adressen naar fysieke adressen.
+  - beheert de paginering en segmentatie van geheugen, waardoor elk proces zijn eigen virtuele adresruimte kan hebben.
+  - zorgt voor geheugenbescherming door te controleren of een proces toegang heeft tot bepaalde geheugenlocaties.
+  - verantwoordelijk voor het bijhouden van de paginatabellen die de vertalingen bevatten.
+  - werkt samen met de CPU om geheugenadressen efficiënt te beheren.
+
+- **Translation Lookaside Buffer (TLB):**
+
+  - een kleine, snelle cache binnen de MMU die recent gebruikte vertalingen van virtuele naar fysieke adressen opslaat.
+  - wanneer de CPU een virtueel adres opvraagt, controleert de MMU eerst de TLB om te zien of de vertaling al beschikbaar is.
+  - als de vertaling in de TLB wordt gevonden (TLB hit), kan het fysieke adres snel worden opgehaald zonder de paginatabellen te hoeven raadplegen.
+  - als de vertaling niet in de TLB wordt gevonden (TLB miss), moet de MMU de paginatabellen raadplegen om de vertaling te vinden, wat meer tijd kost.
+  - na het ophalen van de vertaling uit de paginatabellen, wordt deze toegevoegd aan de TLB voor toekomstige snelle toegang.
+
+- **Versnelling van Adresomzetting:**
+
+als er een locatie word opgeraagd zal de mmu eerst in de tlb kijken of die er al in staat, als die er in staat (tlb hit) kan die snel het fysieke adres teruggeven, als die er niet in staat (tlb miss) moet die de page tables gaan opzoeken wat veel trager is. dus hoe meer hits hoe sneller het systeem.
+
+![MMU and TLB](./assets/MMU%20en%20TLB.png)
+</details>
 
 ---
 
