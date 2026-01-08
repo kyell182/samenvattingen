@@ -2,7 +2,7 @@
 
 ---
 
-## Chapter 1 â€“ Introducing Computer Architecture
+## Chapter 1  Introducing Computer Architecture
 
 ### Vragen
 
@@ -59,7 +59,7 @@ Wat betekent ENIAC en bespreek bondig de Von Neumann architectuur?
   
   - **Instructiecyclus:** de CPU voert een cyclus uit van ophalen, decoderen en uitvoeren van instructies.
   
-  - **SeriÃ«le verwerking:** instructies worden sequentieel uitgevoerd, wat kan leiden tot bottlenecks (Von Neumann bottleneck).
+  - **Seriele verwerking:** instructies worden sequentieel uitgevoerd, wat kan leiden tot bottlenecks (Von Neumann bottleneck).
 
 ![von_neumann_architecture](./assets/neumann%20architectuur.png)
 
@@ -103,7 +103,7 @@ Ondanks de 16-bits architectuur van de registers, is de adresseerbare geheugenru
   
 - het offset is ook een 16-bit waarde die wordt toegevoegd aan het basisadres van het segment om het uiteindelijke fysieke adres te bepalen.
   
-- hierdoor kan het fysieke adres worden berekend als: fysieke adres = (segment Ã— 16) + offset.
+- hierdoor kan het fysieke adres worden berekend als: fysieke adres = (segment 0 — 16) + offset.
   
 - aangezien zowel het segment als het offset 16 bits zijn, resulteert dit in een maximaal fysiek adres van 20 bits (16 + 4), wat overeenkomt met 2^20 = 1 MB aan adresseerbaar geheugen.
 
@@ -117,13 +117,13 @@ Omschrijf de Wet Van Moore.
 
  Bespreek enkele limieten die de linearisatie van deze wet in de toekomst niet meer ondersteunen.
 
-- Verklaar de afkortingen CPU en GPU en verklaar enkele essentiÃ«le verschillen tussen de werking van een CPU en een GPU.
+- Verklaar de afkortingen CPU en GPU en verklaar enkele essentiele verschillen tussen de werking van een CPU en een GPU.
 
 </strong></summary>
 
 - **Wet van Moore:**
 
-  - het aantal transistors op een geÃ¯ntegreerde schakeling verdubbelt ongeveer elke twee jaar, wat leidt tot een exponentiÃ«le groei in rekenkracht en een afname van de kosten per transistor.
+  - het aantal transistors op een geïntegreerde schakeling verdubbelt ongeveer elke twee jaar, wat leidt tot een exponentiële groei in rekenkracht en een afname van de kosten per transistor.
 
 - **Limieten van de Wet van Moore:**
   
@@ -142,7 +142,7 @@ Omschrijf de Wet Van Moore.
 
 <details>
 <summary><strong>
-Verklaar de afkortingen CPU en GPU en verklaar enkele essentiÃ«le verschillen tussen de werking van een CPU en een GPU.
+Verklaar de afkortingen CPU en GPU en verklaar enkele essentiele verschillen tussen de werking van een CPU en een GPU.
 </strong></summary>
 
 **CPU (Central Processing Unit):**
@@ -451,7 +451,7 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
 
 ---
 
-# Chapter 6 â€“ Specialized Computing Domains
+# Chapter 6 Specialized Computing Domains
 
 ## Antwoorden in het kort
 
@@ -470,7 +470,7 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
 
 ---
 
-# Chapter 7 â€“ Processor and Memory Architectures
+# Chapter 7 Processor and Memory Architectures
 
 **Von Neumann:** data + code samen.
 **Harvard:** apart.
@@ -480,7 +480,7 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
 
 ---
 
-# Chapter 8 â€“ Performance-Enhancing Techniques
+# Chapter 8 Performance-Enhancing Techniques
 
 **Cache hit/miss:** zit data in cache of niet.
 
@@ -496,7 +496,7 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
 
 ---
 
-# Chapter 9 â€“ Specialized Processor Extensions
+# Chapter 9 Specialized Processor Extensions
 
 **Interrupt vs exception:** interrupt = extern, exception = intern.
 
@@ -511,5 +511,3 @@ de checksumbyte) wordt gegeven als invoer in het X-register.
 ---
 
 Einde samenvatting.
-
-
