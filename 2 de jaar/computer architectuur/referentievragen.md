@@ -1058,19 +1058,358 @@ als er een locatie word opgeraagd zal de mmu eerst in de tlb kijken of die er al
 
 ---
 
-# Chapter 8 Performance-Enhancing Techniques
+## Chapter 8 Performance-Enhancing Techniques
 
-**Cache hit/miss:** zit data in cache of niet.
+### Vragen
 
-**Locality:** data dichtbij in tijd en plaats.
+<details>
+<summary><strong>
+Hoe bepaalt een cache controller een cache hit of een cache miss?
+</strong></summary>
 
-**Direct / Set / Full associative:** verschillende manieren om cache te koppelen.
+- **Cache Controller:**
 
-**Write-through / write-back:** direct naar RAM of later.
+  - een hardwarecomponent die het beheer van de cache regelt.
+  - bepaalt of de gevraagde data zich in de cache bevindt (cache hit) of niet (cache miss).
+  - gebruikt verschillende algoritmen en methoden om deze beslissingen te nemen.
+  - houdt bij welke data recentelijk is gebruikt en waar deze zich bevindt in de cache.
 
-**Pipeline:** meerdere instructies tegelijk in verschillende fases.
+- **Cache Hit:**
 
-**Out-of-order:** CPU herschikt instructies voor snelheid.
+  - treedt op wanneer de gevraagde data zich al in de cache bevindt.
+  - de cache controller vergelijkt het virtuele of fysieke adres van de gevraagde data met de adressen die in de cache zijn opgeslagen.
+  - als er een match is, wordt de data snel opgehaald uit de cache, wat de toegangstijd aanzienlijk verkort.
+  - dit verbetert de algehele systeemprestaties, omdat toegang tot cache veel sneller is dan toegang tot hoofdgeheugen (RAM).
+
+- **Cache Miss:**
+
+  - treedt op wanneer de gevraagde data niet in de cache aanwezig is.
+  - de cache controller voert dezelfde vergelijking uit als bij een cache hit, maar vindt geen overeenkomend adres in de cache.
+  - in dit geval moet de data worden opgehaald uit het hoofdgeheugen (RAM), wat meer tijd kost.
+  - nadat de data is opgehaald, wordt deze vaak toegevoegd aan de cache voor toekomstige toegang, afhankelijk van het gebruikte cachebeleid (bijv. LRU, FIFO).
+
+![cache hit miss](./assets/hit%20or%20miss.png)
+
+</details>
+
+<details>
+<summary><strong>
+Een cache functioneert volgens het locality of reference principe. Verklaar dit.
+</strong></summary>
+
+- **Locality of Reference:**
+
+  - een principe dat stelt dat programma's de neiging hebben om dezelfde set van geheugenlocaties herhaaldelijk te gebruiken binnen korte tijdsintervallen.
+  - er zijn twee hoofdtypen localiteit:
+    1. **Temporal Locality:** als een geheugenlocatie recentelijk is gebruikt, is de kans groot dat deze binnenkort opnieuw zal worden gebruikt.
+    2. **Spatial Locality:** als een geheugenlocatie wordt gebruikt, is de kans groot dat nabijgelegen geheugenlocaties ook binnenkort zullen worden gebruikt.
+  - caches maken gebruik van dit principe door recent gebruikte data en data die zich in de buurt bevindt op te slaan, waardoor de kans op cache hits toeneemt en de systeemprestaties verbeteren.
+
+</details>
+
+<details>
+<summary><strong>
+Bespreek de architectuur en werking van volgende 3 cache-architecturen:
+
+- Direct-mapped cache
+- Set-associative cache
+- Full-associative cache
+
+</strong></summary>
+
+![cache types](./assets/sooorten%20cache.png)
+
+<sub>© Sanjay Basu</sub>
+
+- **Direct-Mapped Cache:**
+
+  - elke geheugenlocatie wordt toegewezen aan precies één cachelijn.
+  - het virtuele of fysieke adres wordt opgedeeld in drie delen: tag, index en offset.
+  - de index bepaalt welke cachelijn wordt gebruikt, terwijl de tag wordt gebruikt om te controleren of de data in die lijn overeenkomt met het gevraagde adres.
+  - eenvoudig en snel, maar kan leiden tot veel conflicten als meerdere geheugenlocaties naar dezelfde cachelijn worden toegewezen.
+
+- **Set-Associative Cache:**
+
+  - combineert elementen van direct-mapped en full-associative caches.
+  - de cache is verdeeld in meerdere sets, waarbij elke set meerdere cachelijnen bevat (bijv. 2-way, 4-way).
+  - het virtuele of fysieke adres wordt opgedeeld in tag, set index en offset.
+  - de set index bepaalt welke set wordt gebruikt, en binnen die set kan de data in een van de beschikbare lijnen worden opgeslagen.
+  - biedt een betere balans tussen snelheid en flexibiliteit dan direct-mapped caches.
+
+- **Full-Associative Cache:**
+
+  - elke geheugenlocatie kan in elke cachelijn worden opgeslagen.
+  - het virtuele of fysieke adres wordt opgedeeld in tag en offset, zonder een specifieke index.
+  - bij een cache hit controleert de cache controller alle lijnen om te zien of de gevraagde data aanwezig is.
+  - zeer flexibel en vermindert conflicten, maar is complexer en langzamer vanwege de noodzaak om alle lijnen te doorzoeken.
+
+| Eigenschap                         | **Direct-mapped**             | **Set-associative**                  | **Fully-associative**                    |
+| ---------------------------------- | ----------------------------- | ------------------------------------ | ---------------------------------------- |
+| Waar mag een geheugenblok naartoe? | Naar **exact 1 vaste plaats** | Naar **1 van N plaatsen in een set** | Naar **eender welke plaats** in de cache |
+| Aantal mogelijke plaatsen per blok | 1                             | N (bv 2-way, 4-way, 8-way)           | Alle lijnen                              |
+| Index bits nodig?                  | Ja                            | Ja (set index)                       | Nee                                      |
+| Vergelijkingen nodig               | 1                             | N                                    | Cache_size (veel!)                       |
+| Hardware complexiteit              | ⭐ Zeer simpel                | ⭐⭐ Medium                          | ⭐⭐⭐ Zeer complex                      |
+| Snelheid                           | ⭐ Zeer snel                  | ⭐⭐ Snel                            | ⭐ Langzamer                             |
+| Kans op cache conflicts            | ❌ Hoog                       | ⚠️ Gemiddeld                         | ✅ Zeer klein                            |
+| Kost (hardware)                    | 💰 Goedkoop                   | 💰💰 Medium                          | 💰💰💰 Duur                              |
+| Wordt in praktijk gebruikt?        | Ja                            | ✅ Meest gebruikt                    | Zelden (te duur)                         |
+
+</details>
+
+<details>
+<summary><strong>
+Bespreek volgende begrippen:
+
+- cache line
+- Split cache
+- write-through cache
+- write-back cache
+- Write-behind cache
+</strong></summary>
+
+- **Cache Line:**
+
+  - de kleinste eenheid van data die in de cache wordt opgeslagen.
+  - meestal bestaat een cache line uit meerdere bytes (bijv. 32, 64, of 128 bytes).
+  - wanneer data uit het hoofdgeheugen wordt geladen in de cache, wordt een hele cache line opgehaald, wat profiteert van spatial locality.
+  - elke cache line heeft een tag, valid bit en soms dirty bit om de status van de data bij te houden.
+  - helpt bij het efficiënt beheren van geheugen en het verminderen van toegangstijden.
+
+- **Split Cache:**
+
+  - een cache-architectuur waarbij de cache is opgesplitst in twee afzonderlijke caches: één voor instructies (Instruction Cache) en één voor data (Data Cache).
+  - verbetert de prestaties door gelijktijdige toegang tot zowel instructies als data mogelijk te maken.
+  - maakt gebruik van het principe van locality of reference, aangezien instructies en data vaak verschillende toegangspatronen hebben.
+  - veel gebruikt in moderne CPU's om de efficiëntie te verhogen.
+
+- **Write-Through Cache:**
+
+  - een cache-schrijftechniek waarbij elke keer dat data in de cache wordt geschreven, deze ook onmiddellijk naar het hoofdgeheugen wordt geschreven.
+  - zorgt voor gegevensconsistentie tussen de cache en het hoofdgeheugen.
+  - kan leiden tot hogere latentie bij schrijfbewerkingen, omdat elke schrijfoperatie twee keer moet worden uitgevoerd (in de cache en in het geheugen).
+  - eenvoudig te implementeren en te beheren.
+
+- **Write-Back Cache:**
+
+  - een cache-schrijftechniek waarbij data alleen naar het hoofdgeheugen wordt geschreven wanneer de cachelijn wordt vervangen of verwijderd.
+  - verbetert de prestaties door het aantal schrijfbewerkingen naar het hoofdgeheugen te verminderen.
+  - gebruikt een "dirty bit" om bij te houden welke cachelijnen zijn gewijzigd en nog niet naar het geheugen zijn geschreven.
+  - kan leiden tot complexere coherentieproblemen, vooral in systemen met meerdere caches.
+
+- **Write-Behind Cache:**
+
+  - een geavanceerde cache-schrijftechniek waarbij schrijfbewerkingen naar het hoofdgeheugen worden uitgesteld en in batches worden uitgevoerd.
+  - verbetert de systeemprestaties door meerdere schrijfbewerkingen te groeperen, waardoor de overhead van individuele schrijfbewerkingen wordt verminderd.
+  - kan leiden tot vertragingen bij het schrijven van data naar het geheugen, wat mogelijk problemen kan veroorzaken bij systemen die onmiddellijke consistentie vereisen.
+  - minder gebruikelijk dan write-through en write-back caches vanwege de complexiteit en potentiële coherentieproblemen.
+
+</details>
+
+<details>
+<summary><strong>
+Wat is het cache coherentie probleem bij meerdere processor cores die een shared main memory delen?
+</strong></summary>
+
+- **Cache Coherentie Probleem:**
+
+  - treedt op in systemen met meerdere processor cores die elk hun eigen cache hebben, maar een gedeeld hoofdgeheugen gebruiken.
+  - wanneer één core een waarde in zijn cache wijzigt, kunnen andere cores nog steeds verouderde waarden in hun caches hebben.
+  - dit leidt tot inconsistenties en fouten, omdat verschillende cores verschillende versies van dezelfde data kunnen zien.
+  - om dit probleem op te lossen, worden cache coherentie protocollen gebruikt, zoals MESI (Modified, Exclusive, Shared, Invalid), die zorgen voor synchronisatie tussen caches en het hoofdgeheugen.
+  - deze protocollen zorgen ervoor dat wanneer een core een waarde wijzigt, andere cores op de hoogte worden gebracht en hun caches worden bijgewerkt of ongeldig gemaakt.
+
+</details>
+
+<details>
+<summary><strong>
+Hoe werkt een snoopy cache-coherence protocol?
+</strong></summary>
+
+- **Snoopy Cache-Coherence Protocol:**
+
+  - een methode om cache coherentie te handhaven in systemen met meerdere processor cores die een gedeeld hoofdgeheugen gebruiken.
+  - elke core "luistert" (snoopt) op het busverkeer om te detecteren wanneer andere cores toegang hebben tot gedeelde data.
+  - wanneer een core een cachelijn wijzigt, zendt het een bericht uit op de bus om andere cores te informeren over de wijziging.
+  - andere cores die dezelfde cachelijn in hun cache hebben, kunnen dan hun kopieën ongeldig maken of bijwerken, afhankelijk van het protocol.
+  - dit zorgt ervoor dat alle cores consistente en up-to-date gegevens hebben, waardoor het cache coherentie probleem wordt opgelost.
+  - voorbeelden van snoopy protocollen zijn MESI, MSI en MOESI, die verschillende staten en regels definiëren voor het beheren van cachelijnen.
+
+</details>
+
+<details>
+<summary><strong>
+Waarom verhoogt instruction pipelining de performantie van een microprocessor?
+</strong></summary>
+
+- **Instruction Pipelining:**
+
+  - een techniek waarbij de uitvoering van instructies wordt opgesplitst in meerdere fasen, waarbij elke fase tegelijkertijd wordt uitgevoerd voor verschillende instructies.
+  - vergelijkbaar met een assemblagelijn in een fabriek, waar verschillende onderdelen van een product tegelijkertijd worden verwerkt.
+  - typische fasen in een pipeline zijn: fetch, decode, execute, memory access en write-back.
+  - door meerdere instructies gelijktijdig in verschillende fasen te verwerken, wordt de doorvoer van de processor verhoogd, wat resulteert in een hogere prestaties.
+  - vermindert de wachttijd voor elke individuele instructie, omdat de volgende instructie al kan beginnen terwijl de vorige nog bezig is.
+  - leidt tot een efficiënter gebruik van de CPU-bronnen en verhoogt de algehele verwerkingssnelheid van programma's.
+
+![instruction pipelining](./assets/instruction%20piplining%201.png)
+![instruction%20pipelining%202](./assets/instruction%20piplining%202.png)
+
+</details>
+
+<details>
+<summary><strong>
+Wat zijn de verschillen tussen een superscalar en een superpipelined processor architectuur?
+</strong></summary>
+
+- **Superscalar Architectuur:**
+
+  - een processorarchitectuur die meerdere instructies per klokcyclus kan uitvoeren door gebruik te maken van meerdere functionele eenheden.
+  - de processor kan meerdere instructies parallel verwerken, wat de doorvoer verhoogt.
+  - vereist complexe hardware voor het plannen en toewijzen van instructies aan de beschikbare functionele eenheden.
+  - voorbeelden: Intel Pentium, AMD Ryzen.
+
+- **Superpipelined Architectuur:**
+
+  - een processorarchitectuur die de pijplijn verder opsplitst in meer fasen dan een traditionele pipelijn.
+  - hierdoor kunnen instructies sneller door de pijplijn bewegen, wat de klokfrequentie verhoogt.
+  - elke fase van de pijplijn is korter, waardoor de latentie per instructie wordt verminderd.
+  - vereist geavanceerde technieken om pipeline stalls en hazards te beheren.
+  - voorbeelden: sommige RISC-processors zoals ARM Cortex-A series.
+
+![Superscalar vs Superpipelined](./assets/super%20scalar%20vs%20multipiplining.webp)
+
+</details>
+
+<details>
+<summary><strong>
+Wat is het principe van Out-of-Order execution? Hoe werkt dit?
+</strong></summary>
+
+- **Out-of-Order Execution:**
+
+  - een techniek waarbij instructies niet noodzakelijkerwijs in de volgorde worden uitgevoerd waarin ze in het programma voorkomen.
+  - de processor analyseert de afhankelijkheden tussen instructies en voert ze uit zodra de benodigde bronnen beschikbaar zijn, ongeacht hun oorspronkelijke volgorde.
+  - dit maximaliseert het gebruik van de CPU-bronnen en vermindert wachttijden veroorzaakt door data hazards of resource conflicts.
+  - vereist complexe hardware voor het bijhouden van de status van instructies, het beheren van afhankelijkheden en het herordenen van resultaten.
+  - na uitvoering worden de resultaten in de juiste volgorde teruggeschreven naar het registerbestand om de programmatische volgorde te behouden.
+
+![Out-of-Order Execution](./assets/hoe%20processors%20sneller%20worden.png)
+
+</details>
+
+<details>
+<summary><strong>
+Wat is het verschil tussen static en dynamic branch prediction?
+</strong></summary>
+
+- **Static Branch Prediction:**
+
+  - een eenvoudige vorm van branch prediction waarbij de voorspelling wordt gemaakt op basis van vaste regels of heuristieken.
+  - voorbeelden van statische voorspellingen zijn:
+    - altijd voorspellen dat een tak wordt genomen (taken).
+    - altijd voorspellen dat een tak niet wordt genomen (not taken).
+    - voorspellen op basis van de richting van de tak (bijv. naar voren of naar achteren).
+  - minder complex en vereist geen extra hardware, maar kan minder nauwkeurig zijn, vooral bij onvoorspelbare takken.
+
+- **Dynamic Branch Prediction:**
+
+- een geavanceerdere vorm van branch prediction die gebruik maakt van runtime-informatie om voorspellingen te maken.
+  - maakt gebruik van hardware zoals branch history tables (BHT) en pattern history tables (PHT) om de geschiedenis van takken bij te houden en patronen te herkennen.
+  - kan adaptief zijn, waarbij de voorspellingen worden aangepast op basis van eerdere prestaties.
+  - doorgaans nauwkeuriger dan statische voorspellingen, wat leidt tot minder mispredicities en betere prestaties.
+
+| Eigenschap                     | Static Branch Prediction | Dynamic Branch Prediction |
+| ------------------------------ | ------------------------ | ------------------------- |
+| Gebruikt vaste regels          | Ja                       | Nee                       |
+| Leert uit verleden             | Nee                      | Ja                        |
+| Gebruikt historiek             | Nee                      | Ja                        |
+| Past zich aan aan programma    | Nee                      | Ja                        |
+| Extra hardware nodig           | Weinig                   | Meer                      |
+| Complexiteit                   | Laag                     | Hoger                     |
+| Nauwkeurigheid                 | Lager                    | Hoger                     |
+| Wordt beter tijdens uitvoering | Nee                      | Ja                        |
+| Gebruikt in moderne CPU’s      | Zelden / eenvoudig       | Bijna altijd              |
+| Voorbeeld                      | “Altijd not taken”       | 2-bit predictor, BHT, BTB |
+
+</details>
+
+<details>
+<summary><strong>
+Verklaar het principe van simultaneous multithreading?
+</strong></summary>
+
+- **Simultaneous Multithreading (SMT):**
+
+  - een techniek waarbij meerdere threads gelijktijdig worden uitgevoerd op een enkele fysieke processorcore.
+  - maakt gebruik van de beschikbare resources van de core door instructies van verschillende threads parallel te verwerken.
+  - verhoogt de efficiëntie van de CPU door idle-tijd te verminderen en de benutting van functionele eenheden te maximaliseren.
+  - vereist complexe hardware om de context van meerdere threads bij te houden en om conflicten tussen threads te beheren.
+  - voorbeelden van SMT zijn Intel's Hyper-Threading Technology, waarbij elke fysieke core twee logische cores kan ondersteunen.
+
+</details>
+
+<details>
+<summary><strong>
+Verklaar volgende begrippen voor processor instruction verwerking:
+
+- SISD
+- SIMD
+- MISD
+- MIMD
+
+</strong></summary>
+
+- **SISD (Single Instruction Single Data):**
+
+  - een architectuur waarbij één enkele instructie wordt uitgevoerd op één enkele gegevensstroom.
+  - typisch voor traditionele, niet-parallelle computersystemen.
+  - voorbeeld: een standaard CPU die één instructie per klokcyclus uitvoert.
+
+- **SIMD (Single Instruction Multiple Data):**
+
+  - een architectuur waarbij één enkele instructie wordt uitgevoerd op meerdere gegevensstromen tegelijkertijd.
+  - gebruikt voor parallelle verwerking van grote datasets, zoals in grafische verwerking en wetenschappelijke berekeningen.
+  - voorbeeld: vectorprocessors en GPU's die dezelfde bewerking op meerdere pixels of elementen uitvoeren.
+
+- **MISD (Multiple Instruction Single Data):**
+
+  - een architectuur waarbij meerdere instructies worden uitgevoerd op één enkele gegevensstroom.
+  - zelden gebruikt in praktijk, maar kan nuttig zijn voor fouttolerante systemen waar dezelfde data door verschillende algoritmen wordt verwerkt.
+  - voorbeeld: sommige redundante systemen voor kritieke toepassingen.
+
+- **MIMD (Multiple Instruction Multiple Data):**
+
+  - een architectuur waarbij meerdere instructies worden uitgevoerd op meerdere gegevensstromen tegelijkertijd.
+  - typisch voor moderne multiprocessorsystemen en gedistribueerde systemen.
+  - voorbeeld: clusters van computers die verschillende taken uitvoeren op verschillende datasets.
+
+![stream processing](./assets/stream%20processing%20architctures.png)
+
+</details>
+
+<details>
+<summary><strong>
+Verklaar volgende begrippen:
+
+- SSE
+- AVX
+
+</strong></summary>
+
+- **SSE (Streaming SIMD Extensions):**
+
+  - een set van instructies die SIMD-functionaliteit biedt voor x86-processors.
+  - ontworpen om de prestaties te verbeteren bij het verwerken van vector- en matrixgegevens, zoals in multimedia- en wetenschappelijke toepassingen.
+  - introduceerde nieuwe registers (XMM-registers) die 128-bits breed zijn, waardoor meerdere gegevenswaarden tegelijk kunnen worden verwerkt.
+  - voorbeelden van SSE-instructies zijn: addps (add packed single-precision floating-point values), mulps (multiply packed single-precision floating-point values).
+
+- **AVX (Advanced Vector Extensions):**
+- een uitbreiding van de SIMD-instructieset die verder gaat dan SSE.
+  - biedt bredere vectorregisters (YMM-registers) die 256-bits breed zijn, waardoor nog meer gegevenswaarden tegelijk kunnen worden verwerkt.
+  - ontworpen om de prestaties te verbeteren bij intensieve berekeningen, zoals in wetenschappelijke simulaties, cryptografie en multimediaverwerking.
+  - voorbeelden van AVX-instructies zijn: vaddps (vector add packed single-precision floating-point values), vmulps (vector multiply packed single-precision floating-point values).
+
+</details>
 
 ---
 
