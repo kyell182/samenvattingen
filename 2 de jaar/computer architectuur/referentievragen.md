@@ -1413,18 +1413,182 @@ Verklaar volgende begrippen:
 
 ---
 
-# Chapter 9 Specialized Processor Extensions
+## Chapter 9 Specialized Processor Extensions
 
-**Interrupt vs exception:** interrupt = extern, exception = intern.
+### Vragen
 
-**Privilege modes:** kernel / user.
+<details>
+<summary><strong>
+Wat is het verschil tussen een interrupt en een exception? Hoe worden beiden verwerkt?
+</strong></summary>
 
-**IEEE754:** sign, exponent (biased), mantissa.
+- **interrupt**:
 
-**DVFS:** Dynamic Voltage and Frequency Scaling. P â‰ˆ C Â· VÂ² Â· f
+  - extern signaal van hardware (I/O device) dat aandacht vraagt van CPU.
+  - CPU pauzeert huidige taak, slaat context op, voert interrupt service routine (ISR) uit, herstelt context en hervat taak.
 
-**TPM:** beveiligde chip voor sleutels en integriteit.
+- **exception**:
 
----
+  - intern signaal van CPU bij fout of speciale gebeurtenis (bv deling door nul, overflow, invalid opcode).
+  - CPU pauzeert huidige taak, slaat context op, voert exception handler uit, herstelt context en hervat taak of beëindigt programma.
 
-Einde samenvatting.
+</details>
+
+<details>
+<summary><strong>
+Binnen de x86 computer archtecturen worden in Windows en Linux twee privileged processor modes ondersteund.
+Welke zijn deze modes en wat betekent dit concreet voor de gebruiker (administrator, user)?
+</strong></summary>
+
+- **Kernel Mode (Privileged Mode):**
+
+  - volledige toegang tot alle systeembronnen en hardware.
+  - kan alle instructies uitvoeren, inclusief die welke de hardware direct beheren.
+  - gebruikt door het besturingssysteem en kritieke systeemprocessen.
+  - gebruikers met administratorrechten kunnen code uitvoeren in deze modus.
+
+- **User Mode (Unprivileged Mode):**
+
+  - beperkte toegang tot systeembronnen en hardware.
+  - kan alleen een subset van instructies uitvoeren, geen directe hardwaretoegang.
+  - gebruikt door gewone applicaties en processen.
+  - gebruikers zonder administratorrechten werken in deze modus.
+
+</details>
+
+<details>
+<summary><strong>
+Hoe worden floating point getallen volgens de IEEE-754 standaard voorgesteld? Waarom is de exponent biased?
+</strong></summary>
+
+- **IEEE-754 Standaard:**
+
+  - floating point getallen worden voorgesteld in drie delen: tekenbit, exponent en mantisse (ook wel significand genoemd).
+  - de algemene vorm is: (-1)^sign * (1 + mantisse) * 2^(exponent - bias).
+  - het tekenbit bepaalt of het getal positief of negatief is.
+  - de exponent wordt opgeslagen met een bias om negatieve exponenten te vermijden, wat de vergelijking vereenvoudigt.
+  - de mantisse bevat de significante cijfers van het getal.
+
+- **Exponent Biased:**
+
+  - de exponent wordt opgeslagen als een positief geheel getal door er een bias bij op te tellen (bijv. voor enkel precisie is de bias 127).
+  - dit maakt het mogelijk om zowel positieve als negatieve exponenten te representeren zonder een apart tekenbit voor de exponent.
+  - vereenvoudigt de hardware-implementatie van floating point operaties, omdat alle exponenten nu positief zijn.
+
+</details>
+
+<details>
+<summary><strong>
+Hoe wordt de verwerking van integer/floating point instructies gesynchroniseerd binnen een x86/80x87 computer
+architectuur?
+</strong></summary>
+
+- **x86/80x87 Architectuur:**
+
+  - de x86-architectuur bevat een aparte Floating Point Unit (FPU), ook wel bekend als de 80x87, die verantwoordelijk is voor het uitvoeren van floating point instructies.
+  - integer instructies worden uitgevoerd door de hoofd-CPU, terwijl floating point instructies worden afgehandeld door de FPU.
+  - synchronisatie tussen integer en floating point instructies wordt bereikt door middel van speciale instructies en mechanismen die de status van de FPU controleren.
+  - wanneer een floating point instructie wordt uitgevoerd, kan de CPU wachten op de voltooiing ervan voordat het verder gaat met integer instructies die afhankelijk zijn van het resultaat.
+  - dit zorgt ervoor dat de resultaten van floating point berekeningen correct worden gebruikt in daaropvolgende integer bewerkingen.
+  - de FPU heeft ook zijn eigen registers en statuswoorden die de toestand van floating point operaties bijhouden, wat helpt bij het beheren van fouten en uitzonderingen.
+
+</details>
+
+<details>
+<summary><strong>
+Wat betekent DVFS in relatie tot het power management van computer architecturen? Welke wiskundige relatie
+geldt voor het bepalen van het vermogen P?
+</strong></summary>
+
+- **DVFS (Dynamic Voltage and Frequency Scaling):**
+
+  - een techniek voor power management waarbij de spanning en klokfrequentie van een processor dynamisch worden aangepast op basis van de huidige werklast.
+  - door de spanning en frequentie te verlagen tijdens minder intensieve taken, kan het energieverbruik worden verminderd, wat leidt tot langere batterijduur en minder warmteontwikkeling.
+  - wanneer de werklast toeneemt, kan de spanning en frequentie worden verhoogd om de prestaties te verbeteren.
+  - deze techniek helpt bij het balanceren van prestaties en energie-efficiëntie in moderne computerarchitecturen.
+
+- **Wiskundige Relatie voor Vermogen (P):**
+- Het vermogen P dat door een processor wordt verbruikt, kan worden benaderd met de volgende formule:
+  ```math
+  P = C * V^2 * f
+  ```
+
+  waarbij:
+  - P = vermogen (in watt)
+  - C = capacitantie van de schakelingen (in farad)
+  - V = spanning (in volt)
+  - f = klokfrequentie (in hertz)
+
+  Deze relatie toont aan dat het vermogen kwadratisch toeneemt met de spanning, wat betekent dat kleine verlagingen in spanning aanzienlijke besparingen in energieverbruik kunnen opleveren.
+
+</details>
+
+<details>
+<summary><strong>
+Bespreek een aantal security technologieën om de integriteit van een computer architectuur te bewaken?
+</strong></summary>
+
+- **Security Technologieën voor Computer Architecturen:**
+
+  - **Trusted Platform Module (TPM):**
+    - een hardwarecomponent die cryptografische sleutels opslaat en beveiligde bootprocessen ondersteunt.
+    - helpt bij het waarborgen van de integriteit van het systeem door te controleren of de firmware en software niet zijn gewijzigd.
+
+  - **Secure Boot:**
+    - een proces waarbij de firmware alleen vertrouwde software laadt tijdens het opstarten.
+    - voorkomt dat kwaadaardige code wordt uitgevoerd voordat het besturingssysteem is geladen.
+
+  - **Address Space Layout Randomization (ASLR):**
+    - een techniek die de geheugenadressen van processen randomiseert om het moeilijker te maken voor aanvallers om kwetsbaarheden te exploiteren.
+    - vermindert de kans op succesvolle buffer overflow-aanvallen.
+
+  - **Data Execution Prevention (DEP):**
+    - een beveiligingsfunctie die voorkomt dat code wordt uitgevoerd vanuit bepaalde geheugenregio's die alleen voor gegevens zijn bedoeld.
+    - helpt bij het voorkomen van exploits die proberen code in gegevenssegmenten uit te voeren.
+
+  - **Hardware-enforced Isolation:**
+    - gebruik van hardwarefuncties zoals Intel SGX (Software Guard Extensions) om gevoelige gegevens en code in geïsoleerde enclaves uit te voeren.
+    - beschermt tegen aanvallen vanuit andere delen van het systeem, zelfs als het besturingssysteem is gecompromitteerd.
+
+  - **Memory Protection Units (MPU):**
+    - hardwarecomponenten die geheugenregio's beschermen door toegangsrechten te definiëren.
+    - voorkomt dat ongeautoriseerde processen toegang krijgen tot bepaalde delen van het geheugen.
+
+  - **Cryptographic Accelerators:**
+    - speciale hardware die cryptografische operaties versnelt, waardoor veilige communicatie en gegevensbescherming efficiënter worden.
+    - helpt bij het implementeren van sterke encryptie zonder significante prestatieverlies.
+
+</details>
+
+<details>
+<summary><strong>
+Wat is een Trusted Platform Module (TPM) en beschrijf enkele functionaliteiten van de TPM?
+</strong></summary>
+
+- **Trusted Platform Module (TPM):**
+
+  - een gespecialiseerde microcontroller die is ontworpen om hardwaregebaseerde beveiligingsfuncties te bieden.
+  - het slaat cryptografische sleutels, certificaten en andere beveiligingsgegevens op in een veilige omgeving.
+  - helpt bij het waarborgen van de integriteit en vertrouwelijkheid van gegevens op een computerplatform.
+  - wordt vaak gebruikt in laptops, desktops en servers om beveiligingsfuncties te ondersteunen.
+
+  - **Functionaliteiten van de TPM:**
+    - **Cryptografische Sleutelgeneratie:**
+      - genereert en beheert cryptografische sleutels voor encryptie, digitale handtekeningen en authenticatie.
+
+    - **Cryptografische Sleutelopslag:**
+      - slaat privé- en publieke sleutels veilig op, waardoor ze beschermd zijn tegen diefstal of ongeautoriseerde toegang.
+  
+    - **Platformintegriteit:**
+      - meet en bewaakt de integriteit van het systeem tijdens het opstartproces, waardoor alleen vertrouwde software kan worden uitgevoerd (Secure Boot).
+
+    - **Remote Attestation:**
+      - stelt externe partijen in staat om de integriteit van het platform te verifiëren door middel van cryptografische bewijzen.
+
+    - **Versleuteling en Ontsleuteling:**
+      - ondersteunt hardwareversleuteling voor gegevensopslag, waardoor gevoelige informatie veilig blijft, zelfs als de opslagmedia worden gestolen.
+
+    - **Random Number Generation:**
+      - biedt een betrouwbare bron van willekeurige getallen voor cryptografische toepassingen.
+
+</details>
