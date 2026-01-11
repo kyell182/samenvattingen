@@ -1,9 +1,11 @@
 # samenvatting Databases
 
+- handige link om te leren over databases : https://www.w3schools.com/sql/
+
 ## Inhoudsopgave
 
 
-# Hoofdstuk 1: Inleiding tot Databases
+### Hoofdstuk 1: Inleiding tot Databases
 
 **1.1. Wat is data en in welke vormen komt het voor?**
 <details><summary>Antwoord</summary>
@@ -287,7 +289,7 @@ Een DBMS bestaat uit vier hoofdcomponenten:
 
 ---
 
-# Hoofdstuk 2: Databankontwerp
+### Hoofdstuk 2: Databankontwerp
 
 **2.1. Wat zijn de 4 fasen voor het ontwikkelen van een informatiesysteem?**
 <details><summary>Antwoord</summary>
@@ -344,7 +346,7 @@ erm schema
 
 ---
 
-# Hoofdstuk 3: Databankontwerp in SQL
+### Hoofdstuk 3: Databankontwerp in SQL
 
 **3.1. Wat is SQL en waarom wordt het gebruikt?**
 <details><summary>Antwoord</summary>
@@ -477,6 +479,7 @@ CREATE TABLE tabelnaam
     kolomnaamN DATATYPE CONSTRAINTS
 );
 ```
+
 💡 alle velden zijn hier optioneel en mogen leeg gelaten worden.
 
 </details>
@@ -513,6 +516,7 @@ CREATE TABLE leden
     insschrijvingsdatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
 - DEFAULT: stelt een standaardwaarde in voor een kolom als er geen waarde wordt opgegeven tijdens het invoegen van een record.
 - Verbetert gegevensconsistentie door ervoor te zorgen dat kolommen altijd een geldige waarde hebben.
 
@@ -650,7 +654,7 @@ CREATE TABLE inschrijvingen
 
 ---
 
-# Hoofdstuk 4: Gegevens selecteren uit een databank
+### Hoofdstuk 4: Gegevens selecteren uit een databank
 
 **4.1. Wat is de algemene vorm van een SELECT-query?**
 <details><summary>Antwoord</summary>
@@ -893,16 +897,23 @@ ka?s                | ks, kas             | kaas              |
 
 ---
 
-# Hoofdstuk 5: Berekende velden en functies
+### Hoofdstuk 5: Berekende velden en functies
 
 **5.1. Wat zijn berekende velden?**
 <details><summary>Antwoord</summary>
 
 - Berekend op basis van nul, één of meerdere velden per record.
 - Hernoemen met AS-operator.
-- Voorbeelden: prijs * (1 + btw_percentage) AS prijs_incl_btw; YEAR(geboortedatum) - 1900 AS eenvoudig_jaar.
+- Voorbeelden:
 
-**Voeg hier afbeelding toe:** Voorbeeld van berekende velden in query (bijv. uit Image ID 8; sla op als ./assets/berekende_velden.png).
+```sql
+   prijs * (1 + btw_percentage) AS prijs_incl_btw;
+   prijs * (1 - kortingspercentage) AS prijs_na_korting;
+
+   SELECT DISTINCT YEAR(geboortedatum) - 1900 AS eenvoudige_jaar
+   FROM leden
+   Where YEAR(geboortedatum) < 2000;
+```
 
 </details>
 
@@ -916,44 +927,206 @@ ka?s                | ks, kas             | kaas              |
 
 </details>
 
-**5.3. Voorbeelden van string-functies?**
+**5.3. wat zijn de string functies?**
 <details><summary>Antwoord</summary>
 
-- LOWER("Brugge") → brugge
-- UPPER("Brugge") → BRUGGE
-- CONCAT("Hello ", "world ", 123) → Hello world 123
-- Etc. (zie tabel in document).
+- bewerken van tekstwaarden.
+
+| Functie        | Betekenis                                                                 | Voorbeeld                                      | Resultaat              |
+|---------------|---------------------------------------------------------------------------|-----------------------------------------------|------------------------|
+| `LOWER()`     | Zet alles om naar kleine letters                                          | `SELECT LOWER("Brugge");`                     | `brugge`               |
+| `UPPER()`     | Zet alles om naar hoofdletters                                            | `SELECT UPPER("Brugge");`                     | `BRUGGE`               |
+| `CONCAT()`    | Voegt verschillende delen samen. Als één argument `NULL` is → resultaat is `NULL` | `SELECT CONCAT("Hello ", "world ", 123);` | `Hello world 123`      |
+| `RTRIM()`     | Verwijdert spaties **achter** de tekst                                    | `SELECT RTRIM("Hello ");`                     | `Hello`                |
+| `LTRIM()`     | Verwijdert spaties **voor** de tekst                                      | `SELECT LTRIM(" world");`                     | `world`                |
+| `LENGTH()`    | Geeft het aantal **bytes** terug                                          | `SELECT LENGTH("Hello");`                     | `5`                    |
+| `CHAR_LENGTH()` | Geeft het aantal **karakters** terug                                    | `SELECT CHAR_LENGTH("Hello");`                | `5`                    |
 
 </details>
 
-# Hoofdstuk 6: Joins
-
-**6.1. Wat is een INNER JOIN?**
+**5.4. wat zijn de datum/tijd functies?**
 <details><summary>Antwoord</summary>
 
-- Records uit ene tabel met tegenhanger in andere.
-- Voorbeeld: SELECT a.omschrijving, i.lidnr FROM activiteiten a JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id;
+- **bewerken van datum- en tijdwaarden.**
 
-**Voeg hier afbeelding toe:** Venn-diagram van joins (bijv. uit Image ID 2; sla op als ./assets/joins_diagram.png).
+| Functie              | Betekenis                                                      | Voorbeeld                                 | Resultaat (voorbeeld) |
+|---------------------|----------------------------------------------------------------|--------------------------------------------|------------------------|
+| `DAY()`             | Geeft de **dag van de maand** van een datum                    | `SELECT DAY("2026-01-10");`                | `10`                   |
+| `WEEK()`            | Geeft het **weeknummer** van een datum                         | `SELECT WEEK("2026-01-10");`               | bv. `2`                |
+| `MONTH()`           | Geeft de **maand** van een datum                               | `SELECT MONTH("2026-01-10");`              | `1`                    |
+| `YEAR()`            | Geeft het **jaar** van een datum                               | `SELECT YEAR("2026-01-10");`               | `2026`                 |
+| `HOUR()`            | Geeft het **uur** van een datum/tijd                           | `SELECT HOUR("14:35:20");`                 | `14`                   |
+| `MINUTE()`          | Geeft de **minuten** van een datum/tijd                        | `SELECT MINUTE("14:35:20");`               | `35`                   |
+| `SECOND()`          | Geeft de **seconden** van een datum/tijd                       | `SELECT SECOND("14:35:20");`               | `20`                   |
+| `DATE()`            | Haalt de **datum** uit een datetime                            | `SELECT DATE("2026-01-10 14:35:20");`       | `2026-01-10`           |
+| `TIME()`            | Haalt het **tijdstip** uit een datetime                        | `SELECT TIME("2026-01-10 14:35:20");`       | `14:35:20`             |
+| `DATEDIFF()`        | Geeft het **aantal dagen tussen 2 datums**                     | `SELECT DATEDIFF("2026-01-10","2026-01-01");` | `9`                 |
+| `CURTIME()`         | Geeft de **huidige tijd**                                      | `SELECT CURTIME();`                        | bv. `14:35:20`         |
+| `CURDATE()`         | Geeft de **huidige datum**                                     | `SELECT CURDATE();`                        | bv. `2026-01-10`       |
+| `CURRENT_TIMESTAMP` | Geeft de **huidige datum + tijd** (haakjes niet verplicht)     | `SELECT CURRENT_TIMESTAMP;`                | bv. `2026-01-10 14:35:20` |
+| `NOW()`             | Geeft de **huidige datum + tijd**                              | `SELECT NOW();`                            | bv. `2026-01-10 14:35:20` |
 
 </details>
 
-**6.2. Wat zijn andere types joins?**
+**5.5. wat zijn de numerieke functies?**
 <details><summary>Antwoord</summary>
 
+- **bewerken van numerieke waarden.**
+
+| Functie        | Betekenis                                                              | Voorbeeld                  | Resultaat |
+|---------------|-------------------------------------------------------------------------|----------------------------|-----------|
+| `FLOOR()`     | Geeft het **grootste gehele getal kleiner dan** het opgegeven getal     | `SELECT FLOOR(1.23);`      | `1`       |
+|               |                                                                         | `SELECT FLOOR(-1.23);`     | `-2`      |
+| `CEIL()` / `CEILING()` | Geeft het **kleinste gehele getal groter of gelijk aan** het opgegeven getal | `SELECT CEIL(1.23);` | `2` |
+|               |                                                                         | `SELECT CEIL(-1.23);`      | `-1`      |
+| `MOD()` / `MOD` / `%` | Geeft de **rest bij een deling**                                  | `SELECT MOD(234,10);`      | `4`       |
+|               |                                                                         | `SELECT 234 MOD 10;`       | `4`       |
+|               |                                                                         | `SELECT 234 % 10;`         | `4`       |
+| `POW()`       | Geeft **grondtal tot de macht van exponent**                            | `SELECT POW(2,2);`         | `4`       |
+| `SQRT()`      | Geeft de **vierkantswortel** van een positief getal                     | `SELECT SQRT(4);`          | `2`       |
+|               |                                                                         | `SELECT SQRT(-16);`        | `NULL`    |
+| `ABS()`       | Geeft de **absolute waarde** van een getal                              | `SELECT ABS(2);`           | `2`       |
+|               |                                                                         | `SELECT ABS(-32);`         | `32`      |
+| `SIN()` | Geeft de **sinus** van een getal (in radialen) | `SELECT SIN(PI()/2);`         | `1`       |
+|        |                                              | `SELECT SIN(RADIANS(90));`    | `1`       |
+| `COS()` | Geeft de **cosinus** van een getal (in radialen) | `SELECT COS(PI());`        | `-1`      |
+|        |                                              | `SELECT COS(RADIANS(180));`   | `-1`      |
+| `TAN()` | Geeft de **tangens** van een getal (in radialen) | `SELECT TAN(PI()/4);`      | `1`       |
+|        |                                              | `SELECT TAN(RADIANS(45));`    | `1`       |
+
+</details>
+
+**5.6. wat zijn de statistische functies?**
+<details><summary>Antwoord</summary>
+
+- **bewerken van groepen van waarden.**
+
+| Functie            | Betekenis                                                                 | Voorbeeld                         | Resultaat (voorbeeld) |
+|--------------------|---------------------------------------------------------------------------|----------------------------------|------------------------|
+| `COUNT(*)`         | Telt het **totaal aantal rijen** in de tabel                              | `SELECT COUNT(*) FROM studenten;`| bv. `25`               |
+| `COUNT(veld)`      | Telt het aantal **niet-NULL waarden** in dat veld                         | `SELECT COUNT(leeftijd) FROM studenten;` | bv. `23`        |
+| `SUM(veld)`        | Berekent de **som** van alle waarden (alleen numeriek)                   | `SELECT SUM(punten) FROM scores;`| bv. `420`              |
+| `AVG(veld)`        | Berekent het **gemiddelde** (alleen numeriek)                            | `SELECT AVG(punten) FROM scores;`| bv. `70`               |
+| `MIN(veld)`        | Geeft de **kleinste waarde**                                              | `SELECT MIN(punten) FROM scores;`| bv. `12`               |
+| `MAX(veld)`        | Geeft de **grootste waarde**                                              | `SELECT MAX(punten) FROM scores;`| bv. `98`               |
+
+- voorbeeld:
+
+```sql
+SELECT COUNT(*) AS aantal_inschrijvingen
+From insschrijvingen;
+
+SELECT COUNT(activiteit_id) AS aantal_activiteiten
+FROM activiteiten
+
+SELECT COUNT(DISTINCT activiteit_id) AS aantal_unieke_activiteiten
+FROM inschrijvingen;
+```
+
+</details>
+
+**5.7. waarvoor gebruik je `GROUP BY` en `HAVING`?**
+<details><summary>Antwoord</summary>
+
+- Groeperen van records met `GROUP BY`.
+- Filteren van gegroepeerde records met `HAVING` ⚠️ moet altijd na `GROUP BY` komen.
+
+```sql
+SELECT ismeisje, COUNT(*) AS aantal_leden
+FROM leden
+GROUP BY ismeisje;
+```
+
+```sql
+SELECT ismeisje, COUNT(*) AS aantal_leden
+FROM leden
+GROUP BY ismeisje
+HAVING COUNT(*) > 2;
+ORDER BY aantal_leden DESC, ismeisje ASC; 
+```
+
+</details>
+
+---
+
+### Hoofdstuk 6: Joins
+
+**6.1. wat zijn de 3 types joins?**
+<details><summary>Antwoord</summary>
+
+- INNER JOIN: Alleen records met matchende waarden in beide tabellen.
 - LEFT JOIN: Alle records uit linker tabel, matchende uit rechter.
 - RIGHT JOIN: Alle records uit rechter tabel, matchende uit linker.
 
+![joins](./assets/soorten%20joins.png)
+
+```sql
+-- INNER JOIN voorbeeld (enkel matchende records)
+-- toon alleen activiteiten met inschrijvingen
+
+SELECT a.omschrijving, i.lidnr
+FROM activiteiten a
+JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id;
+
+-- LEFT JOIN voorbeeld (alle activiteiten, ook zonder inschrijvingen)
+-- toon alles van links (hoofd tabel) en waar geen match met rechts is, daar komt NULL voor lidnr
+
+SELECT a.omschrijving, i.lidnr
+FROM activiteiten a
+LEFT JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id;
+
+-- RIGHT JOIN voorbeeld (alle inschrijvingen, ook zonder activiteiten)
+-- toon alles van rechts en waar geen match met links is, daar komt NULL voor omschrijving
+
+SELECT a.omschrijving, i.lidnr
+FROM activiteiten a
+RIGHT JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id;
+```
+
+⚠️ RIGHT JOIN is minder gebruikelijk dan LEFT JOIN.
+
 </details>
 
-**6.3. Hoe gebruik je aliassen in joins?**
+**6.2. wat is het nut van joins?**
 <details><summary>Antwoord</summary>
 
-- AS a voor activiteiten, AS i voor inschrijvingen.
+- Gegevens uit meerdere tabellen combineren op basis van gerelateerde kolommen.
 
 </details>
 
-# Hoofdstuk 7: Subqueries
+**6.3. wat zijn aliassen in joins en waarom gebruik je ze?**
+<details><summary>Antwoord</summary>
+
+- Korte namen voor tabellen of kolommen.
+- Verbeteren leesbaarheid en verkorten queries.
+
+```sql
+-- gebruik van aliassen a voor omschrijving en i voor lidnr
+SELECT  a.omschrijving, i.lidnr
+
+
+-- gebruik van alias a voor tabel activiteiten
+FROM activiteiten a 
+
+-- voegt de tabellen activiteiten en inschrijvingen samen op basis van activiteit_id
+JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id 
+
+```
+
+⚠️ FROM wordt altijd eerst gedaan dan pas SELECT volgorde van uitvoering.
+```mermaid
+flowchart TD
+    A["Start: Tabel activiteiten a"] --> B["Neem één rij van activiteiten"]
+    B --> C{"Zoek in inschrijvingen waar a.activiteit_id = i.activiteit_id?"}
+    C -- Ja --> D["Maak gekoppelde rij: a.omschrijving + i.lidnr"]
+    C -- Nee --> E["Rij wordt niet meegenomen"]
+    D --> F{"Meer rijen?"}
+    E --> F
+    F -- Ja --> C
+    F -- Nee --> G["Einde: resultaat met activiteit + lidnr"]
+```
+
+### Hoofdstuk 7: Subqueries
 
 **7.1. Wat zijn subqueries?**
 <details><summary>Antwoord</summary>
@@ -975,6 +1148,14 @@ ka?s                | ks, kas             | kaas              |
 
 </details>
 
+waarom gebruik je subqueries?
+<details><summary>Antwoord</summary>
+
+- Complexe queries opsplitsen.
+- Tussentijdse resultaten gebruiken. ( bv. max waarde zoeken en dan records met die waarde ophalen).
+
+</details>
+
 **7.3. Wat zijn single-record subqueries?**
 <details><summary>Antwoord</summary>
 
@@ -983,9 +1164,48 @@ ka?s                | ks, kas             | kaas              |
 
 ![subquery single-record](./assets/7.3%20querry.png)
 
+kan ook meerdere single sub-queries bavaten met AND
+
+```sql
+SELECT naam, score, land
+FROM spelers
+WHERE score > 
+(
+    SELECT AVG(score)
+    FROM spelers
+)
+AND  land =
+(
+    SELECT land
+    FROM spelers
+    WHERE naam = 'Neymar'
+);
+```
+
 </details>
 
-# Hoofdstuk 8: Schrijfqueries
+**7.4. Wat zijn multiple-record subqueries?**
+<details><summary>Antwoord</summary>
+
+- Geven meerdere records terug, gebruiken operatoren: IN, ANY, ALL.
+- ⚠️ NOT kan bij alle 3 de operatoren gebruikt worden.
+
+```sql
+SELECT naam, score, land
+FROM spelers
+WHERE land IN 
+(
+    SELECT land
+    FROM spelers
+    WHERE naam = 'Neymar'
+);
+```
+
+⚠️ als je twijfelt of je een single- of multiple-record subquery nodig hebt, probeer dan eerst met IN (multiple-record) en kijk of het werkt.
+
+</details>
+
+### Hoofdstuk 8: Schrijfqueries
 
 **8.1. Welke queries worden behandeld?**
 <details><summary>Antwoord</summary>
@@ -1013,7 +1233,7 @@ ka?s                | ks, kas             | kaas              |
 
 </details>
 
-# Hoofdstuk 9: Views, functies en stored procedures
+### Hoofdstuk 9: Views, functies en stored procedures
 
 **9.1. Hoe hergebruik je queries?**
 <details><summary>Antwoord</summary>
@@ -1042,7 +1262,7 @@ ka?s                | ks, kas             | kaas              |
 
 </details>
 
-# Hoofdstuk 10: Inleiding security
+### Hoofdstuk 10: Inleiding security
 
 **10.1. Wat is een MySQL-connectiestring?**
 <details><summary>Antwoord</summary>
