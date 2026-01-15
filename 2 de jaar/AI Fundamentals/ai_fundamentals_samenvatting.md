@@ -1108,31 +1108,88 @@ H=0 betekent pure subsets (allemaal dezelfde klasse) en is het doel van de decis
 </details>
 
 ---
-# Hoofdstuk 3 – Neural Networks
- – Neural Networks
 
-## Neuron model
+## Hoofdstuk 3 – Neural Networks
 
-📷 *Afbeelding van een artificieel neuron met inputs, gewichten, som en activatiefunctie.*
+Bespreek de structuur van een neuron model (logistic unit). Wat is het doel van de activation
+function?
 
-z = w·x − θ  
-y = σ(z)
+- Input layer
+  - Neuronen ontvangen inputwaarden
+- Hidden layer(s)
+  - Verwerken informatie aan de hand van gewichten en activatiefuncties
+- Output layer
+  - Geven de uiteindelijke voorspellingen of classificaties resultaten
 
-Activation function: introduceert **niet-lineariteit**.
+**Neuron model:**
+
+- Gewichten (weights): bepalen de sterkte van de verbindingen tussen neuronen
+- Bias: verschuift de activatiefunctie om de output aan te passen
+- Activatiefunctie: bepaalt of een neuron "vuurt" op basis van de gewogen som van inputs
+
+**Doel van de activatiefunctie:**
+
+zal verantwoordelijk zijn voor het al dan niet activeren van een neuron op basis van de input.
+
+- Introduceert niet-lineariteit in het model
+- Bepaalt de output van een neuron op basis van de input
+- Helpt bij het leren van complexe patronen in data
 
 ---
 
-## Fitting
+Wat is under-fitting, optimal-fitting en over-fitting?
 
 - Underfitting: te simpel
+  - Model kan patronen niet goed leren uit de data wegens gebrek aan complexiteit
+
 - Overfitting: te complex
+  - Model leert ruis en details van de trainingsdata, waardoor het slecht generaliseert naar nieuwe data
+
 - Optimal: juiste balans
+  - Model leert de onderliggende patronen zonder ruis, goed generaliserend naar nieuwe data
+
+| Type          | Training fout | Test fout | Modelcomplexiteit |
+| ------------- | ------------- | --------- | ----------------- |
+| Under-fitting | Hoog          | Hoog      | Te laag           |
+| Optimal-fit   | Laag          | Laag      | Juist             |
+| Over-fitting  | Zeer laag     | Hoog      | Te hoog           |
 
 ---
 
-## Sigmoid
+Wat is de wiskundige vorm van de sigmoid activation function met parameters 𝑥, 𝜃 𝑒𝑛 𝑇? Teken
+de grafiek van de sigmoïde en in welke layers van een neural network wordt de sigmoïde
+doorgaans toegepast?
 
-σ(x) = 1 / (1 + e^(−(x−θ)/T))
+deze zet een lineaire input om in een niet-lineaire output tussen 0 en 1.
+
+**Sigmoid activation function:**
+
+```math
+\sigma(x) = \frac{1}{1 + e^{-z}}
+```
+
+**Uitleg per onderdeel:**
+
+- **x**: gewogen som van inputs + bias
+- **e**: Euler's getal (ongeveer 2.71828)
+- **σ(x)**: output van de sigmoid functie
+- **z**: net input
+
+waarbij:
+
+```math
+z = \frac{\sum_{i=1}^{n} w_i \cdot x_i + \theta}{T}
+```
+- **wi**: gewicht van input i
+- **xi**: waarde van input i
+- **θ**: bias term
+- **T**: temperatuurparameter die de "steilheid" van de curve regelt
+- **n**: aantal inputs
+- **Σ**: som over alle inputs
+- i=1 tot n
+
+<iframe src="https://www.geogebra.org/classic/ckvkdfbh?embed" width="1200" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
+
 
 Gebruikt in **hidden & output layers**.
 
