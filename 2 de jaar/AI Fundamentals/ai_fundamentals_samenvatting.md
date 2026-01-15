@@ -582,7 +582,7 @@ Hoe worden volgende afstanden wiskundig bepaald bij het Nearest Neighbor Algorit
 
 ---
 
-details>
+<details>
 <summary><strong>
 Bespreek het k-Nearest Neighbor algoritme en pas dit toe op een aantal datapunten in een 2D-vlak.
 </strong></summary>
@@ -710,8 +710,11 @@ stemmen:
 
 ---
 
+<details>
+<summary><strong>
 Wat is een Voronoi diagram en wat is de functie van het Voronoi diagram in het Nearest
 Neighbor Algorithm?
+</strong></summary>
 
 dit is een techniek om de ruimte op te delen in regio's rond elk trainingspunt.
 Elk punt in een regio is dichter bij het bijbehorende trainingspunt dan bij enig ander trainingspunt.
@@ -725,11 +728,16 @@ dit houd in dat je snel kan bepalen tot welke klasse een nieuw punt behoort door
 
 - regio - = punt is automatisch -
 
+</details>
+
 ---
 
+<details>
+<summary><strong>
 Hoe wordt de dominante invloed van de punten, die verder verwijderd zijn van een nieuw
 datapunt, in het Nearest Neighbor Algorithm aangepakt en wat is distance weighted
 optimization?
+</strong></summary>
 
 in plaats van alle k buren gelijk te behandelen, krijgen de dichterbij gelegen buren meer gewicht bij het stemmen.
 want je kan punten hebben die nearest neighbors zijn maar toch ver weg liggen.
@@ -746,30 +754,43 @@ w_i = \frac{1}{d_i + \varepsilon}
 
 waarbij:
 
-- \(w_i\) = {gewicht van buur i}
-- \(d_i\) = afstand van buur i tot het nieuwe datapunt
-- \(\varepsilon\) = kleine constante om deling door nul te voorkomen
+```math
+w_i = \text{gewicht van buur i}
+```
+
+```math
+d_i = \text{afstand van buur i tot het nieuwe datapunt}
+```
+
+```math
+\varepsilon = \text{kleine constante om deling door nul te voorkomen}
+```
 
 voor alle k buren worden de gewichten berekend en gebruikt bij het stemmen.
 
 ```math
-class1 = (w_1 + w_2 + ... + w_k)
+class_1 = (w_1 + w_2 + ... + w_k)
 ```
 
 ```math
-class2 = (w_1 + w_2 + ... + w_k)
+class_2 = (w_1 + w_2 + ... + w_k)
 ```
 
 ```math
-classN = (w_1 + w_2 + ... + w_k)
+class_N = (w_1 + w_2 + ... + w_k)
 ```
 
 de class met de hoogste waarde wint en het punt wordt daaraan toegewezen.
 
+</details>
+
 ---
 
+<details>
+<summary><strong>
 Verklaar Lazy learning en Eager learning en wat is de relatie met het Nearest Neighbor
 Algorithm?
+</strong></summary>
 
 lazy learning: ( goed voor locally optimal solutions )
 
@@ -792,10 +813,15 @@ eager learning: ( goed voor globale optimal solutions )
 | Voorbeeld     | kNN                      | Decision Tree, Linear Regression |
 | Flexibiliteit | Goed voor nieuwe data    | Moeilijk aan te passen           |
 
+</details>
+
 ---
 
+<details>
+<summary><strong>
 Hoe werkt de machine learning techniek van case-based reasoning (CBR) en wat zijn de
 voornaamste problemen als CBR in de praktijk wordt toegepast?
+</strong></summary>
 
 Case-Based Reasoning (CBR) is een machine learning techniek waarbij nieuwe problemen worden opgelost door te putten uit oplossingen van vergelijkbare, eerder opgeloste problemen (cases).
 
@@ -854,17 +880,21 @@ en niet alle oplossingen zijn direct toepasbaar.
 | Similarity     | Moeilijk om een goede gelijkenismaat te vinden voor symbolische / niet-numerieke data       |
 | Transformation | Moeilijk om oplossingen van vergelijkbare cases correct aan te passen voor nieuwe problemen |
 
+</details>
+
 ---
 
-## Entropy & Information Gain
+### Entropy & Information Gain
 
-
+<details>
 <summary><strong>
 Wat is de wiskundige vorm van de entropy H van een probability distribution en de information
 content van een dataset I(D) in relatie tot het bepalen van de information gain G(D,A)?
 
 - Gegeven: een tabel met het overzicht van attributen en hun waarden
-- Opgave: verklaar hoe de decision tree wordt bepaald a.d.h.v. de information gain</strong></summary>
+- Opgave: verklaar hoe de decision tree wordt bepaald a.d.h.v. de information gain
+
+</strong></summary>
 
 men start met de entropy van de volledige dataset D.
 om daarna met de nieuwe splitsing de informatie winst te berekenen aka van entropy naar minder entropy "orde"
@@ -887,9 +917,10 @@ H(D) = -(p_1 \cdot log_2(p_1) + p_2 \cdot log_2(p_2) + ... + p_k \cdot log_2(p_k
 - 1 = maximale onzekerheid (gelijke verdeling)
 
 ➡️ Meet onzekerheid in de data.
+
 </details>
 
-details>
+<details>
 <summary><strong>Information Gain</strong></summary>
 
 **Formule:**
@@ -1069,6 +1100,14 @@ flowchart TD
 **Conclusie:**
 Splitsing 2 is beter met een hogere Information Gain van 0.237 versus 0.033 voor splitsing 1.
 
+door steeds de splitsing met de hoogste Information Gain te kiezen, wordt de decision tree opgebouwd.
+en zal hij steeds minder onzekerheid (entropy) hebben na elke splitsing.
+
+H=0 betekent pure subsets (allemaal dezelfde klasse) en is het doel van de decision tree.
+
+</details>
+
+---
 # Hoofdstuk 3 – Neural Networks
  – Neural Networks
 
