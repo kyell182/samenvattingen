@@ -460,9 +460,9 @@ omdat n = 1 mag deze in de berekening weg gelaten worden
 
 punt 1
 
-( 0, 1.8 )  t = +1   b = 0    
+( 0, 1.8 )  t = +1   b = 0
 
-a = ( 0 * 0 ) + ( 0 * 1.8 ) + 0 =  0 ==> is niet > 0 ==> updaten
+a = ( 0 *0 ) + ( 0* 1.8 ) + 0 =  0 ==> is niet > 0 ==> updaten
 
 w = ( 0 , 0 ) + ( +1 ) ( 0 , 1.8 ) = ( 0 , 1.8 )
 
@@ -474,7 +474,7 @@ punt 2
 
 ( 2 , 0.6 )  t = +1  b = 1  w = ( 0 , 1.8 )
 
-a = ( 0 * 2 ) + ( 1, 8 * 0,6 ) + 1 = 2.08 ==>  is  > 0 ==> niet updaten
+a = ( 0 *2 ) + ( 1, 8* 0,6 ) + 1 = 2.08 ==>  is  > 0 ==> niet updaten
 
 w = ( 0 , 1.8 )
 
@@ -484,7 +484,7 @@ punt 3
 
 ( -1.2 , 1.4 )  t = -1  w = ( 0, 1.8 )   b = 1
 
-a = ( 0 * ( -1,2) ) + ( 1,8 * 1,4 ) + 1 = 3,52 ==> is > 0 ==> updaten
+a = ( 0 *( -1,2) ) + ( 1,8* 1,4 ) + 1 = 3,52 ==> is > 0 ==> updaten
 
 w = ( 0 , 1.8 ) + ( -1 ) ( -1.2 , 1.4 ) = ( 1.2 , 0.4 )
 
@@ -496,7 +496,7 @@ punt 4
 
 ( 0.4 , -1 )   w = ( 1.2 , 0.4 )   t = -1   b = 0
 
-a = ( 1,2 * 0,4 ) + ( 0,4 * ( -1 )) + 0 = 0,08 ==> is > 0 ==> updaten
+a = ( 1,2 *0,4 ) + ( 0,4* ( -1 )) + 0 = 0,08 ==> is > 0 ==> updaten
 
 w = ( 1.2 , 0.4 ) + ( -1 ) ( 0.4 , -1 ) = ( 0.8 , 1.4 )
 
@@ -516,8 +516,6 @@ indien gegeven kan verder gerekend worden met een ander punt
 
 </details>
 
-
-
 <details>
 <summary><strong>
 Het convergeren van het Perceptron Learning Algorithm is sterk afhankelijk van de keuze van
@@ -529,6 +527,7 @@ convergentie op te drijven?
 **Technieken om convergentiesnelheid te verbeteren:**
 
 - **Normailisatie van de w-factor:**
+
   - dit zorgt ervoor dat de gewichten evenveel waarde hebben tijden training los van de zwaarte van zijn waarde.
 
     ![normalisatie](./assets/normalisatie%20van%20w-factor.png)
@@ -573,25 +572,159 @@ Hoe worden volgende afstanden wiskundig bepaald bij het Nearest Neighbor Algorit
 
 </strong></summary>
 
-**Euclidische afstand**
-
-
-
 | Afstand | Formule | Betekenis | Gebruik |
 |--------|---------|-----------|---------|
 | Euclidisch | √Σ(xi−yi)² | Rechte lijn | Continue data |
-| Manhattan | Σ|xi−yi| | Rasterafstand | Grid / stadsblokken |
-| Hamming | # verschillen | Bits tellen | Binaire data |
+| Manhattan | d = |v1 - x1| + |v2 - x2| | Rasterafstand | Grid / stadsblokken |
+| Hamming |  verschillen | Bits tellen | Binaire data |
+
+</details>
 
 ---
 
-## k-Nearest Neighbor (k-NN)
+details>
+<summary><strong>
+Bespreek het k-Nearest Neighbor algoritme en pas dit toe op een aantal datapunten in een 2D-vlak.
+</strong></summary>
 
-📷 *2D-plot met datapunten en cirkel rond het nieuwe punt (visualisatie van k).*
+Het k-Nearest Neighbor algoritme is een niet-parametrisch classificatie-algoritme dat een nieuw datapunt toewijst aan de klasse die het meest voorkomt bij zijn k dichtstbijzijnde buren, waarbij de afstand meestal berekend wordt met de Manhattan afstand.
 
-Classificatie via **meerderheid van k dichtste buren**.
+```math
+Manhattan\;Distance\;
+= d(v,x)= |v_1 - x_1| + |v_2 - x_2| 
+```
+
+betekenis:
+- d: afstand tussen twee punten
+- (v1, v2): coördinaten van de vector
+- (x1, x2): coördinaten van het trainingspunt
+
+bereken eerst alle afstanden tot v om dan de gevraagde k te nemen ( punten )
+k = aantal buren
+
+en op basis hiervan de meerderheid te laten beslissen tot welke klasse v behoort.
+
+⚠️ k moet oneven zijn bij binaire classificatie om gelijke stemmen te vermijden.
+
+voorbeeld:
+
+v = (8, 3.5)
+
+**stap 1:**
+noteer alle trainingspunten met hun klasse
+
+| Punt | X1 | X2 | Klasse |
+|------|----|----|--------|
+| 1    | 6  | 1  | 0      |
+| 2    | 7  | 3  | 0      |
+| 3    | 8  | 2  | 0      |
+| 4    | 9  | 0  | 0      |
+| 5    | 8  | 4  | 1      |
+| 6    | 8  | 6  | 1      |
+| 7    | 9  | 2  | 1      |
+| 8    | 9  | 5  | 1      |
+
+**stap 2:**
+bereken de Manhattan afstand tot v voor elk punt
+steeds dezelfde formule gebruiken:
+
+```math
+d(v,x) = |8 - x_1| + |3.5 - x_2|
+
+```
+
+**stap 3:**
+
+sorteren op afstand
+
+| Rang | Punt | Afstand | Klasse |
+|------|------|---------|--------|
+| 1    | 5    | 0.5     | 1      |
+| 2    | 2    | 1.5     | 0      |
+| 3    | 3    | 1.5     | 0      |
+| 4    | 6    | 2.5     | 1      |
+| 5    | 7    | 2.5     | 1      |
+| 6    | 8    | 2.5     | 1      |
+| 7    | 1    | 4.5     | 0      |
+| 8    | 4    | 4.5     | 0      |
+
+![k-NN voorbeeld](./assets/k-nearest%20neighborg.png)
+
+**stap 4:**
+k kiezen (bijv. k=3) en stemmen
+
+**k1**
+dichtstbijzijnde buur:
+
+| Rang | Punt | Afstand | Klasse |
+|------|------|---------|--------|
+| 1    | 5    | 0.5     | 1      |
+
+stemmen:
+
+- Klasse 1: 1 stem
+
+➡️ v wordt geclassificeerd als klasse 1.
 
 ---
+
+**k3**
+
+dichtstbijzijnde buren:
+
+| Rang | Punt | Afstand | Klasse |
+|------|------|---------|--------|
+| 1    | 5    | 0.5     | 1      |
+| 2    | 2    | 1.5     | 0      |
+| 3    | 3    | 1.5     | 0      |
+
+stemmen:
+
+- Klasse 0: 2 stemmen
+- Klasse 1: 1 stem
+
+➡️ v wordt geclassificeerd als klasse 0.
+
+---
+
+**K5**
+
+dichtstbijzijnde buren:
+
+| Rang | Punt | Afstand | Klasse |
+|------|------|---------|--------|
+| 1    | 5    | 0.5     | 1      |
+| 2    | 2    | 1.5     | 0      |
+| 3    | 3    | 1.5     | 0      |
+| 4    | 6    | 2.5     | 1      |
+| 5    | 7    | 2.5     | 1      |
+
+stemmen:
+
+- Klasse 0: 2 stemmen
+- Klasse 1: 3 stemmen
+
+➡️ v wordt geclassificeerd als klasse 1.
+
+</details>
+
+---
+
+Wat is een Voronoi diagram en wat is de functie van het Voronoi diagram in het Nearest
+Neighbor Algorithm?
+
+dit is een techniek om de ruimte op te delen in regio's rond elk trainingspunt.
+Elk punt in een regio is dichter bij het bijbehorende trainingspunt dan bij enig ander trainingspunt.
+Het Voronoi-diagram helpt bij het visualiseren van de beslissingsgrenzen van het k-NN-algoritme en maakt het efficiënter om de dichtstbijzijnde buren te vinden door de zoekruimte te beperken tot relevante regio's.
+
+![Voronoi Diagram](./assets/voronoi-diagram.png)
+
+dit houd in dat je snel kan bepalen tot welke klasse een nieuw punt behoort door te kijken in welke regio het valt.
+
++ regio = punt is automatisch +
+
+- regio = punt is automatisch -
+
 
 ## Lazy vs Eager learning
 
