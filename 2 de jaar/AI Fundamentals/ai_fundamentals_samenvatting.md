@@ -1188,18 +1188,14 @@ z = \frac{\sum_{i=1}^{n} w_i \cdot x_i + \theta}{T}
 - **Σ**: som over alle inputs
 - i=1 tot n
 
-<iframe src="https://www.geogebra.org/classic/ckvkdfbh?embed" width="1200" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe>
-
+[![interactieve sigmoid functie](./assets/sigmoid.png)](https://www.geogebra.org/classic/ckvkdfbh)
 
 Gebruikt in **hidden & output layers**.
 
 ---
 
-## Hebb rule
-
-Δw = η · x · y
-
-"Neurons that fire together, wire together."
+Wat beschrijft de Hebb rule omtrent het modelleren van het leerproces van een neuraal
+netwerk?
 
 ---
 
