@@ -954,7 +954,7 @@ verdeling:
 entropy links:
 
 ```math
-P(G) = 8/14 \hspace{1cm}P(R) = 6/14 \\
+P(G) = 8/14 \hspace{1cm}P(R) = 6/14
 ```
 
 ```math
@@ -964,7 +964,7 @@ H_L = -(\frac{8}{14} \cdot log_2(\frac{8}{14}) + \frac{6}{14} \cdot log_2(\frac{
 entropy rechts:
 
 ```math
-P(G) = 2/6 \hspace{1cm}P(R) = 4/6 \\
+P(G) = 2/6 \hspace{1cm}P(R) = 4/6
 ```
 
 ```math
@@ -987,7 +987,7 @@ IG_{1} = 1 - 0.967 = 0.033
 entropy links:
 
 ```math
-P(G) = 0 \hspace{1cm}P(R) = 1 \\
+P(G) = 0 \hspace{1cm}P(R) = 1 
 ```
 
 ```math
@@ -997,7 +997,7 @@ H_L = - (0 \cdot log_2(0) + 1 \cdot log_2(1)) = 0
 entropy rechts:
 
 ```math
-P(G) = 10/16 \hspace{1cm}P(R) = 6/16 \\
+P(G) = 10/16 \hspace{1cm}P(R) = 6/16 
 ```
 
 ```math
@@ -1014,37 +1014,56 @@ IG_{2} = 1 - 0.763 = 0.237
 ```
 
 ```mermaid
----
-config:
-  layout: elk
----
-flowchart LR
+flowchart TD
+    %% ===== Dummy anker nodes om volgorde te forceren =====
+    ANCHOR1[ ]:::hidden
+    ANCHOR2[ ]:::hidden
+    ANCHOR3[ ]:::hidden
+
+    %% ===== Legende bovenaan =====
+    subgraph LEG["Legende"]
+        L1["G = Groen (klasse 1)"]
+        L2["R = Rood (klasse 2)"]
+        L3["H = Entropie"]
+        L4["IG = Information Gain"]
+        L5["H_split = Gewogen gemiddelde entropie na split"]
+    end
+
+    %% ===== Distributie 1 =====
     subgraph D1["Distributie 1"]
         T1["Totaal<br/>20 = 10G + 10R<br/>H = 1"]
+        L1_1["Links<br/>14 = 8G + 6R<br/>p(G)=0.571, p(R)=0.429<br/>H = 0.985"]
+        R1_1["Rechts<br/>6 = 2G + 4R<br/>p(G)=0.333, p(R)=0.667<br/>H = 0.918"]
+        S1_1["H_split1 = 0.965<br/>IG1 = 0.035"]
 
-        L1["Links<br/>14 = 8G + 6R<br/>p(G)=8/14=0.571, p(R)=6/14=0.429<br/>H = 0.985"]
-        R1["Rechts<br/>6 = 2G + 4R<br/>p(G)=2/6=0.333, p(R)=4/6=0.667<br/>H = 0.918"]
-
-        S1["H_split1 = (14/20)*0.985 + (6/20)*0.918<br/>H_split1 = 0.965<br/>IG1 = 1 - 0.965 = 0.035"]
-
-        T1 --> L1
-        T1 --> R1
-        L1 --> S1
-        R1 --> S1
+        T1 --> L1_1
+        T1 --> R1_1
+        L1_1 --> S1_1
+        R1_1 --> S1_1
     end
+
+    %% ===== Distributie 2 =====
     subgraph D2["Distributie 2"]
         T2["Totaal<br/>20 = 10G + 10R<br/>H = 1"]
+        L2_1["Links<br/>4 = 0G + 4R<br/>p(G)=0, p(R)=1<br/>H = 0"]
+        R2_1["Rechts<br/>16 = 10G + 6R<br/>p(G)=0.625, p(R)=0.375<br/>H = 0.954"]
+        S2_1["H_split2 = 0.763<br/>IG2 = 0.237"]
 
-        L2["Links<br/>4 = 0G + 4R<br/>p(G)=0, p(R)=1<br/>H = 0"]
-        R2["Rechts<br/>16 = 10G + 6R<br/>p(G)=10/16=0.625, p(R)=6/16=0.375<br/>H = 0.954"]
-
-        S2["H_split2 = (4/20)*0 + (16/20)*0.954<br/>H_split2 = 0.763<br/>IG2 = 1 - 0.763 = 0.237"]
-
-        T2 --> L2
-        T2 --> R2
-        L2 --> S2
-        R2 --> S2
+        T2 --> L2_1
+        T2 --> R2_1
+        L2_1 --> S2_1
+        R2_1 --> S2_1
     end
+
+    %% ===== Volgorde afdwingen via dummy anchors =====
+    ANCHOR1 --> LEG
+    LEG --> ANCHOR2
+    ANCHOR2 --> D1
+    D1 --> ANCHOR3
+    ANCHOR3 --> D2
+
+    %% ===== Verborgen stijl voor dummy nodes =====
+    classDef hidden fill:none,stroke:none;
 ```
 
 **Conclusie:**
