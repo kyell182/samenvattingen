@@ -721,66 +721,334 @@ Het Voronoi-diagram helpt bij het visualiseren van de beslissingsgrenzen van het
 
 dit houd in dat je snel kan bepalen tot welke klasse een nieuw punt behoort door te kijken in welke regio het valt.
 
-+ regio = punt is automatisch +
+- regio + = punt is automatisch +
 
-- regio = punt is automatisch -
-
-
-## Lazy vs Eager learning
-
-| Kenmerk | Lazy learning | Eager learning |
-|--------|---------------|----------------|
-| Leren | Bij query | Vooraf |
-| Voorbeeld | k-NN | Decision Tree |
-| Opslag | Veel data | Model |
-| Snelheid predictie | Traag | Snel |
+- regio - = punt is automatisch -
 
 ---
 
-## Case-Based Reasoning (CBR)
+Hoe wordt de dominante invloed van de punten, die verder verwijderd zijn van een nieuw
+datapunt, in het Nearest Neighbor Algorithm aangepakt en wat is distance weighted
+optimization?
 
-Oplossing zoeken via **gelijkaardige gevallen**.
+in plaats van alle k buren gelijk te behandelen, krijgen de dichterbij gelegen buren meer gewicht bij het stemmen.
+want je kan punten hebben die nearest neighbors zijn maar toch ver weg liggen.
 
-Problemen:
-- Modellering
-- Similariteit
-- Transformatie
+**Distance Weighted Optimization:**
+
+elke buur krijgt een gewicht dat omgekeerd evenredig is met zijn afstand tot het nieuwe datapunt.
+Dit betekent dat dichterbij gelegen buren een grotere invloed hebben op de classificatie dan verder weg gelegen buren.
+
+```math
+w_i = \frac{1}{d_i + \varepsilon}
+
+```
+
+waarbij:
+
+- \(w_i\) = {gewicht van buur i}
+- \(d_i\) = afstand van buur i tot het nieuwe datapunt
+- \(\varepsilon\) = kleine constante om deling door nul te voorkomen
+
+voor alle k buren worden de gewichten berekend en gebruikt bij het stemmen.
+
+```math
+class1 = (w_1 + w_2 + ... + w_k)
+```
+
+```math
+class2 = (w_1 + w_2 + ... + w_k)
+```
+
+```math
+classN = (w_1 + w_2 + ... + w_k)
+```
+
+de class met de hoogste waarde wint en het punt wordt daaraan toegewezen.
+
+---
+
+Verklaar Lazy learning en Eager learning en wat is de relatie met het Nearest Neighbor
+Algorithm?
+
+lazy learning: ( goed voor locally optimal solutions )
+
+- leert pas bij een query
+- slaat alle data op
+- traag bij predictie
+- voorbeeld: k-NN
+
+eager learning: ( goed voor globale optimal solutions )
+
+- leert vooraf
+- bouwt een model
+- snel bij predictie
+- voorbeeld: Decision Tree
+
+| Kenmerk       | Lazy Learning            | Eager Learning                   |
+| ------------- | ------------------------ | -------------------------------- |
+| Training      | Minimal / alleen opslaan | Model bouwen                     |
+| Voorspellen   | Rekent veel              | Snel                             |
+| Voorbeeld     | kNN                      | Decision Tree, Linear Regression |
+| Flexibiliteit | Goed voor nieuwe data    | Moeilijk aan te passen           |
+
+---
+
+Hoe werkt de machine learning techniek van case-based reasoning (CBR) en wat zijn de
+voornaamste problemen als CBR in de praktijk wordt toegepast?
+
+Case-Based Reasoning (CBR) is een machine learning techniek waarbij nieuwe problemen worden opgelost door te putten uit oplossingen van vergelijkbare, eerder opgeloste problemen (cases).
+
+**Werking van CBR:**
+
+1. **Retrieve**: Zoek naar vergelijkbare cases in de casebase.
+2. **Reuse**: Pas de oplossing van de gevonden case(s) toe op het nieuwe probleem.
+3. **Revise**: Evalueer en verbeter de voorgestelde oplossing indien nodig.
+4. **Retain**: Sla de nieuwe case en oplossing op voor toekomstig gebruik
+
+deze cyclus heet ook wel de 4 R's van CBR.
+
+![CBR Cycle](./assets/CBR.png)
+
+case x wordt vergeleken met case y op basis van feature similarity.
+daarna wordt de oplossing van case y aangepast voor case x.
+
+bv
+
+voorlicht fiets defect bij case y
+achterlicht fiets defect bij case x
+
+stappen voor oplossing case y aanpassen naar case x
+
+**Problemen bij CBR in de praktijk:**
+
+**Modeling**:
+
+de domain moet goed begrepen worden om relevante features te kiezen.
+
+- alle kenmerken en keuzes moeten goed gedefinieerd zijn.
+- men kan niet alle specifieke gevallen voorzien of uitzonderingen.
+- maakt het moeilijk om complete of rebuste modellen te bouwen.
+
+**gelijkheid**
+
+bij numerieke data is het makelijk om te vergelijken.
+bij categorische data is het moeilijker om gelijkenis te bepalen.
+
+- hoe meet je het verschil tussen categoreren zoals kleuren, merken, types, etc?
+
+bv hoest vs droge hoest
+
+- dit kan leiden tot verkeerde vergelijkingen en slechte oplossingen.
+
+**transformatie**
+
+het aanpassen van oude oplossingen naar nieuwe problemen kan complex zijn.
+en niet alle oplossingen zijn direct toepasbaar.
+
+- vereist vaak domeinkennis en creativiteit. er is geen unviversele manier om oplossingen te transformeren.
+
+| Uitdaging      | Beschrijving                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| Modeling       | Niet alle special cases en varianten kunnen vooraf gemodelleerd worden                      |
+| Similarity     | Moeilijk om een goede gelijkenismaat te vinden voor symbolische / niet-numerieke data       |
+| Transformation | Moeilijk om oplossingen van vergelijkbare cases correct aan te passen voor nieuwe problemen |
 
 ---
 
 ## Entropy & Information Gain
 
-<details>
-<summary><strong>Entropy</strong></summary>
 
-**Formule:**  
-H = − Σ pi log2(pi)
+<summary><strong>
+Wat is de wiskundige vorm van de entropy H van een probability distribution en de information
+content van een dataset I(D) in relatie tot het bepalen van de information gain G(D,A)?
+
+- Gegeven: een tabel met het overzicht van attributen en hun waarden
+- Opgave: verklaar hoe de decision tree wordt bepaald a.d.h.v. de information gain</strong></summary>
+
+men start met de entropy van de volledige dataset D.
+om daarna met de nieuwe splitsing de informatie winst te berekenen aka van entropy naar minder entropy "orde"
+
+**Formule:**
+
+```math 
+H(D) = -(p_1 \cdot log_2(p_1) + p_2 \cdot log_2(p_2) + ... + p_k \cdot log_2(p_k))
+```
 
 **Uitleg per onderdeel:**
-- **pi**: kans op klasse i
+- **D**: dataset
+- **k**: aantal klassen
+- **p1, p2, ..., pk**: proportie van elk klasse in D
 - **log2(pi)**: informatie-inhoud in bits
-- **pi · log2(pi)**: bijdrage per klasse
-- **Σ**: som over alle klassen
-- **−**: maakt resultaat positief
+
+⚠️ kan niet groter worden dan 1 = 100%
+
+- 0 = zuivere dataset (allezelfde klasse)
+- 1 = maximale onzekerheid (gelijke verdeling)
 
 ➡️ Meet onzekerheid in de data.
 </details>
 
-<details>
+details>
 <summary><strong>Information Gain</strong></summary>
 
-**Formule:**  
-G(D,A) = H(D) − Σ (|Di|/|D|) · H(Di)
+**Formule:**
+
+```math
+IG(S,A) = H(S) - \sum_{i=1}^{k} \frac{|S_i|}{|S|} \cdot H(S_i)
+```
 
 **Uitleg per onderdeel:**
-- **H(D)**: entropy vóór splitsing
-- **Di**: subsets na splitsing
-- **|Di|/|D|**: gewicht van subset
-- **H(Di)**: entropy per subset
-- **G(D,A)**: informatie-winst
+
+- **S**: dataset
+- **A**: attribuut = de test "splitsing" die je wilt evalueren
+- **H(S)**: entropy vóór splitsing van dataset S zie formule entropy.
+- **k**: aantal mogelijke waarden van attribuut A
+- **i=1**: index voor elke mogelijke waarde van A
+- **Si**: subset van S na splitsing op attribuut A
+- **|Si|**: aantal elementen in subset Si
+- **|S|**: totaal aantal elementen in S
+- **H(Si)**: entropy van subset Si
 
 ➡️ Hoogste gain = beste splitsing.
-</details>
+
+vb
+
+er zijn 20 datapoints:
+
+- 10 rood 
+- 10 groen
+
+**Stap 1: Bereken H(D)**
+
+kansen:
+
+p(rood) = 10/20 = 0.5
+p(groen) = 10/20 = 0.5
+
+formule invullen:
+
+```math
+H_{totaal} = -(0.5 \cdot log_2(0.5) + 0.5 \cdot log_2(0.5)) = 1
+```
+
+entropy is dus 1 ( maximale onzekerheid )
+
+**stap 2:**
+
+je doet dit voor elke kant apart 
+
+1. Bereken kans groen/rood links en rechts
+2. Bereken H voor links en rechts
+3. neem het gewogen gemiddelde van links en rechts
+
+verdeling:
+
+| verdeling | links(G/R)| rechts(G/R)|
+|-----------|------|-------|
+| 1     | 8/6  | 2/4    |
+| 2    | 0/4   | 10/6    |
+
+- **Splitsing 1:**
+
+entropy links:
+
+```math
+P(G) = 8/14 \hspace{1cm}P(R) = 6/14 \\
+```
+
+```math
+H_L = -(\frac{8}{14} \cdot log_2(\frac{8}{14}) + \frac{6}{14} \cdot log_2(\frac{6}{14})) \approx 0.985
+```
+
+entropy rechts:
+
+```math
+P(G) = 2/6 \hspace{1cm}P(R) = 4/6 \\
+```
+
+```math
+H_R = -(\frac{2}{6} \cdot log_2(\frac{2}{6}) + \frac{4}{6} \cdot log_2(\frac{4}{6})) \approx 0.918
+```
+gewogen gemiddelde:
+
+```math
+H_{split1} = \frac{14}{20} \cdot 0.985 + \frac{6}{20} \cdot 0.918 \approx 0.967
+```
+
+```math
+IG_{1} = 1 - 0.967 = 0.033
+```
+
+---
+
+- **Splitsing 2:**
+
+entropy links:
+
+```math
+P(G) = 0 \hspace{1cm}P(R) = 1 \\
+```
+
+```math
+H_L = - (0 \cdot log_2(0) + 1 \cdot log_2(1)) = 0
+```
+
+entropy rechts:
+
+```math
+P(G) = 10/16 \hspace{1cm}P(R) = 6/16 \\
+```
+
+```math
+H_R = -(\frac{10}{16} \cdot log_2(\frac{10}{16}) + \frac{6}{16} \cdot log_2(\frac{6}{16})) \approx 0.954
+```
+gewogen gemiddelde:
+
+```math
+H_{split2} = \frac{4}{20} \cdot 0 + \frac{16}{20} \cdot 0.954 \approx 0.763
+```
+
+```math
+IG_{2} = 1 - 0.763 = 0.237
+```
+
+```mermaid
+---
+config:
+  layout: elk
+---
+flowchart LR
+    subgraph D1["Distributie 1"]
+        T1["Totaal<br/>20 = 10G + 10R<br/>H = 1"]
+
+        L1["Links<br/>14 = 8G + 6R<br/>p(G)=8/14=0.571, p(R)=6/14=0.429<br/>H = 0.985"]
+        R1["Rechts<br/>6 = 2G + 4R<br/>p(G)=2/6=0.333, p(R)=4/6=0.667<br/>H = 0.918"]
+
+        S1["H_split1 = (14/20)*0.985 + (6/20)*0.918<br/>H_split1 = 0.965<br/>IG1 = 1 - 0.965 = 0.035"]
+
+        T1 --> L1
+        T1 --> R1
+        L1 --> S1
+        R1 --> S1
+    end
+    subgraph D2["Distributie 2"]
+        T2["Totaal<br/>20 = 10G + 10R<br/>H = 1"]
+
+        L2["Links<br/>4 = 0G + 4R<br/>p(G)=0, p(R)=1<br/>H = 0"]
+        R2["Rechts<br/>16 = 10G + 6R<br/>p(G)=10/16=0.625, p(R)=6/16=0.375<br/>H = 0.954"]
+
+        S2["H_split2 = (4/20)*0 + (16/20)*0.954<br/>H_split2 = 0.763<br/>IG2 = 1 - 0.763 = 0.237"]
+
+        T2 --> L2
+        T2 --> R2
+        L2 --> S2
+        R2 --> S2
+    end
+```
+
+**Conclusie:**
+Splitsing 2 is beter met een hogere Information Gain van 0.237 versus 0.033 voor splitsing 1.
 
 # Hoofdstuk 3 – Neural Networks
  – Neural Networks
