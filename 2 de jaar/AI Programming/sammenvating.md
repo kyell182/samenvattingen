@@ -882,7 +882,10 @@ waar het eigenlijk op neerkomt is dat je bij elke max node de alpha waarde bijho
 en zodra je bij een min node komt en je ziet dat de beta waarde kleiner is dan de alpha waarde van de bovenliggende max node dan kan je stoppen met verder zoeken in die tak omdat die tak nooit beter kan zijn dan wat al gevonden is.
 
 ```math
-\alpha \geq \beta \quad \text{bij max laag} \\
+\alpha \geq \beta \quad \text{bij max laag}
+```
+
+```math
 \beta \leq \alpha \quad \text{bij min laag}
 ```
 
