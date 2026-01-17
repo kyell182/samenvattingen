@@ -865,3 +865,178 @@ gevraagd:
 
   - Hierdoor wordt de **zoekruimte sterk verkleind** en daalt de **rekentijd aanzienlijk**, terwijl het resultaat **exact hetzelfde blijft** als bij het gewone Min-Max algoritme.
 
+---
+
+gegeven :
+
+- een zoekboom met de kost voor elke leaf node:
+
+![min-max-alpha-beta](./assets/example1.png)
+
+- vraag:
+
+  - bepaal de min max waardes voor elke node in de boom met alpha beta pruning.
+  - geef ook aan welke knopen worden gesnoeid (pruned).
+
+waar het eigenlijk op neerkomt is dat je bij elke max node de alpha waarde bijhoudt en bij elke min node de beta waarde.
+en zodra je bij een min node komt en je ziet dat de beta waarde kleiner is dan de alpha waarde van de bovenliggende max node dan kan je stoppen met verder zoeken in die tak omdat die tak nooit beter kan zijn dan wat al gevonden is.
+
+```math
+\alpha \geq \beta \quad \text{bij max laag} \\
+\beta \leq \alpha \quad \text{bij min laag}
+```
+
+dus als hij telkens in de max laag de alpha aanpast en in de min laag de beta waarde aanpast
+
+⚠️ men start bij de root node met alpha = -∞ en beta = +∞
+
+dit omdat alpha van oneindig klein alleen maar groter kan worden en beta van oneindig groot alleen maar kleiner kan worden.
+
+⚠️ als men naar een hogere node gaat (van kind naar ouder) moet men de alpha en beta waarden van de ouder node overnemen !!!!!
+
+---
+
+## evolutionaire algoritmen ( Hoofdstuk 4 )
+
+### Genetic Algorithms life cycle
+
+leg kort de levenscyclus van een genetisch algoritme uit
+
+- Populatie maken:
+  - Start met een willekeurige groep mogelijke oplossingen.
+
+- Fitness berekenen:
+  - Voor elke oplossing wordt berekend hoe goed ze is met een fitnessfunctie.
+
+- Ouders selecteren:
+  - De beste oplossingen hebben de meeste kans om gekozen te worden om zich voort te planten.
+
+- Reproductie (kruising + mutatie):
+  - Nieuwe oplossingen worden gemaakt door ouders te combineren.
+  - Soms gebeurt er een kleine willekeurige verandering (mutatie).
+
+- Nieuwe generatie maken:
+  - De beste oude oplossingen en de nieuwe oplossingen vormen samen de volgende generatie.
+
+- Herhalen:
+  - Dit proces wordt herhaald tot er een voldoende goede oplossing gevonden is.
+
+```mermaid
+flowchart TD
+    A[Populatie maken] --> B[Fitness berekenen]
+    B --> C[Ouders selecteren]
+    C --> D[Reproductie kruising + mutatie]
+    D --> E[Nieuwe generatie maken]
+    E --> F[Herhalen tot oplossing gevonden]
+
+    class A,B,C,D,E,F gaStep
+    classDef gaStep stroke:#28a745,stroke-width:2px;
+```
+
+---
+
+### enter diversity
+
+leg het belang van crossover en mutatie in genetische algoritmen uit en geef een kort overzicht van enkele veelgebruikte methoden voor zowel crossover als mutatie.
+
+- Genetische algoritmen gebruiken **crossover** en **mutatie** om **variatie** in de populatie te behouden.
+  - Dit is nodig om te voorkomen dat het algoritme vast komt te zitten in een slechte (lokale) oplossing.
+  - Door nieuwe combinaties en kleine willekeurige veranderingen blijft het algoritme nieuwe oplossingen verkennen.
+
+- Crossover (kruising):
+  - Crossover combineert genetisch materiaal van **twee ouders** om een **nieuw kind (offspring)** te maken.
+
+  - Single-point crossover:
+    - Er wordt één punt in het chromosoom gekozen.
+    - Het eerste deel komt van ouder 1, het tweede deel van ouder 2.
+    - Deze twee delen vormen samen het nieuwe kind.
+
+  - Two-point crossover:
+    - Er worden twee punten in het chromosoom gekozen.
+    - De stukken tussen de ouders worden afgewisseld om een nieuw kind te maken.
+
+  - Uniform crossover:
+    - Er wordt een willekeurig masker gemaakt.
+    - Voor elk gen bepaalt het masker van welke ouder het gen wordt overgenomen.
+
+- Mutatie:
+  - Mutatie zorgt voor **kleine willekeurige veranderingen** in een oplossing.
+  - Dit helpt om nieuwe oplossingen te blijven ontdekken en niet vast te zitten in lokale minima.
+
+  - Bit-string mutation:
+    - Eén willekeurig gen wordt gekozen en zijn waarde wordt omgedraaid (0 → 1 of 1 → 0).
+
+  - Flip-bit mutation:
+    - Alle genen in het chromosoom worden omgekeerd (0 wordt 1, 1 wordt 0).
+
+---
+
+### Genetic Algorithm parameters
+
+- Vijf belangrijke parameters van een genetisch algoritme en hun invloed:
+
+  - Chromosoom-encoding:
+    - Bepaalt **hoe een oplossing wordt voorgesteld** (bv. bits, getallen, lijsten, …).
+    - Een goede encoding is cruciaal: ze bepaalt of het probleem **goed en efficiënt** kan worden opgelost.
+
+  - Initialisatie van de populatie:
+    - Bepaalt **hoe de eerste oplossingen worden gegenereerd**.
+    - Meestal willekeurig, maar ze moeten **geldig** zijn.
+    - Een goede startpopulatie kan het algoritme **sneller** naar goede oplossingen leiden.
+
+  - Aantal nakomelingen (offspring):
+    - Bepaalt **hoeveel nieuwe oplossingen** er per generatie worden gemaakt.
+    - Meer nakomelingen = **meer variatie**, maar ook meer kans dat goede oplossingen verdwijnen.
+
+  - Selectiemethode van ouders:
+    - Bepaalt **welke oplossingen mogen voortplanten**.
+    - Sterke selectie = sneller beter, maar risico op **lokale optimum**.
+    - Zwakkere selectie = meer exploratie, maar trager.
+
+  - Stopconditie:
+    - Bepaalt **wanneer het algoritme stopt**.
+    - Bijvoorbeeld: maximaal aantal generaties, voldoende goede oplossing, of tijdslimiet.
+    - Beïnvloedt **rekentijd en kwaliteit** van de oplossing.
+
+---
+
+### Fitness function
+
+- wat is een fitness fuctie in een genetische algoritme?
+
+  - Een fitnessfunctie bepaalt **hoe goed een oplossing is**.
+
+  - Ze geeft **elke oplossing een score** op basis van hoe goed ze het doel bereikt.
+
+  - Die score wordt gebruikt om te beslissen:
+
+    - Welke oplossingen **mogen voortplanten**
+
+    - Welke oplossingen **mogen overleven** naar de volgende generatie
+
+  - De fitnessfunctie werkt een beetje zoals een **heuristiek**: ze stuurt het algoritme in de juiste richting.
+
+---
+
+- waarom is de keuze van een fitness functie cruciaal voor het succes van een genetisch algoritme?
+
+  - De fitnessfunctie bepaalt **wat "goed" betekent** voor het probleem.
+
+  - Een slechte fitnessfunctie kan leiden tot:
+
+    - Het algoritme dat **niet de juiste oplossingen** vindt.
+
+    - Het algoritme dat **vastloopt in lokale optima**.
+
+    - Het algoritme dat **te langzaam convergeert** naar een oplossing.
+
+  - Een goede fitnessfunctie moet:
+
+    - **Relevante aspecten** van het probleem meten.
+
+    - **Duidelijke verschillen** maken tussen goede en slechte oplossingen.
+
+    - **Efficiënt** te berekenen zijn, zodat het algoritme snel kan werken.
+
+---
+
