@@ -1197,33 +1197,153 @@ Gebruikt in **hidden & output layers**.
 Wat beschrijft de Hebb rule omtrent het modelleren van het leerproces van een neuraal
 netwerk?
 
+- het stelt dat de verbindingen tussen neuronen sterker worden als ze gelijktijdig actief zijn.
+
+  - neuronen die veel samen vuren, versterken hun verbindingen.
+  - neuronen die zelden samen vuren, verzwakken hun verbindingen.
+
+- is een vorm van onbegeleid leren.
+
+**Hebb's Rule:**
+
+```math
+\Delta w_{ij} = \eta \cdot x_i \cdot y_j
+```
+
+waarbij:
+
+```math
+\Delta w_{ij} = \text{verandering in gewicht tussen neuron i en j}
+```
+
+```math
+\eta = \text{leersnelheid (learning rate)}
+```
+
+```math
+x_i = \text{activatie van neuron i (input)}
+```
+
+```math
+y_j = \text{activatie van neuron j (output)}
+```
+
+➡️ "Neurons that fire together, wire together."
+
+❗er zijn veel variaties op Hebb's rule waardoor er veel verschillende types van Hebbian learning bestaan.
+
 ---
 
-## Gradient descent / Delta rule
+Hoe worden de gewichten iteratief aangepast tijdens het leerproces van een fully connected
+Hopfield Network?
 
-Δw = −η · ∂E/∂w
+- gebruikt Hebbian learning
+- gewichten aangepast op basis van activatiepatronen
+
+als i en j beide dezelfde waarde hebben in patroon p, dan wordt het gewicht tussen hen verhoogd.
+
+andersom wordt het gewicht verlaagd.
+
+**Gewichtsaanpassing in Hopfield Network:**
+
+```math
+w_{ij} = \frac{1}{N} \sum_{k=1}^{N} q_i^p q_j^p
+```
+waarbij:
+
+```math
+w_{ij} = \text{gewicht tussen neuron i en j}
+```
+
+```math
+N = \text{aantal neuronen}
+```
+
+```math
+P = \text{aantal opgeslagen patronen}
+```
+
+```math
+q_i^p = \text{staat van neuron i in patroon p (0 of 1)}
+```
+
+```math
+q_j^p = \text{staat van neuron j in patroon p (0 of 1)}
+```
 
 ---
 
-## Backpropagation
+Bespreek de least squares method bij het minimaliseren van de fout- of cost-function?
 
-- Fout van output naar input
-- Gewichten aangepast via gradient descent
+Least Squares minimaliseert de som van de kwadraten van de fouten door de gewichten van een model zo aan te passen dat de voorspellingen zo dicht mogelijk bij de echte waarden liggen.
+
+**Cost Function (Least Squares):**
+
+```math
+J(w) = \sum_{i=1}^{N} (y_i - \hat{y}_i)^2
+```
+
+waarbij:
+```math
+J(w) = \text{totale fout (cost)}
+```
+
+```math
+N = \text{aantal datapunten}
+```
+
+```math
+y_i = \text{werkelijke waarde van datapunt i}
+```
+
+```math
+\hat{y}_i = \text{voorspelde waarde van datapunt i}
+```
+
+```math
+w = \text{gewichten van het model}
+```
 
 ---
 
-## Support Vector Machine (SVM)
+Hoe worden de gewichten van een neuraal netwerk aangepast bij gradient descent, volgens de
+delta rule?
 
-Zoekt **maximale marge** tussen klassen.
+- gebruikt de afgeleide van de cost function
+- past gewichten aan in de richting van de grootste foutvermindering
 
-Support vectors = kritische punten.
+**Delta Rule (Gradient Descent):**
+
+```math
+\Delta w_{ij} = -\eta \cdot \frac{\partial J}{\partial w_{ij}}
+```
+
+waarbij:
+
+```math
+\Delta w_{ij} = \text{verandering in gewicht tussen neuron i en j}
+```
+
+```math
+\eta = \text{leersnelheid (learning rate)}
+```
+
+```math
+J = \text{cost function}
+```
+
+```math
+w_{ij} = \text{gewicht tussen neuron i en j}
+```
+
+```math
+\frac{\partial J}{\partial w_{ij}} = \text{afgeleide van de cost function m.b.t. gewicht} \: w_{ij}
+```
 
 ---
 
-## Deep learning & Autoencoders
-
-- Unsupervised pretraining
-- Daarna supervised fine-tuning
+Hoe werkt het backpropagation algorithm voor een neuraal netwerk, dat is opgebouwd uit een
+input layer, een output layer en één of meerdere hidden layers?
 
 ---
 
