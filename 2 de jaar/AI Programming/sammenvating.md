@@ -1043,3 +1043,232 @@ leg het belang van crossover en mutatie in genetische algoritmen uit en geef een
 
 ---
 
+## Advanced evolutionare benaderingen ( Hoofdstuk 5 )
+
+### Selection mechanisms
+
+- bespreek kort het principe van de volgende selectiemechanismen en bespreek kort de voor en nadelen.
+
+  - Roulette wheel selection:
+
+- Roulette wheel selection:
+
+  - Elke oplossing krijgt een **kans om gekozen te worden** die **evenredig is met zijn fitness**.
+    - Hoe beter de fitness, hoe groter de kans.
+  - Je kan het vergelijken met een **draaiend rad**:
+    - Elke oplossing krijgt een stuk van het rad.
+    - Hoe beter de fitness, hoe groter dat stuk.
+
+- Voordelen:
+  - Makkelijk te implementeren.
+  - Ook **zwakkere oplossingen** maken nog kans om gekozen te worden → zorgt voor variatie.
+
+- Nadelen:
+  - Sterk **voordeel voor oplossingen met hoge fitness**.
+  - Daardoor kan de **diversiteit in de populatie verminderen**.
+
+- rank selection:
+
+  - De oplossingen worden eerst **gesorteerd op fitness**.
+  - Daarna krijgt elke oplossing een **rang (positie)** in plaats van haar echte fitnesswaarde.
+  - De **kans om gekozen te worden** hangt af van die rang, niet van de absolute fitness.
+
+- Voordelen:
+  - **Minder bevooroordeeld** naar oplossingen met heel hoge fitness.
+  - Zorgt voor **meer diversiteit** in de populatie.
+
+- Nadelen:
+  - **Tragere convergentie**, omdat zeer goede oplossingen minder vaak gekozen worden.
+
+- Tournament selection:
+
+  - Er wordt telkens een **willekeurige groep oplossingen** gekozen uit de populatie.
+  - Uit die groep wordt **de beste (hoogste fitness)** geselecteerd als ouder.
+
+- Voordelen:
+  - Goede **balans tussen exploratie en exploitatie**.
+  - Werkt goed, zelfs als er maar **weinig heel goede oplossingen** in de populatie zitten.
+
+- Nadelen:
+  - Je moet een **toernooigrootte** kiezen (hoeveel oplossingen per wedstrijd).
+  - Die parameter is soms **moeilijk juist in te stellen**.
+
+- Elitism (elitisme):
+
+  - De **beste oplossingen** uit de populatie worden **automatisch overgenomen** naar de volgende generatie.
+  - Zo gaan de **beste gevonden oplossingen niet verloren**.
+
+- Voordelen:
+  - De **kwaliteit van de populatie kan niet achteruitgaan**.
+  - De beste oplossingen blijven altijd bewaard.
+
+- Nadelen:
+  - Risico op **te snelle convergentie**.
+  - De populatie kan vast komen te zitten in een **lokaal optimum** door te weinig variatie.
+
+---
+
+### Mutation mechanisms
+
+- bespreek kort het principe van de volgende mutatiemechanismen in de evolutionaire algoritme.
+
+  - Boundary mutation:
+
+    - Boundary mutation is een **mutatiemethode** voor chromosomen met **reële (numerieke) waarden**.
+    - Er wordt **één willekeurig gen** gekozen uit het chromosoom.
+    - Dit gen wordt dan **vervangen door de minimum- of maximumwaarde** die is toegestaan.
+
+    - Belangrijk:
+      - De **onder- en bovengrens** kunnen:
+        - Voor alle genen hetzelfde zijn, of
+        - Voor elk gen apart ingesteld worden.
+
+    - Doel:
+      - Zorgt ervoor dat oplossingen soms **extreme waarden** kunnen aannemen.
+      - Helpt om ook de **randen van de zoekruimte** te verkennen.
+
+  - Arithmetic mutation:
+
+    - Arithmetic mutation is een **mutatiemethode** in genetische algoritmen.
+    - Er wordt **één willekeurig gen** gekozen uit een oplossing (chromosoom).
+    - Het gen wordt aangepast door **een kleine waarde erbij op te tellen of af te trekken**.
+
+    - Doel:
+      - Creëert **kleine variaties** in de oplossing.
+      - Helpt om de oplossing **fijn bij te stellen** en beter te maken zonder grote sprongen.
+
+---
+
+### Tree encoding en tree crossover
+
+bespreek kort het principe van:
+
+- Tree encoding (Boom-encoding):
+
+  - Tree encoding stelt een **chromosoom voor als een boomstructuur**.
+  - Elke **node** in de boom is:
+    - Of een **functie**
+    - Of een **terminale waarde** (gegeven of constante)
+  - De boom wordt **recursief geëvalueerd** om de uiteindelijke oplossing te berekenen.
+
+  - Voordelen:
+    - Zeer **flexibel** voor complexe oplossingen.
+    - Vooral nuttig als de **hiërarchische structuur** belangrijk is voor het probleem.
+
+- Tree crossover:
+
+  - Tree crossover lijkt op **single-point crossover**, maar dan voor boomstructuren.
+  - Er wordt **één knooppunt (point) in de boom** gekozen.
+  - De takken **boven en onder dat punt** worden uitgewisseld tussen twee ouders.
+  - Zo ontstaat een **nieuw kind (offspring)**.
+  - Belangrijk:
+    - Het kind moet **gecontroleerd worden** om te verzekeren dat het een **geldige oplossing** is die aan de probleemconstraints voldoet.
+
+---
+
+## Swarm Intelligence ( Hoofdstuk 6 )
+
+### swarm intelligence
+
+- verklaar wat swarm intelligence is en op welke principes is deze vorm van intelligentie gebaseerd?
+
+  - Swarm intelligence (SI):
+
+    - Swarm intelligence is een **vorm van collectieve intelligentie**.
+    - Het is gebaseerd op het **gezamenlijke gedrag** van gedecentraliseerde en zelfgeorganiseerde systemen.
+    - Belangrijke principes:
+      - **Zelforganisatie**: individuen organiseren zichzelf zonder centrale controle.
+      - **Decentralisatie**: er is geen centrale leider.
+      - **Indirecte communicatie**: individuen beïnvloeden elkaar bijvoorbeeld via signalen of markeringen (zoals feromonen bij dieren).
+    - Effect:
+      - Individuen kunnen **complexe problemen samen oplossen** door eenvoudige regels te volgen.
+
+- waarom is de vergelijken met mieren gekozen in de ant optimization algoritme?
+
+  - Ant Colony Optimization (ACO):
+
+    - ACO is geïnspireerd op het **zoekgedrag van mieren**.
+    - Mieren gebruiken **feromonen** om paden tussen hun nest en voedsel te markeren.
+    - Door deze signalen te volgen, **vinden de mieren gezamenlijk het kortste pad**.
+    - Het algoritme bootst dit na door **virtuele "feromoonpaden"** te gebruiken.
+    - Kunstmatige agenten volgen deze paden en **versterken goede routes**, waardoor ze geleidelijk **optimale oplossingen** ontdekken.
+
+### Ant Colony Optimization (ACO) algorithm
+
+- bespreek de verschillende stappen in het ACO algoritme
+
+  - **Initialize pheromone trails**:
+    - Stel alle feromoonpaden tussen knooppunten in.
+    - Initialiseer de intensiteit van de feromonen.
+
+  - **Set up population of ants**:
+    - Creëer een populatie mieren.
+    - Plaats elke mier op een **willekeurig startknooppunt**.
+
+  - **Choose the next destination**:
+    - Mieren kiezen hun volgende knooppunt op basis van:
+      - Feromoonintensiteit
+      - Afstandsheuristieken
+    - Dit herhaalt zich totdat **alle knooppunten bezocht zijn**.
+
+  - **Update the pheromone trails**:
+    - Pas de feromoonintensiteit aan op de paden waarover de mieren gelopen hebben.
+    - Houd rekening met **verdamping** van feromonen.
+
+  - **Update the best solution**:
+    - Controleer het **kortste pad** of de beste oplossing tot nu toe, gebaseerd op de totale afstand van de mieren.
+
+  - **Stop criteria**:
+    - Bepaal wanneer het algoritme stopt, bijvoorbeeld:
+      - Na een bepaald aantal iteraties
+      - Of bij convergentie van de oplossing
+
+- bespreek de wiskundige formule voor bestemmings selctie gebaseerd op feromoon sterkte en afstands heuristieken.
+
+- Berekening van de selectie van een pad in ACO:
+
+  ```math
+  P_x = \frac{(\text{feromoon}_x)^\alpha \cdot (\text{heuristiek}_x)^\beta}{\sum (\text{feromoon}_n)^\alpha \cdot (\text{heuristiek}_n)^\beta}
+  ```
+
+  Waarbij:
+
+    feromoon_x = feromoonintensiteit op pad x
+
+    heuristiek_x = heuristiek van pad x (bijv. 1 / afstand)
+
+    α = invloed van de feromonen
+
+    β = invloed van de heuristiek
+
+    Σ = som over alle beschikbare volgende knooppunten
+
+  Uitleg:
+
+    α groter → mieren volgen vooral sterke feromoonsporen
+
+    β groter → mieren volgen vooral korte/optimale paden
+
+    Zo ontstaat een balans tussen exploratie en exploitatie
+
+- Hoe is de beste oplossing uiteindelijk bepaald?
+
+  - De beste oplossing wordt bepaald door het **kortste pad** of de meest optimale route die door de mieren is gevonden tijdens hun zoektocht.
+  
+  - Na elke iteratie worden de paden geëvalueerd op basis van hun totale afstand of kosten.
+  
+  - Het pad met de **laagste totale kosten** wordt opgeslagen als de beste oplossing tot nu toe.
+  
+  - Deze oplossing kan worden bijgewerkt als een mier een nog betere route vindt in latere iteraties.
+
+- wat is de criteria voor het stoppen van het algoritme?
+
+- Stopcriteria voor het Ant Colony Optimization (ACO) algoritme:
+
+  - Het algoritme kan stoppen op basis van verschillende voorwaarden, afhankelijk van het probleem:
+    - **Na een vooraf bepaald aantal iteraties**.
+    - **Wanneer de beste oplossing niet meer verbetert** (stagnatie).
+    - **Wanneer een oplossing voldoet aan een vooraf gedefinieerde drempelwaarde** (bijv. een minimale afstand).
+    - **Na een bepaalde tijdslimiet**.
+
+---
