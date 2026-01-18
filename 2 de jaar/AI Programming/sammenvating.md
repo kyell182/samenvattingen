@@ -1263,12 +1263,9 @@ bespreek kort het principe van:
 
 - wat is de criteria voor het stoppen van het algoritme?
 
-- Stopcriteria voor het Ant Colony Optimization (ACO) algoritme:
-
-  - Het algoritme kan stoppen op basis van verschillende voorwaarden, afhankelijk van het probleem:
-    - **Na een vooraf bepaald aantal iteraties**.
-    - **Wanneer de beste oplossing niet meer verbetert** (stagnatie).
-    - **Wanneer een oplossing voldoet aan een vooraf gedefinieerde drempelwaarde** (bijv. een minimale afstand).
-    - **Na een bepaalde tijdslimiet**.
+  - Na een vooraf bepaald aantal iteraties.
+  - Wanneer de beste oplossing niet meer verbetert (stagnatie).
+  - Wanneer een oplossing voldoet aan een vooraf gedefinieerde drempelwaarde (bijv. een minimale afstand).
+  - Na een bepaalde tijdslimiet.
 
 ---
