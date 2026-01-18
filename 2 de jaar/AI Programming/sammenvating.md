@@ -2,8 +2,9 @@
 
 ## Intuïtie van kunstmatige intelligentie ( Hoofdstuk 1 )
 
-Waarom bestaat er geen eensluidende definitie van kunstmatige intelligentie?
+### Waarom bestaat er geen eensluidende definitie van kunstmatige intelligentie?
 
+<details><summary>Antwoord</summary>
 Er bestaat geen vaste of eenvoudige definitie van intelligentie.
 
 Wat men onder “intelligentie” verstaat, verschilt van persoon tot persoon en hangt af van de context.
@@ -14,8 +15,11 @@ De betekenis van AI is dus subjectief en afhankelijk van hoe men intelligentie z
 
 ---
 
-Wat is het verschil tussen kwantitatieve en kwalitatieve data? Geef enkele concrete voorbeelden van beide soorten data.
+</details>
 
+### Wat is het verschil tussen kwantitatieve en kwalitatieve data? Geef enkele concrete voorbeelden van beide soorten data
+
+<details><summary>Antwoord</summary>
 **Soorten gegevens**
 
 - Kwantitatieve gegevens
@@ -40,7 +44,11 @@ Wat is het verschil tussen kwantitatieve en kwalitatieve data? Geef enkele concr
 
 ---
 
-Wat is het verschil tussen data, informatie en kennis?
+</details>
+
+### Wat is het verschil tussen data, informatie en kennis?
+
+<details><summary>Antwoord</summary>
 
 - Data, Informatie en Kennis
 
@@ -48,23 +56,27 @@ Wat is het verschil tussen data, informatie en kennis?
   - **Informatie** = verwerkte data die **betekenis** heeft gekregen.
   - **Kennis** = informatie die **begrepen** is en kan worden gebruikt om **beslissingen te nemen**.
 
-```mermaid
----
-config:
-  layout: elk
----
-flowchart LR
-    A[Data
-    Ruwe feiten en cijfers] --> B[Informatie
-    Verwerkte data met betekenis]
-    B --> C[Kennis
-    Begrepen informatie
-    voor beslissingen]
-```
+  ```mermaid
+  ---
+  config:
+    layout: elk
+  ---
+  flowchart LR
+      A[Data
+      Ruwe feiten en cijfers] --> B[Informatie
+      Verwerkte data met betekenis]
+      B --> C[Kennis
+      Begrepen informatie
+      voor beslissingen]
+  ```
 
 ---
 
-Wat is een algoritme? Wat is een AI-algoritme? Wat zijn de componenten van een algoritme?
+</details>
+
+### Wat is een algoritme? Wat is een AI-algoritme? Wat zijn de componenten van een algoritme?
+
+<details><summary>Antwoord</summary>
 
 - **Algoritme**
 
@@ -93,7 +105,11 @@ Wat is een algoritme? Wat is een AI-algoritme? Wat zijn de componenten van een a
 
 ---
 
-Noem een ​​paar categorieën problemen die mensen proberen op te lossen met behulp van (AI) algoritmen.
+</details>
+
+### Noem een ​​paar categorieën problemen die mensen proberen op te lossen met behulp van (AI) algoritmen
+
+<details><summary>Antwoord</summary>
 
 - Enkele problemen die met AI-algoritmen worden opgelost:
 
@@ -115,7 +131,11 @@ flowchart TD
 
 ---
 
-Wat is het verschil tussen een lokale beste oplossing en een globale beste oplossing?
+</details>
+
+### Wat is het verschil tussen een lokale beste oplossing en een globale beste oplossing?
+
+<details><summary>Antwoord</summary>
 
 - Lokale beste oplossing:
 
@@ -154,7 +174,11 @@ graph TD
 
 ---
 
-Wat is het verschil tussen superintelligentie, algemene intelligentie en smalle intelligentie?
+</details>
+
+### Wat is het verschil tussen superintelligentie, algemene intelligentie en smalle intelligentie?
+
+<details><summary>Antwoord</summary>
 
 - Superintelligentie:
 
@@ -181,7 +205,11 @@ flowchart TD
 
 ---
 
-Wat is het verband tussen op biologie geïnspireerde algoritmen, machine learning, deep learning en zoekalgoritmen?
+</details>
+
+### Wat is het verband tussen op biologie geïnspireerde algoritmen, machine learning, deep learning en zoekalgoritmen?
+
+<details><summary>Antwoord</summary>
 
 - Biologisch geïnspireerde algoritmen:
 
@@ -242,7 +270,11 @@ flowchart TD
 
 ---
 
-Welke drie soorten 'leren' vallen onder machine leren en kunt u elk type 'leren' kort toelichten?
+</details>
+
+### Welke drie soorten 'leren' vallen onder machine leren en kunt u elk type 'leren' kort toelichten?
+
+<details><summary>Antwoord</summary>
 
 - **Machine learning types**
 
@@ -286,9 +318,13 @@ flowchart TD
 
 ---
 
+</details>
+
 ## Basisprincipes van zoeken ( Hoofdstuk 2 )
 
-Wat is een datastructuur en geef enkele concrete voorbeelden van datastructuren?
+### Wat is een datastructuur en geef enkele concrete voorbeelden van datastructuren?
+
+<details><summary>Antwoord</summary>
 
 - **Datastructuur**  
 
@@ -322,7 +358,11 @@ flowchart TD
 
 ---
 
-Leg de volgende termen uit:
+</details>
+
+### Leg de volgende termen uit
+
+<details><summary>Antwoord</summary>
 
 - graph
 - vertex
@@ -351,15 +391,11 @@ Leg de volgende termen uit:
 
 ---
 
-Gegeven: een graaf
+</details>
 
-- opdracht:
+### Gegeven een graaf, bepaal de array of edges, de incidence matrix en de adjacency matrix
 
-  - bepaal de :
-
-    - array of edges
-    - the incidence matrix
-    - and the adjacency matrix
+<details><summary>Antwoord</summary>
 
 | Structuur        | Wat het laat zien                       | Rijen/Kolommen                              |
 | ---------------- | --------------------------------------- | ------------------------------------------- |
@@ -479,7 +515,11 @@ graph TD
 
 ---
 
-Leg de volgende 'tree' termen uit:
+</details>
+
+### Leg de volgende 'tree' termen uit
+
+<details><summary>Antwoord</summary>
 
 - root node
 - parent node
@@ -536,7 +576,11 @@ flowchart TD
 
 ---
 
-verklaar het Breath-First Search (BFS) algoritme en welke datastructuur wordt gebruikt om het te implementeren?
+</details>
+
+### Verklaar het Breath-First Search (BFS) algoritme en welke datastructuur wordt gebruikt om het te implementeren?
+
+<details><summary>Antwoord</summary>
 
 - **BFS (Breadth-First Search)**
 
@@ -606,7 +650,11 @@ def bfs(graph, start):
 
 ---
 
-verklaar het Depth-First Search (DFS) algoritme en welke datastructuur wordt gebruikt om het te implementeren?
+</details>
+
+### Verklaar het Depth-First Search (DFS) algoritme en welke datastructuur wordt gebruikt om het te implementeren?
+
+<details><summary>Antwoord</summary>
 
 - **DFS (Depth-First Search)**
 
@@ -676,52 +724,79 @@ def dfs(graph, start, visited=None):
 
 ---
 
+</details>
+
 ## intelligent zoeken ( Hoofdstuk 3 )
 
 ### Heuristics
 
-- Wat is een heuristic?
+#### Wat is een heuristic?
 
-  - Een regel of een “educated guess” die wordt gebruikt om **zoekalgoritmes te sturen**.
-  
-  - Evalueert staten in een zoekprobleem op basis van specifieke criteria.
+<details><summary>Antwoord</summary>
 
-  - Vereenvoudigt het zoeken door **context-specifieke aanwijzingen** te geven, zodat niet alle opties hoeven te worden geëvalueerd.
+- Een regel of een “educated guess” die wordt gebruikt om **zoekalgoritmes te sturen**.
 
-- Waarom kan een heuristic de efficiëntie van een zoekalgoritme verbeteren?
-  
-  - Richt de zoekopdracht op **veelbelovende paden**.
+- Evalueert staten in een zoekprobleem op basis van specifieke criteria.
 
-  - Vermindert de tijd die nodig is om **minder waarschijnlijke oplossingen** te onderzoeken.
-
-  - Helpt het algoritme sneller een **optimale of acceptabele oplossing** te vinden dan een uitputtende zoekmethode.
-
-- Geef enkele concrete voorbeelden van heuristics
-  
-  - Een **GPS-systeem** dat de kortste route (vogelvlucht) gebruikt als heuristic om de snelste route te vinden.
-  
-  - Bij een **labyrintprobleem** kan een heuristic paden prioriteren met **minder obstakels of doodlopende wegen**.
+- Vereenvoudigt het zoeken door **context-specifieke aanwijzingen** te geven, zodat niet alle opties hoeven te worden geëvalueerd.
 
 ---
 
+</details>
+
+#### Waarom kan een heuristic de efficiëntie van een zoekalgoritme verbeteren?
+
+<details><summary>Antwoord</summary>
+
+- Richt de zoekopdracht op **veelbelovende paden**.
+
+- Vermindert de tijd die nodig is om **minder waarschijnlijke oplossingen** te onderzoeken.
+
+- Helpt het algoritme sneller een **optimale of acceptabele oplossing** te vinden dan een uitputtende zoekmethode.
+
+---
+
+</details>
+
+#### Geef enkele concrete voorbeelden van heuristics
+
+<details><summary>Antwoord</summary>
+
+- Een **GPS-systeem** dat de kortste route (vogelvlucht) gebruikt als heuristic om de snelste route te vinden.
+
+- Bij een **labyrintprobleem** kan een heuristic paden prioriteren met **minder obstakels of doodlopende wegen**.
+
+---
+
+</details>
+
 ### A* Search
 
-- leg uit hoe het A* zoekalgoritme werkt
+#### leg uit hoe het A* zoekalgoritme werkt
 
-  - Combineert de **werkelijke padkosten vanaf het startknooppunt** met een **heuristische schatting van de resterende kosten naar het doel**.
-  
-  - Bezoekt knooppunten op basis van **de laagste gecombineerde kosten** (werkelijke kosten + heuristische kosten).
-  
-  - Hierdoor wordt efficiënt gezocht naar het **optimale pad**, door een balans te vinden tussen afstand al afgelegd en geschatte resterende afstand.
+<details><summary>Antwoord</summary>
 
-- Hoe word de cost functie van A* Search berekend?
+- Combineert de **werkelijke padkosten vanaf het startknooppunt** met een **heuristische schatting van de resterende kosten naar het doel**.
 
-  - De totale kosten f(n) is de som van twee componenten:
+- Bezoekt knooppunten op basis van **de laagste gecombineerde kosten** (werkelijke kosten + heuristische kosten).
 
-    1. **g(n)**: de werkelijke kosten van het pad vanaf het startknooppunt naar knooppunt n.
+- Hierdoor wordt efficiënt gezocht naar het **optimale pad**, door een balans te vinden tussen afstand al afgelegd en geschatte resterende afstand.
 
-    2. **h(n)**: de heuristische schatting van de kosten van knooppunt n naar het doel.  
-  - Formule:
+---
+
+</details>
+
+#### Hoe word de cost functie van A* Search berekend?
+
+<details><summary>Antwoord</summary>
+
+- De totale kosten f(n) is de som van twee componenten:
+
+  1. **g(n)**: de werkelijke kosten van het pad vanaf het startknooppunt naar knooppunt n.
+
+  2. **h(n)**: de heuristische schatting van de kosten van knooppunt n naar het doel.  
+
+- Formule:
 
     ```math
     f(n) = g(n) + h(n)
@@ -733,13 +808,15 @@ def dfs(graph, start, visited=None):
     - h(n) = geschatte resterende afstand naar doel  
   - Doel: knooppunten prioriteren die **zowel dichtbij het startpunt als het doel liggen**, zodat het algoritme efficiënt het optimale pad vindt.
 
-- gegeven :
+---
+
+</details>
+
+#### gegeven een graaf, bepaal de volgorde van zoeken volgens het A* zoekalgoritme
+
+<details><summary>Antwoord</summary>
 
 ![a-star](./assets/A%20star%20graph%20.png)
-
-- vraag:
-
-  - bepaal de volgorde van zoeken volgens het A* zoekalgoritme
 
 ```text
 begin is A :
@@ -782,14 +859,17 @@ omdat het laatste punt geen h meer heeft kun je stellen dat bij het laatste punt
 
 de heuristiek helpt enkel om een beslissing te nemen als hij een keuze moet maken en zal dan steeds de laagste kost nemen.
 
+---
+
+</details>
 
 ### min-max adversarial search
 
-- leg uit hoe het Min-Max zoekalgoritme werkt
+#### leg uit hoe het Min-Max zoekalgoritme werkt
 
-- **Min-Max algoritme**
+<details><summary>Antwoord</summary>
 
-  - Wordt gebruikt bij **spellen met twee spelers** (bv. schaken, tic-tac-toe).
+- Wordt gebruikt bij **spellen met twee spelers** (bv. schaken, tic-tac-toe).
   
   - Het algoritme bouwt een **spelboom** met alle mogelijke zetten.
 
@@ -815,68 +895,76 @@ de heuristiek helpt enkel om een beslissing te nemen als hij een keuze moet make
 
 ---
 
-gegeven :
+</details>
 
-- een zoekboom met de kost voor elke leaf node:
+#### gegeven een zoekboom, bepaal de min max waardes voor elke node in de boom.
 
-gevraagd:
-
-- bepaal de min max waardes voor elke node in de boom.
+<details><summary>Antwoord</summary>
 
 ![min-max](./assets/min-max%20app1.png)
 
 ---
 
+</details>
+
 ### Alpha-Beta Pruning
 
-- leg uit hoe het Alpha-Beta Pruning zoekalgoritme werkt
+#### leg uit hoe het Alpha-Beta Pruning zoekalgoritme werkt
 
-  - **Alpha-Beta Pruning**  
-    - Is een **optimalisatie** van het **Min-Max algoritme**.  
-    - Doel: **minder knooppunten evalueren** zonder het eindresultaat te veranderen.
+<details><summary>Antwoord</summary>
 
-  - **Twee waarden**  
-    - **Alpha (α)** = de **beste score die de MAX-speler tot nu toe kan garanderen**.  
-    - **Beta (β)** = de **beste score die de MIN-speler tot nu toe kan garanderen**.
+- Is een **optimalisatie** van het **Min-Max algoritme**.  
+- Doel: **minder knooppunten evalueren** zonder het eindresultaat te veranderen.
 
-  - **Hoe pruning werkt**  
-    - Tijdens het doorzoeken van de spelboom worden α en β voortdurend bijgewerkt.  
-    - **Als blijkt dat een tak nooit beter kan zijn dan wat al gevonden is**, wordt die tak **niet verder onderzocht** (pruned).
+- **Twee waarden**  
+  - **Alpha (α)** = de **beste score die de MAX-speler tot nu toe kan garanderen**.  
+  - **Beta (β)** = de **beste score die de MIN-speler tot nu toe kan garanderen**.
 
-  - **Waarom dit werkt**  
-    - De gesnoeide (pruned) takken **kunnen de uiteindelijke beslissing toch niet meer beïnvloeden**.  
-    - Resultaat: **zelfde uitkomst als Min-Max**, maar **veel sneller**.
+- **Hoe pruning werkt**  
+  - Tijdens het doorzoeken van de spelboom worden α en β voortdurend bijgewerkt.  
+  - **Als blijkt dat een tak nooit beter kan zijn dan wat al gevonden is**, wordt die tak **niet verder onderzocht** (pruned).
 
-- wat is alpha?
+- **Waarom dit werkt**  
+  - De gesnoeide (pruned) takken **kunnen de uiteindelijke beslissing toch niet meer beïnvloeden**.  
+  - Resultaat: **zelfde uitkomst als Min-Max**, maar **veel sneller**.
 
-  - de beste score die de MAX-speler tot nu toe kan garanderen.
+#### wat is alpha?
 
-- wat is beta?
+<details><summary>Antwoord</summary>
 
-  - de beste score die de MIN-speler tot nu toe kan garanderen.
+- de beste score die de MAX-speler tot nu toe kan garanderen.
 
-- waarom is Alpha-Beta Pruning een efficiëntere versie van het Min-Max algoritme?
+</details>
 
-  - Het algoritme **evalueert geen knooppunten** die **toch geen invloed** meer kunnen hebben op de uiteindelijke beslissing.
+#### wat is beta?
 
-  - Met de waarden **alpha (α)** en **beta (β)** wordt bijgehouden wat momenteel **de beste opties** zijn voor respectievelijk MAX en MIN.
+<details><summary>Antwoord</summary>
 
-  - **Takken die sowieso slechter zijn dan de huidige beste keuze worden afgesneden (pruned)**.
+- de beste score die de MIN-speler tot nu toe kan garanderen.
 
-  - Hierdoor wordt de **zoekruimte sterk verkleind** en daalt de **rekentijd aanzienlijk**, terwijl het resultaat **exact hetzelfde blijft** als bij het gewone Min-Max algoritme.
+</details>
+
+#### waarom is Alpha-Beta Pruning een efficiëntere versie van het Min-Max algoritme?
+
+<details><summary>Antwoord</summary>
+
+- Het algoritme **evalueert geen knooppunten** die **toch geen invloed** meer kunnen hebben op de uiteindelijke beslissing.
+
+- Met de waarden **alpha (α)** en **beta (β)** wordt bijgehouden wat momenteel **de beste opties** zijn voor respectievelijk MAX en MIN.
+
+- **Takken die sowieso slechter zijn dan de huidige beste keuze worden afgesneden (pruned)**.
+
+- Hierdoor wordt de **zoekruimte sterk verkleind** en daalt de **rekentijd aanzienlijk**, terwijl het resultaat **exact hetzelfde blijft** als bij het gewone Min-Max algoritme.
 
 ---
 
-gegeven :
+</details>
 
-- een zoekboom met de kost voor elke leaf node:
+#### gegen een zoekboom, bepaal de min max waardes voor elke node in de boom met alpha beta pruning en geef ook aan welke knopen worden gesnoeid (pruned).
+
+<details><summary>Antwoord</summary>
 
 ![min-max-alpha-beta](./assets/example1.png)
-
-- vraag:
-
-  - bepaal de min max waardes voor elke node in de boom met alpha beta pruning.
-  - geef ook aan welke knopen worden gesnoeid (pruned).
 
 waar het eigenlijk op neerkomt is dat je bij elke max node de alpha waarde bijhoudt en bij elke min node de beta waarde.
 en zodra je bij een min node komt en je ziet dat de beta waarde kleiner is dan de alpha waarde van de bovenliggende max node dan kan je stoppen met verder zoeken in die tak omdat die tak nooit beter kan zijn dan wat al gevonden is.
@@ -899,11 +987,15 @@ dit omdat alpha van oneindig klein alleen maar groter kan worden en beta van one
 
 ---
 
+</details>
+
 ## evolutionaire algoritmen ( Hoofdstuk 4 )
 
 ### Genetic Algorithms life cycle
 
-leg kort de levenscyclus van een genetisch algoritme uit
+#### leg kort de levenscyclus van een genetisch algoritme uit
+
+<details><summary>Antwoord</summary>
 
 - Populatie maken:
   - Start met een willekeurige groep mogelijke oplossingen.
@@ -938,9 +1030,11 @@ flowchart TD
 
 ---
 
+</details>
+
 ### enter diversity
 
-leg het belang van crossover en mutatie in genetische algoritmen uit en geef een kort overzicht van enkele veelgebruikte methoden voor zowel crossover als mutatie.
+#### leg het belang van crossover en mutatie in genetische algoritmen uit en geef een kort overzicht van enkele veelgebruikte methoden voor zowel crossover als mutatie.
 
 - Genetische algoritmen gebruiken **crossover** en **mutatie** om **variatie** in de populatie te behouden.
   - Dit is nodig om te voorkomen dat het algoritme vast komt te zitten in een slechte (lokale) oplossing.
@@ -974,90 +1068,100 @@ leg het belang van crossover en mutatie in genetische algoritmen uit en geef een
 
 ---
 
+</details>
+
 ### Genetic Algorithm parameters
 
-- Vijf belangrijke parameters van een genetisch algoritme en hun invloed:
+#### Vijf belangrijke parameters van een genetisch algoritme en hun invloed:
 
-  - Chromosoom-encoding:
-    - Bepaalt **hoe een oplossing wordt voorgesteld** (bv. bits, getallen, lijsten, …).
-    - Een goede encoding is cruciaal: ze bepaalt of het probleem **goed en efficiënt** kan worden opgelost.
+- Chromosoom-encoding:
+  - Bepaalt **hoe een oplossing wordt voorgesteld** (bv. bits, getallen, lijsten, …).
+  - Een goede encoding is cruciaal: ze bepaalt of het probleem **goed en efficiënt** kan worden opgelost.
 
-  - Initialisatie van de populatie:
-    - Bepaalt **hoe de eerste oplossingen worden gegenereerd**.
-    - Meestal willekeurig, maar ze moeten **geldig** zijn.
-    - Een goede startpopulatie kan het algoritme **sneller** naar goede oplossingen leiden.
+- Initialisatie van de populatie:
+  - Bepaalt **hoe de eerste oplossingen worden gegenereerd**.
+  - Meestal willekeurig, maar ze moeten **geldig** zijn.
+  - Een goede startpopulatie kan het algoritme **sneller** naar goede oplossingen leiden.
 
-  - Aantal nakomelingen (offspring):
-    - Bepaalt **hoeveel nieuwe oplossingen** er per generatie worden gemaakt.
-    - Meer nakomelingen = **meer variatie**, maar ook meer kans dat goede oplossingen verdwijnen.
+- Aantal nakomelingen (offspring):
+  - Bepaalt **hoeveel nieuwe oplossingen** er per generatie worden gemaakt.
+  - Meer nakomelingen = **meer variatie**, maar ook meer kans dat goede oplossingen verdwijnen.
 
-  - Selectiemethode van ouders:
-    - Bepaalt **welke oplossingen mogen voortplanten**.
-    - Sterke selectie = sneller beter, maar risico op **lokale optimum**.
-    - Zwakkere selectie = meer exploratie, maar trager.
+- Selectiemethode van ouders:
+  - Bepaalt **welke oplossingen mogen voortplanten**.
+  - Sterke selectie = sneller beter, maar risico op **lokale optimum**.
+  - Zwakkere selectie = meer exploratie, maar trager.
 
-  - Stopconditie:
-    - Bepaalt **wanneer het algoritme stopt**.
-    - Bijvoorbeeld: maximaal aantal generaties, voldoende goede oplossing, of tijdslimiet.
-    - Beïnvloedt **rekentijd en kwaliteit** van de oplossing.
+- Stopconditie:
+  - Bepaalt **wanneer het algoritme stopt**.
+  - Bijvoorbeeld: maximaal aantal generaties, voldoende goede oplossing, of tijdslimiet.
+  - Beïnvloedt **rekentijd en kwaliteit** van de oplossing.
 
 ---
+
+</details>
 
 ### Fitness function
 
-- wat is een fitness fuctie in een genetische algoritme?
+#### wat is een fitness fuctie in een genetische algoritme?
 
-  - Een fitnessfunctie bepaalt **hoe goed een oplossing is**.
+<details><summary>Antwoord</summary>
 
-  - Ze geeft **elke oplossing een score** op basis van hoe goed ze het doel bereikt.
+- Een fitnessfunctie bepaalt **hoe goed een oplossing is**.
 
-  - Die score wordt gebruikt om te beslissen:
+- Ze geeft **elke oplossing een score** op basis van hoe goed ze het doel bereikt.
 
-    - Welke oplossingen **mogen voortplanten**
+- Die score wordt gebruikt om te beslissen:
 
-    - Welke oplossingen **mogen overleven** naar de volgende generatie
+  - Welke oplossingen **mogen voortplanten**
 
-  - De fitnessfunctie werkt een beetje zoals een **heuristiek**: ze stuurt het algoritme in de juiste richting.
+  - Welke oplossingen **mogen overleven** naar de volgende generatie
+
+- De fitnessfunctie werkt een beetje zoals een **heuristiek**: ze stuurt het algoritme in de juiste richting.
+
+---
+
+</details>
+
+#### waarom is de keuze van een fitness functie cruciaal voor het succes van een genetisch algoritme?
+
+- De fitnessfunctie bepaalt **wat "goed" betekent** voor het probleem.
+
+- Een slechte fitnessfunctie kan leiden tot:
+
+  - Het algoritme dat **niet de juiste oplossingen** vindt.
+
+  - Het algoritme dat **vastloopt in lokale optima**.
+
+  - Het algoritme dat **te langzaam convergeert** naar een oplossing.
+
+- Een goede fitnessfunctie moet:
+
+  - **Relevante aspecten** van het probleem meten.
+
+  - **Duidelijke verschillen** maken tussen goede en slechte oplossingen.
+
+  - **Efficiënt** te berekenen zijn, zodat het algoritme snel kan werken.
 
 ---
 
-- waarom is de keuze van een fitness functie cruciaal voor het succes van een genetisch algoritme?
-
-  - De fitnessfunctie bepaalt **wat "goed" betekent** voor het probleem.
-
-  - Een slechte fitnessfunctie kan leiden tot:
-
-    - Het algoritme dat **niet de juiste oplossingen** vindt.
-
-    - Het algoritme dat **vastloopt in lokale optima**.
-
-    - Het algoritme dat **te langzaam convergeert** naar een oplossing.
-
-  - Een goede fitnessfunctie moet:
-
-    - **Relevante aspecten** van het probleem meten.
-
-    - **Duidelijke verschillen** maken tussen goede en slechte oplossingen.
-
-    - **Efficiënt** te berekenen zijn, zodat het algoritme snel kan werken.
-
----
+</details>
 
 ## Advanced evolutionare benaderingen ( Hoofdstuk 5 )
 
 ### Selection mechanisms
 
-- bespreek kort het principe van de volgende selectiemechanismen en bespreek kort de voor en nadelen.
+#### bespreek kort het principe van de volgende selectiemechanismen en bespreek kort de voor en nadelen
 
-  - Roulette wheel selection:
+##### Roulette wheel selection
 
-- Roulette wheel selection:
+<details><summary>Antwoord</summary>
 
-  - Elke oplossing krijgt een **kans om gekozen te worden** die **evenredig is met zijn fitness**.
-    - Hoe beter de fitness, hoe groter de kans.
-  - Je kan het vergelijken met een **draaiend rad**:
-    - Elke oplossing krijgt een stuk van het rad.
-    - Hoe beter de fitness, hoe groter dat stuk.
+- Elke oplossing krijgt een **kans om gekozen te worden** die **evenredig is met zijn fitness**.
+  - Hoe beter de fitness, hoe groter de kans.
+- Je kan het vergelijken met een **draaiend rad**:
+  - Elke oplossing krijgt een stuk van het rad.
+  - Hoe beter de fitness, hoe groter dat stuk.
 
 - Voordelen:
   - Makkelijk te implementeren.
@@ -1067,11 +1171,15 @@ leg het belang van crossover en mutatie in genetische algoritmen uit en geef een
   - Sterk **voordeel voor oplossingen met hoge fitness**.
   - Daardoor kan de **diversiteit in de populatie verminderen**.
 
-- rank selection:
+</details>
 
-  - De oplossingen worden eerst **gesorteerd op fitness**.
-  - Daarna krijgt elke oplossing een **rang (positie)** in plaats van haar echte fitnesswaarde.
-  - De **kans om gekozen te worden** hangt af van die rang, niet van de absolute fitness.
+##### rank selection
+
+<details><summary>Antwoord</summary>
+
+- De oplossingen worden eerst **gesorteerd op fitness**.
+- Daarna krijgt elke oplossing een **rang (positie)** in plaats van haar echte fitnesswaarde.
+- De **kans om gekozen te worden** hangt af van die rang, niet van de absolute fitness.
 
 - Voordelen:
   - **Minder bevooroordeeld** naar oplossingen met heel hoge fitness.
@@ -1080,10 +1188,14 @@ leg het belang van crossover en mutatie in genetische algoritmen uit en geef een
 - Nadelen:
   - **Tragere convergentie**, omdat zeer goede oplossingen minder vaak gekozen worden.
 
-- Tournament selection:
+</details>
 
-  - Er wordt telkens een **willekeurige groep oplossingen** gekozen uit de populatie.
-  - Uit die groep wordt **de beste (hoogste fitness)** geselecteerd als ouder.
+##### Tournament selection
+
+<details><summary>Antwoord</summary>
+
+- Er wordt telkens een **willekeurige groep oplossingen** gekozen uit de populatie.
+- Uit die groep wordt **de beste (hoogste fitness)** geselecteerd als ouder.
 
 - Voordelen:
   - Goede **balans tussen exploratie en exploitatie**.
@@ -1093,10 +1205,14 @@ leg het belang van crossover en mutatie in genetische algoritmen uit en geef een
   - Je moet een **toernooigrootte** kiezen (hoeveel oplossingen per wedstrijd).
   - Die parameter is soms **moeilijk juist in te stellen**.
 
-- Elitism (elitisme):
+</details>
 
-  - De **beste oplossingen** uit de populatie worden **automatisch overgenomen** naar de volgende generatie.
-  - Zo gaan de **beste gevonden oplossingen niet verloren**.
+##### Elitism (elitisme)
+
+<details><summary>Antwoord</summary>
+
+- De **beste oplossingen** uit de populatie worden **automatisch overgenomen** naar de volgende generatie.
+- Zo gaan de **beste gevonden oplossingen niet verloren**.
 
 - Voordelen:
   - De **kwaliteit van de populatie kan niet achteruitgaan**.
@@ -1108,122 +1224,150 @@ leg het belang van crossover en mutatie in genetische algoritmen uit en geef een
 
 ---
 
+</details>
+
 ### Mutation mechanisms
 
-- bespreek kort het principe van de volgende mutatiemechanismen in de evolutionaire algoritme.
+#### bespreek kort het principe van de volgende mutatiemechanismen in de evolutionaire algoritme
 
-  - Boundary mutation:
+##### Boundary mutation
 
-    - Boundary mutation is een **mutatiemethode** voor chromosomen met **reële (numerieke) waarden**.
-    - Er wordt **één willekeurig gen** gekozen uit het chromosoom.
-    - Dit gen wordt dan **vervangen door de minimum- of maximumwaarde** die is toegestaan.
+<details><summary>Antwoord</summary>
 
-    - Belangrijk:
-      - De **onder- en bovengrens** kunnen:
-        - Voor alle genen hetzelfde zijn, of
-        - Voor elk gen apart ingesteld worden.
+- Boundary mutation is een **mutatiemethode** voor chromosomen met **reële (numerieke) waarden**.
+- Er wordt **één willekeurig gen** gekozen uit het chromosoom.
+- Dit gen wordt dan **vervangen door de minimum- of maximumwaarde** die is toegestaan.
 
-    - Doel:
-      - Zorgt ervoor dat oplossingen soms **extreme waarden** kunnen aannemen.
-      - Helpt om ook de **randen van de zoekruimte** te verkennen.
+- Belangrijk:
+  - De **onder- en bovengrens** kunnen:
+    - Voor alle genen hetzelfde zijn, of
+    - Voor elk gen apart ingesteld worden.
 
-  - Arithmetic mutation:
+- Doel:
+  - Zorgt ervoor dat oplossingen soms **extreme waarden** kunnen aannemen.
+  - Helpt om ook de **randen van de zoekruimte** te verkennen.
 
-    - Arithmetic mutation is een **mutatiemethode** in genetische algoritmen.
-    - Er wordt **één willekeurig gen** gekozen uit een oplossing (chromosoom).
-    - Het gen wordt aangepast door **een kleine waarde erbij op te tellen of af te trekken**.
+</details>
 
-    - Doel:
-      - Creëert **kleine variaties** in de oplossing.
-      - Helpt om de oplossing **fijn bij te stellen** en beter te maken zonder grote sprongen.
+##### Arithmetic mutation
+
+<details><summary>Antwoord</summary>
+
+- Arithmetic mutation is een **mutatiemethode** in genetische algoritmen.
+- Er wordt **één willekeurig gen** gekozen uit een oplossing (chromosoom).
+- Het gen wordt aangepast door **een kleine waarde erbij op te tellen of af te trekken**.
+
+- Doel:
+  - Creëert **kleine variaties** in de oplossing.
+  - Helpt om de oplossing **fijn bij te stellen** en beter te maken zonder grote sprongen.
 
 ---
+
+</details>
 
 ### Tree encoding en tree crossover
 
-bespreek kort het principe van:
+#### bespreek kort het principe van
 
-- Tree encoding (Boom-encoding):
+##### Tree encoding (Boom-encoding)
 
-  - Tree encoding stelt een **chromosoom voor als een boomstructuur**.
-  - Elke **node** in de boom is:
-    - Of een **functie**
-    - Of een **terminale waarde** (gegeven of constante)
-  - De boom wordt **recursief geëvalueerd** om de uiteindelijke oplossing te berekenen.
+<details><summary>Antwoord</summary>
 
-  - Voordelen:
-    - Zeer **flexibel** voor complexe oplossingen.
-    - Vooral nuttig als de **hiërarchische structuur** belangrijk is voor het probleem.
+- Tree encoding stelt een **chromosoom voor als een boomstructuur**.
+- Elke **node** in de boom is:
+  - Of een **functie**
+  - Of een **terminale waarde** (gegeven of constante)
+- De boom wordt **recursief geëvalueerd** om de uiteindelijke oplossing te berekenen.
 
-- Tree crossover:
+- Voordelen:
+  - Zeer **flexibel** voor complexe oplossingen.
+  - Vooral nuttig als de **hiërarchische structuur** belangrijk is voor het probleem.
 
-  - Tree crossover lijkt op **single-point crossover**, maar dan voor boomstructuren.
-  - Er wordt **één knooppunt (point) in de boom** gekozen.
-  - De takken **boven en onder dat punt** worden uitgewisseld tussen twee ouders.
-  - Zo ontstaat een **nieuw kind (offspring)**.
-  - Belangrijk:
-    - Het kind moet **gecontroleerd worden** om te verzekeren dat het een **geldige oplossing** is die aan de probleemconstraints voldoet.
+</details>
+
+##### Tree crossover
+
+<details><summary>Antwoord</summary>
+
+- Tree crossover lijkt op **single-point crossover**, maar dan voor boomstructuren.
+- Er wordt **één knooppunt (point) in de boom** gekozen.
+- De takken **boven en onder dat punt** worden uitgewisseld tussen twee ouders.
+- Zo ontstaat een **nieuw kind (offspring)**.
+- Belangrijk:
+  - Het kind moet **gecontroleerd worden** om te verzekeren dat het een **geldige oplossing** is die aan de probleemconstraints voldoet.
 
 ---
+
+</details>
 
 ## Swarm Intelligence ( Hoofdstuk 6 )
 
 ### swarm intelligence
 
-- verklaar wat swarm intelligence is en op welke principes is deze vorm van intelligentie gebaseerd?
+#### verklaar wat swarm intelligence is en op welke principes is deze vorm van intelligentie gebaseerd?
 
-  - Swarm intelligence (SI):
+<details><summary>Antwoord</summary>
 
-    - Swarm intelligence is een **vorm van collectieve intelligentie**.
-    - Het is gebaseerd op het **gezamenlijke gedrag** van gedecentraliseerde en zelfgeorganiseerde systemen.
-    - Belangrijke principes:
-      - **Zelforganisatie**: individuen organiseren zichzelf zonder centrale controle.
-      - **Decentralisatie**: er is geen centrale leider.
-      - **Indirecte communicatie**: individuen beïnvloeden elkaar bijvoorbeeld via signalen of markeringen (zoals feromonen bij dieren).
-    - Effect:
-      - Individuen kunnen **complexe problemen samen oplossen** door eenvoudige regels te volgen.
+- Swarm intelligence is een **vorm van collectieve intelligentie**.
+  - Het is gebaseerd op het **gezamenlijke gedrag** van gedecentraliseerde en zelfgeorganiseerde systemen.
+  - Belangrijke principes:
+    - **Zelforganisatie**: individuen organiseren zichzelf zonder centrale controle.
+    - **Decentralisatie**: er is geen centrale leider.
+    - **Indirecte communicatie**: individuen beïnvloeden elkaar bijvoorbeeld via signalen of markeringen (zoals feromonen bij dieren).
+  - Effect:
+    - Individuen kunnen **complexe problemen samen oplossen** door eenvoudige regels te volgen.
 
-- waarom is de vergelijken met mieren gekozen in de ant optimization algoritme?
+#### waarom is de vergelijken met mieren gekozen in de ant optimization algoritme?
 
-  - Ant Colony Optimization (ACO):
+<details><summary>Antwoord</summary>
 
-    - ACO is geïnspireerd op het **zoekgedrag van mieren**.
-    - Mieren gebruiken **feromonen** om paden tussen hun nest en voedsel te markeren.
-    - Door deze signalen te volgen, **vinden de mieren gezamenlijk het kortste pad**.
-    - Het algoritme bootst dit na door **virtuele "feromoonpaden"** te gebruiken.
-    - Kunstmatige agenten volgen deze paden en **versterken goede routes**, waardoor ze geleidelijk **optimale oplossingen** ontdekken.
+- Ant Colony Optimization (ACO):
+
+  - ACO is geïnspireerd op het **zoekgedrag van mieren**.
+  - Mieren gebruiken **feromonen** om paden tussen hun nest en voedsel te markeren.
+  - Door deze signalen te volgen, **vinden de mieren gezamenlijk het kortste pad**.
+  - Het algoritme bootst dit na door **virtuele "feromoonpaden"** te gebruiken.
+  - Kunstmatige agenten volgen deze paden en **versterken goede routes**, waardoor ze geleidelijk **optimale oplossingen** ontdekken.
+
+</details>
 
 ### Ant Colony Optimization (ACO) algorithm
 
-- bespreek de verschillende stappen in het ACO algoritme
+#### bespreek de verschillende stappen in het ACO algoritme
 
-  - **Initialize pheromone trails**:
-    - Stel alle feromoonpaden tussen knooppunten in.
-    - Initialiseer de intensiteit van de feromonen.
+<details><summary>Antwoord</summary>
 
-  - **Set up population of ants**:
-    - Creëer een populatie mieren.
-    - Plaats elke mier op een **willekeurig startknooppunt**.
+- **Initialize pheromone trails**:
+  - Stel alle feromoonpaden tussen knooppunten in.
+  - Initialiseer de intensiteit van de feromonen.
 
-  - **Choose the next destination**:
-    - Mieren kiezen hun volgende knooppunt op basis van:
-      - Feromoonintensiteit
-      - Afstandsheuristieken
-    - Dit herhaalt zich totdat **alle knooppunten bezocht zijn**.
+- **Set up population of ants**:
+  - Creëer een populatie mieren.
+  - Plaats elke mier op een **willekeurig startknooppunt**.
 
-  - **Update the pheromone trails**:
-    - Pas de feromoonintensiteit aan op de paden waarover de mieren gelopen hebben.
-    - Houd rekening met **verdamping** van feromonen.
+- **Choose the next destination**:
+  - Mieren kiezen hun volgende knooppunt op basis van:
+    - Feromoonintensiteit
+    - Afstandsheuristieken
+  - Dit herhaalt zich totdat **alle knooppunten bezocht zijn**.
 
-  - **Update the best solution**:
-    - Controleer het **kortste pad** of de beste oplossing tot nu toe, gebaseerd op de totale afstand van de mieren.
+- **Update the pheromone trails**:
+  - Pas de feromoonintensiteit aan op de paden waarover de mieren gelopen hebben.
+  - Houd rekening met **verdamping** van feromonen.
 
-  - **Stop criteria**:
-    - Bepaal wanneer het algoritme stopt, bijvoorbeeld:
-      - Na een bepaald aantal iteraties
-      - Of bij convergentie van de oplossing
+- **Update the best solution**:
+  - Controleer het **kortste pad** of de beste oplossing tot nu toe, gebaseerd op de totale afstand van de mieren.
 
-- bespreek de wiskundige formule voor bestemmings selctie gebaseerd op feromoon sterkte en afstands heuristieken.
+- **Stop criteria**:
+  - Bepaal wanneer het algoritme stopt, bijvoorbeeld:
+    - Na een bepaald aantal iteraties
+    - Of bij convergentie van de oplossing
+
+</details>
+
+#### bespreek de wiskundige formule voor bestemmings selctie gebaseerd op feromoon sterkte en afstands heuristieken
+
+<details><summary>Antwoord</summary>
 
 - Berekening van de selectie van een pad in ACO:
 
@@ -1251,21 +1395,230 @@ bespreek kort het principe van:
 
     Zo ontstaat een balans tussen exploratie en exploitatie
 
-- Hoe is de beste oplossing uiteindelijk bepaald?
+</details>
 
-  - De beste oplossing wordt bepaald door het **kortste pad** of de meest optimale route die door de mieren is gevonden tijdens hun zoektocht.
-  
-  - Na elke iteratie worden de paden geëvalueerd op basis van hun totale afstand of kosten.
-  
-  - Het pad met de **laagste totale kosten** wordt opgeslagen als de beste oplossing tot nu toe.
-  
-  - Deze oplossing kan worden bijgewerkt als een mier een nog betere route vindt in latere iteraties.
+#### Hoe is de beste oplossing uiteindelijk bepaald?
 
-- wat is de criteria voor het stoppen van het algoritme?
+<details><summary>Antwoord</summary>
 
-  - Na een vooraf bepaald aantal iteraties.
-  - Wanneer de beste oplossing niet meer verbetert (stagnatie).
-  - Wanneer een oplossing voldoet aan een vooraf gedefinieerde drempelwaarde (bijv. een minimale afstand).
-  - Na een bepaalde tijdslimiet.
+- De beste oplossing wordt bepaald door het **kortste pad** of de meest optimale route die door de mieren is gevonden tijdens hun zoektocht.
+
+- Na elke iteratie worden de paden geëvalueerd op basis van hun totale afstand of kosten.
+
+- Het pad met de **laagste totale kosten** wordt opgeslagen als de beste oplossing tot nu toe.
+
+- Deze oplossing kan worden bijgewerkt als een mier een nog betere route vindt in latere iteraties.
+
+</details>
+
+#### wat is de criteria voor het stoppen van het algoritme?
+
+<details><summary>Antwoord</summary>
+
+- Na een vooraf bepaald aantal iteraties.
+- Wanneer de beste oplossing niet meer verbetert (stagnatie).
+- Wanneer een oplossing voldoet aan een vooraf gedefinieerde drempelwaarde (bijv. een minimale afstand).
+- Na een bepaalde tijdslimiet.
 
 ---
+
+</details>
+
+### Ant Colony Optimization algoritme - selectie van de bestemming
+
+#### gegeven de volgende graaf
+
+![aco-graph](./assets/swarm%20algorithm%20problem.png)
+
+- gevraagd:
+
+  bespreek hoe de bestemming met de hoogste probabiliteit wordt gekozen.
+
+  gebruik de wiskundige formule voor bestemmings selectie.
+
+  kies zelf waarden voor alpha en beta.
+
+<details><summary>Antwoord</summary>
+
+om de bestemming met de hoogste probabiliteit te kiezen, gebruiken we de formule voor de selectie van een pad in het Ant Colony Optimization (ACO) algoritme:
+
+```math
+P_x = \frac{(\text{feromoon}_x)^\alpha \cdot (\text{heuristiek}_x)^\beta}{\sum (\text{feromoon}_n)^\alpha \cdot (\text{heuristiek}_n)^\beta}
+```
+
+Laten we aannemen dat we de volgende waarden kiezen voor α en β:
+
+- α = 2 (invloed van de feromonen)
+- β = 3 (invloed van de heuristiek)
+
+voor het pad van Carrousel naar schommels:
+
+```math
+P_{schommels} = (7)^2 \cdot \left(\frac{1}{9}\right)^3 \approx  0.067
+```
+
+voor het pad van Carrousel naar Luchtballon:
+
+```math
+P_{Luchtballon} = (11)^2 \cdot \left(\frac{1}{14}\right)^3 \approx  0.044
+```
+
+voor het pad van Carrousel naar Rollercoaster:
+
+```math
+P_{Rollercoaster} = (9)^2 \cdot \left(\frac{1}{11}\right)^3 \approx  0.061
+```
+
+de som van alle paden is:
+
+```math
+\sum P_n = 0.067 + 0.044 + 0.061 = 0.172
+```
+
+nu kunnen we de probabiliteit voor elk pad berekenen:
+
+voor het pad van Carrousel naar schommels:
+
+```math
+P_{schommels} = \frac{0.067}{0.172} \approx 0.389
+```
+
+voor het pad van Carrousel naar Luchtballon:
+
+```math
+P_{Luchtballon} = \frac{0.044}{0.172} \approx 0.256
+```
+
+voor het pad van Carrousel naar Rollercoaster:
+
+```math
+P_{Rollercoaster} = \frac{0.061}{0.172} \approx 0.355
+```
+
+---
+
+</details>
+
+## Swarm intelligence : Particles
+
+### Particle swarm intelligence : Bird flocks
+
+#### wat betekenen de volgden termen in functie van vogel bewegingen in verhouding tot vogel zwermen
+
+<details><summary>Antwoord</summary>
+
+- Alignment:
+  
+  - een individu moet in ongeveer dezelfde richting bewegen als zijn buren om ervoor te zorgen dat de groep als geheel in dezelfde richting beweegt.
+
+- Cohesion:
+
+  - een individu moet naar het gemiddelde positie van zijn buren bewegen om de groep bij elkaar te houden.
+
+- Separation:
+
+  - een individu moet uit de buurt blijven van zijn buren om botsingen te voorkomen en voldoende ruimte te behouden.
+
+![bird-flock](./assets/particel%20swarm%20algoritme.png)
+
+</details>
+
+### Particle Swarm Optimization (PSO) algorithm
+
+#### bespreek kort het PSO algoritme
+
+<details><summary>Antwoord</summary>
+
+- **Initialize the population of particles**:
+  - Bepaal het aantal deeltjes (particles) in de populatie.
+  - Plaats elk deeltje op een **willekeurige positie** in de zoekruimte.
+
+- **Calculate the fitness of each particle**:
+  - Bepaal voor elk deeltje hoe goed het presteert op zijn huidige positie.
+  - Dit wordt gedaan met een **fitnessfunctie**.
+
+- **Update the position of each particle**:
+  - Herhaaldelijk worden de posities van de deeltjes aangepast.
+  - De bewegingen volgen de principes van **swarm intelligence**:
+    - Deeltjes verkennen de zoekruimte.
+    - Ze convergeren naar **goede oplossingen** door samen te leren van elkaar.
+
+- **Determine the stopping criteria**:
+  - Bepaal wanneer het algoritme stopt, bijvoorbeeld:
+    - Na een bepaald aantal iteraties.
+    - Of wanneer de oplossing **niet verder verbetert**.
+
+</details>
+
+#### bespreek hoe de positie van de partikels wordt upgedate.
+
+- De positie van een deeltje wordt aangepast op basis van **snelheid (velocity)**.
+- De snelheid van een deeltje wordt beïnvloed door drie componenten:
+  - **Inertia (traagheid):** de neiging om de huidige snelheid te behouden.
+  - **Cognitive component (cognitief):** de neiging om terug te keren naar de **beste positie** die het deeltje zelf tot nu toe heeft gevonden.
+  - **Social component (sociaal):** de neiging om naar de **beste positie van de hele zwerm** te bewegen.
+
+- De **nieuwe snelheid** wordt berekend door de huidige snelheid, de cognitieve factor en de sociale factor te combineren.
+- De **nieuwe positie** wordt vervolgens berekend met:
+
+```math
+\text{new position} = \text{current position} + \text{new velocity}
+```
+
+![PSO](./assets/PSO%20.png)
+
+---
+
+</details>
+
+#### hoe word de beste oplossing uiteindelijk bepaald?
+
+<details><summary>Antwoord</summary>
+
+- De **beste oplossing** wordt bepaald door de **fitnessfunctie**.
+- Voor elk deeltje wordt de fitness berekend op basis van zijn huidige positie.
+- De deeltjes met de **beste fitness** worden bijgehouden:
+
+  - Bij **minimalisatie** → de laagste waarde.  
+  - Bij **maximalisatie** → de hoogste waarde.
+
+- In elke iteratie wordt de **beste fitness van de deeltjes** bijgewerkt.
+- De **beste positie gevonden door de hele zwerm** wordt beschouwd als de **eindoplossing**.
+- Aan het einde kan het deeltje met de **beste positie en bijbehorende waarde** gekozen worden als resultaat.
+
+</details>
+
+#### wat is de criteria voor het stoppen van het algoritme?
+
+<details><summary>Antwoord</summary>
+
+- **Maximum aantal iteraties**:  
+  Het algoritme stopt na een vooraf bepaald aantal iteraties.
+
+- **Stagnatie**:  
+  Het algoritme stopt als de beste oplossing in de zwerm **niet meer significant verbetert**.  
+  Dit betekent dat de zwerm mogelijk een **lokaal optimum** heeft bereikt of dat verdere iteraties **geen betere resultaten** zullen opleveren.
+
+</details>
+
+#### verklaar de volgende relatie
+
+<details><summary>Antwoord</summary>
+
+- **Inertia component (traagheid)**:  
+  - Vertegenwoordigt de **weerstand van een deeltje tegen verandering van snelheid of richting**.  
+  - Bestaat uit twee waarden: de **inertia magnitude** en de **huidige snelheid** van het deeltje.  
+  - De waarde ligt tussen **0 en 1**.  
+
+- **Cognitive component (cognitief)**:  
+  - Vertegenwoordigt het **interne vermogen van een deeltje** om zijn **beste eigen positie** te kennen en deze te gebruiken om beweging te beïnvloeden.  
+  - De **cognitive constant** ligt tussen **0 en 2**.  
+  - Een hogere waarde betekent dat het deeltje **meer zijn eigen beste positie volgt** (meer exploitatie).  
+
+- **Social component (sociaal)**:  
+  - Vertegenwoordigt het vermogen van een deeltje om **informatie van de hele zwerm** te gebruiken.  
+  - Het deeltje kent de **beste positie in de zwerm** en gebruikt deze om zijn beweging te sturen.  
+  - De **social constant** wordt gebruikt samen met een **willekeurig getal** om diversiteit te behouden.  
+  - De social constant blijft **gelijk tijdens het algoritme**, terwijl de random factor zorgt voor **variatie in de invloed van de zwerm**.
+
+</details>
