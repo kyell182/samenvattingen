@@ -835,7 +835,7 @@ f(e) = c(g) + 10 + 4 = 3 + 10 + 4 = 17
 
 vanuit d naar e is maar 1 pad
 
-f(e) = c(g) + 2 + 4 = 3 + 2 + 4 = 9
+f(e) = c(g) + d(g) + 2 + 4 = 3 + 7 + 2 + 4 = 16
 
 
 
