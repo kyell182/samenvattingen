@@ -481,7 +481,11 @@ graf voorbeeld:
 
 ---
 
-Leg uit : een boom is een verbonden acyclische graaf.
+</details>
+
+### Leg uit : een boom is een verbonden acyclische graaf.
+
+<details><summary>Antwoord</summary>
 
 - **Boom (Tree)**
   
@@ -519,19 +523,19 @@ graph TD
 
 ### Leg de volgende 'tree' termen uit
 
-<details><summary>Antwoord</summary>
+- **root node**
+- **parent node**
+- **sibling nodes**
+- **descendant nodes**
+- **ancestor nodes**
+- **leaf nodes**
+- **goal node**
+- **path**
+- **cost**
+- **depth**
+- **degree
 
-- root node
-- parent node
-- sibling nodes
-- descendant nodes
-- ancestor nodes
-- leaf nodes
-- goal node
-- path
-- cost
-- depth
-- degree
+<details><summary>Antwoord</summary>
 
 | Term                | Uitleg                                                                                 |
 |---------------------|----------------------------------------------------------------------------------------|
