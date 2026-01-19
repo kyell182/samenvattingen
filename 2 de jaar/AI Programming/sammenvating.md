@@ -1317,6 +1317,10 @@ flowchart TD
   - Effect:
     - Individuen kunnen **complexe problemen samen oplossen** door eenvoudige regels te volgen.
 
+---
+
+</details>
+
 #### waarom is de vergelijken met mieren gekozen in de ant optimization algoritme?
 
 <details><summary>Antwoord</summary>
