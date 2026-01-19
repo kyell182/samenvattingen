@@ -533,7 +533,7 @@ graph TD
 - **path**
 - **cost**
 - **depth**
-- **degree
+- **degree**
 
 <details><summary>Antwoord</summary>
 
