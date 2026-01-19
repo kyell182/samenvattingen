@@ -1125,6 +1125,8 @@ flowchart TD
 
 #### waarom is de keuze van een fitness functie cruciaal voor het succes van een genetisch algoritme?
 
+<details><summary>Antwoord</summary>
+
 - De fitnessfunctie bepaalt **wat "goed" betekent** voor het probleem.
 
 - Een slechte fitnessfunctie kan leiden tot:
