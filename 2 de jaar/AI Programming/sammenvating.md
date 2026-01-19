@@ -1499,7 +1499,7 @@ P_{Rollercoaster} = \frac{0.061}{0.172} \approx 0.355
 
 </details>
 
-## Swarm intelligence : Particles
+## Swarm intelligence : Particles ( Hoofdstuk 7 )
 
 ### Particle swarm intelligence : Bird flocks
 
@@ -1550,7 +1550,9 @@ P_{Rollercoaster} = \frac{0.061}{0.172} \approx 0.355
 
 </details>
 
-#### bespreek hoe de positie van de partikels wordt upgedate.
+#### bespreek hoe de positie van de partikels wordt upgedate
+
+<details><summary>Antwoord</summary>
 
 - De positie van een deeltje wordt aangepast op basis van **snelheid (velocity)**.
 - De snelheid van een deeltje wordt beïnvloed door drie componenten:
