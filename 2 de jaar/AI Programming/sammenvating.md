@@ -362,12 +362,12 @@ flowchart TD
 
 ### Leg de volgende termen uit
 
-<details><summary>Antwoord</summary>
+- **graph**
+- **vertex**
+- **node**
+- **edge**
 
-- graph
-- vertex
-- node
-- edge
+<details><summary>Antwoord</summary>
 
 - **Graaf (Graph)**
 
