@@ -1074,6 +1074,8 @@ flowchart TD
 
 #### Vijf belangrijke parameters van een genetisch algoritme en hun invloed:
 
+<details><summary>Antwoord</summary>
+
 - Chromosoom-encoding:
   - Bepaalt **hoe een oplossing wordt voorgesteld** (bv. bits, getallen, lijsten, …).
   - Een goede encoding is cruciaal: ze bepaalt of het probleem **goed en efficiënt** kan worden opgelost.
