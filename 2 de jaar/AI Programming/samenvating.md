@@ -2,7 +2,7 @@
 
 ## Intuïtie van kunstmatige intelligentie ( Hoofdstuk 1 )
 
-### Waarom bestaat er geen eensluidende definitie van kunstmatige intelligentie?
+### Waarom bestaat er geen eensluitende definitie van kunstmatige intelligentie?
 
 <details><summary>Antwoord</summary>
 Er bestaat geen vaste of eenvoudige definitie van intelligentie.
