@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="nl">
+<!-- The document type declaration and the language attribute for the HTML document -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Specifies the character encoding for the HTML document -->
+    <meta name="titel" content="bootstrap oef 5">
+    <!-- Meta tag for the title of the document -->
+    <meta name="keywords" content="Kyell,De,Windt">
+    <!-- Meta tag for keywords related to the document -->
+    <meta name="author" content="Kyell De Windt">
+    <!-- Meta tag for the author of the document -->
+    <meta http-equiv="refresh" content="120">
+    <!-- Meta tag to refresh the page every 120 seconds -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tag to set the viewport to make the website responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Link to the Bootstrap CSS file with integrity and crossorigin attributes for security -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <title>oefening 5</title>
+    <!-- Link to the Bootstrap JavaScript bundle with integrity and crossorigin attributes for security -->
+</head>
+
+<body>
+    <div class="container mt-3 mb-3">
+        <!-- Bootstrap container with top and bottom margins -->
+        <div class="row g-5">
+            <!-- Bootstrap row with a gutter size of 5 -->
+            <!--* Left Column -->
+            <div class="col-md-auto bg-warning mt-5 p-5 text-start">
+                <!-- Bootstrap column that adjusts its width based on content, with background color, top margin, padding, and left-aligned text -->
+                <div class="container">
+                    <!-- Nested container for additional styling and layout -->
+                    <h1>IoT-Lab</h1>
+                    <!-- Heading for the IoT-Lab section -->
+                    <p>
+                        Providing research and services<br>
+                        regarding AI, IoT and Electronics-ICT<br>
+                        in general.
+                    </p>
+                    <!-- Paragraph with line breaks for the IoT-Lab description -->
+                    <ul class="list-unstyled">
+                        <!-- Unordered list without default list styling -->
+                        <li>Address: Xaverianenstraat 10, 8000 <br> Bruges (Belgium)</li>
+                        <!-- List item for the address with a line break -->
+                        <li>&nbsp;</li>
+                        <!-- Non-breaking space for spacing -->
+                        <li>Phone: <span class="text-primary">+32 50 30 51 00</span></li>
+                        <!-- List item for the phone number with primary text color -->
+                        li>&nbsp;</li>
+                        <!-- Non-breaking space for spacing -->
+                        <li>Email: <span class="text-primary">iotlab@vives.be</span></li>
+                        <!-- List item for the email with primary text color -->
+                        li>&nbsp;</li>
+                        <!-- Non-breaking space for spacing -->
+                        <li>Website: <span class="text-primary">iotlab.vives.be</span></li>
+                        <!-- List item for the website with primary text color -->
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <!-- Non-breaking space for spacing -->
+                    </ul>
+                </div>
+            </div>
+
+            <!--*Right Column -->
+            <div class="col-md-6 mt-5">
+                <!-- Bootstrap column that takes up 6 out of 12 columns on medium screens and larger, with top margin -->
+                <form>
+                    <!-- Form element -->
+                    <legend class="mt-3">
+                        <!-- Form legend with top margin -->
+                        <h1>Get in touch</h1>
+                        <!-- Heading for the form -->
+                    </legend>
+                    <div class="mb-3">
+                        <!-- Form group with bottom margin -->
+                        <div class="row">
+                            <!-- Bootstrap row for form inputs -->
+                            <div class="col">
+                                <!-- Bootstrap column for the full name input -->
+                                <label for="full-name" class="form-label">Full name</label>
+                                <!-- Label for the full name input -->
+                                <input type="text" class="form-control" id="full-name" placeholder="name">
+                                <!-- Full name input field with Bootstrap styling -->
+                            </div>
+                            <div class="col">
+                                <!-- Bootstrap column for the email input -->
+                                <label for="email" class="form-label">Email Address</label>
+                                <!-- Label for the email input -->
+                                <input type="text" class="form-control" id="email" placeholder="Email">
+                                <!-- Email input field with Bootstrap styling -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="Subject" placeholder="Subject">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+/* this the beginning of the ccs reset code we do this to make sure browser dont add unwanted effects to our html file*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+::-moz-selection {
+  background-color: #b3d4fc;
+  color: #000000;
+  text-shadow: none;
+}
+
+::selection {
+  background-color: #b3d4fc;
+  color: #000000;
+  text-shadow: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+}
+
+svg {
+  display: inline-block;
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}
+
+input,
+textarea,
+select {
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  font-size: 1.6rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+::-moz-selection {
+  background-color: #b3d4fc;
+  color: #000000;
+  text-shadow: none;
+}
+
+::selection {
+  background-color: #b3d4fc;
+  color: #000000;
+  text-shadow: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+}
+
+svg {
+  display: inline-block;
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+}
+
+input,
+textarea,
+select {
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeSpeed;
+  font-size: 1.6rem;
+}
+/* this the end of the ccs reset code we do this to make sure browser dont add unwanted effects to our html file*/ 
+/* this is the css code for the table */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: auto;
+}
+h1 {
+    text-align: center;
+    /* Centreer de tekst */
+    color: #0bee1e;
+    /* Stel de tekstkleur in op een groene tint */
+}
+table {
+    width: 100%;
+    /* Stel de breedte van de tabel in op 100% van de container */
+    max-width: 800px;
+    /* Stel de maximale breedte van de tabel in op 800px */
+    margin: 20px auto;
+    /* Voeg 20px marge toe aan de boven- en onderkant, en centreer de tabel horizontaal */
+    border-collapse: collapse;
+    /* Zorg ervoor dat de randen van de tabelcellen niet dubbel worden weergegeven */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Voeg een lichte schaduw toe aan de tabel */
+}
+th, td {
+    padding: 8px;
+    /* Voeg 8px padding toe aan de tabelkoppen en -cellen */
+    border: 1px solid #1296ee;
+    /* Voeg een rand van 1px toe met een blauwe kleur */
+    text-align: center;
+    /* Centreer de tekst in de tabelkoppen en -cellen */
+    font-size: 14px;
+    /* Stel de lettergrootte in op 14px */
+}
+th {
+    background-color: #fa0606;
+    /* Stel de achtergrondkleur van de tabelkoppen in op rood */
+    color: #333;
+    /* Stel de tekstkleur van de tabelkoppen in op een donkere grijstint */
+}
+tr:nth-child(even) {
+    background-color: #0897f7;
+    /* Stel de achtergrondkleur in op blauw voor even genummerde rijen */
+}
+tr:hover {
+    background-color: #8965eb;
+    /* Stel de achtergrondkleur in op paars wanneer de rij wordt aangewezen */
+}
+@media (max-width: 600px) {
+    /* Media query voor schermen met een maximale breedte van 600px */
+    th, td {
+        font-size: 12px;
+        /* Stel de lettergrootte in op 12px voor tabelkoppen en -cellen */
+        padding: 6px;
+        /* Voeg 6px padding toe aan de tabelkoppen en -cellen */
+    }
+}

@@ -1,0 +1,43 @@
+/* Stijl voor het logo */
+.logo {
+    height: 100%; /* Pas de grootte van het logo aan */
+    margin-right: 20px; /* Ruimte tussen logo en navigatielinks */
+    float: left;
+}
+/* Stijl voor de navigatiebalk */
+    .navbar
+    {
+        display: flex;
+        justify-content: left;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.856); /* Schaduw */
+        padding: 10px;
+        margin: 0;
+        list-style: none;
+    }
+    /* Stijl voor elke link in de navigatiebalk */
+    .navbar li {
+        margin: 0 15px;
+        text-align: center;
+    }
+
+    /* Normale linkstijl */
+    .navbar a {
+        color: blue;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* Hoverstijl */
+    .navbar a:hover {
+        color: orange;
+        font-size: 200%;
+        
+    }
+
+    /* Actieve linkstijl */
+    .navbar a.active {
+        color: red;
+    }
+
+    
