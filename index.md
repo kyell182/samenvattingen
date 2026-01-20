@@ -8,5 +8,6 @@ Welkom op mijn cursus‑site!
 
 ## Jaaroverzicht
 
-- [1 ste jaar](1%20ste%20jaar/)
-- [2 de jaar](2%20de%20jaar/)
+- [1 ste jaar](./1ste-jaar)
+- [2 de jaar](./2de-jaar)
+- [3 de jaar](./3de-jaar)
