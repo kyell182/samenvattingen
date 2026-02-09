@@ -111,3 +111,45 @@ botnet = een netwerk van geïnfecteerde computers die worden gecontroleerd door 
 
 - phishing een bredere term die verwijst naar elke vorm van online oplichting waarbij aanvallers zich voordoen als legitieme entiteiten om slachtoffers te misleiden en persoonlijke informatie te stelen, zoals wachtwoorden, creditcardgegevens of andere gevoelige informatie. Phishing-aanvallen kunnen plaatsvinden via e-mail, sociale media, sms-berichten of zelfs telefoonoproepen.
 
+1 cybersecurity killchain
+- Reconnaissance: de aanvaller verzamelt informatie over het doelwit, zoals netwerkinfrastructuur, gebruikte software en kwetsbaarheden.
+- Weaponization: de aanvaller ontwikkelt of verkrijgt malware of exploits die kunnen worden gebruikt om het doelwit aan te vallen.
+- Delivery: de aanvaller levert de malware of exploit aan het doelwit, bijvoorbeeld via e-mail, geïnfecteerde websites of fysieke media.
+- Exploitation: de malware of exploit wordt geactiveerd en maakt gebruik van een kwetsbaarheid in het doelwit om toegang te krijgen tot het systeem.
+- Installation: de malware installeert zich op het systeem van het doelwit, waardoor de aanvaller permanente toegang krijgt.
+- Command and Control (C&C): de aanvaller communiceert met de malware op het systeem van het doelwit om instructies te geven of gestolen gegevens te ontvangen.
+- Actions on Objectives: de aanvaller voert acties uit op het systeem van het doelwit om zijn doelen te bereiken, zoals het stelen van gegevens, het vernietigen van bestanden of het overnemen van systemen.
+- Incident Response: het proces van het detecteren, analyseren en reageren op een beveiligingsincident, zoals een cyberaanval, om de schade te beperken en toekomstige aanvallen te voorkomen. Incident response omvat vaak het identificeren van de aanval, het isoleren van getroffen systemen, het herstellen van gegevens en het implementeren van maatregelen om herhaling te voorkomen.
+
+
+nmap
+
+- open
+- closed
+- filtered
+
+service detectie
+os fingerprinting
+scripting
+
+```bash
+nmap -192.168.189.2/24 -n
+nmap -sn -oA tnet -v 192.168.189.0/24 -n
+sudo nmap 192.168.189.0/24 -sn -PE --packet-trace
+sudo nmap 192.168.189.0/24 -sn --disable-arp-ping 
+nmap 192.168.189.4 --top-ports=10
+nmap 192.168.189.4 -p 22,25,80,139,445
+nmap 192.168.189.4 -p 22-445
+nmap 192.168.189.4 -p- 
+nmap 192.168.189.4 -p 443 --packet-trace -Pn -n 
+nmap 192.168.189.4 -sT
+nmap 192.168.189.4 -sS --max-retries 1
+nmap -sU -F 
+nmap 192.168.189.4 -sU --top-ports=100
+nmap 192.168.189.4 --top 10 -n
+nmap 192.168.189.4 --top 10 -n -sV
+nmap 192.168.189.4 -p 80-sV -n -Pn --packet-trace
+nc -nv 192.168.189.4 25
+```
+ttl windows = 128
+ttl linux = 64
