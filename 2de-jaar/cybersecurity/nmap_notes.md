@@ -75,6 +75,7 @@ Wat is malware?
 - Malicious software, oftewel kwaadaardige software, is een verzamelnaam voor software die is ontworpen om schade aan te richten aan computersystemen, netwerken of gebruikers. Malware kan verschillende vormen aannemen, zoals virussen, wormen, Trojaanse paarden, ransomware, spyware en adware. Het doel van malware kan variëren van het stelen van persoonlijke informatie tot het vernietigen van gegevens of het overnemen van systemen voor kwaadaardige doeleinden. Het is belangrijk om goede beveiligingsmaatregelen te nemen om jezelf te beschermen tegen malware-aanvallen.
 
 componeten malware
+
 - Payload: de kwaadaardige code die schade aanricht of een bepaald doel bereikt, zoals het stelen van gegevens, het versleutelen van bestanden of het overnemen van een systeem.
 - Propagation mechanism: de methode waarmee malware zich verspreidt, zoals via e-mailbijlagen, geïnfecteerde websites, sociale media of netwerkverbindingen.
 - Command and Control (C&C) server: een externe server waarmee de aanvaller communiceeert om instructies te geven aan de malware of om gestolen gegevens te ontvangen.
@@ -112,6 +113,7 @@ botnet = een netwerk van geïnfecteerde computers die worden gecontroleerd door 
 - phishing een bredere term die verwijst naar elke vorm van online oplichting waarbij aanvallers zich voordoen als legitieme entiteiten om slachtoffers te misleiden en persoonlijke informatie te stelen, zoals wachtwoorden, creditcardgegevens of andere gevoelige informatie. Phishing-aanvallen kunnen plaatsvinden via e-mail, sociale media, sms-berichten of zelfs telefoonoproepen.
 
 1 cybersecurity killchain
+
 - Reconnaissance: de aanvaller verzamelt informatie over het doelwit, zoals netwerkinfrastructuur, gebruikte software en kwetsbaarheden.
 - Weaponization: de aanvaller ontwikkelt of verkrijgt malware of exploits die kunnen worden gebruikt om het doelwit aan te vallen.
 - Delivery: de aanvaller levert de malware of exploit aan het doelwit, bijvoorbeeld via e-mail, geïnfecteerde websites of fysieke media.
@@ -120,7 +122,6 @@ botnet = een netwerk van geïnfecteerde computers die worden gecontroleerd door 
 - Command and Control (C&C): de aanvaller communiceert met de malware op het systeem van het doelwit om instructies te geven of gestolen gegevens te ontvangen.
 - Actions on Objectives: de aanvaller voert acties uit op het systeem van het doelwit om zijn doelen te bereiken, zoals het stelen van gegevens, het vernietigen van bestanden of het overnemen van systemen.
 - Incident Response: het proces van het detecteren, analyseren en reageren op een beveiligingsincident, zoals een cyberaanval, om de schade te beperken en toekomstige aanvallen te voorkomen. Incident response omvat vaak het identificeren van de aanval, het isoleren van getroffen systemen, het herstellen van gegevens en het implementeren van maatregelen om herhaling te voorkomen.
-
 
 nmap
 
@@ -133,14 +134,31 @@ os fingerprinting
 scripting
 
 ```bash
-nmap -192.168.189.2/24 -n
+# scan 192.168.2/24 zonder dns resolutie ( -n )
+nmap 192.168.189.2/24 -n
+
+# ping scan (-sn) targetnetwerk (tnet) meer details (-v) en output in 3 formaten (-oA) zonder dns resolutie (-n)
 nmap -sn -oA tnet -v 192.168.189.0/24 -n
+
+# ping scan (-sn) netwerk met icmp echo request (-PE) en packet trace (--packet-trace)
 sudo nmap 192.168.189.0/24 -sn -PE --packet-trace
+
+# ping scan (-sn) netwerk met zonder arp ping (--disable-arp-ping)
 sudo nmap 192.168.189.0/24 -sn --disable-arp-ping 
+
+# scan netwerk op top 10 poorten (--top-ports=10)
 nmap 192.168.189.4 --top-ports=10
+
+# scan netwerk op specifieke poorten (-p) 22, 25, 80, 139 en 445
 nmap 192.168.189.4 -p 22,25,80,139,445
+
+# scan netwerk op poorten (-p) van 22 tot 445
 nmap 192.168.189.4 -p 22-445
+
+# scan netwerk op alle poorten (-p-)
 nmap 192.168.189.4 -p- 
+
+#
 nmap 192.168.189.4 -p 443 --packet-trace -Pn -n 
 nmap 192.168.189.4 -sT
 nmap 192.168.189.4 -sS --max-retries 1
@@ -151,5 +169,7 @@ nmap 192.168.189.4 --top 10 -n -sV
 nmap 192.168.189.4 -p 80-sV -n -Pn --packet-trace
 nc -nv 192.168.189.4 25
 ```
+
 ttl windows = 128
 ttl linux = 64
+
