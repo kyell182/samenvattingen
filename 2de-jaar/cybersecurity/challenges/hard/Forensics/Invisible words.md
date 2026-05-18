@@ -29,7 +29,7 @@ via defender geen vlaggen gekregen dus geen virus
 
 na openen van de afbeelding zie je de image met veel ruis pixels erond
 
-![image](../assets/invisible_words%20image.png)
+![image](../../assets/invisible_words%20image.png)
 
 ### Observaties
 
@@ -268,6 +268,7 @@ nu dat we weten dat er een zip file verborgen zit in de pixel data, ga ik prober
 ```bash
 xxd -s 138 -c 4 -g 2 output.bmp | head -n 20 | awk '{print $2$3}' | xxd -r -p > hidden.zip
 ```
+
 `awk '{print $2$3}'` wordt gebruikt om de tweede en derde kolom van de output van `xxd` te combineren, wat de hexadecimale waarden van de pixels bevat.  
 `xxd -r -p` wordt gebruikt om de hexadecimale waarden terug te converteren naar binaire data, wat de zip file zal zijn.  
 `> hidden.zip` wordt gebruikt om de output van het commando op te slaan in een bestand genaamd `hidden.zip`.
@@ -399,32 +400,36 @@ dit is al zeer high level data hiding en dat dit door 99% van de mensen niet zal
 voor beveiliging is dit een grote nachtmerrie omdat een aanvaller volgende technieken kan toepassen
 
 1. Data Exfiltratie (Datalekken)
-Dit is het grootste risico binnen bedrijven. Moderne beveiligingssystemen (DLP - Data Loss Prevention) scannen emails en uploads op gevoelige woorden of bekende bestandstypen zoals PDF of Excel.
+
+  Dit is het grootste risico binnen bedrijven. Moderne beveiligingssystemen (DLP - Data Loss Prevention) scannen emails en uploads op gevoelige woorden of bekende bestandstypen zoals PDF of Excel.
 
 Het gevaar: Een insider kan gevoelige informatie (zoals klantgegevens of broncode) verstoppen in een gewone profielfoto of een bedrijfslogo.
 
 Waarom het werkt: De afbeelding ziet er op het oog normaal uit en de "file signature" blijft die van een BMP of PNG. De scanner ziet alleen een afbeelding die wordt geüpload naar bijvoorbeeld social media, terwijl er in werkelijkheid een versleuteld archief naar buiten gaat.
 
 2. Malware Verspreiding (C2 Communication)
-Hackers gebruiken steganografie om instructies te sturen naar computers die ze al besmet hebben (Command & Control).
 
-In plaats van een verdacht tekstbestand met commando's te sturen, downloadt de malware een "meme" van een publieke website zoals Imgur of Pinterest.
+  Hackers gebruiken steganografie om instructies te sturen naar computers die ze al besmet hebben (Command & Control).
 
-De malware op de computer weet precies welke bytes (zoals de 3e en 4e byte van elke pixel) hij moet uitlezen om de volgende aanvalsfase te starten. Dit is extreem lastig te detecteren voor antivirussoftware.
+  In plaats van een verdacht tekstbestand met commando's te sturen, downloadt de malware een "meme" van een publieke website zoals Imgur of Pinterest.
+
+  De malware op de computer weet precies welke bytes (zoals de 3e en 4e byte van elke pixel) hij moet uitlezen om de volgende aanvalsfase te starten. Dit is extreem lastig te detecteren voor antivirussoftware.
 
 3. Bypass van Sandboxing
-Veel security-tools "draaien" een bestand eerst in een veilige omgeving (sandbox) om te zien wat het doet.
 
-Als een afbeelding alleen maar pixeldata bevat, doet de sandbox niets; het is immers geen uitvoerbaar programma.
+  Veel security-tools "draaien" een bestand eerst in een veilige omgeving (sandbox) om te zien wat het doet.
 
-De schadelijke code wordt pas "gebouwd" zodra de afbeelding op de lokale machine is en door een ander (ogenschijnlijk veilig) script wordt uitgelezen, precies zoals we met het Python-commando deed.
+  Als een afbeelding alleen maar pixeldata bevat, doet de sandbox niets; het is immers geen uitvoerbaar programma.
+
+  De schadelijke code wordt pas "gebouwd" zodra de afbeelding op de lokale machine is en door een ander (ogenschijnlijk veilig) script wordt uitgelezen, precies zoals we met het Python-commando deed.
 
 4. De uitdaging voor de verdediging: "Steganalysis"
-Beveiligers moeten nu gebruikmaken van Steganalysis. Dit is de kunst van het ontdekken van verborgen data.
 
-Statistische afwijkingen: Een normale foto heeft een bepaalde natuurlijke variatie in kleuren. Als 25% van de bits wordt vervangen door een ZIP-bestand, verandert de statistische vingerafdruk van de pixels (bijvoorbeeld een onnatuurlijke verdeling van kleuren in de LSB - Least Significant Bits).
+  Beveiligers moeten nu gebruikmaken van Steganalysis. Dit is de kunst van het ontdekken van verborgen data.
 
-Bestandsgrootte: Een BMP-bestand dat veel groter is dan je op basis van de resolutie zou verwachten, is een enorme rode vlag.
+  Statistische afwijkingen: Een normale foto heeft een bepaalde natuurlijke variatie in kleuren. Als 25% van de bits wordt vervangen door een ZIP-bestand, verandert de statistische vingerafdruk van de pixels (bijvoorbeeld een onnatuurlijke verdeling van kleuren in de LSB - Least Significant Bits).
+
+  Bestandsgrootte: Een BMP-bestand dat veel groter is dan je op basis van de resolutie zou verwachten, is een enorme rode vlag.
 
 #### wat kan er tegen gedaan worden?
 
@@ -433,7 +438,7 @@ Bestandsgrootte: Een BMP-bestand dat veel groter is dan je op basis van de resol
 - Beperkingen op Bestandsformaten: Alleen bepaalde bestandstypen toestaan voor uploads en communicatie, en afbeeldingen die groter zijn dan een bepaalde drempel weigeren.
 - Monitoring: Continu monitoren van netwerkverkeer en bestandsactiviteiten om ongebruikelijke patronen te detecteren die kunnen wijzen op data-exfiltratie of C2-communicatie.
 
-hashes vergelijken om te zien of er iets mis is met de afbeelding, zoals een hash mismatch die kan wijzen op een gewijzigde afbeelding.
+- Hashes vergelijken om te zien of er iets mis is met de afbeelding, zoals een hash mismatch die kan wijzen op een gewijzigde afbeelding.
 
 ---
 
