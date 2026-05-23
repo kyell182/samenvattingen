@@ -1,181 +1,236 @@
-# nmap = network mapper
+# Cybersecurity & Nmap Studiegids
 
-nmap is a free and open source utility for network discovery and security auditing.
+## Wat is Nmap (Network Mapper)?
 
-It was designed to rapidly scan large networks, but it also works well against single hosts.
+**Nmap** is een gratis, open-source utility voor netwerkdetectie en beveiligingsaudits. Het is ontworpen om snel grote netwerken te scannen, maar werkt ook goed tegen single hosts.
 
-Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics.
+Nmap gebruikt ruwe IP-pakketten op innovatieve manieren om de volgende eigenschappen van een netwerk te bepalen:
 
-- wat is een cyberaanval?
+* Welke **hosts** beschikbaar zijn op het netwerk.
+* Welke **services** (applicatienaam en versie) deze hosts aanbieden.
+* Welke **besturingssystemen** (en OS-versies) ze draaien.
+* Welk type **pakketfilters/firewalls** in gebruik zijn.
+* Tientallen andere netwerkkenmerken.
 
-een pogin om scharde aan te richten aan een computersysteem, netwerk of digitale informatie, vaak met het doel een 
+---
 
-gedaan via
+## Cyberaanvallen
 
-- Mensen
-- computer
-- Telefoons
-- Applicaties
-- Boodschappen
-- Systeemprocessen
+Een **cyberaanval** is een poging om schade aan te richten aan een computersysteem, netwerk of digitale informatie.
 
-doelen van aanvallen
+### Aanvalsvectoren
 
-informatie verzamelen
+Aanvallen worden vaak uitgevoerd via of gericht op:
 
-- date en processene versleutelen en losgeld vragen
-- cruciale info verwijderen
-- informatie stelen
-- informatie publiek maken
-- systeem onbruikbaar maken
+* Mensen
+* Computers
+* Telefoons
+* Applicaties
+* Boodschappen (berichten/communicatie)
+* Systeemprocessen
 
-types aanvalen
+### Doelen van aanvallen
 
-passive aanvallen:
+* Informatie verzamelen.
+* Data en processen versleutelen en losgeld vragen (ransomware).
+* Cruciale informatie verwijderen.
+* Informatie stelen.
+* Informatie publiek maken.
+* Systemen onbruikbaar maken.
 
-schade / wijzigingen toebrengen inbreken in systemen
+### Typen aanvallen
 
-- sniffeing traffic
-- port scanning
+| Type Aanval | Omschrijving | Voorbeelden |
+| :--- | :--- | :--- |
+| **Passieve aanvallen** | Gericht op het verzamelen van informatie of inbreken zonder directe schade of wijzigingen aan te brengen. | *Traffic sniffing*, *port scanning* |
+| **Actieve aanvallen** | Gericht op het daadwerkelijk toebrengen van schade, misbruik of het aanpassen van systemen. | Malware, DDoS-aanvallen |
 
-active aanvallen:
+> **Slowloris:** Een specifieke actieve aanval waarbij een verbinding met een server open wordt gehouden zonder data te versturen. Hierdoor blijven de resources van de server bezet, waardoor deze uiteindelijk onbruikbaar wordt voor legitieme gebruikers.
 
-- malware
-- DDOS (Distributed Denial of Service)
+### Rollen en Typen Hackers
 
-red team = aanvallers
-blue team = verdedigers
+| Team / Type | Definitie |
+| :--- | :--- |
+| **Red team** | De aanvallers (simuleren van echte cybercriminele tactieken). |
+| **Blue team** | De verdedigers (beveiligen, detecteren en reageren op incidenten). |
+| **White hat hackers** | Ethische hackers die alleen goede dingen doen *met* expliciete toestemming. |
+| **Grey hat hackers** | Hackers die vaak goede bedoelingen hebben, maar kwetsbaarheden opsporen *zonder* voorafgaande toestemming. |
+| **Black hat hackers** | Kwaadaardige hackers die systemen binnendringen voor eigen gewin of om schade aan te richten. |
 
-grey hat hackers = hackers die zowel goede bedoelingen maar zonder toestemming
-white hat hackers = hackers die alleen goede dingen doen met toestemming
-black hat hackers = hackers die alleen slechte dingen doen
+---
 
- slow lorris = aanval waarbij een verbinding open blijft zonder data te versturen, waardoor de server resources bezet houdt en uiteindelijk onbruikbaar wordt
+## Verdedigingsmethoden & Pijlers
 
- verdedigingsmethoden
-- firewalls
-- antivirus software
-- intrusion detection systems (IDS)
-- intrusion prevention systems (IPS)
-- regelmatige software updates
-- gebruik van sterke wachtwoorden
-- educatie en bewustwording van gebruikers
-- netwerksegmentatie
-- encryptie van data
-- backups maken van belangrijke data
-- monitoring en logging van netwerkactiviteiten
+### Verdedigingsmethoden
 
-3 pijlers van cybersecurity:
+Om netwerken en systemen te beschermen tegen aanvallen, worden de volgende methoden ingezet:
 
-- Confidentiality (vertrouwelijkheid): zorgen dat informatie alleen toegankelijk is voor degenen die er recht op hebben.
-- Integrity (integriteit): zorgen dat informatie accuraat en volledig is, en niet ongeautoriseerd wordt gewijzigd.
-- Availability (beschikbaarheid): zorgen dat informatie en systemen beschikbaar zijn wanneer ze nodig zijn.
-- non repudiation (niet-afdwingbaarheid): zorgen dat een partij niet kan ontkennen dat ze een bepaalde actie hebben uitgevoerd, zoals het verzenden van een bericht of het uitvoeren van een transactie.
-- authentication (authenticatie): het proces van het verifiëren van de identiteit van een gebruiker, apparaat of systeem voordat toegang wordt verleend tot bronnen of informatie.
-- authorization (autorisatie): het proces van het bepalen van de toegangsrechten en -privileges van een geauthenticeerde gebruiker, apparaat of systeem, om te bepalen welke bronnen of informatie ze mogen benaderen of gebruiken.
+* Firewalls
+* Antivirussoftware
+* Intrusion Detection Systems (IDS)
+* Intrusion Prevention Systems (IPS)
+* Regelmatige software-updates
+* Gebruik van sterke wachtwoorden
+* Educatie en bewustwording van gebruikers (security awareness)
+* Netwerksegmentatie
+* Encryptie van data (zowel in rust als in transit)
+* Back-ups maken van belangrijke data
+* Monitoring en logging van netwerkactiviteiten
 
-CIA triade = Confidentiality, Integrity, Availability
+### Pijlers van Cybersecurity (De CIA-triade & aanvullingen)
 
-Wat is malware?
+De basis van informatiebeveiliging rust op de **CIA-triade**, vaak aangevuld met drie andere cruciale concepten:
 
-- Malicious software, oftewel kwaadaardige software, is een verzamelnaam voor software die is ontworpen om schade aan te richten aan computersystemen, netwerken of gebruikers. Malware kan verschillende vormen aannemen, zoals virussen, wormen, Trojaanse paarden, ransomware, spyware en adware. Het doel van malware kan variëren van het stelen van persoonlijke informatie tot het vernietigen van gegevens of het overnemen van systemen voor kwaadaardige doeleinden. Het is belangrijk om goede beveiligingsmaatregelen te nemen om jezelf te beschermen tegen malware-aanvallen.
+| Pijler | Nederlandse term | Definitie |
+| :--- | :--- | :--- |
+| **Confidentiality** | Vertrouwelijkheid | Zorgen dat informatie alleen toegankelijk is voor degenen die er recht op hebben. |
+| **Integrity** | Integriteit | Zorgen dat informatie accuraat en volledig is, en niet ongeautoriseerd wordt gewijzigd. |
+| **Availability** | Beschikbaarheid | Zorgen dat informatie en systemen direct beschikbaar zijn wanneer ze nodig zijn. |
+| **Non-repudiation** | Onweerlegbaarheid | Zorgen dat een partij niet kan ontkennen dat ze een bepaalde actie (zoals een transactie of bericht) hebben uitgevoerd. |
+| **Authentication** | Authenticatie | Het proces van het verifiëren van de identiteit van een gebruiker, apparaat of systeem voordat toegang wordt verleend. |
+| **Authorization** | Autorisatie | Het bepalen van de specifieke toegangsrechten en privileges van een reeds geauthenticeerde entiteit. |
 
-componeten malware
+---
 
-- Payload: de kwaadaardige code die schade aanricht of een bepaald doel bereikt, zoals het stelen van gegevens, het versleutelen van bestanden of het overnemen van een systeem.
-- Propagation mechanism: de methode waarmee malware zich verspreidt, zoals via e-mailbijlagen, geïnfecteerde websites, sociale media of netwerkverbindingen.
-- Command and Control (C&C) server: een externe server waarmee de aanvaller communiceeert om instructies te geven aan de malware of om gestolen gegevens te ontvangen.
+## Malware (Malicious Software)
 
-virussen = kwaadaardige software die zich hecht aan legitieme bestanden of programma's en zich verspreidt wanneer deze worden uitgevoerd of gedeeld. Virussen kunnen verschillende soorten schade aanrichten, zoals het verwijderen van bestanden, het stelen van persoonlijke informatie of het overnemen van systemen.
+Malware is een verzamelnaam voor software die specifiek is ontworpen om schade aan te richten aan computersystemen, netwerken of gebruikers.
 
-wormen = kwaadaardige software die zich zelfstandig kan verspreiden zonder dat er een hostbestand nodig is. Wormen kunnen zich via netwerken verspreiden en kunnen grote hoeveelheden schade aanrichten door systemen te overbelasten of gegevens te stelen.
+### Componenten van Malware
 
-Trojaanse paarden = kwaadaardige software die zich voordoet als legitieme software om gebruikers te misleiden en toegang te krijgen tot systemen. Trojaanse paarden kunnen worden gebruikt om gegevens te stelen, systemen over te nemen of andere kwaadaardige activiteiten uit te voeren.
+1. **Payload:** De daadwerkelijke kwaadaardige code die de schade aanricht of het einddoel bereikt (bijv. data stelen of bestanden versleutelen).
+2. **Propagation mechanism:** De methode of het mechanisme waarmee de malware zich verspreidt (bijv. via e-mailbijlagen, netwerkverbindingen of geïnfecteerde websites).
+3. **Command and Control (C&C) server:** Een externe server die door de aanvaller wordt beheerd om instructies naar de malware te sturen of gestolen gegevens te ontvangen.
 
-ransomware = kwaadaardige software die bestanden versleutelt en losgeld eist van slachtoffers om de bestanden te ontgrendelen. Ransomware kan ernstige schade aanrichten door belangrijke gegevens ontoegankelijk te maken.
+### Soorten Malware
 
-spyware = kwaadaardige software die is ontworpen om informatie over een gebruiker of systeem te verzamelen zonder hun medeweten of toestemming. Spyware kan worden gebruikt om persoonlijke informatie te stelen, zoals wachtwoorden, creditcardgegevens of surfgedrag, en kan ook worden gebruikt om advertenties weer te geven of andere ongewenste activiteiten uit te voeren.
+| Type | Definitie en Kenmerken |
+| :--- | :--- |
+| **Virus** | Kwaadaardige software die zich hecht aan legitieme bestanden of programma's en activeert/verspreidt wanneer deze bestanden worden uitgevoerd. |
+| **Worm** | Zelfstandige malware die geen hostbestand nodig heeft en zich autonoom via netwerken kan verspreiden om systemen te overbelasten. |
+| **Trojaans paard** | Malware die zich voordoet als legitieme, nuttige software om gebruikers te misleiden en zo toegang te krijgen tot het systeem. |
+| **Ransomware** | Gijzelsoftware die vitale bestanden versleutelt en losgeld (ransom) eist van het slachtoffer om de decriptiesleutel te verkrijgen. |
+| **Spyware** | Software ontworpen om stiekem informatie over een gebruiker of systeem te verzamelen (zoals wachtwoorden en surfgedrag) zonder toestemming. |
+| **Adware** | Software die ongevraagd advertenties weergeeft op een apparaat, vaak gekoppeld aan het verzamelen van gebruikersdata. |
+| **Backdoor** | Een verborgen toegangspunt in een systeem of applicatie waarmee aanvallers de normale authenticatie omzeilen voor ongeautoriseerde toegang. |
+| **Botnet** | Een netwerk van geïnfecteerde computers ("bots") die centraal worden aangestuurd via een C&C-server voor grootschalige aanvallen zoals DDoS. |
 
-adware = kwaadaardige software die is ontworpen om advertenties weer te geven op een computer of apparaat, vaak zonder de toestemming van de gebruiker. Adware kan ook worden gebruikt om persoonlijke informatie te verzamelen of om andere ongewenste activiteiten uit te voeren.
+---
 
-backdoor = een verborgen toegangspunt in een systeem of software dat door aanvallers kan worden gebruikt om ongeautoriseerde toegang te krijgen tot het systeem, vaak zonder dat de gebruiker of beheerder hiervan op de hoogte is. Backdoors kunnen worden geïnstalleerd door malware, hackers of zelfs door legitieme ontwikkelaars voor onderhoudsdoeleinden, maar ze vormen een groot beveiligingsrisico als ze in verkeerde handen vallen.
+## Beperkingsstrategieën (Mitigation Strategies)
 
-botnet = een netwerk van geïnfecteerde computers die worden gecontroleerd door een aanvaller, vaak via een Command and Control (C&C) server. Botnets kunnen worden gebruikt voor verschillende kwaadaardige doeleinden, zoals het uitvoeren van Distributed Denial of Service (DDoS) aanvallen, het verspreiden van malware, het stelen van gegevens of het verzenden van spam.
+Bij het beheren van cyberrisico's worden drie hoofdstrategieën gehanteerd:
 
-3 mitigation strategies
+* **Preventie:** Maatregelen nemen om te voorkomen dat aanvallen überhaupt kunnen plaatsvinden.
+  * *Voorbeelden:* Firewalls, antivirus, patches, sterke wachtwoorden.
+* **Detectie:** Het continu monitoren van systemen en netwerken om lopende verdachte activiteiten of inbreuken direct te identificeren.
+  * *Voorbeelden:* Intrusion Detection Systems (IDS), loganalyse.
+* **Recovery (Herstel):** Het herstellen van systemen, processen en gegevens na een succesvolle aanval om de schade te minimaliseren.
+  * *Voorbeelden:* Back-ups terugzetten, incident response plannen activeren, forensisch onderzoek.
 
-- Preventie: maatregelen nemen om te voorkomen dat aanvallen plaatsvinden, zoals het implementeren van firewalls, antivirussoftware, regelmatige software-updates en het gebruik van sterke wachtwoorden.
+---
 
-- Detectie: het monitoren van systemen en netwerken om verdachte activiteiten te identificeren, zoals het gebruik van intrusion detection systems (IDS) en het analyseren van logbestanden.
+## Phishing-aanvallen
 
-- Recovery: het herstellen van systemen en gegevens na een aanval, zoals het maken van backups, het implementeren van incident response plannen en het uitvoeren van forensisch onderzoek om de oorzaak van de aanval te achterhalen en toekomstige aanvallen te voorkomen.
+| Type Phishing | Doelgroep en Kenmerken |
+| :--- | :--- |
+| **Phishing** | De algemene, brede term voor online oplichting waarbij aanvallers zich voordoen als betrouwbare instanties om gevoelige gegevens (wachtwoorden, creditcards) te stelen via e-mail, sms, social media of telefoon. |
+| **Spear phishing** | Een zeer gerichte aanval waarbij de communicatie specifiek is gepersonaliseerd voor één individu of organisatie op basis van verzamelde voorkennis. |
+| **Whaling** | Een specifieke vorm van spear phishing die zich exclusief richt op hooggeplaatste personen binnen een organisatie, zoals CEO's of CFO's. |
 
-3 soorten phissing-aanvallen
+---
 
-- Spear phishing: een gerichte aanval waarbij de aanvaller zich richt op een specifieke persoon of organisatie, vaak door het gebruik van gepersonaliseerde e-mails of berichten die lijken te komen van een vertrouwde bron.
+## De Cybersecurity Kill Chain
 
-- Whaling: een vorm van spear phishing die zich richt op hooggeplaatste individuen binnen een organisatie, zoals CEO's of CFO's, met als doel gevoelige informatie te stelen of financiële fraude te plegen.
+De Cyber Kill Chain beschrijft de opeenvolgende fasen die een aanvaller moet doorlopen om een succesvolle inbreuk te plegen:
 
-- phishing een bredere term die verwijst naar elke vorm van online oplichting waarbij aanvallers zich voordoen als legitieme entiteiten om slachtoffers te misleiden en persoonlijke informatie te stelen, zoals wachtwoorden, creditcardgegevens of andere gevoelige informatie. Phishing-aanvallen kunnen plaatsvinden via e-mail, sociale media, sms-berichten of zelfs telefoonoproepen.
+1. **Reconnaissance (Verkenning):** De aanvaller verzamelt informatie over het doelwit (netwerkinfrastructuur, softwareversies, kwetsbaarheden).
+2. **Weaponization (Wapening):** De aanvaller koppelt een exploit (misbruikcode) aan een payload (malware) om een digitaal wapen te maken.
+3. **Delivery (Aflevering):** Het digitale wapen wordt overgebracht naar het doelwit (bijv. via een phishing-mail, geïnfecteerde usb-stick of website).
+4. **Exploitation (Misbruik):** De kwaadaardige code wordt geactiveerd en misbruikt een specifieke kwetsbaarheid in het systeem van het doelwit.
+5. **Installation (Installatie):** De malware installeert zich op het systeem om permanente toegang (persistence) te garanderen.
+6. **Command and Control (C&C):** De geïnstalleerde malware opent een communicatiekanaal naar de externe server van de aanvaller voor verdere instructies.
+7. **Actions on Objectives (Acties op doelen):** De aanvaller voert zijn uiteindelijke doel uit (bijv. data exfiltreren, bestanden vernietigen of ransomware activeren).
 
-1 cybersecurity killchain
+> **Incident Response:** Dit is het verdedigingsproces dat parallel loopt aan de Kill Chain. Het omvat het detecteren, analyseren, isoleren (containment), herstellen en evalueren van een beveiligingsincident om de impact te minimaliseren en herhaling te voorkomen.
 
-- Reconnaissance: de aanvaller verzamelt informatie over het doelwit, zoals netwerkinfrastructuur, gebruikte software en kwetsbaarheden.
-- Weaponization: de aanvaller ontwikkelt of verkrijgt malware of exploits die kunnen worden gebruikt om het doelwit aan te vallen.
-- Delivery: de aanvaller levert de malware of exploit aan het doelwit, bijvoorbeeld via e-mail, geïnfecteerde websites of fysieke media.
-- Exploitation: de malware of exploit wordt geactiveerd en maakt gebruik van een kwetsbaarheid in het doelwit om toegang te krijgen tot het systeem.
-- Installation: de malware installeert zich op het systeem van het doelwit, waardoor de aanvaller permanente toegang krijgt.
-- Command and Control (C&C): de aanvaller communiceert met de malware op het systeem van het doelwit om instructies te geven of gestolen gegevens te ontvangen.
-- Actions on Objectives: de aanvaller voert acties uit op het systeem van het doelwit om zijn doelen te bereiken, zoals het stelen van gegevens, het vernietigen van bestanden of het overnemen van systemen.
-- Incident Response: het proces van het detecteren, analyseren en reageren op een beveiligingsincident, zoals een cyberaanval, om de schade te beperken en toekomstige aanvallen te voorkomen. Incident response omvat vaak het identificeren van de aanval, het isoleren van getroffen systemen, het herstellen van gegevens en het implementeren van maatregelen om herhaling te voorkomen.
+---
 
-nmap
+## Nmap in de Praktijk
 
-- open
-- closed
-- filtered
+### Poortstatussen binnen Nmap
 
-service detectie
-os fingerprinting
-scripting
+Wanneer Nmap een poort scant, kan deze drie primaire statussen teruggeven:
+
+* **Open:** Er draait een applicatie op de poort die actief luistert naar verbindingen.
+* **Closed:** De poort is bereikbaar, maar er luistert momenteel geen applicatie op.
+* **Filtered:** Nmap kan niet bepalen of de poort open of gesloten is omdat een firewall of pakketfilter de scansignalen blokkeert.
+
+Nmap kan naast poortscans ook ingezet worden voor:
+
+* **Service detectie:** Achterhalen welke applicatieversie er op een poort draait.
+* **OS fingerprinting:** Het identificeren van het besturingssysteem van de target.
+* **Scripting:** Automatiseren van geavanceerde scans middels de Nmap Scripting Engine (NSE).
+
+### Veelgebruikte Commando's en Syntax
 
 ```bash
-# scan 192.168.2/24 zonder dns resolutie ( -n )
+# Scan een subnetwerk zonder DNS-resolutie uit te voeren (-n)
 nmap 192.168.189.2/24 -n
 
-# ping scan (-sn) targetnetwerk (tnet) meer details (-v) en output in 3 formaten (-oA) zonder dns resolutie (-n)
+# Ping scan (-sn) op het targetnetwerk met extra details (-v) en sla de output op in alle 3 de formaten (-oA tnet) zonder DNS-resolutie (-n)
 nmap -sn -oA tnet -v 192.168.189.0/24 -n
 
-# ping scan (-sn) netwerk met icmp echo request (-PE) en packet trace (--packet-trace)
+# Ping scan (-sn) op een netwerk met expliciete ICMP Echo Requests (-PE) inclusief een packet trace (--packet-trace)
 sudo nmap 192.168.189.0/24 -sn -PE --packet-trace
 
-# ping scan (-sn) netwerk met zonder arp ping (--disable-arp-ping)
+# Ping scan (-sn) op een netwerk waarbij de standaard ARP-pings worden uitgeschakeld (--disable-arp-ping)
 sudo nmap 192.168.189.0/24 -sn --disable-arp-ping 
 
-# scan netwerk op top 10 poorten (--top-ports=10)
+# Scan een specifieke host op de top 10 meest voorkomende poorten (--top-ports=10)
 nmap 192.168.189.4 --top-ports=10
 
-# scan netwerk op specifieke poorten (-p) 22, 25, 80, 139 en 445
+# Scan een host op specifiek gedefinieerde poorten (-p)
 nmap 192.168.189.4 -p 22,25,80,139,445
 
-# scan netwerk op poorten (-p) van 22 tot 445
+# Scan een host op een specifieke poortrange (-p)
 nmap 192.168.189.4 -p 22-445
 
-# scan netwerk op alle poorten (-p-)
+# Scan een host op ALLE (65535) mogelijke TCP-poorten (-p-)
 nmap 192.168.189.4 -p- 
 
-#
+# Scan specifiek poort 443 met packet trace, zonder voorafgaande ping/host-discovery (-Pn) en zonder DNS-resolutie (-n)
 nmap 192.168.189.4 -p 443 --packet-trace -Pn -n 
+
+# Voer een TCP Connect scan uit (-sT) (maakt de volledige 3-way handshake af)
 nmap 192.168.189.4 -sT
+
+# Voer een TCP SYN / Stealth scan uit (-sS) met een maximum van 1 herlooppoging (--max-retries 1)
 nmap 192.168.189.4 -sS --max-retries 1
+
+# Voer een snelle (-F) UDP-scan (-sU) uit op de meest voorkomende UDP-poorten
 nmap -sU -F 
+
+# Voer een UDP-scan (-sU) uit op de top 100 belangrijkste UDP-poorten
 nmap 192.168.189.4 -sU --top-ports=100
+
+# Scan de top 10 poorten zonder DNS-resolutie (-n)
 nmap 192.168.189.4 --top 10 -n
+
+# Scan de top 10 poorten inclusief service- en versiedetectie (-sV) zonder DNS-resolutie (-n)
 nmap 192.168.189.4 --top 10 -n -sV
-nmap 192.168.189.4 -p 80-sV -n -Pn --packet-trace
+
+# Scan poort 80 met versiedetectie (-sV), zonder DNS-resolutie (-n), negeer host discovery (-Pn) met packet-trace
+nmap 192.168.189.4 -p 80 -sV -n -Pn --packet-trace
+
+# Zet handmatig een Netcat-verbinding op naar poort 25 (verbose en numeriek zonder DNS)
 nc -nv 192.168.189.4 25
 ```
 
-ttl windows = 128
-ttl linux = 64
+### Besturingssysteemindicatie via TTL (Time To Live)
 
+Tijdens het scannen of pingen kan de standaard TTL-waarde in de IP-header een sterke indicatie geven van het achterliggende OS:
+
+* **Windows systemen:** Standaard TTL = `128`
+* **Linux/Unix systemen:** Standaard TTL = `64`
+* **Cisco routers:** Standaard TTL = `255`

@@ -13,58 +13,50 @@ nmap is een krachtig netwerk scanning tool dat wordt gebruikt voor het ontdekken
 
 ## flaggen
 
-| Flag | Betekenis |
-| ---- | --------- |
-| -v   | Verbose modus (meer details) |
-| -vv  | Extra verbose (nog meer details) |
-| -n   | Geen DNS resolutie (sneller) |
-| -R   | Forceer DNS resolutie (langzamer) |
-| -sP  | Ping scan (verouderd, gebruik -sn) |
-| -sS  | SYN scan (half-open) |
-| -sT  | TCP connect scan (volledige handshake) |
-| -sU  | UDP scan |
-| -sn  | Ping scan (geen port scan) |
-| -p   | Poorten specificeren |
-| -sV  | Service versie detectie |
-| -O   | OS detectie |
-| -A   | Aggressieve scan (alles in één) |
-| -sC  | Standaard scripts uitvoeren |
-| --script | Specifieke NSE scripts draaien |
-| -T   | Timing template (T0-T5) |
-| -f   | Fragmentatie (splitst pakketten) |
-| -D   | Decoy scan (fake IP’s) |
-| -S   | Spoofing (vals IP-adres) |
-| -oN  | Output in normaal formaat |
-| -oX  | Output in XML formaat |
-| -oA  | Output in alle formaten (.nmap, .xml, .gnmap) |
-| tnet | Target netwerk (bijvoorbeeld 192.168.1.0/24) |
-| -PE  | ICMP echo request (ping) |
+| Flag           | Betekenis                                          |
+| -------------- | -------------------------------------------------- |
+| -iL            | Leest targets uit een bestand                      |
+| -v             | Verbose modus (meer details)                       |
+| -vv            | Extra verbose (nog meer details)                   |
+| -n             | Geen DNS resolutie (sneller)                       |
+| -R             | Forceer DNS resolutie (langzamer)                  |
+| -sP            | Ping scan (verouderd, gebruik -sn)                 |
+| -sS            | SYN scan (half-open)                               |
+| -sT            | TCP connect scan (volledige handshake)             |
+| -sU            | UDP scan                                           |
+| -sn            | Ping scan (geen port scan)                         |
+| -p             | Poorten specificeren                               |
+| -sV            | Service versie detectie                            |
+| -O             | OS detectie                                        |
+| -A             | Aggressieve scan (alles in één)                    |
+| -sC            | Standaard scripts uitvoeren                        |
+| --script       | Specifieke NSE scripts draaien                     |
+| -T             | Timing template (T0-T5)                            |
+| -f             | Fragmentatie (splitst pakketten)                   |
+| -D             | Decoy scan (fake IP’s)                             |
+| -S             | Spoofing (vals IP-adres)                           |
+| -oN            | Output in normaal formaat                          |
+| -oX            | Output in XML formaat                              |
+| -oA            | Output in alle formaten (.nmap, .xml, .gnmap)      |
+| tnet           | Target netwerk (bijvoorbeeld 192.168.1.0/24)       |
+| -PE            | ICMP echo request (ping)                           |
 | --packet-trace | Toont details van verzonden en ontvangen pakketten |
 
 ## Scan Types
 
 | Scan         | Commando | Wat doet het?           | Uitleg (technisch)                                                                     |
 | ------------ | -------- | ----------------------- | -------------------------------------------------------------------------------------- |
-| SYN scan     | `-sS`    | Half-open scan          | Stuurt SYN → krijgt SYN/ACK → stuurt RST. Geen volledige handshake. Sneller & stealth. |
+| SYN scan     | `-sS`    | Half-open scan          | Stuurt SYN → krijgt SYN/ACK → stuurt RST (reset). Geen volledige handshake. Sneller & stealth. |
 | TCP connect  | `-sT`    | Volledige connectie     | Gebruikt OS connect(). Volledige 3-way handshake. Minder stealth.                      |
 | UDP scan     | `-sU`    | UDP poorten scannen     | Geen handshake bij UDP → wacht op ICMP unreachable. Traag.                             |
 | Ping scan    | `-sn`    | Alleen hosts detecteren | Geen port scan. Checkt wie online is via ICMP/ARP.                                     |
 | Alle poorten | `-p-`    | Scan 1–65535            | Normaal 1000 poorten, hiermee alles.                                                   |
-| Stealth scan  | `-sN`    | Null scan               | Stuurt geen flags. Sommige firewalls laten dit door.                                      |
-| Xmas scan   | `-sX`    | Stuurt FIN, PSH, URG  | Sommige systemen reageren alleen op deze combinatie.                                        |
-| FIN scan    | `-sF`    | Stuurt alleen FIN       | Sommige systemen reageren alleen op deze combinatie.                                        |
-| ACK scan    | `-sA`    | Stuurt alleen ACK       | Gebruikt om firewall regels te detecteren.                                                   |
+| Stealth scan | `-sN`    | Null scan               | Stuurt geen flags. Sommige firewalls laten dit door.                                   |
+| Xmas scan    | `-sX`    | Stuurt FIN, PSH, URG    | Sommige systemen reageren alleen op deze combinatie.                                   |
+| FIN scan     | `-sF`    | Stuurt alleen FIN       | Sommige systemen reageren alleen op deze combinatie.                                   |
+| ACK scan     | `-sA`    | Stuurt alleen ACK       | Gebruikt om firewall regels te detecteren.                                             |
 
 ## Poorten specificeren
-
-| Doel        | Commando          | Wat doet het?       | Uitleg                       |
-| ----------- | ----------------- | ------------------- | ---------------------------- |
-| 1 poort     | `-p 80`           | Scan poort 80       | Handig bij webserver testing |
-| Meerdere    | `-p 22,80,443`    | Specifieke lijst    | Comma gescheiden             |
-| Range       | `-p 1-1000`       | Poort range         | Vaak bij interne audits      |
-| Top poorten | `--top-ports 100` | 100 meest gebruikte | Snelle scan                  |
-
-## Service en OS detectie
 
 | Doel        | Commando          | Wat doet het?       | Uitleg                       |
 | ----------- | ----------------- | ------------------- | ---------------------------- |
@@ -83,13 +75,13 @@ nmap is een krachtig netwerk scanning tool dat wordt gebruikt voor het ontdekken
 
 ## NSE (Nmap Scripting Engine)
 
-| Doel             | Commando              | Wat doet het?         | Uitleg                               |
-| ---------------- | --------------------- | --------------------- | ------------------------------------ |
-| Default scripts  | `-sC`                 | Basis scripts         | Checkt bv. SSL, SMB info, HTTP title |
-| Specifiek script | `--script http-title` | Draait 1 script       | Geeft webpagina titel terug          |
-| Vulnerability    | `--script vuln`       | Kwetsbaarheden zoeken | Gebaseerd op bekende CVE patterns    |
-| Script args      | `--script-args`       | Parameters meegeven   | Bijvoorbeeld user/password lists     |
-| opzoeken scripts | `--script-help=[script]`       | Lijst beschikbare scripts | Handig om te zien wat er allemaal is |
+| Doel             | Commando                 | Wat doet het?             | Uitleg                               |
+| ---------------- | ------------------------ | ------------------------- | ------------------------------------ |
+| Default scripts  | `-sC`                    | Basis scripts             | Checkt bv. SSL, SMB info, HTTP title |
+| Specifiek script | `--script http-title`    | Draait 1 script           | Geeft webpagina titel terug          |
+| Vulnerability    | `--script vuln`          | Kwetsbaarheden zoeken     | Gebaseerd op bekende CVE patterns    |
+| Script args      | `--script-args`          | Parameters meegeven       | Bijvoorbeeld user/password lists     |
+| opzoeken scripts | `--script-help=[script]` | Lijst beschikbare scripts | Handig om te zien wat er allemaal is |
 
 | soorten scripts | uitleg |
 | --------------- | ------ |
@@ -123,7 +115,7 @@ nmap is een krachtig netwerk scanning tool dat wordt gebruikt voor het ontdekken
 
 ## TCP Logica
 
-**3-way handshake: SYN → SYN/ACK → ACK**
+### 3-way handshake: SYN → SYN/ACK → ACK
 
 | Stap | Pakket  | Betekenis              |
 | ---- | ------- | ---------------------- |
@@ -131,14 +123,14 @@ nmap is een krachtig netwerk scanning tool dat wordt gebruikt voor het ontdekken
 | 2    | SYN/ACK | "Ja, kom binnen."      |
 | 3    | ACK     | "Connectie bevestigd." |
 
-**Verschil**
+### Verschil**
 
 | Scan | Wat gebeurt er?              |
 | ---- | ---------------------------- |
 | -sS  | Stopt na stap 2 → stuurt RST |
 | -sT  | Voert alle 3 stappen uit     |
 
-## Poort Status Logica
+### Poort Status Logica
 
 | Status   | Wat betekent het?  | Netwerk gedrag        |
 | -------- | ------------------ | --------------------- |
@@ -146,7 +138,7 @@ nmap is een krachtig netwerk scanning tool dat wordt gebruikt voor het ontdekken
 | Closed   | Geen service       | SYN → RST             |
 | Filtered | Firewall blokkeert | Geen antwoord of ICMP |
 
-## Nmap Tips
+### Nmap Tips
 
 - Gebruik `-v` voor meer details tijdens het scannen.
 - Combineer opties voor diepgaande scans (bv. `nmap -A -p 80,443`)

@@ -68,12 +68,6 @@ Praktische notities
 - Bij CVE‑beheer: prioriteer op CVSS en exposure (is de service publiek bereikbaar?) en of er werkende exploit‑code beschikbaar is.
 - Segmentatie en least‑privilege beperken verspreiding bij een succesvolle breach.
 
-Studietips
-
-- Maak per onderwerp één A4‑samenvatting (definitie, risico’s, mitigaties, commando‑voorbeeld).
-- Oefen met tools in een lab: Shodan (read‑only), Nmap, Wireshark, en eenvoudige DNS‑queries.
-- Behoud originele aantekeningen als 'raw' referentie in een subsectie of appendices (niet verwijderd).
-
 Bronnen
 
 - <https://www.shodan.io>
