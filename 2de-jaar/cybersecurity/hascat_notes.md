@@ -1,102 +1,141 @@
-wat is cryptografie?
+# Handige uitleg — Hashcat & cryptografie (uitgebreid)
 
-Cryptografie is de studie van technieken voor veilige communicatie in het bijzijn van derden, ook wel bekend als tegenstanders. Het omvat methoden voor het versleutelen van informatie, zodat alleen geautoriseerde partijen toegang hebben tot de inhoud, en het beschermen van gegevens tegen ongeautoriseerde toegang of manipulatie. Cryptografie wordt gebruikt in verschillende toepassingen, zoals het beveiligen van online communicatie, het beschermen van gevoelige gegevens en het waarborgen van de integriteit van informatie.
+Dit document legt kort en toch iets uitgebreider uit wat je echt moet begrijpen voor studie: waarom methodes werken, wanneer je ze gebruikt en concrete voorbeelden.
 
-oudste vorm van cryptografie?
+> Waarschuwing: gebruik Hashcat of wachtwoordkraaktools alleen op systemen waarvoor je toestemming hebt. Het ongevraagd kraken van wachtwoorden is illegaal.
 
-De oudste vorm van cryptografie is waarschijnlijk de substitutiecode, waarbij letters of symbolen worden vervangen door andere letters, cijfers of symbolen. Een bekend voorbeeld hiervan is de Caesar-cijfer, genoemd naar Julius Caesar, die deze methode gebruikte om zijn militaire berichten te versleutelen. In een Caesar-cijfer worden de letters van het alfabet verschoven met een bepaald aantal posities. Bijvoorbeeld, als je een verschuiving van 3 gebruikt, wordt 'A' vervangen door 'D', 'B' door 'E', enzovoort. Deze eenvoudige vorm van cryptografie werd al duizenden jaren geleden gebruikt en vormt de basis voor veel moderne cryptografische technieken.
+## 1. Wat is cryptografie?
 
-wat is versleutelen?
+Cryptografie is de wetenschap van het veilig maken van informatie. Praktisch betekent dat:
 
-Versleutelen, ook wel encryptie genoemd, is het proces waarbij informatie wordt omgezet in een onleesbare vorm, zodat alleen geautoriseerde partijen toegang hebben tot de oorspronkelijke inhoud. Dit wordt gedaan door middel van een algoritme en een sleutel. Het algoritme bepaalt hoe de gegevens worden omgezet, terwijl de sleutel wordt gebruikt om de gegevens te versleutelen en later te ontsleutelen. Versleuteling wordt veel gebruikt om gevoelige informatie te beschermen, zoals persoonlijke gegevens, financiële transacties en vertrouwelijke communicatie.
+- Vertrouwelijkheid: alleen bevoegden lezen de data (encryptie).
+- Integriteit: je kunt controleren of data niet gewijzigd is (hashes, MACs).
+- Authenticatie: je kunt bewijzen wie iets heeft verstuurd (digitale handtekeningen).
 
-2 vormen van versleuteling?
+Kort voorbeeld:
 
-Er zijn verschillende vormen van versleuteling, maar twee van de meest voorkomende zijn symmetrische encryptie en asymmetrische encryptie.
+bij e-mail wil je dat alleen de ontvanger kan lezen (vertrouwelijkheid), dat het bericht niet gewijzigd is (integriteit) en dat je zeker weet wie het stuurde (authenticatie).
 
-- Symmetrische encryptie: Bij symmetrische encryptie wordt dezelfde sleutel gebruikt voor zowel het versleutelen als het ontsleutelen van de gegevens. Dit betekent dat zowel de verzender als de ontvanger dezelfde geheime sleutel moeten delen en veilig moeten bewaren. Voorbeelden van symmetrische encryptie-algoritmen zijn AES (Advanced Encryption Standard) en DES (Data Encryption Standard).
+## 2. Basis: substitutie (Caesar)
 
-- Asymmetrische encryptie: Bij asymmetrische encryptie worden twee verschillende sleutels gebruikt: een openbare sleutel en een privésleutel. De openbare sleutel wordt gebruikt om gegevens te versleutelen, terwijl de privésleutel wordt gebruikt om de gegevens te ontsleutelen. Dit betekent dat iedereen de openbare sleutel kan gebruiken om een bericht te versleutelen, maar alleen de eigenaar van de privésleutel kan het bericht ontsleutelen. Voorbeelden van asymmetrische encryptie-algoritmen zijn RSA (Rivest-Shamir-Adleman) en ECC (Elliptic Curve Cryptography).
+Substitutie is het simpelste voorbeeld:
 
-hoe werkt bitcoin?
+elke letter wordt vervangen of verschoven. Caesar-cijfer verschuift het alfabet (shift 3: A→D). Dit illustreert het idee van een sleutel (de shift), maar is makkelijk te kraken (frequentieanalyse).
 
-Bitcoin is een digitale valuta die gebruikmaakt van cryptografie om transacties te beveiligen en de creatie van nieuwe eenheden te controleren. Het werkt op een gedecentraliseerd netwerk van computers, ook wel bekend als blockchain, waar alle transacties worden vastgelegd in een openbaar grootboek. Wanneer iemand een Bitcoin-transactie uitvoert, wordt deze verzonden naar het netwerk en gevalideerd door miners, die complexe wiskundige problemen oplossen om de transactie te verifiëren en toe te voegen aan de blockchain. Miners worden beloond met nieuwe Bitcoins voor hun werk. Bitcoin maakt gebruik van asymmetrische encryptie om de veiligheid van transacties te waarborgen, waarbij gebruikers een privésleutel hebben om toegang te krijgen tot hun Bitcoins en een openbare sleutel die wordt gebruikt om transacties te ontvangen.
+## 3. Encryptie: symmetrisch vs asymmetrisch
 
-wanner versleutelen?
+- Symmetrisch:
+  - Zelfde sleutel voor encryptie en decryptie.
+  - Snel en geschikt voor grote data (bv. AES voor bestanden/verbindingen).
+  - Nadeel: sleuteluitwisseling (hoe deel je de geheime sleutel veilig?).
+  - Voorbeeld: twee partijen delen tevoren een AES-sleutel en gebruiken die om bestanden te versleutelen.
 
-Versleutelen is belangrijk in verschillende situaties, zoals:
+- Asymmetrisch:
+  - Publieke en private sleutel. Publieke sleutel kan iedereen gebruiken om te versleutelen; alleen eigenaar met private sleutel kan ontsleutelen.
+  - Handig voor sleuteluitwisseling en digitale handtekeningen (bv. RSA, ECC).
+  - Voorbeeld: verzender gebruikt jouw publieke sleutel om een bericht te versleutelen; alleen jij kunt het ontcijferen met je private sleutel.
 
-- Bij het verzenden van gevoelige informatie via het internet, zoals persoonlijke gegevens, financiële informatie of vertrouwelijke communicatie. Versleuteling helpt om deze gegevens te beschermen tegen hackers en andere kwaadwillenden.
-- Bij het opslaan van gevoelige gegevens op een computer of in de cloud. Versleuteling zorgt ervoor dat zelfs als de gegevens worden gestolen, ze niet leesbaar zijn zonder de juiste sleutel.
-- Bij het beveiligen van communicatie tussen apparaten, zoals bij het gebruik van Wi-Fi-netwerken of mobiele telefoons. Versleuteling helpt om de privacy van gebruikers te beschermen en te voorkomen dat derden toegang krijgen tot hun communicatie.
-- Bij het beschermen van intellectueel eigendom, zoals bij het versleutelen van software of digitale media om ongeautoriseerde toegang en piraterij te voorkomen.
-- Bij het waarborgen van de integriteit van gegevens, zoals bij het gebruik van digitale handtekeningen om te verifiëren dat een bericht of document niet is gewijzigd sinds het is ondertekend.
-- Bij het beveiligen van financiële transacties, zoals bij het gebruik van online bankieren of e-commerce, om te voorkomen dat gevoelige informatie wordt onderschept of misbruikt.
-- Bij het beschermen van persoonlijke privacy, zoals bij het gebruik van end-to-end encryptie in messaging-apps, om ervoor te zorgen dat alleen de bedoelde ontvangers toegang hebben tot de inhoud van de communicatie.
+Praktisch:
 
-wat is nt authNT AUTHORITY?
- is een ingebouwde account in Windows-besturingssystemen die wordt gebruikt voor systeemprocessen en services. Het is een speciale account die wordt gebruikt door het besturingssysteem om bepaalde taken uit te voeren, zoals het beheren van systeembronnen, het uitvoeren van achtergrondprocessen en het beheren van beveiligingsinstellingen. NT AUTHORITY heeft verschillende subaccounts, zoals SYSTEM, LOCAL SERVICE en NETWORK SERVICE, die elk specifieke taken en rechten hebben binnen het besturingssysteem. Deze accounts worden automatisch beheerd door Windows en kunnen niet worden verwijderd of gewijzigd door gebruikers.
+moderne systemen combineren beide (hybride): asymmetrisch om een symmetrische sessiesleutel veilig te delen, symmetrisch voor de datastroom.
 
-hak 5
+## 4. Hashfuncties — wat en waarom
 
-Hak5 is een bedrijf dat zich richt op het ontwikkelen van tools en technologieën voor beveiligingstesten en ethisch hacken. Ze bieden een breed scala aan producten, zoals de WiFi Pineapple, een apparaat dat wordt gebruikt voor het testen van draadloze netwerken, en de Rubber Ducky, een USB-apparaat dat kan worden geprogrammeerd om automatisch commando's uit te voeren wanneer het wordt aangesloten op een computer. Hak5 staat bekend om zijn educatieve content en community, waarbij ze regelmatig tutorials, podcasts en evenementen organiseren om kennis te delen over cybersecurity en ethisch hacken.
+Een hashfunctie neemt willekeurige input en geeft een vaste-lengte output (digest). Kenmerken:
 
-wat CA staat voor?
+- Deterministisch: dezelfde input → dezelfde hash.
+- Eénrichtingsfunctie: van hash terug naar input is praktisch onmogelijk.
+- Botsingsresistent: moeilijk twee verschillende inputs te vinden met dezelfde hash.
 
-CA staat voor Certificate Authority, wat in het Nederlands vertaald kan worden als Certificeringsinstantie. Een CA is een organisatie die digitale certificaten uitgeeft en beheert, die worden gebruikt om de identiteit van een website, persoon of organisatie te verifiëren. Deze certificaten bevatten informatie over de eigenaar en de openbare sleutel, en worden gebruikt in beveiligingsprotocollen zoals SSL/TLS om veilige communicatie over het internet mogelijk te maken. CA's spelen een cruciale rol in het waarborgen van de veiligheid en integriteit van online communicatie door ervoor te zorgen dat gebruikers kunnen vertrouwen op de identiteit van de websites waarmee ze communiceren.
+Gebruik:
 
-wat sha-256?
+- Wachtwoordopslag (hash + salt).
+- Integriteitscontrole (bestandshashes).
 
-SHA-256 (Secure Hash Algorithm 256-bit) is een cryptografische hashfunctie die deel uitmaakt van de SHA-2 familie. Het produceert een unieke, vaste lengte van 256 bits (32 bytes) hashwaarde voor elke invoer, ongeacht de grootte van de invoer. SHA-256 wordt veel gebruikt in beveiligingstoepassingen, zoals het verifiëren van gegevensintegriteit, het beveiligen van wachtwoorden en het genereren van digitale handtekeningen. In de context van Bitcoin wordt SHA-256 gebruikt als onderdeel van het miningproces en om transacties te beveiligen.
+Voorbeeld: SHA‑256 geeft een 256‑bit (32 byte) hex-string zoals:
 
-digitale handtekening?
+$$
+    \text{SHA256}('wachtwoord') = \text{e3b0c44298fc1c149...}  \quad(verkort)
+$$
 
-Een digitale handtekening is een cryptografische techniek die wordt gebruikt om de authenticiteit en integriteit van een digitaal bericht of document te waarborgen. Het werkt door het gebruik van een privésleutel om een unieke hashwaarde van het bericht te genereren, die vervolgens wordt versleuteld met de privésleutel. De ontvanger kan de digitale handtekening verifiëren door de bijbehorende openbare sleutel te gebruiken om de hashwaarde te ontsleutelen en deze te vergelijken met een nieuw gegenereerde hashwaarde van het ontvangen bericht. Als de waarden overeenkomen, betekent dit dat het bericht niet is gewijzigd sinds het is ondertekend en dat het afkomstig is van de eigenaar van de privésleutel. Digitale handtekeningen worden veel gebruikt in e-mailcommunicatie, softwaredistributie en andere toepassingen waar authenticiteit en integriteit belangrijk zijn.
+MD5 produceert kortere hashes maar is kwetsbaar voor botsingen; gebruik SHA‑2/3 of een KDF (bcrypt, scrypt) voor wachtwoorden.
 
-hashfunctie?
+## 5. Digitale handtekeningen (kort)
 
-Een hashfunctie is een wiskundige functie die een invoer van willekeurige grootte omzet in een vaste lengte van uitvoer, vaak aangeduid als een hashwaarde of digest. Hashfuncties worden veel gebruikt in computerwetenschappen en cryptografie voor verschillende doeleinden, zoals het verifiëren van gegevensintegriteit, het beveiligen van wachtwoorden en het genereren van digitale handtekeningen. Een goede hashfunctie heeft eigenschappen zoals determinisme (dezelfde invoer geeft altijd dezelfde uitvoer), snelheid (snelle berekening van de hashwaarde) en weerstand tegen botsingen (het is moeilijk om twee verschillende invoeren te vinden die dezelfde hashwaarde produceren). Voorbeelden van veelgebruikte hashfuncties zijn MD5, SHA-1 en SHA-256.
+Proces:
 
+1. Hash het bericht.
+2. Onderteken die hash met je private sleutel (sign).
+3. Ontvanger verifieert met je publieke sleutel.
 
-md 5?
+Zo garandeer je zowel authenticatie (wie het stuurde) als integriteit (niet gewijzigd).
 
-MD5 (Message Digest Algorithm 5) is een cryptografische hashfunctie die een invoer van willekeurige grootte omzet in een vaste lengte van 128 bits (16 bytes) hashwaarde. Het werd oorspronkelijk ontworpen voor het verifiëren van gegevensintegriteit, maar vanwege kwetsbaarheden in het algoritme wordt het tegenwoordig als onveilig beschouwd voor cryptografische doeleinden. MD5 is vatbaar voor botsingen, waarbij twee verschillende invoeren dezelfde hashwaarde kunnen produceren, wat kan leiden tot beveiligingsproblemen. Daarom wordt het aanbevolen om sterkere hashfuncties zoals SHA-256 te gebruiken voor beveiligingskritische toepassingen.
+## 6. Hash -> username koppelen (praktisch overzicht)
 
-hoe kan je via een hash linken aan een username ?
+- Een hash bevat meestal geen username; koppelen gebeurt als je een dataset hebt met `username:hash`.
+- Methoden om wachtwoorden te achterhalen (voor herstel/legale tests):
 
-Om een hash te linken aan een username, moet je eerst weten welk type hashfunctie is gebruikt om de wachtwoorden te hashen. Vervolgens kun je een lijst van mogelijke wachtwoorden genereren en deze hashen met dezelfde hashfunctie. Door de gegenereerde hashes te vergelijken met de hash die je hebt, kun je mogelijk het oorspronkelijke wachtwoord achterhalen en daarmee de username koppelen aan de hash. Dit proces wordt vaak uitgevoerd met behulp van tools zoals hashcat, die geavanceerde technieken gebruiken om hashes te kraken.q
+  - Brute force: alle combinaties proberen (tijdrovend).
+  - Dictionary: woordlijsten zoals `rockyou.txt` gebruiken.
+  - Mask / mask attack: gerichte brute force (bv. `?d?d?d?d` voor 4 cijfers).
+  - Rules: transformaties op woordenlijsten (bv. hoofdletters, cijfers toevoegen).
+
+Bescherming: gebruik altijd `salt` + KDF (bcrypt/scrypt/PBKDF2) en voldoende iteraties.
+
+## 7. Hashcat: uitleg en voorbeelden
+
+Hashcat is een krachtige tool om hashes te testen/kraken bij security-audits. Belangrijkste opties:
+
+- `-m <mode>`: hash type (0 = MD5, 100 = SHA1, 1400 = SHA256, etc.).
+- `-a <attack>`: aanvalstype (0=dictionary, 3=mask, 6=hybrid word+mask, 7=mask+word).
+- `-r <rules>`: pas rules toe op woordenlijst (bv. capitalize, append digits).
+- `-O`: optimized kernel (sneller, minder flexibel).
+- `-i`: increment (voor mask attacks; groeit lengte tussen min/max).
+
+Voorbeelden met uitleg (Windows-commando's):
+
 ```bash
-
+# Mask: 4 cijfers (bv. PIN 0000-9999)
 .\hashcat.exe -m 0 -a 3 .\example0.hash ?d?d?d?d
 
+# Mask: 5 kleine letters (alle combinaties van a-z length 5)
 .\hashcat.exe -m 0 -a 3 .\example0.hash ?l?l?l?l?l
 
-.\hashcat.exe -m 0 -a 3 .\example0.hash ?l?l?l?l?l?l?l
+# Increment: probeer alle mask-lengtes tussen min en max
+.\hashcat.exe -m 0 -a 3 .\example0.hash ?l?l?l? -i
 
-.\hashcat.exe -m 0 -a 3 .\example0.hash ?l?l?l?l?l?l?l?l?l?l?l?l?l?l
+# Dictionary (rockyou) tegen MD5-hashes, geoptimaliseerd
+.\hashcat.exe -m 0 -a 0 .\example0.hash .\rockyou.txt -O
 
-.\hashcat.exe -m 0 -a 3 .\example0.hash ?l?l?l?l?l?l?l -i
+# Dictionary + suffix (append 4 digits) — hybrid attack
+.\hashcat.exe -m 0 -a 6 .\example0.hash .\rockyou.txt ?d?d?d?d -i
 
-.\hashcat.exe -m 0 -a 3 .\example0.hash ?u?l?l?l?l?l?l?d?d?d?d
-
-.\hashcat.exe -m 0 -a 3 -1 ?l?d .\example0.hash ?1?1?1?1?1?1?1
-
-.\hashcat.exe -m 0 -a 3 -1 ?l?d .\example0.hash ?1?1?1?1?1?1?1?1?1?1 -i
-
-.\hashcat.exe -m 0 -a 3 -1 ?l?d?u .\example0.hash ?1?1?1?1?1?1?1?1?1?1 -i
-
-.\hashcat.exe -m 0 -a 3 -1 ?l?d?u?s .\example0.hash ?1?1?1?1?1?1?1?1?1?1 -i
-
-.\hashcat.exe -m 0 -a 3 .\example0.hash ?u?1?1?1?1?1?d?d?d?s -i
-
-.\hashcat.exe -m 0 -a 0 .\example0.hash ./rockyou.txt -O
-
-.\hashcat.exe -m 0 -a 6 .\example0.hash ./rockyou.txt ?d?d?d?d -i
-
-.\hashcat.exe -m 0 -a 6 .\example0.hash ./rockyou.txt ?a?a
-
+# Rules: pas dive.rule toe op rockyou
 .\hashcat.exe -m 0 -a 0 -r .\rules\dive.rule .\example0.hash .\rockyou.txt -O
 
+# Custom charset voorbeeld: -1 definieert set 1 als letters+digits
+.\hashcat.exe -m 0 -a 3 -1 ?l?d .\example0.hash ?1?1?1?1?1?1?1 -i
 ```
 
-hashcat.potfile is een bestand dat wordt gebruikt door hashcat om de resultaten van gecrackte hashes op te slaan. Wanneer hashcat een hash succesvol kraakt, wordt de bijbehorende plaintext (oorspronkelijke waarde) opgeslagen in het potfile, samen met de hash
+Legenda korte samenvatting:
+
+- `?l` = lowercase letters
+- `?u` = uppercase
+- `?d` = digits
+- `?s` = special characters
+- `-i` = increment (groepeer mask lengte)
+- `-O` = gebruik snelle kernel (minder compatibel op sommige hardware)
+
+Belangrijk: kies altijd de juiste `-m` (hashtype). Foute modus geeft geen resultaten en kost tijd.
+
+### hashcat.potfile
+
+Het `hashcat.potfile` bevat `hash:plaintext` regels voor elk succesvol gekraakt item — handig om resultaten te bewaren en later te raadplegen.
+
+## 8. Kort: NT AUTHORITY, Hak5, CA
+
+- `NT AUTHORITY`: Windows systeempseudo-account voor services (bv. `SYSTEM`). Niet te verwijderen.
+- `Hak5`: community en bedrijf dat hardware en tutorials maakt voor pentesting (educatief).
+- `CA` (Certificate Authority): instantie die digitale certificaten uitgeeft voor SSL/TLS; vertrouwen van browsers hangt hiervan af.
+
+---
