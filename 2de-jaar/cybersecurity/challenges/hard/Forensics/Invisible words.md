@@ -442,4 +442,4 @@ Waarom het werkt: De afbeelding ziet er op het oog normaal uit en de "file signa
 
 ---
 
-![image](../assets/invisible%20word%20clear.png)
+![image](../../assets/invisible%20word%20clear.png)
