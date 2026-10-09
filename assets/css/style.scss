@@ -1,0 +1,39 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.site-navigation {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.site-navigation ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-navigation a {
+  display: inline-block;
+  padding: 0.75rem 0;
+  color: #424242;
+  text-decoration: none;
+}
+
+.site-navigation a:hover,
+.site-navigation .active a {
+  color: #111;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25rem;
+}
+
+@media screen and (max-width: 600px) {
+  .site-navigation ul {
+    gap: 0 1rem;
+  }
+}
