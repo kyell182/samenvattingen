@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 1ste jaar
+layout: default
 ---
 
 # 1ste jaar

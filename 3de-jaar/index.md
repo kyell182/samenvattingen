@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 3de jaar
+layout: default
 ---
 
 # 3de jaar

@@ -1,9 +1,10 @@
 title: Samenvattingen ICT & Elektronica
 description: Samenvattingen, labo's en opdrachten uit mijn opleiding ICT & Elektronica
 theme: minima
-lang: nl
 
-exclude:
-  - CLAUDE.md
-  - README.md
-  - "*.tex"
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
