@@ -1,0 +1,16 @@
+<nav class="site-navigation" aria-label="Hoofdnavigatie">
+  <ul>
+    <li{% if page.url == '/' %} class="active"{% endif %}>
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+    </li>
+    <li{% if page.url == '/1ste-jaar/' %} class="active"{% endif %}>
+      <a href="{{ '/1ste-jaar/' | relative_url }}"{% if page.url == '/1ste-jaar/' %} aria-current="page"{% endif %}>1ste jaar</a>
+    </li>
+    <li{% if page.url == '/2de-jaar/' %} class="active"{% endif %}>
+      <a href="{{ '/2de-jaar/' | relative_url }}"{% if page.url == '/2de-jaar/' %} aria-current="page"{% endif %}>2de jaar</a>
+    </li>
+    <li{% if page.url == '/3de-jaar/' %} class="active"{% endif %}>
+      <a href="{{ '/3de-jaar/' | relative_url }}"{% if page.url == '/3de-jaar/' %} aria-current="page"{% endif %}>3de jaar</a>
+    </li>
+  </ul>
+</nav>
