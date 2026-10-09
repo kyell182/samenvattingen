@@ -1,69 +1,39 @@
-# video files
+# Grote mediabestanden
 *.mp4
 
-# nested git projects that should stay local
-1 ste jaar/microcontrollers/projecten/
-1 ste jaar/programeren/
+# Lokale sub-repositories
+1ste-jaar/microcontrollers/projecten/
+1ste-jaar/programeren/
 
-# log files
-*.log
-# temporary files
-*.tmp
-# OS generated files
-.DS_Store
-Thumbs.db
-# node modules
-node_modules/
-# build output
-dist/
-build/
-# environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-# IDE specific files
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-# coverage directory
-coverage/
-# dependency directories
-vendor/
-# compiled files
-*.class
-*.obj
-*.exe
-
-# archive files
-*.zip  
+# Archieven en back-ups
+*.zip
 *.rar
 *.tar.gz
 *.7z
-# backup files
 *.bak
 *.old
-# database files
-*.sqlite
-*.db
-*.sqlite3
-# Python bytecode
-__pycache__/
-*.pyc
-*.pyo
-# JavaScript build files
-*.min.js
-*.map
-# Sass cache
+*-bak
+*-backups/
+
+# Logs en tijdelijke bestanden
+*.log
+*.tmp
+
+# Besturingssysteem en editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Omgevingsvariabelen
+.env
+.env.*
+
+# Jekyll
+_site/
+.jekyll-cache/
 .sass-cache/
-# Ruby specific files
-*.gem
-.bundle/
-# Java specific files
-*.jar
-*.war
-*.ear
+Gemfile.lock
+
+#ai
+claude.md

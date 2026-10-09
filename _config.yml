@@ -1,3 +1,9 @@
-title: Samenvattingen Kyell182
-description: Studiemateriaal ICT & Elektronica
+title: Samenvattingen ICT & Elektronica
+description: Samenvattingen, labo's en opdrachten uit mijn opleiding ICT & Elektronica
 theme: minima
+lang: nl
+
+exclude:
+  - CLAUDE.md
+  - README.md
+  - "*.tex"

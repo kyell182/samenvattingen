@@ -1,7 +1,7 @@
 
-# ✅ Oplossingenbundel: Basiscommando’s in Debian
+# Oplossingenbundel: Basiscommando’s in Debian
 
-## 📝 Opdracht 1
+## Opdracht 1
 
 1. `pwd`
 2. `cd /etc` en `pwd`
@@ -10,7 +10,7 @@
 
 ---
 
-## 📝 Opdracht 2
+## Opdracht 2
 
 1. `ls -a`
 2. Bestanden beginnen met een punt (`.`) zijn verborgen.
@@ -18,7 +18,7 @@
 
 ---
 
-## 📝 Opdracht 3
+## Opdracht 3
 
 1. `mkdir ~/testmap`
 2. `cd ~/testmap` en `touch oefening.txt`
@@ -27,14 +27,14 @@
 
 ---
 
-## 📝 Opdracht 4
+## Opdracht 4
 
 1. `cat /etc/hostname`
 2. `head -n 5 /etc/passwd`
 
 ---
 
-## 📝 Opdracht 5
+## Opdracht 5
 
 1. `sudo reboot`
 2. `sudo shutdown -h +1`

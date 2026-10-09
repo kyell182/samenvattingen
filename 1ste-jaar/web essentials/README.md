@@ -103,4 +103,4 @@ Bekijk ook de [verkorte versie van deze stappen voor dagelijks gebruik](./short_
 
 ## Overzicht progressie
 
-Geef aan welke oefeningen je hebt voltooid door een ✔️ emoji te plaatsen in de "voltooid"-kolom van het `PROGRESS.md`-bestand.
+Geef aan welke oefeningen je hebt voltooid door een  emoji te plaatsen in de "voltooid"-kolom van het `PROGRESS.md`-bestand.

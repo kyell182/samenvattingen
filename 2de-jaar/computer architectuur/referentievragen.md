@@ -115,7 +115,7 @@ Ondanks de 16-bits architectuur van de registers, is de adresseerbare geheugenru
 <summary><strong>
 Omschrijf de Wet Van Moore.
 
- Bespreek enkele limieten die de linearisatie van deze wet in de toekomst niet meer ondersteunen.
+Bespreek enkele limieten die de linearisatie van deze wet in de toekomst niet meer ondersteunen.
 
 - Verklaar de afkortingen CPU en GPU en verklaar enkele essentiele verschillen tussen de werking van een CPU en een GPU.
 
@@ -313,7 +313,7 @@ Verklaar de werking van de 6502 stapel-instructies PHA en PLA. De werking van de
 | **High**     | Hoog    | Laag     |
 | **Low**      | Laag    | Hoog     |
 
-💡 Ezelsbrug: active = de waarde die het signaal moet hebben om te “activeren”
+Ezelsbrug: active = de waarde die het signaal moet hebben om te “activeren”
 
 - **Non-Maskable Interrupt (NMI):**
   - kan niet worden uitgeschakeld door de CPU.
@@ -436,12 +436,12 @@ Wat betekenen de afkortingen PCI en PCIe?
 - **PCI:** Peripheral Component Interconnect
   - een standaard voor het aansluiten van randapparatuur op een computer via een busarchitectuur.
   - ondersteunt meerdere apparaten en biedt een gedeelde communicatie-interface.
-  - uitsparing zit rechts op slot ➡️
+  - uitsparing zit rechts op slot 
 
 - **PCIe:** PCI Express
   - een snellere en meer geavanceerde versie van PCI, die seriële communicatie gebruikt.
   - biedt hogere bandbreedte en lagere latentie, waardoor het geschikt is voor moderne randapparatuur zoals grafische kaarten en SSD's.
-  - uitsparing zit links op slot ⬅️
+  - uitsparing zit links op slot ⬅
 
 </details>
 
@@ -530,7 +530,7 @@ Wat zijn de beperkingen van MBR partities en verklaar hoe UEFI partities deze be
   - biedt verbeterde gegevensintegriteit en fouttolerantie door het gebruik van redundante partitiegegevens.
   - beter compatibel met moderne hardware en besturingssystemen.
 
-💡 wist je datje
+wist je datje
 
 - 9,4 zetabyte is ongeveer 9,4 miljard terabyte of 9,4 miljoen petabyte – kortom, extreem veel data, genoeg om honderden miljoenen full HD-films op te slaan.
 
@@ -651,10 +651,10 @@ Noem vier scheduling algorithms en bespreek de eigenschappen van elke van deze s
 
 | Algorithm                          | Preemptive?                                               | Priority? | Eigenschappen                                                                                                             |
 | ---------------------------------- | --------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **FCFS (First Come First Served)** | ❌ Non-preemptive                                          | ❌ Nee     | Processen worden uitgevoerd in volgorde van aankomst. Simpel, maar trage processen kunnen alles ophouden.                 |
-| **SJF (Shortest Job First)**       | ❌ Meestal non-preemptive (bestaat ook preemptive variant) | ❌ Nee     | Kortste taak eerst → minimale gemiddelde wachttijd. Nadeel: je moet weten hoe lang een proces duurt.                      |
-| **Round Robin (RR)**               | ✅ Preemptive                                              | ❌ Nee     | Elk proces krijgt een vaste tijdslice. Goed voor multitasking, eerlijk, maar te kleine timeslice = veel context switches. |
-| **Priority Scheduling**            | ✅ Of ❌ (kan beide)                                        | ✅ Ja      | Proces met hoogste prioriteit eerst. Risico: starvation (lage prioriteit komt nooit aan de beurt).                        |
+| **FCFS (First Come First Served)** |  Non-preemptive                                          |  Nee     | Processen worden uitgevoerd in volgorde van aankomst. Simpel, maar trage processen kunnen alles ophouden.                 |
+| **SJF (Shortest Job First)**       |  Meestal non-preemptive (bestaat ook preemptive variant) |  Nee     | Kortste taak eerst → minimale gemiddelde wachttijd. Nadeel: je moet weten hoe lang een proces duurt.                      |
+| **Round Robin (RR)**               |  Preemptive                                              |  Nee     | Elk proces krijgt een vaste tijdslice. Goed voor multitasking, eerlijk, maar te kleine timeslice = veel context switches. |
+| **Priority Scheduling**            | Beide mogelijk                                        |  Ja      | Proces met hoogste prioriteit eerst. Risico: starvation (lage prioriteit komt nooit aan de beurt).                        |
 
 `FCFS` = “wie eerst komt, eerst maalt”
 
@@ -664,7 +664,7 @@ Noem vier scheduling algorithms en bespreek de eigenschappen van elke van deze s
 
 `Priority` = “de belangrijkste eerst”
 
-💡 preemptive = onderbreekbaar
+preemptive = onderbreekbaar
 
 </details>
 
@@ -716,9 +716,9 @@ Hoe onderscheiden zich `soft` real time, `hard` real time en  `firm` real time s
 
 | Type real-time systeem | Deadline missen | Gevolg                                      | Voorbeelden                      |
 | ---------------------- | --------------- | ------------------------------------------- | -------------------------------- |
-| **Hard real-time**     | ❌ Mag nooit     | Systeem faalt / gevaarlijk                  | Airbag, pacemaker, ABS           |
-| **Firm real-time**     | ⚠️ Mag soms     | Resultaat is waardeloos en wordt weggegooid | Camera frames, sensordata, radar |
-| **Soft real-time**     | ✅ Mag           | Kwaliteit daalt, maar systeem blijft werken | Video, audio, games              |
+| **Hard real-time**     |  Mag nooit     | Systeem faalt / gevaarlijk                  | Airbag, pacemaker, ABS           |
+| **Firm real-time**     |  Mag soms     | Resultaat is waardeloos en wordt weggegooid | Camera frames, sensordata, radar |
+| **Soft real-time**     |  Mag           | Kwaliteit daalt, maar systeem blijft werken | Video, audio, games              |
 
 </details>
 
@@ -1149,11 +1149,11 @@ Bespreek de architectuur en werking van volgende 3 cache-architecturen:
 | Aantal mogelijke plaatsen per blok | 1                             | N (bv 2-way, 4-way, 8-way)           | Alle lijnen                              |
 | Index bits nodig?                  | Ja                            | Ja (set index)                       | Nee                                      |
 | Vergelijkingen nodig               | 1                             | N                                    | Cache_size (veel!)                       |
-| Hardware complexiteit              | ⭐ Zeer simpel                | ⭐⭐ Medium                          | ⭐⭐⭐ Zeer complex                      |
-| Snelheid                           | ⭐ Zeer snel                  | ⭐⭐ Snel                            | ⭐ Langzamer                             |
-| Kans op cache conflicts            | ❌ Hoog                       | ⚠️ Gemiddeld                         | ✅ Zeer klein                            |
-| Kost (hardware)                    | 💰 Goedkoop                   | 💰💰 Medium                          | 💰💰💰 Duur                              |
-| Wordt in praktijk gebruikt?        | Ja                            | ✅ Meest gebruikt                    | Zelden (te duur)                         |
+| Hardware complexiteit              |  Zeer simpel                |  Medium                          |  Zeer complex                      |
+| Snelheid                           |  Zeer snel                  |  Snel                            |  Langzamer                             |
+| Kans op cache conflicts            |  Hoog                       |  Gemiddeld                         |  Zeer klein                            |
+| Kost (hardware)                    |  Goedkoop                   |  Medium                          |  Duur                              |
+| Wordt in praktijk gebruikt?        | Ja                            |  Meest gebruikt                    | Zelden (te duur)                         |
 
 </details>
 

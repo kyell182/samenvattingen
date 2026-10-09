@@ -451,7 +451,7 @@ INSERT INTO leden (Lidnr, Naam, isMeisje, insschrijvingsdatum) VALUES
 - BLOB: Binaire grote objecten (max 65,535 bytes).
 - LONG BLOB: Zeer grote binaire objecten (max 4,294,967,295 bytes).
 
-💡 probeer steeds het kleinste datatype te gebruiken dat aan de eisen voldoet.
+probeer steeds het kleinste datatype te gebruiken dat aan de eisen voldoet.
 
 </details>
 
@@ -463,7 +463,7 @@ INSERT INTO leden (Lidnr, Naam, isMeisje, insschrijvingsdatum) VALUES
 - TIMESTAMP: Datum en tijd in 'YYYY-MM-DD HH:MM:SS' formaat (1970-01-01 00:00:01 UTC tot 2038-01-19 03:14:07 UTC).
 - TIME: Tijd in 'HH:MM:SS' formaat (-838:59:59 tot 838:59:59).
 
-💡 de notaties zijn steeds in Amerikaans formaat.
+de notaties zijn steeds in Amerikaans formaat.
 
 </details>
 
@@ -480,7 +480,7 @@ CREATE TABLE tabelnaam
 );
 ```
 
-💡 alle velden zijn hier optioneel en mogen leeg gelaten worden.
+alle velden zijn hier optioneel en mogen leeg gelaten worden.
 
 </details>
 
@@ -500,7 +500,7 @@ CREATE TABLE leden
 - Zorgt voor gegevensintegriteit door verplichte velden af te dwingen.
 - Als een poging wordt gedaan om een record in te voegen zonder waarde voor een NOT NULL kolom, zal de database een foutmelding geven en de invoeging weigeren.
 
-- 💡 gebruik NOT NULL voor velden die altijd een waarde moeten hebben (bijv. primaire sleutels, verplichte attributen)
+- gebruik NOT NULL voor velden die altijd een waarde moeten hebben (bijv. primaire sleutels, verplichte attributen)
 
 </details>
 
@@ -520,7 +520,7 @@ CREATE TABLE leden
 - DEFAULT: stelt een standaardwaarde in voor een kolom als er geen waarde wordt opgegeven tijdens het invoegen van een record.
 - Verbetert gegevensconsistentie door ervoor te zorgen dat kolommen altijd een geldige waarde hebben.
 
-- 💡 gebruik DEFAULT voor velden die vaak dezelfde waarde hebben (bijv. isMeisje) of voor tijdstempels (bijv. inschrijvingsdatum).
+- gebruik DEFAULT voor velden die vaak dezelfde waarde hebben (bijv. isMeisje) of voor tijdstempels (bijv. inschrijvingsdatum).
 
 </details>
 
@@ -542,7 +542,7 @@ CREATE TABLE leden
 - Zorgt ervoor dat de kolomwaarden uniek en niet NULL zijn.
 - Verbetert de prestaties van zoekopdrachten en relaties tussen tabellen.
 
-- 💡 gebruik PRIMARY KEY voor kolommen die elke record uniek identificeren (bijv. Lidnr).
+- gebruik PRIMARY KEY voor kolommen die elke record uniek identificeren (bijv. Lidnr).
 
 </details>
 
@@ -563,7 +563,7 @@ CREATE TABLE inschrijvingen
 - Zorgt ervoor dat de combinatie van kolomwaarden uniek is.
 - Verbetert de gegevensintegriteit bij relaties tussen tabellen.
 
-- 💡 gebruik samengestelde PRIMARY KEY voor tabellen die relaties tussen entiteiten vertegenwoordigen (bijv. inschrijvingen).
+- gebruik samengestelde PRIMARY KEY voor tabellen die relaties tussen entiteiten vertegenwoordigen (bijv. inschrijvingen).
 
 </details>
 
@@ -586,7 +586,7 @@ CREATE TABLE inschrijvingen
 - Zorgt voor referentiële integriteit tussen tabellen.
 - Voorkomt het invoegen van records met niet-bestaande verwijzingen.
 
-- 💡 gebruik FOREIGN KEY voor kolommen die relaties tussen tabellen vertegenwoordigen (bijv. Lidnr in inschrijvingen verwijst naar Lidnr in leden).
+- gebruik FOREIGN KEY voor kolommen die relaties tussen tabellen vertegenwoordigen (bijv. Lidnr in inschrijvingen verwijst naar Lidnr in leden).
 
 </details>
 
@@ -608,7 +608,7 @@ CREATE TABLE leden
 - Handig voor PRIMARY KEY kolommen om unieke identifiers te creëren zonder handmatige invoer.
 - Verhoogt de waarde automatisch met 1 voor elke nieuwe invoeging.
 
-- 💡 gebruik AUTO_INCREMENT voor kolommen die unieke identifiers nodig hebben (bijv. Lidnr).
+- gebruik AUTO_INCREMENT voor kolommen die unieke identifiers nodig hebben (bijv. Lidnr).
 
 </details>
 
@@ -631,7 +631,7 @@ CREATE TABLE inschrijvingen
 - Zorgt voor referentiële integriteit tussen tabellen.
 - Voorkomt het invoegen van records met niet-bestaande verwijzingen.
 
-- 💡 gebruik FOREIGN KEY voor kolommen die relaties tussen tabellen vertegenwoordigen (bijv. Lidnr in inschrijvingen verwijst naar Lidnr in leden).
+- gebruik FOREIGN KEY voor kolommen die relaties tussen tabellen vertegenwoordigen (bijv. Lidnr in inschrijvingen verwijst naar Lidnr in leden).
 
 </details>
 
@@ -722,7 +722,7 @@ WHERE omschrijving = "Vakantiekamp";
 <= (kleiner dan of gelijk aan)
 ```
 
-- 💡SQL is hoofdletterongevoelig voor strings
+- SQL is hoofdletterongevoelig voor strings
 
   - strings tussen:
 
@@ -840,7 +840,7 @@ WHERE leeftijd > ANY
 );
 ```
 
-- 💡 gebruik haakjes om de volgorde van evaluatie te bepalen bij complexe voorwaarden.
+- gebruik haakjes om de volgorde van evaluatie te bepalen bij complexe voorwaarden.
 
 </details>
 
@@ -886,7 +886,7 @@ ka?s                | ks, kas             | kaas              |
 
 </details>
 
-🏫 sites om te oefenen
+sites om te oefenen
 
 - [https://regex101.com/](https://regex101.com/)
 - [https://www.regextester.com/](https://www.regextester.com/)
@@ -1029,7 +1029,7 @@ FROM inschrijvingen;
 <details><summary>Antwoord</summary>
 
 - Groeperen van records met `GROUP BY`.
-- Filteren van gegroepeerde records met `HAVING` ⚠️ moet altijd na `GROUP BY` komen.
+- Filteren van gegroepeerde records met `HAVING`  moet altijd na `GROUP BY` komen.
 
 ```sql
 SELECT ismeisje, COUNT(*) AS aantal_leden
@@ -1083,7 +1083,7 @@ FROM activiteiten a
 RIGHT JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id;
 ```
 
-⚠️ RIGHT JOIN is minder gebruikelijk dan LEFT JOIN.
+RIGHT JOIN is minder gebruikelijk dan LEFT JOIN.
 
 </details>
 
@@ -1113,7 +1113,7 @@ JOIN inschrijvingen i ON a.activiteit_id = i.activiteit_id
 
 ```
 
-⚠️ FROM wordt altijd eerst gedaan dan pas SELECT volgorde van uitvoering.
+FROM wordt altijd eerst gedaan dan pas SELECT volgorde van uitvoering.
 ```mermaid
 flowchart TD
     A["Start: Tabel activiteiten a"] --> B["Neem één rij van activiteiten"]
@@ -1188,7 +1188,7 @@ AND  land =
 <details><summary>Antwoord</summary>
 
 - Geven meerdere records terug, gebruiken operatoren: IN, ANY, ALL.
-- ⚠️ NOT kan bij alle 3 de operatoren gebruikt worden.
+- NOT kan bij alle 3 de operatoren gebruikt worden.
 
 ```sql
 SELECT naam, score, land
@@ -1201,7 +1201,7 @@ WHERE land IN
 );
 ```
 
-⚠️ als je twijfelt of je een single- of multiple-record subquery nodig hebt, probeer dan eerst met IN (multiple-record) en kijk of het werkt.
+als je twijfelt of je een single- of multiple-record subquery nodig hebt, probeer dan eerst met IN (multiple-record) en kijk of het werkt.
 
 </details>
 

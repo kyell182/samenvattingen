@@ -244,7 +244,7 @@ matrix Aftrekking:
 A - B = C \text{ met } c_{ij} = a_{ij} - b_{ij}
 ```
 
-⚠️ matrixen moeten dezelfde dimensies hebben!
+matrixen moeten dezelfde dimensies hebben!
 
 matrix Scalair vermenigvuldiging:
 

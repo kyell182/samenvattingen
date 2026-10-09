@@ -1,4 +1,4 @@
-#  H9 Formularium Integralen
+# H9 Formularium Integralen
 
 ---
 
@@ -27,7 +27,7 @@ $$
 | $a^x$ | $\dfrac{a^x}{\ln a}$ | $\dfrac{1}{1+x^2}$ | $\arctan x$ |
 | $\sin x$ | $-\cos x$ | | |
 
-💡 Opmerking: bij onbepaalde integralen kan altijd een constante c worden toegevoegd.
+Opmerking: bij onbepaalde integralen kan altijd een constante c worden toegevoegd.
 
 
 ---
@@ -40,7 +40,7 @@ $$
 | Som / verschil | $\int (f(x) \pm g(x)) \, dx = \int f(x) \, dx \pm \int g(x) \, dx$ |
 | Substitutie | $\int f(g(x)) g'(x) \, dx = \int f(u) \, du$, met $u = g(x)$ |
 
-❗ er bestaan **geen algemene regels voor product of quotiënt** van functies.
+er bestaan **geen algemene regels voor product of quotiënt** van functies.
 
 ---
 

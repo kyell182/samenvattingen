@@ -40,7 +40,7 @@ Eenvoudige systemen met sensoren en motoren kunnen **schijnbaar intelligent gedr
 
 ![Braitenberg-voertuig](./assets/Braitenberg%20robots.png)
 
-💡 Belangrijk: complex gedrag betekent niet dat het systeem intern complex is.
+Belangrijk: complex gedrag betekent niet dat het systeem intern complex is.
 
 </details>
 
@@ -336,7 +336,7 @@ Beschrijf de wiskundige vorm voor het bepalen van
 
 ![uitleg_gemiddelde](./assets/uitleg%20gemiddelde.png)
 
-▶️ Het gemiddelde is de centrale waarde van de dataset.
+▶ Het gemiddelde is de centrale waarde van de dataset.
 
 </details>
 
@@ -355,7 +355,7 @@ Beschrijf de wiskundige vorm voor het bepalen van
 
 Resultaat: hoe groter $s_i$, hoe meer spreiding.
 
-➡️ Geeft aan hoe sterk data verspreid is.
+Geeft aan hoe sterk data verspreid is.
 
 </details>
 
@@ -368,7 +368,7 @@ Resultaat: hoe groter $s_i$, hoe meer spreiding.
 
 ![uitleg_covariantie](./assets/uitleg%20covariance.png)
 
-➡️ Positief = samen stijgen, negatief = tegengesteld.
+Positief = samen stijgen, negatief = tegengesteld.
 
 </details>
 
@@ -380,7 +380,7 @@ Resultaat: hoe groter $s_i$, hoe meer spreiding.
 
 ![uitleg_correlatiecoefficient](./assets/uitleg%20correlation%20coefficient.png)
 
-➡️ toont in AI hoe sterk twee kenmerken (features) lineair met elkaar samenhangen.
+toont in AI hoe sterk twee kenmerken (features) lineair met elkaar samenhangen.
 Waarde tussen −1 en +1.
 
 </details>
@@ -399,10 +399,10 @@ Goede feature vectors hebben:
 - Hoge relevantie t.o.v. de output (label)
 
 Doel:
-➡️ maximale informatie
-➡️ minimale redundantie
-➡️ minder ruis
-➡️ betere generalisatie
+maximale informatie
+minimale redundantie
+minder ruis
+betere generalisatie
 
 </details>
 
@@ -604,7 +604,7 @@ k = aantal buren
 
 en op basis hiervan de meerderheid te laten beslissen tot welke klasse v behoort.
 
-⚠️ k moet oneven zijn bij binaire classificatie om gelijke stemmen te vermijden.
+k moet oneven zijn bij binaire classificatie om gelijke stemmen te vermijden.
 
 voorbeeld:
 
@@ -664,7 +664,7 @@ stemmen:
 
 - Klasse 1: 1 stem
 
-➡️ v wordt geclassificeerd als klasse 1.
+v wordt geclassificeerd als klasse 1.
 
 ---
 
@@ -683,7 +683,7 @@ stemmen:
 - Klasse 0: 2 stemmen
 - Klasse 1: 1 stem
 
-➡️ v wordt geclassificeerd als klasse 0.
+v wordt geclassificeerd als klasse 0.
 
 ---
 
@@ -704,7 +704,7 @@ stemmen:
 - Klasse 0: 2 stemmen
 - Klasse 1: 3 stemmen
 
-➡️ v wordt geclassificeerd als klasse 1.
+v wordt geclassificeerd als klasse 1.
 
 </details>
 
@@ -911,12 +911,12 @@ H(D) = -(p_1 \cdot log_2(p_1) + p_2 \cdot log_2(p_2) + ... + p_k \cdot log_2(p_k
 - **p1, p2, ..., pk**: proportie van elk klasse in D
 - **log2(pi)**: informatie-inhoud in bits
 
-⚠️ kan niet groter worden dan 1 = 100%
+kan niet groter worden dan 1 = 100%
 
 - 0 = zuivere dataset (allezelfde klasse)
 - 1 = maximale onzekerheid (gelijke verdeling)
 
-➡️ Meet onzekerheid in de data.
+Meet onzekerheid in de data.
 
 </details>
 
@@ -941,7 +941,7 @@ IG(S,A) = H(S) - \sum_{i=1}^{k} \frac{|S_i|}{|S|} \cdot H(S_i)
 - **|S|**: totaal aantal elementen in S
 - **H(Si)**: entropy van subset Si
 
-➡️ Hoogste gain = beste splitsing.
+Hoogste gain = beste splitsing.
 
 vb
 
@@ -1228,9 +1228,9 @@ x_i = \text{activatie van neuron i (input)}
 y_j = \text{activatie van neuron j (output)}
 ```
 
-➡️ "Neurons that fire together, wire together."
+ "Neurons that fire together, wire together."
 
-❗er zijn veel variaties op Hebb's rule waardoor er veel verschillende types van Hebbian learning bestaan.
+er zijn veel variaties op Hebb's rule waardoor er veel verschillende types van Hebbian learning bestaan.
 
 ---
 
@@ -1349,7 +1349,7 @@ input layer, een output layer en één of meerdere hidden layers?
 
 ## CNN
 
-📷 *Schema van een CNN: convolution → pooling → fully connected.*
+*Schema van een CNN: convolution → pooling → fully connected.*
 
 Structuur:
 - Convolution layers
@@ -1401,7 +1401,7 @@ Combineert:
 - Volledigheid BFS
 - Geheugen DFS
 
-➡️ Beste uninformed search.
+Beste uninformed search.
 
 ---
 
@@ -1431,20 +1431,20 @@ f(s) = g(s) + h(s)
 - **h(s)**: geschatte kost tot doel
 - **f(s)**: totale geschatte kost
 
-➡️ A* kiest de toestand met laagste f(s).
+A* kiest de toestand met laagste f(s).
 </details>
 
 ---
 
 ## Alpha-Beta Pruning
 
-📷 *Voorbeeld-search tree met gesnoeide takken (klassiek Minimax-diagram).*
+*Voorbeeld-search tree met gesnoeide takken (klassiek Minimax-diagram).*
 
 Snoeit takken als:
 
 α ≥ β
 
-➡️ Minder knooppunten, zelfde resultaat.
+Minder knooppunten, zelfde resultaat.
 
 ---
 
@@ -1453,7 +1453,7 @@ Snoeit takken als:
 - Random simulaties
 - Statistische evaluatie
 
-➡️ Zeer efficiënt bij grote spelbomen.
+Zeer efficiënt bij grote spelbomen.
 
 ---
 

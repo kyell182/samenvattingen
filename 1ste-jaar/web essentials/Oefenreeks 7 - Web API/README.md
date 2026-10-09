@@ -66,13 +66,13 @@ Wat is de ontvangen response?
 * Bekijk nu de documentatie van [openweathermap.org API](https://openweathermap.org/forecast5).
 * Vraag een gratis [API key](https://home.openweathermap.org/users/sign_up) aan en bekijk hoe je het weer kunt opvragen voor de komende 5 dagen per 3 uur **voor jouw woonplaats**. Ga na welke URL je moet gebruiken, welke parameters je moet opgeven, hoe de response eruit ziet enz.
 
-    💡Het kan enkele uren tot zelfs dagen duren voordat je API key actief is.
+    Het kan enkele uren tot zelfs dagen duren voordat je API key actief is.
 
 * In je script roep je een functie aan die:
     * De informatie van deze API ophaalt via de *async/await*-techniek.
     * De titel van de woonplaats toont en vervolgens een tabel vult met minimaal deze info: datum en tijdstip, temperatuur (in °C), luchtvochtigheid (in %), windsnelheid (m/s) en neerslag (mm).
 
-    💡 Tips:
+     Tips:
     * Om de tabel te vullen kun je de volgende techniek gebruiken:
     ![AFBEELDING](./images/image1.png)
     * Om de tabel opnieuw leeg te maken kun je de volgende techniek gebruiken:

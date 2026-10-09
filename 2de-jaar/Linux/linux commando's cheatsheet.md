@@ -1,11 +1,11 @@
-# 🐧 Linux Command Cheatsheet
+# Linux Command Cheatsheet
 
 Een overzicht van de meest gebruikte Linux-commando’s en hun opties.  
 Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 📁 Navigatie & Bestanden
+## Navigatie & Bestanden
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -17,7 +17,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 📄 Bestanden bekijken & bewerken
+## Bestanden bekijken & bewerken
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -30,7 +30,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 📦 Bestandsbeheer
+## Bestandsbeheer
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -43,7 +43,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 🔍 Zoeken & Tekstverwerking
+## Zoeken & Tekstverwerking
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -55,7 +55,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## ⚙️ Systeeminformatie
+## Systeeminformatie
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -69,7 +69,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 🌐 Netwerk
+## Netwerk
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -82,7 +82,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 👥 Gebruikers & Rechten
+## Gebruikers & Rechten
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -95,7 +95,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 💣 Archiveren & Compressie
+## Archiveren & Compressie
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -106,7 +106,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-## 🔑 Overige nuttige tools
+## Overige nuttige tools
 
 | Commando | Beschrijving | Belangrijkste opties |
 |-----------|---------------|----------------------|
@@ -118,7 +118,7 @@ Gebruik `man <command>` of `<command> --help` voor meer details.
 
 ---
 
-> 💡 **Tip:** Combineer commando’s met `|` (piping)  
+> **Tip:** Combineer commando’s met `|` (piping)  
 > Voorbeeld:  
 >
 > ```bash

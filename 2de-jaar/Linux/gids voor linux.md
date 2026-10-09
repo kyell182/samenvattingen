@@ -28,7 +28,7 @@ Een compacte gids met basisbegrippen, installatie-notities en veelgebruikte comm
 - RAM: ≥2GB
 - HDD: VMDK, dynamisch, 30GB
 - cpu kernen niet meer dan de helft van max kernen
-- ⚠️ opgelet:
+- opgelet:
 
   - bij nieuwere architecturen (Intel i5/i7/i9 12e generatie en hoger) hebben 2 type kernen
 
@@ -37,7 +37,7 @@ Een compacte gids met basisbegrippen, installatie-notities en veelgebruikte comm
     | **P-cores (Performance cores)** | Hoge prestaties | Hogere kloksnelheid, beter voor single-threaded taken |
     | **E-cores (Efficiency cores)**  | Energiezuinig   | Langzamer, bedoeld voor achtergrondtaken              |
 
-**🧠 Waarom VirtualBox hier moeite mee heeft:**
+** Waarom VirtualBox hier moeite mee heeft:**
 
      VirtualBox is niet goed geoptimaliseerd voor deze “hybride” CPU-architectuur.
      Het probleem zit in hoe Windows en VirtualBox de CPU-topologie zien:
@@ -50,7 +50,7 @@ Een compacte gids met basisbegrippen, installatie-notities en veelgebruikte comm
 
   4. Als VirtualBox zelf op P-cores draait en de VM op E-cores, krijg je synchronisatieproblemen → crashes of vastlopers.
 
-💡 Daarom die **“limiet van 4 cores”**
+Daarom die **“limiet van 4 cores”**
 
     Veel gebruikers (en VirtualBox zelf in documentatie/fora) bevelen aan:
 
@@ -126,7 +126,7 @@ Instellingen:
   - student = de gebruikersnaam die je wil toevoegen.
   - sudo = de groep waar je de gebruiker aan wil toevoegen.
 
-❗om de veranderingen door te voeren dien je uit te loggen en opnieuw in te loggen.
+om de veranderingen door te voeren dien je uit te loggen en opnieuw in te loggen.
 ![add_user_to_sudo_group](image/gidsvoorlinux/add_usser_to_sudo_group.png)
 
 Updates:
